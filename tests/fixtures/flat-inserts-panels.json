@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "units": "mm",
+  "width": 180,
+  "depth": 90,
+  "height": 36,
+  "wallThickness": 2,
+  "floorThickness": 2,
+  "heights": {},
+  "transitions": [
+    "back",
+    "front"
+  ],
+  "root": {
+    "id": "root",
+    "split": {
+      "axis": "x",
+      "ratio": 0.30856404182137703,
+      "first": {
+        "id": "5e5954a8-e18b-427b-a5c6-5a55814940bd"
+      },
+      "second": {
+        "id": "4b862f9a-b337-4007-ab08-fe341ab6074b",
+        "split": {
+          "axis": "x",
+          "ratio": 0.3334867273334667,
+          "first": {
+            "id": "04fd32c8-0b82-480a-8be8-08910b368c18"
+          },
+          "second": {
+            "id": "855c306f-6b71-4da7-b8c4-deafed7b1b6b"
+          },
+          "profile": {
+            "start": 35,
+            "end": 35,
+            "style": "straight"
+          }
+        }
+      },
+      "profile": {
+        "start": 35,
+        "end": 35,
+        "style": "straight"
+      }
+    }
+  },
+  "cornerRadius": 3,
+  "innerCornerRadius": 6.5,
+  "tilt": 0,
+  "transitionStyles": {
+    "back": "straight",
+    "front": "straight"
+  },
+  "transitionWavelengths": {
+    "back": 24,
+    "front": 10
+  },
+  "cups": [
+    {
+      "cellId": "855c306f-6b71-4da7-b8c4-deafed7b1b6b",
+      "shape": "fitted",
+      "height": 32.26735541744887,
+      "content": "grid",
+      "color": "#c6a68c"
+    },
+    {
+      "cellId": "04fd32c8-0b82-480a-8be8-08910b368c18",
+      "shape": "fitted",
+      "height": 32.46588546858098,
+      "content": "pens",
+      "holeDiameter": 8
+    }
+  ],
+  "shell": {
+    "pattern": "petals",
+    "gap": 0.5,
+    "thickness": 1.2,
+    "size": 6,
+    "mode": "panels",
+    "snap": false,
+    "sides": [
+      "right",
+      "front",
+      "back"
+    ],
+    "margin": 2,
+    "mounts": true
+  },
+  "cutouts": {
+    "left": {
+      "shape": "square",
+      "width": 0.5,
+      "depth": 4,
+      "position": 0.5
+    }
+  },
+  "colors": {
+    "shell": "#48565c",
+    "organizer": "#e5ba5d"
+  },
+  "cornerStyle": "round"
+}

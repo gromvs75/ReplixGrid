@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "units": "mm",
+  "width": 180,
+  "depth": 90,
+  "height": 22,
+  "wallThickness": 2,
+  "floorThickness": 2,
+  "heights": {
+    "right": 82.4
+  },
+  "transitions": [
+    "front",
+    "back"
+  ],
+  "root": {
+    "id": "root",
+    "split": {
+      "axis": "x",
+      "ratio": 0.32950191570881227,
+      "first": {
+        "id": "78064048-f28b-4d03-9536-c237da570d15"
+      },
+      "second": {
+        "id": "73d47885-f8ac-4cd0-9cbf-9d4ca725582a",
+        "split": {
+          "axis": "x",
+          "ratio": 0.5000000000000001,
+          "first": {
+            "id": "f3063d14-aa54-49ba-8937-c7f93cf75e61"
+          },
+          "second": {
+            "id": "6f297f71-2bf9-4af4-a530-11eb1d4119c1"
+          },
+          "height": 54,
+          "profile": {
+            "start": 57.4,
+            "end": 57.4,
+            "style": "straight"
+          }
+        }
+      },
+      "height": 38,
+      "profile": {
+        "start": 36.4,
+        "end": 36.4,
+        "style": "straight"
+      }
+    }
+  },
+  "cornerRadius": 0,
+  "footprint": "oval",
+  "printArea": {
+    "bedWidth": 270,
+    "bedDepth": 270,
+    "bedHeight": 270,
+    "printerId": "u1"
+  },
+  "transitionStyles": {
+    "front": "zigzag",
+    "back": "wavy"
+  },
+  "transitionWavelengths": {
+    "front": 24,
+    "back": 24
+  },
+  "shell": {
+    "pattern": "petals",
+    "gap": 0.5,
+    "thickness": 1.6,
+    "size": 8
+  },
+  "colors": {
+    "shell": "#a5bd38"
+  },
+  "cups": [
+    {
+      "cellId": "f3063d14-aa54-49ba-8937-c7f93cf75e61",
+      "shape": "fitted",
+      "height": 46.93333333333334,
+      "content": "grid"
+    }
+  ]
+}
