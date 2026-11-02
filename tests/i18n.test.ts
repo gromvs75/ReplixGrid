@@ -5,6 +5,22 @@ import sources from '../src/locales/ru.json' with {type:'json'};
 import {t,languages,setLocale,getLocale,subscribeLocale} from '../src/i18n.js';
 const dictionaries=catalogs as Record<string,Record<string,string>>;
 const slots=(s:string)=>s.match(/\{\d+\}/g)?.sort()??[];
+test('trim and pattern controls have translations in every locale',()=>{
+ const keys=['Без канта','Ступени','Высота канта','Ширина канта','Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.','Узоры · прокрутите каталог, чтобы увидеть все.'];
+ for(const [lang] of languages){
+  setLocale(lang);
+  for(const key of keys){
+   assert.ok(sources.includes(key),key);
+   if(lang==='ru'){assert.equal(t(key),key);continue;}
+   assert.ok(dictionaries[lang][key],lang+': '+key);
+   assert.equal(t(key),dictionaries[lang][key]);
+   // Ukrainian legitimately shares some labels with Russian.
+   if(lang!=='uk')assert.doesNotMatch(t(key),/[А-Яа-яЁё]/,lang+': '+key);
+  }
+ }
+ setLocale('en');
+ assert.equal(t('Ширина канта'),'Border width');
+});
 test('print panel introduction is translated in every supported language',()=>{
  const key='Введите область печати вашего принтера. Места разрезов и соединений подберём сами.';
  for(const [lang] of languages){setLocale(lang);assert.equal(t(key),lang==='ru'?key:dictionaries[lang][key]);if(lang!=='ru')assert.notEqual(t(key),key,lang);}
