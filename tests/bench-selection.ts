@@ -1,0 +1,4 @@
+import {performance} from 'node:perf_hooks';
+import {defaultProject} from '../src/model.js';import {buildOrganizer} from '../src/kernel.js';import {STLLoader} from 'three/addons/loaders/STLLoader.js';import {boundarySelections} from '../src/wallSelection.js';
+const p=defaultProject();p.width=180;p.depth=140;p.height=70;p.cornerRadius=20;p.relief={pattern:'waffle',spacing:6,depth:.8};
+const t=performance.now(),a=await buildOrganizer(p);console.log('geometry ms',performance.now()-t,'triangles',a.inspection.triangles);const geometry=new STLLoader().parse(a.stl);const times=[];for(let i=0;i<3;i++){const t=performance.now();const selections=boundarySelections(p,geometry);times.push(performance.now()-t);selections.forEach(s=>s.geometry.dispose());}console.log('selection ms',times);geometry.dispose();
