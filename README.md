@@ -1,5 +1,7 @@
 # ReplixGrid
 
+![ReplixGrid organizer concept](docs/images/replixgrid-cover.png)
+
 ReplixGrid is a local-first browser tool for designing customizable 3D-printable organizers. Set the dimensions, arrange compartments, adjust walls and add supported accessories or decorative shells, then export the parts for a slicer. No CAD application, account or application backend is required.
 
 The interface is available in 11 languages. Translation catalogs need further native-speaker review. Printer presets set the build volume only; select the actual printer and material profiles in your slicer. ReplixGrid is an independent project and is not an official Snapmaker product.
@@ -25,4 +27,4 @@ A whole organizer with a shell has been physically printed; panel attachment fit
 
 ## License
 
-The project license and copyright attribution have not yet been confirmed. Third-party notices, including the Droid font outlines, are retained in [src/fonts/NOTICE](src/fonts/NOTICE).
+ReplixGrid is available under the [MIT License](LICENSE). Third-party components have their own licenses; the Droid font outline notice is retained in [src/fonts/NOTICE](src/fonts/NOTICE).
