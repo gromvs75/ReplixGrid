@@ -592,7 +592,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Partition cutouts are not available for tiers yet.",
     "Сторона подписи": "Label side",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "The selected wall is covered. Remove its panel to add a label.",
-    "Для подписи нужна стенка с постоянной высотой.": "The label requires a wall with a constant height."
+    "Для подписи нужна стенка с постоянной высотой.": "The label requires a wall with a constant height.",
+    "Без канта": "No trim",
+    "Ступени": "Steps",
+    "Высота канта": "Trim height",
+    "Ширина канта": "Border width",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "The trim extends outwards. With a compatible shell, it also provides support underneath.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Patterns · scroll through the catalog to see them all."
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1185,7 +1191,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Ausschnitte in Trennwänden sind für Ebenen noch nicht verfügbar.",
     "Сторона подписи": "Seite der Beschriftung",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "Die gewählte Wand ist abgedeckt. Entfernen Sie dort die Blende, um eine Beschriftung hinzuzufügen.",
-    "Для подписи нужна стенка с постоянной высотой.": "Die Beschriftung benötigt eine Wand mit gleichbleibender Höhe."
+    "Для подписи нужна стенка с постоянной высотой.": "Die Beschriftung benötigt eine Wand mit gleichbleibender Höhe.",
+    "Без канта": "Ohne Rand",
+    "Ступени": "Stufen",
+    "Высота канта": "Randhöhe",
+    "Ширина канта": "Randbreite",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Der Rand steht nach außen über. Bei einer kompatiblen Hülle dient er auch als untere Auflage.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Muster · durch den Katalog scrollen, um alle zu sehen."
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -1777,7 +1789,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Les découpes des cloisons ne sont pas encore disponibles pour les niveaux.",
     "Сторона подписи": "Côté de l’inscription",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "La paroi choisie est couverte. Retirez son panneau pour ajouter une inscription.",
-    "Для подписи нужна стенка с постоянной высотой.": "L’inscription nécessite une paroi de hauteur constante."
+    "Для подписи нужна стенка с постоянной высотой.": "L’inscription nécessite une paroi de hauteur constante.",
+    "Без канта": "Sans bordure",
+    "Ступени": "Gradins",
+    "Высота канта": "Hauteur de la bordure",
+    "Ширина канта": "Largeur de la bordure",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "La bordure dépasse vers l’extérieur. Avec une coque compatible, elle sert aussi de support inférieur.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Motifs · faites défiler le catalogue pour tous les voir."
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -2369,7 +2387,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Los recortes de divisores aún no están disponibles para niveles.",
     "Сторона подписи": "Lado de la inscripción",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "La pared elegida está cubierta. Quite su panel para añadir una inscripción.",
-    "Для подписи нужна стенка с постоянной высотой.": "La inscripción necesita una pared de altura constante."
+    "Для подписи нужна стенка с постоянной высотой.": "La inscripción necesita una pared de altura constante.",
+    "Без канта": "Sin borde",
+    "Ступени": "Escalones",
+    "Высота канта": "Altura del borde",
+    "Ширина канта": "Ancho del borde",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "El borde sobresale hacia fuera. Con una cubierta compatible, también sirve de soporte inferior.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Patrones · desplázate por el catálogo para verlos todos."
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -2961,7 +2985,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Οι εγκοπές διαχωριστικών δεν είναι ακόμη διαθέσιμες για ορόφους.",
     "Сторона подписи": "Πλευρά επιγραφής",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "Το επιλεγμένο τοίχωμα καλύπτεται. Αφαιρέστε το πάνελ για να προσθέσετε επιγραφή.",
-    "Для подписи нужна стенка с постоянной высотой.": "Η επιγραφή απαιτεί τοίχωμα σταθερού ύψους."
+    "Для подписи нужна стенка с постоянной высотой.": "Η επιγραφή απαιτεί τοίχωμα σταθερού ύψους.",
+    "Без канта": "Χωρίς περίγραμμα",
+    "Ступени": "Σκαλοπάτια",
+    "Высота канта": "Ύψος περιγράμματος",
+    "Ширина канта": "Πλάτος περιγράμματος",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Το περίγραμμα προεξέχει προς τα έξω. Με συμβατό περίβλημα λειτουργεί και ως κάτω στήριγμα.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Μοτίβα · μετακινηθείτε στον κατάλογο για να τα δείτε όλα."
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -3553,7 +3583,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "I tagli nei divisori non sono ancora disponibili per i livelli.",
     "Сторона подписи": "Lato della scritta",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "La parete selezionata è coperta. Rimuovi il pannello per aggiungere una scritta.",
-    "Для подписи нужна стенка с постоянной высотой.": "La scritta richiede una parete di altezza costante."
+    "Для подписи нужна стенка с постоянной высотой.": "La scritta richiede una parete di altezza costante.",
+    "Без канта": "Senza bordo",
+    "Ступени": "Gradini",
+    "Высота канта": "Altezza del bordo",
+    "Ширина канта": "Larghezza del bordo",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Il bordo sporge verso l’esterno. Con un rivestimento compatibile funge anche da supporto inferiore.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Motivi · scorri il catalogo per vederli tutti."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -4145,7 +4181,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Вирізи перегородок для ярусів поки недоступні.",
     "Сторона подписи": "Сторона напису",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "Обрана стінка закрита оболонкою. Приберіть панель із цього боку, щоб додати напис.",
-    "Для подписи нужна стенка с постоянной высотой.": "Для напису потрібна стінка з постійною висотою."
+    "Для подписи нужна стенка с постоянной высотой.": "Для напису потрібна стінка з постійною висотою.",
+    "Без канта": "Без канта",
+    "Ступени": "Сходинки",
+    "Высота канта": "Висота канта",
+    "Ширина канта": "Ширина канта",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Кант виступає назовні. Із сумісною оболонкою він також слугує нижньою опорою.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Візерунки · прокрутіть каталог, щоб побачити всі."
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -4737,7 +4779,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Výřezy přepážek zatím nejsou pro patra dostupné.",
     "Сторона подписи": "Strana popisku",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "Vybraná stěna je zakrytá. Pro přidání popisku odstraňte její panel.",
-    "Для подписи нужна стенка с постоянной высотой.": "Popisek vyžaduje stěnu se stálou výškou."
+    "Для подписи нужна стенка с постоянной высотой.": "Popisek vyžaduje stěnu se stálou výškou.",
+    "Без канта": "Bez lemu",
+    "Ступени": "Stupně",
+    "Высота канта": "Výška lemu",
+    "Ширина канта": "Šířka lemu",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Lem vystupuje ven. S kompatibilním pláštěm slouží také jako spodní podpěra.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Vzory · procházejte katalog, abyste je viděli všechny."
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -5329,7 +5377,13 @@
     "Для ярусов вырезы перегородок пока недоступны.": "Wycięcia przegród nie są jeszcze dostępne dla poziomów.",
     "Сторона подписи": "Strona napisu",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "Wybrana ścianka jest zakryta. Usuń jej panel, aby dodać napis.",
-    "Для подписи нужна стенка с постоянной высотой.": "Napis wymaga ścianki o stałej wysokości."
+    "Для подписи нужна стенка с постоянной высотой.": "Napis wymaga ścianki o stałej wysokości.",
+    "Без канта": "Bez obrzeża",
+    "Ступени": "Stopnie",
+    "Высота канта": "Wysokość obrzeża",
+    "Ширина канта": "Szerokość obrzeża",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Obrzeże wystaje na zewnątrz. Z kompatybilną osłoną służy również jako dolna podpora.",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Wzory · przewiń katalog, aby zobaczyć wszystkie."
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -5923,6 +5977,12 @@
     "Для ярусов вырезы перегородок пока недоступны.": "分层暂不支持隔板切口。",
     "Сторона подписи": "文字所在侧",
     "Выбранная стенка закрыта оболочкой. Уберите панель с этой стороны, чтобы добавить подпись.": "所选壁面被覆盖。移除该侧面板后即可添加文字。",
-    "Для подписи нужна стенка с постоянной высотой.": "文字需要位于高度一致的壁面上。"
+    "Для подписи нужна стенка с постоянной высотой.": "文字需要位于高度一致的壁面上。",
+    "Без канта": "无底边",
+    "Ступени": "阶梯",
+    "Высота канта": "底边高度",
+    "Ширина канта": "边框宽度",
+    "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "底边向外突出，搭配兼容外壳时也可作为底部支撑。",
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "图案 · 滚动浏览目录以查看全部图案。"
   }
 }
