@@ -42,6 +42,8 @@
   "Браузерная мастерская · ранний MVP": "Browser Workshop · early MVP",
   "Вафля": "Waffle",
   "Введите область печати вашего принтера. Места разрезов и защёлок подберём сами.": "Enter the printable area of your printer. We will select the locations of the cuts and latches ourselves.",
+  "Нижний кант": "Bottom trim",
+  "Введите область печати вашего принтера. Места разрезов и соединений подберём сами.": "Enter your printer’s build volume. We’ll automatically choose where to split and join the parts.",
   "Вернуть камеру": "Return camera",
   "Вернуть цельную модель": "Return solid model",
   "Весь комплект": "The whole set",
