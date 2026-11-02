@@ -5,6 +5,11 @@ import sources from '../src/locales/ru.json' with {type:'json'};
 import {t,languages,setLocale,getLocale,subscribeLocale} from '../src/i18n.js';
 const dictionaries=catalogs as Record<string,Record<string,string>>;
 const slots=(s:string)=>s.match(/\{\d+\}/g)?.sort()??[];
+test('print panel introduction is translated in every supported language',()=>{
+ const key='Введите область печати вашего принтера. Места разрезов и соединений подберём сами.';
+ for(const [lang] of languages){setLocale(lang);assert.equal(t(key),lang==='ru'?key:dictionaries[lang][key]);if(lang!=='ru')assert.notEqual(t(key),key,lang);}
+ setLocale('ru');
+});
 test('all requested locales cover every source message and preserve placeholders',()=>{
  for(const [lang] of languages){if(lang==='ru')continue;for(const key of sources){const value:string|undefined=dictionaries[lang]?.[key];assert.ok(value,lang+': '+key);assert.deepEqual(slots(value),slots(key),lang+': '+key);assert.doesNotMatch(value,/\[\s*\[?\s*\d{3,4}/,lang+': '+key);}}
 });
