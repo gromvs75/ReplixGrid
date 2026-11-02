@@ -6,11 +6,23 @@ ReplixGrid is a project from ReplixCast, the brand behind ReplixGrid. It is a lo
 
 The interface is available in 11 languages. Translation catalogs need further native-speaker review. Printer presets set the build volume only; select the actual printer and material profiles in your slicer. ReplixGrid is an independent project and is not an official Snapmaker product.
 
-## Getting started: run ReplixGrid on your computer
+## Two ways to use ReplixGrid
+
+### Option 1: open the online app
+
+**[Launch ReplixGrid at grid.replixcast.com](https://grid.replixcast.com/?lang=en)** — use the app directly in your browser, with no installation, account, or CAD software required. This link opens the interface in English; you can select another language in the app.
+
+### Option 2: run it locally on your computer
+
+Prefer a local copy? Follow the Windows and macOS setup instructions below. Both options let you design organizers and export files for your slicer.
+
+Projects are saved in the browser at the address you use. To move between the local and online versions, download your project JSON and open it in the other version. Configure filament slots again at the new address.
+
+## Local installation
 
 These instructions are for Windows and macOS, including people who have never used a terminal. You will download the project, install Node.js, and start the app on your own computer. **You need an internet connection for the first installation.** No GitHub account, Git installation, or programming experience is required.
 
-> ReplixGrid is not currently a downloadable installer or a hosted website. After setup, it opens in your browser at a local address while a terminal window is running on your computer.
+> Local installation is optional. After setup, the local app opens in your browser while a terminal window is running. For the online version, simply open [grid.replixcast.com](https://grid.replixcast.com/?lang=en).
 
 ### 1. Download and extract ReplixGrid
 
