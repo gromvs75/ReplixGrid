@@ -6,7 +6,7 @@ import {t,languages,setLocale,getLocale,subscribeLocale} from '../src/i18n.js';
 const dictionaries=catalogs as Record<string,Record<string,string>>;
 const slots=(s:string)=>s.match(/\{\d+\}/g)?.sort()??[];
 test('trim and pattern controls have translations in every locale',()=>{
- const keys=['Без канта','Ступени','Высота канта','Ширина канта','Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.','Узоры · прокрутите каталог, чтобы увидеть все.'];
+ const keys=['Грани','Шеврон','Без канта','Ступени','Высота канта','Ширина канта','Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.','Узоры · прокрутите каталог, чтобы увидеть все.'];
  for(const [lang] of languages){
   setLocale(lang);
   for(const key of keys){

@@ -598,7 +598,9 @@
     "Высота канта": "Trim height",
     "Ширина канта": "Border width",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "The trim extends outwards. With a compatible shell, it also provides support underneath.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Patterns · scroll through the catalog to see them all."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Patterns · scroll through the catalog to see them all.",
+    "Грани": "Facets",
+    "Шеврон": "Chevron"
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1197,7 +1199,9 @@
     "Высота канта": "Randhöhe",
     "Ширина канта": "Randbreite",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Der Rand steht nach außen über. Bei einer kompatiblen Hülle dient er auch als untere Auflage.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Muster · durch den Katalog scrollen, um alle zu sehen."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Muster · durch den Katalog scrollen, um alle zu sehen.",
+    "Грани": "Facetten",
+    "Шеврон": "Chevron"
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -1795,7 +1799,9 @@
     "Высота канта": "Hauteur de la bordure",
     "Ширина канта": "Largeur de la bordure",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "La bordure dépasse vers l’extérieur. Avec une coque compatible, elle sert aussi de support inférieur.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Motifs · faites défiler le catalogue pour tous les voir."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Motifs · faites défiler le catalogue pour tous les voir.",
+    "Грани": "Facettes",
+    "Шеврон": "Chevron"
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -2393,7 +2399,9 @@
     "Высота канта": "Altura del borde",
     "Ширина канта": "Ancho del borde",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "El borde sobresale hacia fuera. Con una cubierta compatible, también sirve de soporte inferior.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Patrones · desplázate por el catálogo para verlos todos."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Patrones · desplázate por el catálogo para verlos todos.",
+    "Грани": "Facetas",
+    "Шеврон": "Chevron"
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -2991,7 +2999,9 @@
     "Высота канта": "Ύψος περιγράμματος",
     "Ширина канта": "Πλάτος περιγράμματος",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Το περίγραμμα προεξέχει προς τα έξω. Με συμβατό περίβλημα λειτουργεί και ως κάτω στήριγμα.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Μοτίβα · μετακινηθείτε στον κατάλογο για να τα δείτε όλα."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Μοτίβα · μετακινηθείτε στον κατάλογο για να τα δείτε όλα.",
+    "Грани": "Έδρες",
+    "Шеврон": "Σιρίτι"
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -3589,7 +3599,9 @@
     "Высота канта": "Altezza del bordo",
     "Ширина канта": "Larghezza del bordo",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Il bordo sporge verso l’esterno. Con un rivestimento compatibile funge anche da supporto inferiore.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Motivi · scorri il catalogo per vederli tutti."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Motivi · scorri il catalogo per vederli tutti.",
+    "Грани": "Sfaccettature",
+    "Шеврон": "Chevron"
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -4187,7 +4199,9 @@
     "Высота канта": "Висота канта",
     "Ширина канта": "Ширина канта",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Кант виступає назовні. Із сумісною оболонкою він також слугує нижньою опорою.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Візерунки · прокрутіть каталог, щоб побачити всі."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Візерунки · прокрутіть каталог, щоб побачити всі.",
+    "Грани": "Грані",
+    "Шеврон": "Шеврон"
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -4785,7 +4799,9 @@
     "Высота канта": "Výška lemu",
     "Ширина канта": "Šířka lemu",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Lem vystupuje ven. S kompatibilním pláštěm slouží také jako spodní podpěra.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Vzory · procházejte katalog, abyste je viděli všechny."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Vzory · procházejte katalog, abyste je viděli všechny.",
+    "Грани": "Fazety",
+    "Шеврон": "Šipkový vzor"
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -5383,7 +5399,9 @@
     "Высота канта": "Wysokość obrzeża",
     "Ширина канта": "Szerokość obrzeża",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "Obrzeże wystaje na zewnątrz. Z kompatybilną osłoną służy również jako dolna podpora.",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "Wzory · przewiń katalog, aby zobaczyć wszystkie."
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "Wzory · przewiń katalog, aby zobaczyć wszystkie.",
+    "Грани": "Fasety",
+    "Шеврон": "Szewron"
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -5983,6 +6001,8 @@
     "Высота канта": "底边高度",
     "Ширина канта": "边框宽度",
     "Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.": "底边向外突出，搭配兼容外壳时也可作为底部支撑。",
-    "Узоры · прокрутите каталог, чтобы увидеть все.": "图案 · 滚动浏览目录以查看全部图案。"
+    "Узоры · прокрутите каталог, чтобы увидеть все.": "图案 · 滚动浏览目录以查看全部图案。",
+    "Грани": "刻面",
+    "Шеврон": "人字纹"
   }
 }
