@@ -4,6 +4,8 @@
 
 Start with a three-compartment organizer for your desk. The example below is 180 × 90 mm, with a low front for easy access and a taller back. All you need to design it is a browser. To prepare the file for your printer, open it in your usual slicer.
 
+[Watch the Quick Start video in English (1:03)](https://grid.replixcast.com/guides/quick-start-en.mp4) to see how to split a compartment, bevel the top edges, add a two-tone lid and export a 3MF.
+
 ## Build the example
 
 1. **Open** [grid.replixcast.com](https://grid.replixcast.com/?lang=en). Use the language menu in the top bar to change languages. If you already have a design you want to keep, click **Save project** to download an editable copy before starting.
