@@ -11,6 +11,7 @@ export function organizerTemplate(shape:TemplateShape, heights:TemplateHeights, 
   p.printArea=current?.printArea??(current?.printing?{bedWidth:current.printing.bedWidth,bedDepth:current.printing.bedDepth,bedHeight:current.printing.bedHeight,printerId:current.printing.printerId}:undefined);
   if(shape!=='honeycomb')p=splitCell(p,'root','x',3);
   if(heights==='slope'){
+    if(shape==='capsule')p.capsuleSlope=true;
     p.heights={left:22,right:70};p.transitions=['front','back'];
     for(const wall of resolveWalls(p).slice(4))p=fitDividerEnds(p,wall.id);
   }
