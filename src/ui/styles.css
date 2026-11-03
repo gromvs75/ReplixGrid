@@ -253,7 +253,7 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 .filament-assignment{display:grid;grid-template-columns:minmax(0,1fr) minmax(145px,1fr);align-items:center;gap:8px;margin:8px 0;font-size:12px}
 .filament-assignment>span{overflow-wrap:anywhere}.filament-assignment select{width:100%;min-width:0;padding:7px;border:1px solid var(--line);border-radius:7px}
 
-.help-picker { position: relative; }
+.help-picker { position: relative; align-self: center; margin: 0; padding: 0; border: 0; }
 .help-picker summary {
   display: flex; align-items: center; gap: 5px; cursor: pointer; list-style: none;
   padding: 7px 9px; min-height: 34px; border: 1px solid var(--line);
