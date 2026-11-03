@@ -12,7 +12,7 @@ import {useEditor} from '../store.js';
 import {Field} from './Field.js';
 import type {ShellSettings} from '../model.js';
 export type AssemblyView='assembled'|'organizer'|'inserts'|'shell'|'lid';
-const patterns=[['honeycomb','Соты'],['diamonds','Ромбы'],['waves','Волны'],['petals','Лепестки'],['cubes','Кубы'],['triangles','Треугольники'],['slots','Линии']] as const;
+const patterns=[['honeycomb','Соты'],['diamonds','Ромбы'],['waves','Волны'],['petals','Лепестки'],['cubes','Кубы'],['triangles','Треугольники'],['slots','Линии'],['cellular','Ячейки Вороного']] as const;
 const icons=Object.fromEntries(patterns.map(([pattern])=>{
  const wall={id:'icon',axis:'x' as const,x:0,y:0,length:64,thickness:1.2,startHeight:36,endHeight:36,cap:0};
  const holes=holesFor(wall,{...defaultShell(pattern),size:12},0,0);

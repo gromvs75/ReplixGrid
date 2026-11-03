@@ -1,3 +1,4 @@
+import {cellularOpenings} from './cellularPattern.js';
 import {shellGap} from './reliefSize.js';
 import type {Manifold,ManifoldToplevel} from 'manifold-3d';
 import {footprintContour,honeyEdgeOwner,offsetContour} from './footprint.js';
@@ -40,8 +41,8 @@ export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,kee
  // on either side. A hole crossing the origin must wrap, not get discarded.
  const period=s.size*(s.pattern==='waves'?2:s.pattern==='honeycomb'?1.5:s.pattern==='cubes'?.75:1);
  const repeats=Math.max(1,Math.round(perimeter/period)),stretch=perimeter/(repeats*period);
- const holes=holesFor({id:'wrap',axis:'x',x:0,y:0,length:(repeats+2)*period,thickness:s.thickness,startHeight:high-low+s.size*2,endHeight:high-low+s.size*2,cap:0},s,border,0);
- const candidates=holes.map(poly=>poly.map(([u,z])=>[(u-period+period*.173)*stretch,z+low] as [number,number])).filter(poly=>{
+ const holes=s.pattern==='cellular'?[]:holesFor({id:'wrap',axis:'x',x:0,y:0,length:(repeats+2)*period,thickness:s.thickness,startHeight:high-low+s.size*2,endHeight:high-low+s.size*2,cap:0},s,border,0);
+ const candidates=s.pattern==='cellular'?cellularOpenings(perimeter,high+s.size,s.size,true):holes.map(poly=>poly.map(([u,z])=>[(u-period+period*.173)*stretch,z+low] as [number,number])).filter(poly=>{
   const center=poly.reduce((sum,v)=>sum+v[0],0)/poly.length;return center>=0&&center<perimeter;
  });
  const starts:number[]=[0];for(const length of lengths)starts.push(starts.at(-1)!+length);
