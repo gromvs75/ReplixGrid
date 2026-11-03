@@ -1,3 +1,4 @@
+import {hasCapsuleSlope,capsuleTop} from './model.js';
 import {shellGap} from './reliefSize.js';
 import {footprintContour,honeyCells,honeyEdgeOwner,offsetContour} from './footprint.js';
 import {resolveWalls,type Project,type ShellSettings,type Wall} from './model.js';
@@ -147,6 +148,7 @@ export function shellLayout(p:Project,includeHoles=true){
 }
 
 export function contourHeight(p:Project,walls:Wall[],x:number,y:number){
+  if(hasCapsuleSlope(p))return capsuleTop(p,x);
   if(p.footprint==='honeycomb'){
     const cells=honeyCells(p),dist=cells.map(c=>{const cx=c.reduce((v,a)=>v+a[0],0)/6,cy=c.reduce((v,a)=>v+a[1],0)/6;return (x-cx)**2+(y-cy)**2;});
     return honeyCellHeight(p,walls,dist.indexOf(Math.min(...dist)),x,y);
