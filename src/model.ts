@@ -20,6 +20,7 @@ export function validatePrintArea(area:Omit<PrintSettings,'parts'>){
   for(const value of [area.bedWidth,area.bedDepth,area.bedHeight])range(value,40,1000,'print area');
 }
 export interface Project {
+  capsuleSlope?:boolean;
   steppedWalls?:boolean;
   baseBand?:{height:number;style:'smooth'|'rings'|'steps'};
   label?:{text:string;icon:''|'★'|'♥';mode:'raised'|'engraved';side?:Side;font?:'pixel'|'sans'|'bold'|'serif';size?:number;depth?:number;position?:number};
@@ -83,6 +84,19 @@ const endpoints: Record<Side, [Side, Side]> = {
 };
 function range(value: number, min: number, max: number, name: string) {
   if (!Number.isFinite(value) || value < min || value > max) throw new Error(`Invalid ${name}: ${value}`);
+}
+/** Only the straight, coupled capsule template has a single planar rim.
+ * Individually shaped walls still use their editable wall profiles. */
+export function hasCapsuleSlope(p:Project){
+  return p.capsuleSlope===true && !p.footprint && !p.steppedWalls && (p.cornerRadius??0)>0 &&
+    p.transitions.includes('front') && p.transitions.includes('back') &&
+    !p.wallProfiles?.left && !p.wallProfiles?.right &&
+    (['front','back'] as const).every(s=>(p.transitionStyles?.[s]??'straight')==='straight') &&
+    !sides.some(s=>p.cutouts?.[s]);
+}
+export function capsuleTop(p:Project,x:number,offset=0){
+  const lo=p.heights.left??p.height,hi=p.heights.right??p.height;
+  return lo+(hi-lo)*(x+offset)/(p.width+2*offset);
 }
 export function resolveWalls(p: Project): Wall[] {
   if (p.schemaVersion !== 1 || p.units !== 'mm') throw new Error('Unsupported project format');
@@ -186,7 +200,7 @@ export function resolveWalls(p: Project): Wall[] {
       length: axis === 'x' ? p.width : p.depth, thickness: t,
       transitionStyle: transition ? (p.transitionStyles?.[s] ?? 'straight') : profile?.style??'straight',
       wavelength:transition?p.transitionWavelengths?.[s]:profile?.wavelength,
-      startHeight: transition ? sourceEnd(a,s) : profile?.start??height(s), endHeight: transition ? sourceEnd(b,s) : profile?.end??height(s), cap: transition||profile ? Math.min(Math.max(t,p.cornerRadius??0),(axis === 'x' ? p.width : p.depth)/2-t) : 0 };
+      startHeight: transition ? sourceEnd(a,s) : profile?.start??height(s), endHeight: transition ? sourceEnd(b,s) : profile?.end??height(s), cap: hasCapsuleSlope(p) ? 0 : transition||profile ? Math.min(Math.max(t,p.cornerRadius??0),(axis === 'x' ? p.width : p.depth)/2-t) : 0 };
   });
   const ids = new Set<string>(); let count = 0;
   const visit = (c: Cell, x: number, y: number, w: number, d: number, depth: number) => {
