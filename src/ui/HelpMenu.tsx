@@ -28,6 +28,7 @@ export function HelpMenu() {
     <summary>Help <span aria-hidden="true">⌄</span></summary>
     <nav aria-label="Help" className="theme-menu help-links">
       <a href={guideRoot + 'USER-GUIDE.md'} target="_blank" rel="noopener noreferrer">Quick Start ↗</a>
+      <a href={import.meta.env.BASE_URL + 'guides/quick-start-en.mp4'} target="_blank" rel="noopener noreferrer">Watch Quick Start (1:03) ↗</a>
       <a href={guideRoot + 'REFERENCE.md'} target="_blank" rel="noopener noreferrer">User Guide ↗</a>
     </nav>
   </details>;
