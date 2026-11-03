@@ -1,6 +1,6 @@
 # Your first ReplixGrid organizer
 
-[Open ReplixGrid in English](https://grid.replixcast.com/?lang=en)
+[Open ReplixGrid in English](https://grid.replixcast.com/?lang=en) · [User Guide — full feature reference](REFERENCE.md)
 
 Start with a three-compartment organizer for your desk. The example below is 180 × 90 mm, with a low front for easy access and a taller back. All you need to design it is a browser. To prepare the file for your printer, open it in your usual slicer.
 

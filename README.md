@@ -12,7 +12,7 @@ The interface is available in 11 languages. Translation catalogs need further na
 
 **[Launch ReplixGrid at grid.replixcast.com](https://grid.replixcast.com/?lang=en)** — use the app directly in your browser, with no installation, account, or CAD software required. This link opens the interface in English; you can select another language in the app.
 
-**Build your first organizer:** [English guide](docs/USER-GUIDE.md)
+[Quick Start — build your first organizer](docs/USER-GUIDE.md) · [User Guide — full feature reference](docs/REFERENCE.md)
 
 ### Option 2: run it locally on your computer
 
@@ -86,7 +86,7 @@ To start it again later, open a terminal in the same project folder as described
 
 If you see `EADDRINUSE` or a message that port `5173` is in use, an earlier instance or another program may already be using it. If ReplixGrid is already running, try opening the address above. Otherwise stop the earlier instance, or free that port and try `npm run dev` again.
 
-See the [user guide](docs/USER-GUIDE.md) for editing, saving, exporting and printing, and the [developer guide](docs/DEVELOPMENT.md) for architecture and checks.
+See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and printing, and the [developer guide](docs/DEVELOPMENT.md) for architecture and checks.
 
 
 ## Current status and limitations
