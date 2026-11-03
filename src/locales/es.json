@@ -95,7 +95,7 @@
   "Высота ячейки": "Altura de celda",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Las alturas están relacionadas con los vecinos. \"Dos extremos\" - configuración independiente.",
   "Высоты шаблона": "Alturas de plantilla",
-  "Галька": "Guijarros",
+  "Галька": "Cantos de río",
   "Гладкий": "Suave",
   "Глубина": "Profundidad",
   "Глубина выреза": "Profundidad de corte",
@@ -599,5 +599,11 @@
   "Шеврон": "Chevron",
   "Верхняя кромка стенок и перегородок": "Borde superior de paredes y divisores",
   "Без обработки": "Ninguno",
-  "Радиус": "Radio"
+  "Радиус": "Radio",
+  "Двухцветный узор": "Motivo bicolor",
+  "Оливковая ветвь": "Rama de olivo",
+  "Листья гинкго": "Hojas de ginkgo",
+  "Папоротник": "Helecho",
+  "Прилив": "Olas",
+  "Годичные кольца": "Anillos de crecimiento"
 }
