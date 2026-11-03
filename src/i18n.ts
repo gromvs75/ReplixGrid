@@ -2,7 +2,7 @@ import catalogs from './locales/catalogs.json' with {type:'json'};
 export const languages=[['en','English'],['de','Deutsch'],['fr','Français'],['es','Español'],['el','Ελληνικά'],['it','Italiano'],['uk','Українська'],['cs','Čeština'],['pl','Polski'],['zh-CN','简体中文'],['ru','Русский']] as const;
 export type Locale=typeof languages[number][0];
 const key='replixgrid.locale';
-let locale:Locale='ru';
+let locale:Locale='en';
 const listeners=new Set<()=>void>();
 export const getLocale=()=>locale;
 export const subscribeLocale=(f:()=>void)=>{listeners.add(f);return()=>{listeners.delete(f);};};
@@ -13,7 +13,13 @@ export function setLocale(value:string){
  try{localStorage.setItem(key,locale);}catch{/* Private browsing may disable storage. */}
  listeners.forEach(f=>f());
 }
-export function restoreLocale(){try{setLocale(localStorage.getItem(key)??'ru');}catch{setLocale('ru');}}
+export function restoreLocale(){
+ let requested:string|null=null,stored:string|null=null;
+ try{requested=new URLSearchParams(window.location.search).get('lang');}catch{/* Non-browser environments. */}
+ try{stored=localStorage.getItem(key);}catch{/* Private browsing may disable storage. */}
+ const valid=(value:string|null):value is Locale=>languages.some(([id])=>id===value);
+ setLocale(valid(requested)?requested:valid(stored)?stored:'en');
+}
 const dictionary=catalogs as Record<string,Record<string,string>>;
 const filamentTranslations:Record<string,Record<string,string>>={
  en:{'Филаменты слайсера':'Slicer filaments','Укажите цвета и номера как в слайсере. Профили и настройки печати не экспортируются.':'Set colors and slot numbers to match your slicer. Profiles and print settings are not exported.','Цвет филамента {0}':'Filament {0} color','Название филамента {0}':'Filament {0} name','Название или материал':'Name or material','Удалить последний филамент':'Remove last filament','Одинаковые цвета нельзя однозначно сопоставить слотам. Выберите разные цвета.':'Identical colors cannot be matched to a unique slot. Choose different colors.','+ Филамент':'+ Filament','Назначение филаментов в Snapmaker Orca: проверьте номера слотов и цвета в слайсере. Профили не передаются.':'Snapmaker Orca filament assignments: check the slots and colors in the slicer. Profiles are not included.','Слот':'Slot','Не сопоставлено — проверьте филамент в слайсере':'Not mapped — check the filament in the slicer'},

@@ -1,3 +1,4 @@
+import {cellularOpenings} from './cellularPattern.js';
 import {hasCapsuleSlope,capsuleTop} from './model.js';
 import {shellGap} from './reliefSize.js';
 import {footprintContour,honeyCells,honeyEdgeOwner,offsetContour} from './footprint.js';
@@ -5,7 +6,7 @@ import {resolveWalls,type Project,type ShellSettings,type Wall} from './model.js
 import {splitPlan} from './splitting.js';
 export type P2=[number,number];
 export interface ShellPanel extends Wall { outline:P2[]; holes:P2[][] }
-export const defaultShell=(pattern:ShellSettings['pattern']):ShellSettings=>({pattern,gap:.5,thickness:1.6,size:12});
+export const defaultShell=(pattern:ShellSettings['pattern']):ShellSettings=>({pattern,gap:.5,thickness:1.6,size:pattern==='cellular'?20:12});
 // One sampled profile is shared by preview, cutout clearance and both STL parts.
 // Smoothstep makes a gentle S: horizontal tangents, no height overshoot.
 function curveSteps(w:Wall){return Math.max(32,Math.ceil(Math.sqrt(Math.abs(w.endHeight-w.startHeight)*.75/.01)));}
@@ -63,7 +64,10 @@ export function holesFor(w:Wall,settings:ShellSettings,border:number,sideMargin=
     if(result.length>12000)throw new Error('Узор слишком мелкий для этой оболочки. Увеличьте крупность.');
   };
   const maxH=Math.max(w.startHeight,w.endHeight);
-  if(settings.pattern==='petals'){
+  if(settings.pattern==='cellular'){
+    const cells=cellularOpenings(w.length-2*sideMargin,maxH-2*border,size,false);
+    for(const cell of cells)add(cell.reverse().map(([x,y])=>[x+sideMargin,y+border]));
+  }else if(settings.pattern==='petals'){
     // Three kite-shaped openings per triangle form a connected six-petal lattice.
     // Adjacent tiles share one narrow rib instead of leaving space around a flower.
     const h=size*Math.sqrt(3)/2;
