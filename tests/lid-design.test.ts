@@ -46,3 +46,28 @@ test('lid relief has real depth in the exported mesh',async()=>{
 test('adjusted handles with bevel or rounded edge export as one closed part',async()=>{
  for(const handle of ['round','bar'] as const)for(const handleEdge of ['round','chamfer'] as const){const p=defaultProject();p.width=80;p.depth=60;p.lid=true;p.lidDesign={pattern:'smooth',rimHeight:2,handle,handleWidth:20,handleHeight:7,handleEdge,edgeSize:1.4};const result=(await buildKit(p)).find(x=>x.kind==='lid-handle')!;assert.ok(result.inspection.volume>0);assert.ok(Math.abs(result.inspection.bounds.max[2]-7)<.01);}
 });
+
+test('inset plate clears the rim, divider and cup and rests on the tray seat',async()=>{
+ const wasm=await Module();wasm.setup();
+ const {splitCell}=await import('../src/editor.js');
+ for(const footprint of [undefined,'oval'] as const){
+  const p=splitCell({...defaultProject(),width:80,depth:60,cornerRadius:6,footprint},'root','x',2);
+  p.lid=true;p.lidDesign={fit:'inset',pattern:'lines',rimHeight:2,handle:'round'};
+  p.cutouts={front:{shape:'round',width:.4,depth:7,position:.5}};
+  p.cups=[{cellId:p.root.split!.first.id,shape:'fitted',height:15}];
+  const parts=await buildKit(parseProject(JSON.stringify(p))),lid=parts.find(x=>x.kind==='lid')!;
+  assert.equal(lid.position[2],p.height);
+  assert.equal(lid.inspection.bounds.max[2],2);
+  assert.ok(lid.position[0]>0 && lid.position[0]+lid.inspection.bounds.max[0]<p.width);
+  const owned:Manifold[]=[],keep=(m:Manifold)=>{owned.push(m);return m;};
+  const solid=(stl:ArrayBuffer)=>{const t=decodeSTL(stl),mesh=new wasm.Mesh({numProp:3,vertProperties:new Float32Array(t.flat(2)),triVerts:new Uint32Array(t.flat().map((_,i)=>i))});mesh.merge();return keep(new wasm.Manifold(mesh));};
+  try{
+   const cover=keep(keep(solid(lid.stl).rotate([180,0,0])).translate([lid.position[0],lid.position[1]+lid.inspection.bounds.max[1],lid.position[2]]));
+   for(const part of parts.filter(x=>x.kind==='organizer'||x.kind==='cup')){
+    const body=keep(solid(part.stl).translate(part.position));
+    assert.ok(Math.abs(keep(body.intersect(cover)).volume())<.001);
+    if(part.kind==='organizer')assert.ok(keep(body.intersect(keep(cover.translate([0,0,-.1])))).volume()>1);
+   }
+  }finally{owned.reverse().forEach(m=>m.delete());}
+ }
+});
