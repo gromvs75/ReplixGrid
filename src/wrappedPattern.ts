@@ -1,7 +1,7 @@
 import {shellGap} from './reliefSize.js';
 import type {Manifold,ManifoldToplevel} from 'manifold-3d';
 import {footprintContour,honeyEdgeOwner,offsetContour} from './footprint.js';
-import {resolveWalls,type Project} from './model.js';
+import {resolveWalls,hasCapsuleSlope,capsuleTop,type Project} from './model.js';
 import {holesFor,honeyCellHeight,contourHeight,topAt} from './shell.js';
 import {splitPlan} from './splitting.js';
 import {hasDecorativeShellSupport,hasShellSupport,hasLegacyShellSupport,shellSupportHeight} from './shellSupport.js';
@@ -14,8 +14,10 @@ export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,kee
  const base=footprintContour(p),walls=resolveWalls(p).slice(0,4),split=p.printing?splitPlan(p):null;
  const lengths=contour.map((a,i)=>{const b=contour[(i+1)%contour.length];return Math.hypot(b[0]-a[0],b[1]-a[1]);});
  const perimeter=lengths.reduce((a,b)=>a+b,0);
+ const planar=hasCapsuleSlope(p);
  const height=(i:number,end:boolean)=>{
   const j=(i+1)%contour.length,k=end?j:i;
+  if(planar)return capsuleTop(p,contour[k][0],offset);
   if(p.footprint==='honeycomb')return honeyCellHeight(p,walls,honeyEdgeOwner(p,base[i],base[j]),...base[k]);
   if(p.footprint)return contourHeight(p,walls,...base[k]);
   // The rectangular kernel unions adjacent profile masks through each rounded corner.
@@ -47,7 +49,7 @@ export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,kee
  for(let i=contour.length-1;i>=0;i--){const j=(i+1)%contour.length,n=Math.max(1,Math.ceil(lengths[i]/(hasCutout?.25:1)));
   for(let k=n;k>=0;k--){const t=k/n,x=contour[i][0]*(1-t)+contour[j][0]*t,y=contour[i][1]*(1-t)+contour[j][1]*t;
    let h=height(i,false)*(1-t)+height(i,true)*t;
-   if(!p.footprint){const dx=contour[j][0]-contour[i][0],dy=contour[j][1]-contour[i][1];if(Math.abs(dy)<1e-6)h=topAt(walls[y<p.depth/2?0:1],x);else if(Math.abs(dx)<1e-6)h=topAt(walls[x<p.width/2?2:3],y);}
+   if(!planar&&!p.footprint){const dx=contour[j][0]-contour[i][0],dy=contour[j][1]-contour[i][1];if(Math.abs(dy)<1e-6)h=topAt(walls[y<p.depth/2?0:1],x);else if(Math.abs(dx)<1e-6)h=topAt(walls[x<p.width/2?2:3],y);}
    const bottomZ=bottom(x);
    floor.push([starts[i]+lengths[i]*t,bottomZ]);
    roof.push([starts[i]+lengths[i]*t,Math.max(bottomZ,h-(hasCutout?0:border))]);

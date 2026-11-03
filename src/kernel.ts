@@ -12,7 +12,7 @@ import {tiltOnBase} from './tilt.js';
 import {contourBody} from './contourKernel.js';
 import {footprintContour} from './footprint.js';
 import Module, { type Manifold, type Vec2 } from 'manifold-3d';
-import { resolveWalls, limitSteppedChamfer, type Project } from './model.js';
+import { resolveWalls, hasCapsuleSlope, capsuleTop, limitSteppedChamfer, type Project } from './model.js';
 import {shellLayout,wallOutline} from './shell.js';
 import { encodeSTL,decodeSTL,inspectSurface,removeCollapsedFaces,weldNearVertices,type Point,type Triangle } from './stl.js';
 let modulePromise: ReturnType<typeof Module> | undefined;
@@ -35,8 +35,11 @@ async function buildPart(project:Project,part:'organizer'|'shell') {
     const ring=rounded&&!project.footprint?keep(wasm.Manifold.extrude([outerContour,footprintContour(project,offset-thickness).reverse()],high)):null;
     const parts:Manifold[]=part==='organizer'?[keep(rounded?wasm.Manifold.extrude([outerContour],project.floorThickness):wasm.Manifold.cube([project.width,project.depth,project.floorThickness]))]:[];
     if(project.footprint)parts.push(contourBody(wasm,project,resolveWalls(project),part==='shell',keep));
+    const planar=hasCapsuleSlope(project);
+    if(planar && ring)parts.push(keep(ring.warp(v=>{v[2]*=capsuleTop(project,v[0],offset)/high;})));
     for(const [index,source] of walls.entries()) {
       const exterior=part==='shell'||index<4;
+      if(planar&&exterior)continue;
       if(project.footprint&&(part==='shell'||index<4))continue;
       const w={...source};
       if(part==='organizer'&&!project.footprint&&index<4&&w.stepPoints){
@@ -59,6 +62,11 @@ async function buildPart(project:Project,part:'organizer'|'shell') {
       solid=keep(solid.rotate([90,0,0]));
       if(w.axis==='y') solid=keep(solid.rotate([0,0,90]));
       solid=keep(solid.translate([w.x,w.y+(w.axis==='x'?w.thickness:0),0]));
+      // Fit the whole top face of a transverse divider, including its thickness.
+      const center=w.x+w.thickness/2;
+      if(planar && !exterior && w.axis==='y' && !w.cutout && w.transitionStyle==='straight' &&
+        Math.abs(w.startHeight-capsuleTop(project,center))<1e-6 && w.endHeight===w.startHeight)
+        solid=keep(solid.warp(v=>{v[2]*=capsuleTop(project,v[0])/w.startHeight;}));
       if(rounded)solid=keep(solid.intersect(exterior?ring!:outerSolid!));
       parts.push(solid);
     }
