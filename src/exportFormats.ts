@@ -19,11 +19,28 @@ export function formatExport(parts:ExportPart[],format:ExportFormat,objInstructi
  // Distinct objects, resting on Z=0 with a 10 mm gap. Slicer can rearrange them.
  let cursor=0;
  const positions=meshes.map(mesh=>{let minX=Infinity,maxX=-Infinity,minY=Infinity,minZ=Infinity;for(const p of mesh.vertices){minX=Math.min(minX,p[0]);maxX=Math.max(maxX,p[0]);minY=Math.min(minY,p[1]);minZ=Math.min(minZ,p[2]);}const position=[cursor-minX,-minY,-minZ];cursor+=maxX-minX+10;return position;});
+ const base=parts.findIndex(p=>p.name==='lid'),accent=parts.findIndex(p=>p.name==='lid-olive');
+ const grouped=base>=0&&accent>=0;
+ if(grouped)positions[accent]=positions[base];
  if(format==='3mf'){
   const materials=parts.map(p=>`<base name="${escapeXML(p.name)}" displaycolor="${p.color.toUpperCase()}FF"/>`).join('');
   const objects=meshes.map((mesh,i)=>`<object id="${i+2}" type="model" name="${escapeXML(parts[i].name)}" pid="1" pindex="${i}"><mesh><vertices>${mesh.vertices.map(v=>`<vertex x="${v[0]}" y="${v[1]}" z="${v[2]}"/>`).join('')}</vertices><triangles>${mesh.faces.map(f=>`<triangle v1="${f[0]}" v2="${f[1]}" v3="${f[2]}"/>`).join('')}</triangles></mesh></object>`).join('');
-  const model=`<?xml version="1.0" encoding="UTF-8"?><model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02"><metadata name="Application">ReplixGrid</metadata><resources><basematerials id="1">${materials}</basematerials>${objects}</resources><build>${positions.map((p,i)=>`<item objectid="${i+2}" transform="1 0 0 0 1 0 0 0 1 ${p.join(' ')}"/>`).join('')}</build></model>`;
-  const assignments=parts.map((p,i)=>{const slot=partSlots?partSlots[i]:filamentSlots[p.color.toLowerCase()];return typeof slot==='number'&&Number.isInteger(slot)&&slot>=1&&slot<=64?`<object id="${i+2}"><metadata key="name" value="${escapeXML(p.name)}"/><metadata key="extruder" value="${slot}"/></object>`:'';}).join('');
+  const lidId=parts.length+2;
+  const assembly=grouped?`<object id="${lidId}" type="model" name="Lid"><components><component objectid="${base+2}"/><component objectid="${accent+2}"/></components></object>`:'';
+  const model=`<?xml version="1.0" encoding="UTF-8"?><model unit="millimeter" xml:lang="en-US" xmlns="http://schemas.microsoft.com/3dmanufacturing/core/2015/02"><metadata name="Application">ReplixGrid</metadata><resources><basematerials id="1">${materials}</basematerials>${objects}${assembly}</resources><build>${positions.map((p,i)=>grouped&&i===accent?'':`<item objectid="${grouped&&i===base?lidId:i+2}" transform="1 0 0 0 1 0 0 0 1 ${p.join(' ')}"/>`).join('')}</build></model>`;
+  const extruder=(i:number)=>{
+   const slot=partSlots?partSlots[i]:filamentSlots[parts[i].color.toLowerCase()];
+   return typeof slot==='number'&&Number.isInteger(slot)&&slot>=1&&slot<=64?`<metadata key="extruder" value="${slot}"/>`:'';
+  };
+  const assignments=parts.map((p,i)=>{
+   if(grouped&&i===accent)return '';
+   if(grouped&&i===base){
+    const volumes=[base,accent].map(k=>`<part id="${k+2}" subtype="normal_part"><metadata key="name" value="${escapeXML(parts[k].name)}"/>${extruder(k)}</part>`).join('');
+    return `<object id="${lidId}"><metadata key="name" value="Lid"/>${volumes}</object>`;
+   }
+   const slot=extruder(i);
+   return slot?`<object id="${i+2}"><metadata key="name" value="${escapeXML(p.name)}"/>${slot}</object>`:'';
+  }).join('');
   const files=[{name:'[Content_Types].xml',data:'<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="model" ContentType="application/vnd.ms-package.3dmanufacturing-3dmodel+xml"/></Types>'},{name:'_rels/.rels',data:'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rel0" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel" Target="/3D/3dmodel.model"/></Relationships>'},{name:'3D/3dmodel.model',data:model}];
   if(assignments)files.push({name:'Metadata/model_settings.config',data:`<?xml version="1.0" encoding="UTF-8"?><config>${assignments}</config>`});
   return {data:zipFiles(files),extension:'3mf',mime:'model/3mf'};
