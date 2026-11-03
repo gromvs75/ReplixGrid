@@ -14,7 +14,7 @@ export function useRoundedPreview(project:Project){
   const [result,setResult]=useState<{extras:(Omit<KitPart,'stl'>&{geometry:BufferGeometry})[];activeZ:number;organizer:BufferGeometry|null;shell:BufferGeometry|null;pieces:PreviewPiece[];pending:boolean;error:string;sourceProject:Project|null}>({extras:[],activeZ:0,organizer:null,shell:null,pieces:[],pending:false,error:'',sourceProject:null});
   const runtime=useRef<{submit:(p:Project)=>void}|null>(null);
   useEffect(()=>{
-    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-olive-v1.js`,window.location.origin),{type:'module'});
+    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-organic-v2.js`,window.location.origin),{type:'module'});
     type Job={revision:number;project:Project};
     let timer:ReturnType<typeof setTimeout>|undefined;
     let serial=0,latest:Job|null=null,flight:Job|null=null,active=true;

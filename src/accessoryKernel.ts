@@ -109,7 +109,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Clip to an inset so the edge and the existing mating lip remain intact.
     let accent:Manifold|undefined;
     if(design?.olive){
-     const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection);
+     const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection,design.motif);
      accent=keep(motif.extrude(plateThickness/2));
      plate=keep(plate.subtract(accent));
     }else if(design&&design.pattern==='lines'){
