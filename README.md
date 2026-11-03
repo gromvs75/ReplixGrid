@@ -12,7 +12,7 @@ The interface is available in 11 languages. Translation catalogs need further na
 
 **[Launch ReplixGrid at grid.replixcast.com](https://grid.replixcast.com/?lang=en)** — use the app directly in your browser, with no installation, account, or CAD software required. This link opens the interface in English; you can select another language in the app.
 
-[Quick Start — build your first organizer](docs/USER-GUIDE.md) · [User Guide — full feature reference](docs/REFERENCE.md)
+[Watch the Quick Start video (1:03, English)](https://grid.replixcast.com/guides/quick-start-en.mp4) · [Quick Start — build your first organizer](docs/USER-GUIDE.md) · [User Guide — full feature reference](docs/REFERENCE.md)
 
 ### Option 2: run it locally on your computer
 
