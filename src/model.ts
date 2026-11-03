@@ -27,7 +27,7 @@ export interface Project {
   label?:{text:string;icon:''|'★'|'♥';mode:'raised'|'engraved';side?:Side;font?:'pixel'|'sans'|'bold'|'serif';size?:number;depth?:number;position?:number};
   stack?:StackSettings;
   lid?:boolean;
-  lidDesign?:{pattern:'smooth'|'lines'|ReliefPattern;rimHeight:number;rimPattern?:'smooth'|'rings';handle:'none'|'round'|'bar';patternSpacing?:number;patternDepth?:number;handleWidth?:number;handleHeight?:number;handleEdge?:'none'|'chamfer'|'round';edgeSize?:number};
+  lidDesign?:{fit?:'outer'|'inset';pattern:'smooth'|'lines'|ReliefPattern;rimHeight:number;rimPattern?:'smooth'|'rings';handle:'none'|'round'|'bar';patternSpacing?:number;patternDepth?:number;handleWidth?:number;handleHeight?:number;handleEdge?:'none'|'chamfer'|'round';edgeSize?:number};
   cups?:CupSettings[];
   colors?:{organizer?:string;shell?:string};
   cutouts?:Record<string,WallCutout>;

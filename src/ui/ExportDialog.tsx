@@ -16,7 +16,7 @@ export function ExportDialog({initial,project,onClose,onDone}:{initial:ExportTar
  useEffect(()=>{dialog.current?.showModal();return()=>dialog.current?.close();},[]);
  useEffect(()=>{
   setBusy(true);setReport(null);setError('');setChosenSlots({});let alive=true;
-  const w=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-rim-v1.js`,window.location.origin),{type:'module'});worker.current=w;
+  const w=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-lid-v2.js`,window.location.origin),{type:'module'});worker.current=w;
   const timer=setTimeout(()=>{if(alive){w.terminate();setBusy(false);setError("Проверка заняла слишком много времени. Упростите узор или уменьшите число деталей.");}},120000);
   w.onerror=()=>{clearTimeout(timer);setBusy(false);setError("Не удалось запустить проверку геометрии.");};
   w.onmessage=({data})=>{if(!alive)return;clearTimeout(timer);setBusy(false);if(!data.ok){setError(data.error);return;}if(data.report){setReport(data.report);setPartColors(data.partColors??[]);return;}if(data.formatted){download(data.formatted,`ReplixGrid-${target}.${data.extension}`,data.mime);done.current(`Скачано деталей: ${data.count}. Назначьте пластик и разложите детали в слайсере.`);}};
