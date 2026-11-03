@@ -1,10 +1,11 @@
 import {buildDecorativePanels} from './decorativePanels.js';
+import {oliveFace} from './oliveLid.js';
 import {shellGap} from './reliefSize.js';
 import Module,{type Manifold,type CrossSection} from 'manifold-3d';
 import {tiltOnBase,tiltSlope} from './tilt.js';
 import {buildOrganizer,buildShell} from './kernel.js';
 import {resolveWalls,type Project} from './model.js';
-import {levelProject,insertHeight,insertHeightAt} from './accessories.js';
+import {levelProject,lidPlateThickness,insertHeight,insertHeightAt} from './accessories.js';
 import {footprintContour,honeyCells} from './footprint.js';
 import {clipRectangle,roundedContour,type XY} from './rounding.js';
 import {regions} from './editor.js';
@@ -84,7 +85,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    }
    const inset=i===count-1&&p.lid&&p.lidDesign?.fit==='inset';
    const seatOffset=-lp.wallThickness/2;
-   const plateThickness=2;
+   const plateThickness=lidPlateThickness(p);
    if(inset){
     // Cut the seat from the finished tray, including any full-height dividers.
     const pocket=keep(wasm.Manifold.extrude([footprintContour(lp,seatOffset)],h+1));
@@ -98,15 +99,20 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     const offset=p.shell?shellGap(p)+p.shell.thickness:(p.relief?.depth??0),gap=.5,outer=inset?seatOffset-.35:offset+gap+1.4;
     let plate=keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness));
     const design=p.lidDesign,lipHeight=design?.rimHeight??2;
-    let lip=inset?null:ring(lp,outer,offset+gap,lipHeight,2);
+    let lip=inset?null:ring(lp,outer,offset+gap,lipHeight,plateThickness);
     if(lip&&design?.rimPattern==='rings'){
      const grooves:Manifold[]=[];
-     for(let z=2.65;z<2+lipHeight-.3;z+=1.2)grooves.push(ring(lp,outer+.1,outer-.35,.4,z));
+     for(let z=plateThickness+.65;z<plateThickness+lipHeight-.3;z+=1.2)grooves.push(ring(lp,outer+.1,outer-.35,.4,z));
      if(grooves.length)lip=keep(lip.subtract(keep(wasm.Manifold.union(grooves))));
     }
     // Engraved decoration is on the face printed against the build plate.
     // Clip to an inset so the edge and the existing mating lip remain intact.
-    if(design&&design.pattern==='lines'){
+    let accent:Manifold|undefined;
+    if(design?.olive){
+     const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection);
+     accent=keep(motif.extrude(plateThickness/2));
+     plate=keep(plate.subtract(accent));
+    }else if(design&&design.pattern==='lines'){
      const mask=keep(wasm.Manifold.extrude([footprintContour(lp,inset?outer-2:-3)],1));
      const grooves:Manifold[]=[];
      for(let y=4;y<lp.depth;y+=design.patternSpacing??6)grooves.push(keep(keep(wasm.Manifold.cube([lp.width+2*outer,1.2,(design.patternDepth??.5)+.01])).translate([-outer,y-.6,-.01])));
@@ -123,6 +129,11 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Print broad face down; invert for assembled preview only (see preview worker).
     const lidZ=baseZ+h+(inset?0:4.5);
     emit(lip?keep(plate.add(lip)):plate,'lid','lid',i,[0,0,lidZ]);
+    if(accent){
+     parts[parts.length-1].color=design?.baseColor??'#f7f3e8';
+     emit(accent,'lid-olive','lid',i,[0,0,lidZ]);
+     parts[parts.length-1].color=design?.patternColor??'#687749';
+    }
     if(design?.handle&&design.handle!=='none'){
      const width=Math.min(design.handleWidth??(design.handle==='round'?10:26),lp.width-8),depth=Math.min(design.handle==='round'?width:Math.min(8,width),lp.depth-8),height=design.handleHeight??5;
      const radius=design.handle==='round'?Math.min(width,depth)/2:0,edge=Math.min(design.edgeSize??1,height/2,depth/3),edgeMode=design.handleEdge??'none';
@@ -244,7 +255,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     insert=keep(insert.subtract(keep(wasm.Manifold.union(holes))));
    }
    if(p.lid&&p.lidDesign?.fit==='inset'){
-    const ceiling=walls[0].startHeight-p.floorThickness-2.25;
+    const ceiling=walls[0].startHeight-p.floorThickness-lidPlateThickness(p)-.25;
     insert=keep(insert.trimByPlane([0,0,-1],-ceiling));
    }
    insert=tiltOnBase(wasm,p,insert,false,keep);

@@ -607,5 +607,9 @@
   "Наружная": "Overlapping",
   "Внутренняя": "Inset",
   "Крышка заподлицо. Для снятия используйте вырез или ручку.": "The lid sits flush. Use a wall cutout or a handle to lift it.",
-  "Для внутренней крышки нужна стенка от 2 мм и глубина от 4 мм.": "An inset lid needs walls at least 2 mm thick and an inside depth of at least 4 mm."
+  "Для внутренней крышки нужна стенка от 2 мм и глубина от 4 мм.": "An inset lid needs walls at least 2 mm thick and an inside depth of at least 4 mm.",
+  "Двухцветная оливковая ветвь": "Two-tone olive branch",
+  "Цвет основы крышки": "Lid base color",
+  "Цвет узора крышки": "Lid pattern color",
+  "Для двухцветной внутренней крышки нужна глубина от 5,2 мм.": "A two-tone inset lid needs at least 5.2 mm of inside depth."
 }
