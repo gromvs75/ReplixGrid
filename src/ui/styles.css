@@ -63,6 +63,10 @@ details{margin-top:16px;padding-top:13px}summary{font-size:11px;line-height:1.6;
 .export-dialog {max-height:85vh;overflow:auto;}
 
 .accessories .count-label input {min-width:0;width:140px;max-width:100%;padding:7px;border:1px solid #dfe3d8;border-radius:7px;background:#fff;color:inherit;}
+.accessories .count-label input[type="color"] {box-sizing:border-box;width:68px;height:32px;justify-self:end;padding:3px;border:1px solid currentColor;border-radius:7px;background:transparent;cursor:pointer;}
+.accessories .count-label input[type="color"]::-webkit-color-swatch-wrapper {padding:0;}
+.accessories .count-label input[type="color"]::-webkit-color-swatch {border:0;border-radius:3px;}
+.accessories .count-label input[type="color"]::-moz-color-swatch {border:0;border-radius:3px;}
 
 .stage-assembly{width:max-content;max-width:calc(100% - 24px);min-width:0}.stage-assembly button{white-space:nowrap;padding:8px 10px}.stage-assembly button:disabled{opacity:.4;cursor:default}
 @media(max-width:480px){.stage-assembly button{font-size:10px;padding:8px 6px}}
