@@ -78,7 +78,7 @@
   "Высота ячейки": "Výška buňky",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Výšky souvisí se sousedy. \"Dva konce\" - nezávislé nastavení.",
   "Высоты шаблона": "Výšky šablon",
-  "Галька": "Oblázky",
+  "Галька": "Říční oblázky",
   "Гладкий": "Hladký",
   "Глубина": "Hloubka",
   "Глубина выреза": "Hloubka výřezu",
@@ -599,5 +599,11 @@
   "Шеврон": "Šipkový vzor",
   "Верхняя кромка стенок и перегородок": "Horní hrana stěn a přepážek",
   "Без обработки": "Bez úpravy",
-  "Радиус": "Poloměr"
+  "Радиус": "Poloměr",
+  "Двухцветный узор": "Dvoubarevný vzor",
+  "Оливковая ветвь": "Olivová ratolest",
+  "Листья гинкго": "Listy jinanu",
+  "Папоротник": "Kapradina",
+  "Прилив": "Vlny",
+  "Годичные кольца": "Letokruhy"
 }

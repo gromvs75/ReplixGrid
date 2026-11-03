@@ -95,7 +95,7 @@
   "Высота ячейки": "Zellenhöhe",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Höhen beziehen sich auf Nachbarn. „Zwei Enden“ – unabhängige Einstellung.",
   "Высоты шаблона": "Vorlagenhöhen",
-  "Галька": "Kieselsteine",
+  "Галька": "Flusskiesel",
   "Гладкий": "Glatt",
   "Глубина": "Tiefe",
   "Глубина выреза": "Ausschnitttiefe",
@@ -600,5 +600,11 @@
   "Шеврон": "Chevron",
   "Верхняя кромка стенок и перегородок": "Oberkante der Wände und Trennwände",
   "Без обработки": "Keine",
-  "Радиус": "Radius"
+  "Радиус": "Radius",
+  "Двухцветный узор": "Zweifarbiges Muster",
+  "Оливковая ветвь": "Olivenzweig",
+  "Листья гинкго": "Ginkgoblätter",
+  "Папоротник": "Farnwedel",
+  "Прилив": "Gezeitenwellen",
+  "Годичные кольца": "Jahresringe"
 }

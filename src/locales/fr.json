@@ -95,7 +95,7 @@
   "Высота ячейки": "Hauteur des cellules",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Les hauteurs sont liées aux voisins. \"Deux extrémités\" - réglage indépendant.",
   "Высоты шаблона": "Hauteurs des gabarits",
-  "Галька": "Galets",
+  "Галька": "Galets de rivière",
   "Гладкий": "Lisse",
   "Глубина": "Profondeur",
   "Глубина выреза": "Profondeur de découpe",
@@ -599,5 +599,11 @@
   "Шеврон": "Chevron",
   "Верхняя кромка стенок и перегородок": "Bord supérieur des parois et des cloisons",
   "Без обработки": "Aucune",
-  "Радиус": "Rayon"
+  "Радиус": "Rayon",
+  "Двухцветный узор": "Motif bicolore",
+  "Оливковая ветвь": "Branche d’olivier",
+  "Листья гинкго": "Feuilles de ginkgo",
+  "Папоротник": "Fronde de fougère",
+  "Прилив": "Vagues",
+  "Годичные кольца": "Cernes du bois"
 }
