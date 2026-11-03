@@ -602,5 +602,10 @@
   "Шеврон": "Chevron",
   "Верхняя кромка стенок и перегородок": "Top edge of walls and dividers",
   "Без обработки": "None",
-  "Радиус": "Radius"
+  "Радиус": "Radius",
+  "Посадка крышки": "Lid fit",
+  "Наружная": "Overlapping",
+  "Внутренняя": "Inset",
+  "Крышка заподлицо. Для снятия используйте вырез или ручку.": "The lid sits flush. Use a wall cutout or a handle to lift it.",
+  "Для внутренней крышки нужна стенка от 2 мм и глубина от 4 мм.": "An inset lid needs walls at least 2 mm thick and an inside depth of at least 4 mm."
 }

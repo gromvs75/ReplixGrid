@@ -82,15 +82,24 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     }
     body=keep(body.add(collar));
    }
-   if(body)emit(body,`tray-${i+1}`,'organizer',i,[0,0,baseZ]);
+   const inset=i===count-1&&p.lid&&p.lidDesign?.fit==='inset';
+   const seatOffset=-lp.wallThickness/2;
+   const plateThickness=2;
+   if(inset){
+    // Cut the seat from the finished tray, including any full-height dividers.
+    const pocket=keep(wasm.Manifold.extrude([footprintContour(lp,seatOffset)],h+1));
+    const cutter=keep(pocket.translate([0,0,h-plateThickness]));
+    body=keep(keep(solid(built.stl).translate(built.position)).subtract(cutter));
+   }
+   if(body)emit(body,count>1?`tray-${i+1}`:'organizer','organizer',i,[0,0,baseZ]);
    else parts.push({name:count>1?`tray-${i+1}`:'organizer',kind:'organizer',level:i,...built,position:[built.position[0],built.position[1],built.position[2]+baseZ],color:partColor(lp,'organizer')});
    parts[parts.length-1].color=partColor(lp,'organizer');
    if(i===count-1&&p.lid){
-    const offset=p.shell?shellGap(p)+p.shell.thickness:(p.relief?.depth??0),gap=.5,outer=offset+gap+1.4;
-    let plate=keep(wasm.Manifold.extrude([footprintContour(lp,outer)],2));
+    const offset=p.shell?shellGap(p)+p.shell.thickness:(p.relief?.depth??0),gap=.5,outer=inset?seatOffset-.35:offset+gap+1.4;
+    let plate=keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness));
     const design=p.lidDesign,lipHeight=design?.rimHeight??2;
-    let lip=ring(lp,outer,offset+gap,lipHeight,2);
-    if(design?.rimPattern==='rings'){
+    let lip=inset?null:ring(lp,outer,offset+gap,lipHeight,2);
+    if(lip&&design?.rimPattern==='rings'){
      const grooves:Manifold[]=[];
      for(let z=2.65;z<2+lipHeight-.3;z+=1.2)grooves.push(ring(lp,outer+.1,outer-.35,.4,z));
      if(grooves.length)lip=keep(lip.subtract(keep(wasm.Manifold.union(grooves))));
@@ -98,7 +107,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Engraved decoration is on the face printed against the build plate.
     // Clip to an inset so the edge and the existing mating lip remain intact.
     if(design&&design.pattern==='lines'){
-     const mask=keep(wasm.Manifold.extrude([footprintContour(lp,-3)],1));
+     const mask=keep(wasm.Manifold.extrude([footprintContour(lp,inset?outer-2:-3)],1));
      const grooves:Manifold[]=[];
      for(let y=4;y<lp.depth;y+=design.patternSpacing??6)grooves.push(keep(keep(wasm.Manifold.cube([lp.width+2*outer,1.2,(design.patternDepth??.5)+.01])).translate([-outer,y-.6,-.01])));
      if(grooves.length)plate=keep(plate.subtract(keep(keep(wasm.Manifold.union(grooves)).intersect(mask))));
@@ -112,7 +121,8 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
      plate=keep(keep(plate.refineToLength(meshStep)).warp(v=>{if(Math.abs(v[2])<1e-7)v[2]=depth*reliefValue(pattern,v[0]/spacing,v[1]/spacing)*Math.min(1,edgeDistance(v[0],v[1])/3);}));
     }
     // Print broad face down; invert for assembled preview only (see preview worker).
-    emit(keep(plate.add(lip)),'lid','lid',i,[0,0,baseZ+h+4.5]);
+    const lidZ=baseZ+h+(inset?0:4.5);
+    emit(lip?keep(plate.add(lip)):plate,'lid','lid',i,[0,0,lidZ]);
     if(design?.handle&&design.handle!=='none'){
      const width=Math.min(design.handleWidth??(design.handle==='round'?10:26),lp.width-8),depth=Math.min(design.handle==='round'?width:Math.min(8,width),lp.depth-8),height=design.handleHeight??5;
      const radius=design.handle==='round'?Math.min(width,depth)/2:0,edge=Math.min(design.edgeSize??1,height/2,depth/3),edgeMode=design.handleEdge??'none';
@@ -126,7 +136,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
       const points=levels.flatMap(([z,shrink])=>outline.map(([x,y])=>[centerX+(x-centerX)*(1-2*shrink/width),centerY+(y-centerY)*(1-2*shrink/depth),z] as [number,number,number]));
       handle=keep(wasm.Manifold.hull(points));
      }
-     const b=handle.boundingBox();emit(handle,'lid-handle','lid-handle',i,[lp.width/2-(b.max[0]+b.min[0])/2,lp.depth/2-(b.max[1]+b.min[1])/2,baseZ+h+4.5]);
+     const b=handle.boundingBox();emit(handle,'lid-handle','lid-handle',i,[lp.width/2-(b.max[0]+b.min[0])/2,lp.depth/2-(b.max[1]+b.min[1])/2,lidZ]);
     }
    }
    if(lp.shell?.mode==='panels')for(const b of await cachedPanels({...lp,cups:undefined}))parts.push({...b,name:count>1?`tier-${i+1}-${b.name}`:b.name,position:[b.position[0],b.position[1],b.position[2]+baseZ],kind:'shell',level:i,color:partColor(lp,'shell')});
@@ -138,7 +148,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    for(let level=0;level<count;level++){
     const lp=levelProject(p,level);
     if(lp.cups?.length){
-     const local=await buildKit({...lp,shell:undefined});
+     const local=await buildKit({...lp,shell:undefined,lid:level===count-1&&p.lid&&p.lidDesign?.fit==='inset',lidDesign:p.lidDesign});
      for(const part of local.filter(part=>part.kind==='cup'))parts.push({...part,name:`tier-${level+1}-${part.name}`,level,position:[part.position[0],part.position[1],part.position[2]+elevation]});
     }
     elevation+=resolveWalls(lp)[0].startHeight;
@@ -232,6 +242,10 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     }
     if(!holes.length)throw new Error('Гнездо не помещается. Уменьшите диаметр или увеличьте отсек.');
     insert=keep(insert.subtract(keep(wasm.Manifold.union(holes))));
+   }
+   if(p.lid&&p.lidDesign?.fit==='inset'){
+    const ceiling=walls[0].startHeight-p.floorThickness-2.25;
+    insert=keep(insert.trimByPlane([0,0,-1],-ceiling));
    }
    insert=tiltOnBase(wasm,p,insert,false,keep);
    emit(insert,`${c.content==='pens'?'pens':c.content==='grid'?'small-items':'cup'}-${i+1}`,'cup',0,[p.floorThickness*lean,0,p.floorThickness]);
