@@ -20,6 +20,7 @@ export function validatePrintArea(area:Omit<PrintSettings,'parts'>){
   for(const value of [area.bedWidth,area.bedDepth,area.bedHeight])range(value,40,1000,'print area');
 }
 export interface Project {
+  topEdge?:{style:"chamfer"|"round";size:number};
   capsuleSlope?:boolean;
   steppedWalls?:boolean;
   baseBand?:{height:number;style:'smooth'|'rings'|'steps'};
@@ -53,6 +54,9 @@ export interface Project {
   printing?: PrintSettings;
   printArea?: Omit<PrintSettings,'parts'>;
 }
+/** Reserve at least 10% of the wall thickness as a flat crown. */
+export const topEdgeLimit=(p:Project)=>Math.floor(p.wallThickness*4.5)/10;
+export const topEdgeSize=(p:Project)=>Math.min(topEdgeLimit(p),p.topEdge?.size??0);
 /** A square inner corner stays at least one wall thickness from a 45° cut. */
 export function steppedChamferLimit(p:Project){return Math.floor((2-Math.SQRT2)*p.wallThickness*10)/10;}
 export function limitSteppedChamfer(p:Project):Project{
@@ -101,6 +105,7 @@ export function capsuleTop(p:Project,x:number,offset=0){
 export function resolveWalls(p: Project): Wall[] {
   if (p.schemaVersion !== 1 || p.units !== 'mm') throw new Error('Unsupported project format');
   range(p.width, 1, LIMITS.maxSize, 'width'); range(p.depth, 1, LIMITS.maxSize, 'depth');
+  if(p.topEdge!==undefined){if(!p.topEdge||!["chamfer","round"].includes(p.topEdge.style))throw new Error("Invalid top edge");range(p.topEdge.size,0,LIMITS.maxSize,"top edge size");}
   range(p.innerCornerRadius??0,0,30,'inner corner radius');
   if(p.cornerStyle!==undefined&&!['round','chamfer'].includes(p.cornerStyle))throw new Error('Invalid corner style');
   range(p.cornerRadius??0,0,maxCornerRadius(p.width,p.depth),'corner radius');

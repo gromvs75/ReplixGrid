@@ -6,7 +6,7 @@ import type {PrintPiece} from '../assemblyKernel.js';
 import type {BufferGeometry} from 'three';
 import type {Project} from '../model.js';
 export type PreviewPiece=Omit<PrintPiece,'stl'>&{geometry:BufferGeometry};
-const enabled=(p:Project)=>!!p.baseBand||!!p.label||!!p.stack||!!p.lid||!!p.cups?.length||!!p.innerCornerRadius||!!p.relief||!!Object.keys(p.cutouts??{}).length||!!p.shell||!!p.tilt||!!p.footprint||!!p.printing||(p.cornerRadius??0)>0;
+const enabled=(p:Project)=>!!p.topEdge||!!p.baseBand||!!p.label||!!p.stack||!!p.lid||!!p.cups?.length||!!p.innerCornerRadius||!!p.relief||!!Object.keys(p.cutouts??{}).length||!!p.shell||!!p.tilt||!!p.footprint||!!p.printing||(p.cornerRadius??0)>0;
 export function useRoundedPreview(project:Project){
   // Appearance changes must never rebuild the printable mesh.
   const geometryKey=JSON.stringify({...project,printArea:undefined,colors:undefined,cups:project.cups?.map(c=>({...c,color:undefined}))});
@@ -14,7 +14,7 @@ export function useRoundedPreview(project:Project){
   const [result,setResult]=useState<{extras:(Omit<KitPart,'stl'>&{geometry:BufferGeometry})[];activeZ:number;organizer:BufferGeometry|null;shell:BufferGeometry|null;pieces:PreviewPiece[];pending:boolean;error:string;sourceProject:Project|null}>({extras:[],activeZ:0,organizer:null,shell:null,pieces:[],pending:false,error:'',sourceProject:null});
   const runtime=useRef<{submit:(p:Project)=>void}|null>(null);
   useEffect(()=>{
-    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker.js`,window.location.origin),{type:'module'});
+    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-rim-v1.js`,window.location.origin),{type:'module'});
     type Job={revision:number;project:Project};
     let timer:ReturnType<typeof setTimeout>|undefined;
     let serial=0,latest:Job|null=null,flight:Job|null=null,active=true;

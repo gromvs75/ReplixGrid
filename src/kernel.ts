@@ -1,3 +1,4 @@
+import {finishTopEdge} from './topEdge.js';
 import {cutPanelSockets} from './decorativePanels.js';
 import {hasShellSupport,hasDecorativeShellSupport,shellSupportHeight,shellSupportWidth} from './shellSupport.js';
 import {applyBaseBand} from './baseBand.js';
@@ -74,7 +75,7 @@ async function buildPart(project:Project,part:'organizer'|'shell') {
     const baseJoined=keep(wasm.Manifold.union(parts));
     const joined=part==='organizer'?roundInnerCorners(wasm,project,resolveWalls(project),baseJoined,keep):baseJoined;
     const stepped=part==='organizer'?roundStepCorners(wasm,project,resolveWalls(project),joined,keep):joined;
-    const labeled=part==='organizer'?applyLabel(wasm,project,stepped,keep):stepped;
+    const labeled=part==='organizer'?applyLabel(wasm,project,finishTopEdge(wasm,project,stepped,keep),keep):stepped;
     const decorated=part==='organizer'&&!project.tilt?applyRelief(wasm,project,labeled,keep):labeled;
     const tilted=tiltOnBase(wasm,project,decorated,part==='shell',keep,part==='shell'?body=>perforateShell(wasm,project,body,keep):body=>applyRelief(wasm,project,body,keep));
     const clipped=applyShellClips(wasm,project,tilted,part==='shell',keep);
@@ -107,14 +108,20 @@ async function buildPart(project:Project,part:'organizer'|'shell') {
     // Perforation booleans may leave sub-micron seams. Weld within 1 micron,
     // then enforce the same exact closed-surface check on the serialized STL.
     let cleaned=removeCollapsedFaces(weldNearVertices(triangles,part==='shell'?.001:tolerance*.2));
-    let stl=encodeSTL(cleaned),inspection:ReturnType<typeof inspectSurface>;
+    let stl=encodeSTL(cleaned),inspection!:ReturnType<typeof inspectSurface>;
     try{inspection=inspectSurface(decodeSTL(stl));}
     catch(error){
       // Close vertices on fine perforations can be distinct: retry with a
       // smaller weld, retaining the same strict closed-surface inspection.
-      if(part!=='shell'||!(error instanceof Error)||error.message!=='Open or non-manifold oriented edge')throw error;
-      cleaned=removeCollapsedFaces(weldNearVertices(triangles,.0001));
-      stl=encodeSTL(cleaned);inspection=inspectSurface(decodeSTL(stl));
+      if(!(error instanceof Error)||error.message!=='Open or non-manifold oriented edge')throw error;
+      const distances=part==='shell'?[.0001]:project.topEdge?[.000005,.0001,.0005,.001,.003]:[];
+      let valid=false;
+      for(const distance of distances){
+        cleaned=removeCollapsedFaces(weldNearVertices(triangles,distance));
+        stl=encodeSTL(cleaned);
+        try{inspection=inspectSurface(decodeSTL(stl));valid=true;break;}catch{/* Try the next weld distance. */}
+      }
+      if(!valid)throw error;
     }
     if(part==='shell'||project.tilt){
       // Output sits at origin for slicers; keep project coordinates for preview only.
