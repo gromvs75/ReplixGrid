@@ -59,7 +59,7 @@ export function Scene({view,reset,assembly='assembled',exploded=false,stackView=
   const p=useEditor(s=>s.project),selection=useEditor(s=>s.selection);const [dragging,setDragging]=useState(false),[hoveredWall,setHoveredWall]=useState<string|null>(null);
   const walls=useMemo(()=>resolveWalls(p),[p]),leaves=useMemo(()=>regions(p).filter(r=>!r.cell.split),[p]);
   const plan=useMemo(()=>p.printing?splitPlan(p):null,[p]);
-  const rounded=!!p.baseBand||!!p.label||!!p.stack||!!p.lid||!!p.cups?.length||!!p.innerCornerRadius||!!p.relief||!!Object.keys(p.cutouts??{}).length||!!p.shell||!!p.tilt||!!p.footprint||(p.cornerRadius??0)>0||!!p.printing,preview=useRoundedPreview(p);
+  const rounded=!!p.topEdge||!!p.baseBand||!!p.label||!!p.stack||!!p.lid||!!p.cups?.length||!!p.innerCornerRadius||!!p.relief||!!Object.keys(p.cutouts??{}).length||!!p.shell||!!p.tilt||!!p.footprint||(p.cornerRadius??0)>0||!!p.printing,preview=useRoundedPreview(p);
   const leanMatrix=useMemo(()=>new Matrix4().set(1,0,tiltSlope(p),0,0,1,0,0,0,0,1,0,0,0,0,1),[p.tilt]);
   const inside=useMemo(()=>footprintContour(p,-p.wallThickness),[p]);
   const previewProject=preview.sourceProject;
