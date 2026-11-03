@@ -71,3 +71,17 @@ test('inset plate clears the rim, divider and cup and rests on the tray seat',as
   }finally{owned.reverse().forEach(m=>m.delete());}
  }
 });
+
+test('two-color lid shares print coordinates and filament components across both fits',async()=>{
+ for(const fit of ['inset','outer'] as const){
+  const p=defaultProject();p.lid=true;p.lidDesign={fit,olive:true,pattern:'smooth',handle:'none',rimHeight:2,baseColor:'#ffffff',patternColor:'#557722'};
+  const parts=await buildKit(p),base=parts.find(x=>x.name==='lid')!,face=parts.find(x=>x.name==='lid-olive')!;
+  assert.deepEqual(face.position,base.position);
+  assert.ok(Math.abs(face.inspection.bounds.max[2]-1.6)<.0001);
+  assert.ok(Math.abs(base.inspection.bounds.max[2]-(fit==='inset'?3.2:5.2))<.0001);
+  const file=new TextDecoder().decode(formatExport([base,face],'3mf',undefined,{'#ffffff':2,'#557722':4}).data);
+  assert.match(file,/<components><component objectid="2"\/><component objectid="3"\/><\/components>/);
+  assert.equal(file.match(/<item objectid=/g)?.length,1);
+  assert.match(file,/<part id="3"[^>]*>[^]*?key="extruder" value="4"/);
+ }
+});
