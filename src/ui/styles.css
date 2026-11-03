@@ -252,3 +252,15 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 .filament-export { margin: 12px 0; font-size: .9em; }
 .filament-assignment{display:grid;grid-template-columns:minmax(0,1fr) minmax(145px,1fr);align-items:center;gap:8px;margin:8px 0;font-size:12px}
 .filament-assignment>span{overflow-wrap:anywhere}.filament-assignment select{width:100%;min-width:0;padding:7px;border:1px solid var(--line);border-radius:7px}
+
+.help-picker { position: relative; }
+.help-picker summary {
+  display: flex; align-items: center; gap: 5px; cursor: pointer; list-style: none;
+  padding: 7px 9px; min-height: 34px; border: 1px solid var(--line);
+  border-radius: 9px; background: var(--surface); color: var(--ink);
+  font-size: 11px; font-weight: 600;
+}
+.help-picker summary::-webkit-details-marker { display: none; }
+.help-links { left: 0; right: auto; width: max-content; min-width: 116px; }
+.help-links a { display: block; padding: 9px; color: var(--ink); text-decoration: none; border-radius: 7px; }
+.help-links a:hover, .help-links a:focus-visible { background: var(--surface-soft); }
