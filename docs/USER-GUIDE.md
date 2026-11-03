@@ -27,7 +27,7 @@ A lid needs a level rim. If you want to keep the sloped capsule from the example
 
 ![Two-tone lids, from left to right. Top row shows Olive branch, Ginkgo leaves and Fern frond. Bottom row shows Tidal waves, River pebbles and Growth rings.](images/lid-motifs.svg)
 
-For printing, choose **3MF** and assign the base and pattern to their filament slots. In the slicer, keep both parts together with the patterned face against the bed. The two-tone plate is 3.2 mm thick, with a 1.6 mm patterned face and a 1.6 mm solid backing.
+For printing, choose **3MF** and assign the base and pattern to their filament slots. Keep both colors together as one object. For Olive branch, Ginkgo leaves, Fern frond, Tidal waves and Growth rings, **Cutwork pattern** makes the motif out of openings in a continuous top sheet. Combine it with **Raised pattern** to expose the recessed backing through the openings. With **Raised pattern** on, the motif stands 1.6 mm above a solid 1.6 mm backing; the openings do not go through the lid. Turn it off for a smooth, flush inlay. Raised inset lids export backing-side down. Overlapping lids export pattern-side down to accommodate their rim: check the bridges over the recesses in your slicer before printing.
 
 ## Download your first print
 

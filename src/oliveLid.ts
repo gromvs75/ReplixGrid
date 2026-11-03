@@ -1,10 +1,11 @@
+import {lidCutouts} from './lidCutwork.js';
 import {cellularOpenings} from './cellularPattern.js';
 import type {CrossSection,ManifoldToplevel} from 'manifold-3d';
 import type {LidMotif} from './lidMotifs.js';
 import type {XY} from './rounding.js';
 
 // Draw in the long direction so the branch also fits tall and circular lids.
-export function oliveFace(wasm:ManifoldToplevel, outline:XY[], keep:(s:CrossSection)=>CrossSection,motif:LidMotif='olive'){
+export function oliveFace(wasm:ManifoldToplevel, outline:XY[], keep:(s:CrossSection)=>CrossSection,motif:LidMotif='olive',cutwork=false){
  const face=keep(new wasm.CrossSection([outline]));
  const {min,max}=face.bounds(), width=max[0]-min[0],depth=max[1]-min[1],vertical=depth>width;
  const length=Math.max(width,depth),span=Math.min(width,depth);
@@ -16,6 +17,10 @@ export function oliveFace(wasm:ManifoldToplevel, outline:XY[], keep:(s:CrossSect
    cell.reverse().map(([u,v])=>point(u,v)));
   const cells=keep(new wasm.CrossSection(openings));
   return keep(face.subtract(keep(cells.intersect(inside))));
+ }
+ if(cutwork&&motif!=='pebbles'){
+  const slots=lidCutouts(motif,length,span,point).map(loop=>keep(new wasm.CrossSection([loop],'EvenOdd')));
+  return keep(face.subtract(keep(keep(wasm.CrossSection.union(slots)).intersect(inside))));
  }
  const pieces=[keep(face.subtract(inside))];
  // Construct the accent in lid coordinates, then clip once to its actual outline.
