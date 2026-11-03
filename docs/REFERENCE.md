@@ -90,7 +90,9 @@ The insert follows its compartment with at least 0.5 mm clearance. Its walls and
 
 **Lid.** In **Shape → Lid**, click **+ Cover**. Use a level upper rim with equal outside wall heights and dividers at or below it. Tilt, honeycomb and sectional printing prevent this fit. Choose **Overlapping** for an outside cap or **Inset** for a 2 mm plate that sits flush inside the tray. The inset option cuts a seat in the upper wall with 0.35 mm clearance on each side and leaves room above dividers and inserts. It needs at least 2 mm wall thickness and 4 mm inside depth. Add a wall cutout or a handle to lift it. The overlapping lid has a locating rim with 0.5 mm clearance. Choose its top pattern, scale and depth, then set the rim height and finish. For a handle, choose cylindrical or bar, set its size and height, and optionally chamfer or round its edges. The handle prints separately and glues to the lid. The preview lifts the overlapping lid and shows the inset lid seated. The exported lid lies flat for printing.
 
-**Two-tone olive branch.** Available on either lid fit. Choose a base color and a pattern color. The 3.2 mm plate has a solid 1.6 mm backing and a 1.6 mm patterned face. The outer locating rim and optional handle add to the overall height. For an inset lid, allow at least 5.2 mm inside depth. Export in 3MF to keep both colors together as one lid, and assign the two parts to your filament slots. The patterned face prints against the bed.
+**Two-tone pattern.** Enable it on either lid fit, then choose Olive branch, Ginkgo leaves, Fern frond, Tidal waves, River pebbles or Growth rings. Choose a base color and a pattern color. The 3.2 mm plate has a solid 1.6 mm backing and a 1.6 mm patterned face. The outer locating rim and optional handle add to the overall height. For an inset lid, allow at least 5.2 mm inside depth. Export in 3MF to keep both colors together as one lid, and assign the two parts to your filament slots. The patterned face prints against the bed.
+
+![Six two-tone lid patterns](images/lid-motifs.svg)
 
 ## Sleeves and panels
 

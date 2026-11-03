@@ -95,7 +95,7 @@
   "Высота ячейки": "Cell height",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Heights are related to neighbors. \"Two ends\" - independent setting.",
   "Высоты шаблона": "Template heights",
-  "Галька": "Pebbles",
+  "Галька": "River pebbles",
   "Гладкий": "Smooth",
   "Глубина": "Depth",
   "Глубина выреза": "Cutout depth",
@@ -611,5 +611,11 @@
   "Двухцветная оливковая ветвь": "Two-tone olive branch",
   "Цвет основы крышки": "Lid base color",
   "Цвет узора крышки": "Lid pattern color",
-  "Для двухцветной внутренней крышки нужна глубина от 5,2 мм.": "A two-tone inset lid needs at least 5.2 mm of inside depth."
+  "Для двухцветной внутренней крышки нужна глубина от 5,2 мм.": "A two-tone inset lid needs at least 5.2 mm of inside depth.",
+  "Двухцветный узор": "Two-tone pattern",
+  "Оливковая ветвь": "Olive branch",
+  "Листья гинкго": "Ginkgo leaves",
+  "Папоротник": "Fern frond",
+  "Прилив": "Tidal waves",
+  "Годичные кольца": "Growth rings"
 }

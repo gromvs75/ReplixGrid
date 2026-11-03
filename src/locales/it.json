@@ -95,7 +95,7 @@
   "Высота ячейки": "Altezza della cella",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Le altezze sono relative ai vicini. \"Due estremità\" - impostazione indipendente.",
   "Высоты шаблона": "Altezze modello",
-  "Галька": "Ciottoli",
+  "Галька": "Ciottoli di fiume",
   "Гладкий": "Liscio",
   "Глубина": "Profondità",
   "Глубина выреза": "Profondità di ritaglio",
@@ -599,5 +599,11 @@
   "Шеврон": "Chevron",
   "Верхняя кромка стенок и перегородок": "Bordo superiore di pareti e divisori",
   "Без обработки": "Nessuna",
-  "Радиус": "Raggio"
+  "Радиус": "Raggio",
+  "Двухцветный узор": "Motivo bicolore",
+  "Оливковая ветвь": "Ramo d’olivo",
+  "Листья гинкго": "Foglie di ginkgo",
+  "Папоротник": "Felce",
+  "Прилив": "Onde",
+  "Годичные кольца": "Anelli di crescita"
 }

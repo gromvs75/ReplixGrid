@@ -92,7 +92,7 @@
   "Высота ячейки": "Wysokość komórki",
   "Высоты связаны с соседями. «Два конца» — независимая настройка.": "Wysokość jest powiązana z sąsiadami. „Dwa końce” – niezależne ustawienie.",
   "Высоты шаблона": "Wysokości szablonów",
-  "Галька": "Kamyczki",
+  "Галька": "Otoczaki",
   "Гладкий": "Gładkie",
   "Глубина": "Głębokość",
   "Глубина выреза": "Głębokość wycięcia",
@@ -599,5 +599,11 @@
   "Шеврон": "Szewron",
   "Верхняя кромка стенок и перегородок": "Górna krawędź ścianek i przegród",
   "Без обработки": "Bez obróbki",
-  "Радиус": "Promień"
+  "Радиус": "Promień",
+  "Двухцветный узор": "Dwukolorowy wzór",
+  "Оливковая ветвь": "Gałązka oliwna",
+  "Листья гинкго": "Liście miłorzębu",
+  "Папоротник": "Paproć",
+  "Прилив": "Fale",
+  "Годичные кольца": "Słoje drewna"
 }
