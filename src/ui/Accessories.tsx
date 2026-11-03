@@ -74,8 +74,8 @@ export function LabelControls(){
  const update=(patch:Partial<NonNullable<typeof p.label>>)=>change(p=>editProject(p,d=>{
   d.label={text:text||'Кабели',icon:'',mode:'raised',font:'sans',side,...d.label,...patch};
  }));
- return <details className="accessories"><summary>{t("Подпись и значок ")}<small>{label?t("добавлены"):t("нет")}</small></summary>
- <div className="count-label">{t("Сторона подписи")}<div className="compact-actions" role="group" aria-label={t("Сторона подписи")}>{sideOrder.map(s=><button key={s} aria-pressed={side===s} disabled={!!label&&!!labelProblem(p,s)} title={labelProblem(p,s)?t(labelProblem(p,s)):undefined} onClick={()=>{setChosen(s);if(label)update({side:s});}}>{t(sideNames[s])}</button>)}</div></div>
+ return <details className="accessories label-controls"><summary>{t("Подпись и значок ")}<small>{label?t("добавлены"):t("нет")}</small></summary>
+ <div className="count-label label-side-picker">{t("Сторона подписи")}<div className="compact-actions" role="group" aria-label={t("Сторона подписи")}>{sideOrder.map(s=><button key={s} aria-pressed={side===s} disabled={!!label&&!!labelProblem(p,s)} title={labelProblem(p,s)?t(labelProblem(p,s)):undefined} onClick={()=>{setChosen(s);if(label)update({side:s});}}>{t(sideNames[s])}</button>)}</div></div>
  {reason?<p className="hint">{t(reason??'')}</p>:<>
  <label className="count-label">{t("Текст")}<input aria-label={t("Текст подписи")} maxLength={18} placeholder={t("Кабели")} value={label?.text??text} onChange={e=>{setText(e.target.value);if(label)update({text:e.target.value});}}/></label>
  <label className="count-label">{t("Шрифт")}<select aria-label={t("Шрифт подписи")} value={label?.font??(label?'pixel':'sans')} onChange={e=>update({font:e.target.value as NonNullable<typeof p.label>['font']})}><option value="sans">Droid Sans</option><option value="bold">Droid Sans Bold</option><option value="serif">Droid Serif</option><option value="pixel">{t("Пиксельный")}</option></select></label>
