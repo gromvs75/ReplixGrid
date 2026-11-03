@@ -1,3 +1,4 @@
+import {cellularOpenings} from './cellularPattern.js';
 import type {CrossSection,ManifoldToplevel} from 'manifold-3d';
 import type {LidMotif} from './lidMotifs.js';
 import type {XY} from './rounding.js';
@@ -10,6 +11,12 @@ export function oliveFace(wasm:ManifoldToplevel, outline:XY[], keep:(s:CrossSect
  const point=(u:number,v:number):XY=>vertical?[max[0]-v,min[1]+u]:[min[0]+u,min[1]+v];
  const spine=(u:number)=>span*(.5+.085*Math.sin(u*Math.PI*2/length));
  const stroke=Math.min(2,span*.035),inside=keep(face.offset(-stroke,'Round'));
+ if(motif==='cellular'){
+  const openings=cellularOpenings(length,span,20,false).map(cell=>
+   cell.reverse().map(([u,v])=>point(u,v)));
+  const cells=keep(new wasm.CrossSection(openings));
+  return keep(face.subtract(keep(cells.intersect(inside))));
+ }
  const pieces=[keep(face.subtract(inside))];
  // Construct the accent in lid coordinates, then clip once to its actual outline.
  if(motif!=='olive'){

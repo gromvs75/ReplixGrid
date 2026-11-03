@@ -23,7 +23,7 @@ function WorkspaceGrid({width,depth,dark}:{width:number;depth:number;dark:boolea
   return [minor,major].map(points=>new BufferGeometry().setAttribute('position',new Float32BufferAttribute(points,3)));
  },[width,depth]);
  useEffect(()=>()=>lines.forEach(g=>g.dispose()),[lines]);
- return <group>{lines.map((g,i)=><lineSegments key={i} geometry={g} raycast={()=>{}}><lineBasicMaterial color={dark?(i?'#91a9c4':'#71869b'):(i?'#94a8bb':'#becdd9')} transparent opacity={dark?(i?.48:.22):(i?.46:.28)} toneMapped={false} depthWrite={false}/></lineSegments>)}</group>;
+ return <group>{lines.map((g,i)=><lineSegments key={i} geometry={g} raycast={()=>{}}><lineBasicMaterial color={dark?(i?'#91a9c4':'#71869b'):(i?'#586c80':'#708394')} transparent opacity={dark?(i?.48:.22):(i?.68:.43)} toneMapped={false} depthWrite={false}/></lineSegments>)}</group>;
 }
 function EndMarker({label,position}:{label:string;position:[number,number,number]}){
  return <Html position={position} style={{pointerEvents:'none'}} zIndexRange={[30,20]}><div style={{position:'absolute',left:0,bottom:0,width:1,height:32,background:'#b86b29'}}><span style={{position:'absolute',left:-3,bottom:-3,width:7,height:7,borderRadius:'50%',background:'#b86b29'}}/><span style={{position:'absolute',left:-10,bottom:36,fontSize:12,lineHeight:'20px',width:20,textAlign:'center',border:'1px solid #bd834c',borderRadius:4,background:'#fff8ed',color:'#8d501d'}}>{label}</span></div></Html>;

@@ -88,12 +88,12 @@ test('two-color lid shares print coordinates and filament components across both
 
 test('organic motifs survive project reload and create distinct printable accent meshes',async()=>{
  const signatures=new Set<number>();
- for(const motif of ['olive','ginkgo','fern','tide','pebbles','grain'] as const){
+ for(const motif of ['olive','ginkgo','fern','tide','pebbles','grain','cellular'] as const){
   const p=defaultProject();p.lid=true;p.lidDesign={olive:true,motif,fit:'inset',pattern:'smooth',rimHeight:2,handle:'none'};
   const project=parseProject(JSON.stringify(p));assert.equal(project.lidDesign?.motif,motif);
   const parts=await buildKit(project),face=parts.find(x=>x.name==='lid-olive')!;
   assert.ok(face.stl.byteLength>1000);assert.ok(Math.abs(face.inspection.bounds.max[2]-1.6)<.001);
   signatures.add(face.stl.byteLength);
  }
- assert.equal(signatures.size,6);
+ assert.equal(signatures.size,7);
 });
