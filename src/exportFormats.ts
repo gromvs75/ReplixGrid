@@ -21,7 +21,7 @@ export function formatExport(parts:ExportPart[],format:ExportFormat,objInstructi
  const positions=meshes.map(mesh=>{let minX=Infinity,maxX=-Infinity,minY=Infinity,minZ=Infinity;for(const p of mesh.vertices){minX=Math.min(minX,p[0]);maxX=Math.max(maxX,p[0]);minY=Math.min(minY,p[1]);minZ=Math.min(minZ,p[2]);}const position=[cursor-minX,-minY,-minZ];cursor+=maxX-minX+10;return position;});
  const base=parts.findIndex(p=>p.name==='lid'),accent=parts.findIndex(p=>p.name==='lid-olive');
  const grouped=base>=0&&accent>=0;
- if(grouped)positions[accent]=positions[base];
+ if(grouped){positions[base][2]=Math.max(positions[accent][2],positions[base][2]);positions[accent]=positions[base];}
  if(format==='3mf'){
   const materials=parts.map(p=>`<base name="${escapeXML(p.name)}" displaycolor="${p.color.toUpperCase()}FF"/>`).join('');
   const objects=meshes.map((mesh,i)=>`<object id="${i+2}" type="model" name="${escapeXML(parts[i].name)}" pid="1" pindex="${i}"><mesh><vertices>${mesh.vertices.map(v=>`<vertex x="${v[0]}" y="${v[1]}" z="${v[2]}"/>`).join('')}</vertices><triangles>${mesh.faces.map(f=>`<triangle v1="${f[0]}" v2="${f[1]}" v3="${f[2]}"/>`).join('')}</triangles></mesh></object>`).join('');

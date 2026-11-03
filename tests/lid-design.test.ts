@@ -97,3 +97,32 @@ test('organic motifs survive project reload and create distinct printable accent
  }
  assert.equal(signatures.size,7);
 });
+
+test('raised lids leave the motif openings empty above a solid backing',async()=>{
+ for(const fit of ['inset','outer'] as const)for(const motif of ['cellular','ginkgo'] as const){
+  const p=defaultProject();p.lid=true;p.lidDesign={fit,olive:true,raised:true,motif,pattern:'smooth',handle:'none',rimHeight:2};
+  const parts=await buildKit(parseProject(JSON.stringify(p)));
+  const base=parts.find(x=>x.name==='lid')!,face=parts.find(x=>x.name==='lid-olive')!;
+  const near=(a:number,b:number)=>assert.ok(Math.abs(a-b)<.001);
+  const up=fit==='inset';
+  near(up?base.inspection.bounds.max[2]:base.inspection.bounds.min[2],1.6);
+  near(up?face.inspection.bounds.min[2]:face.inspection.bounds.max[2],1.6);
+  near(up?face.inspection.bounds.max[2]:face.inspection.bounds.min[2],up?3.2:0);
+  assert.deepEqual(base.position,face.position);
+  const flush=await buildKit({...p,lidDesign:{...p.lidDesign,raised:false}});
+  assert.ok(flush.find(x=>x.name==='lid')!.inspection.volume>base.inspection.volume+10);
+  const xml=new TextDecoder().decode(formatExport([base,face],'3mf').data);
+  assert.match(xml,/<item objectid="4" transform="1 0 0 0 1 0 0 0 1 0 0 0"/);
+ }
+});
+
+test('cutwork keeps one continuous accent with open recesses across both lid fits',async()=>{
+ for(const fit of ['inset','outer'] as const)for(const motif of ['olive','fern','ginkgo','tide','grain'] as const){
+  const p=defaultProject();p.lid=true;p.lidDesign={fit,olive:true,raised:true,cutwork:true,motif,pattern:'smooth',handle:'none',rimHeight:2};
+  const parts=await buildKit(parseProject(JSON.stringify(p))),face=parts.find(v=>v.name==='lid-olive')!;
+  // buildKit inspects each mesh for connectivity. Check that the pattern covers
+  // the face and still leaves a substantial area of backing visible.
+  const b=face.inspection.bounds.max,coverage=face.inspection.volume/(b[0]*b[1]*1.6);
+  assert.ok(coverage>.45&&coverage<.95,motif+': '+coverage);
+ }
+});

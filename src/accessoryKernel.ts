@@ -42,7 +42,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
  const owned:Manifold[]=[],keep=(m:Manifold)=>{owned.push(m);return m;},parts:KitPart[]=[];
  const sections:CrossSection[]=[],keepSection=(s:CrossSection)=>{sections.push(s);return s;};
  const solid=(stl:ArrayBuffer)=>{const t=decodeSTL(stl),mesh=new wasm.Mesh({numProp:3,vertProperties:new Float32Array(t.flat(2)),triVerts:new Uint32Array(t.flat().map((_,i)=>i))});mesh.merge();return keep(new wasm.Manifold(mesh));};
- const emit=(body:Manifold,name:string,kind:KitPart['kind'],level:number,position:Point=[0,0,0])=>{
+ const emit=(body:Manifold,name:string,kind:KitPart['kind'],level:number,position:Point=[0,0,0],sharedZ=false)=>{
   if(body.status()!=='NoError')throw new Error(`${name}: ошибка геометрии`);
   const tolerance=Math.max(p.width,p.depth,p.height)*1e-6;
   body=keep(keep(body.asOriginal()).simplify(tolerance));
@@ -51,7 +51,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
   const original=triangles;triangles=removeCollapsedFaces(weldNearVertices(original,tolerance*.2));
   let raw:ReturnType<typeof inspectSurface>;
   try{raw=inspectSurface(decodeSTL(encodeSTL(triangles)));}catch(error){if(kind!=='lid-handle'||!(error instanceof Error)||!error.message.includes('non-manifold'))throw error;triangles=removeCollapsedFaces(weldNearVertices(original,tolerance*.02));raw=inspectSurface(decodeSTL(encodeSTL(triangles)));}
-  const min=raw.bounds.min;
+  const min:Point=[raw.bounds.min[0],raw.bounds.min[1],sharedZ?0:raw.bounds.min[2]];
   const stl=encodeSTL(triangles.map(t=>t.map(v=>v.map((n,k)=>n-min[k]) as Point) as Triangle));
   parts.push({name,kind,level,stl,inspection:inspectSurface(decodeSTL(stl)),position:position.map((n,k)=>n+min[k]) as Point,color:kind==='cup'?'#c0cdb5':partColor(p,kind==='shell'?'shell':'organizer')});
  };
@@ -109,9 +109,11 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Clip to an inset so the edge and the existing mating lip remain intact.
     let accent:Manifold|undefined;
     if(design?.olive){
-     const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection,design.motif);
+     const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection,design.motif,design.cutwork);
      accent=keep(motif.extrude(plateThickness/2));
-     plate=keep(plate.subtract(accent));
+     plate=design.raised
+      ?keep(keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness/2)).translate([0,0,plateThickness/2]))
+      :keep(plate.subtract(accent));
     }else if(design&&design.pattern==='lines'){
      const mask=keep(wasm.Manifold.extrude([footprintContour(lp,inset?outer-2:-3)],1));
      const grooves:Manifold[]=[];
@@ -128,10 +130,14 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     }
     // Print broad face down; invert for assembled preview only (see preview worker).
     const lidZ=baseZ+h+(inset?0:4.5);
-    emit(lip?keep(plate.add(lip)):plate,'lid','lid',i,[0,0,lidZ]);
+    // Raised inset lids print backing first. Both colors must keep the same Z origin.
+    const raised=!!(design?.olive&&design.raised),faceUp=raised&&inset;
+    const orient=(m:Manifold)=>faceUp?keep(keep(m.rotate([180,0,0])).translate([0,lp.depth,plateThickness])):m;
+    const origin:Point=[0,0,lidZ-(faceUp?plateThickness:0)];
+    emit(orient(lip?keep(plate.add(lip)):plate),'lid','lid',i,origin,raised);
     if(accent){
      parts[parts.length-1].color=design?.baseColor??'#f7f3e8';
-     emit(accent,'lid-olive','lid',i,[0,0,lidZ]);
+     emit(orient(accent),'lid-olive','lid',i,origin,raised);
      parts[parts.length-1].color=design?.patternColor??'#687749';
     }
     if(design?.handle&&design.handle!=='none'){
