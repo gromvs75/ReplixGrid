@@ -15,6 +15,18 @@ Start with a three-compartment organizer for your desk. The example below is 180
 
 ![Shape controls and a finished sloped capsule with three compartments](images/capsule-sloped.jpg)
 
+## Try a two-tone lid (optional)
+
+A lid needs a level rim. If you want to keep the sloped capsule from the example, click **Save project** first. Then choose **Capsule** and the **Flat** height profile under **Shape**, and click **Create from template**.
+
+1. Open **Shape → Lid** and add a lid. Under **Lid fit**, choose **Overlapping** for a lid that covers the rim or **Inset** for a lid that sits flush inside it. The two-tone inset lid needs walls at least 2 mm thick and an inside depth of at least 5.2 mm.
+2. Enable **Two-tone pattern** and choose a **Lid pattern**. To try the fan-shaped leaves in the gallery, select **Ginkgo leaves**.
+3. Set **Lid base color** to the background color and **Lid pattern color** to the color of the drawing. For the combination shown below, choose cream for the base and olive green for the pattern.
+
+![Two-tone lids, from left to right. Top row shows Olive branch, Ginkgo leaves and Fern frond. Bottom row shows Tidal waves, River pebbles and Growth rings.](images/lid-motifs.svg)
+
+For printing, choose **3MF** and assign the base and pattern to their filament slots. In the slicer, keep both parts together with the patterned face against the bed. The two-tone plate is 3.2 mm thick, with a 1.6 mm patterned face and a 1.6 mm solid backing.
+
 ## Download your first print
 
 1. Open **Print** and choose your printer configuration or enter its build volume.
