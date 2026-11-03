@@ -1,29 +1,37 @@
-# ReplixGrid user guide
+# Your first ReplixGrid organizer
 
-Current as of November 2, 2026. Control names may differ with the selected language. ReplixGrid creates geometry for printing; final print preparation happens in your slicer.
+[Русская инструкция](USER-GUIDE-RU.md) · [Open ReplixGrid in English](https://grid.replixcast.com/?lang=en)
 
-## Create an organizer
+Start with a three-compartment organizer for your desk. The example below is 180 × 90 mm, with a low front for easy access and a taller back. All you need to design it is a browser. To prepare the file for your printer, open it in your usual slicer.
 
-1. Open the app and choose a shape or template. Set the width, depth, height, and thicknesses. Some settings depend on the chosen shape and other options.
-2. Select a compartment and split it. Select and move dividers to change the layout; the top view makes positioning easier.
-3. Select an outer wall or divider to adjust its height and available transitions. If desired, configure rounded corners, a decorative shell, panels, or inserts. The interface warns when settings are incompatible.
-4. Inspect the model from several angles in 3D. Clearances and fit depend on the printer and material, so print a small test piece first when using a new combination.
+## Build the example
+
+1. **Open** [grid.replixcast.com](https://grid.replixcast.com/?lang=en). Use the language menu in the top bar to change languages. If you already have a design you want to keep, click **Save project** to download an editable copy before starting.
+2. **Create the body.** Open **Shape**, choose **Capsule** under **Base** and **Sloped** under **Height profile**, then click **Create from template**. The preview should show two dividers and three numbered compartments. The rim rises from 22 to 70 mm. Creating a template replaces the current design; the curved undo arrow restores it.
+3. **Fit it to your space.** Under **Shape → Dimensions**, enter the outside width and depth in millimeters. Click a numbered compartment to read its inside dimensions. For example, if you need 60 mm of clear space for a tool, check the inside measurement after adjusting the body.
+4. **Adjust the layout if needed.** Switch to **Top**, select a compartment, set **Number of parts** to **2**, then click **Split in width** or **Split in depth**. Only the selected compartment splits. Click a divider to adjust its position, or select an element from **All walls and compartments** in the right panel. Return to **3D** to inspect the result.
+
+![Shape controls and a finished sloped capsule with three compartments](images/capsule-sloped.jpg)
+
+## Download your first print
+
+1. Open **Print** and choose your printer configuration or enter its build volume.
+2. Click **↓ Download** in the top bar. In **Check and download**, choose **Organizer and accessories**. If you added a shell and want it too, choose the whole kit.
+3. Choose **STL** for a single-color body, or **3MF** to keep separate parts, colors and filament assignments. Wait for the geometry and size checks. If a part does not fit, correct the dimensions or build volume and reopen the dialog.
+4. Click **↓ Download STL** or **↓ Download 3MF** at the bottom of the dialog. If several STL files arrive in a ZIP, extract them first.
+5. Open the model in your slicer. Check its size in millimeters, place the organizer base on the bed, and arrange any separate parts. Select your printer and material profiles, slice, and inspect the first layer and the dividers in the layer preview before printing.
 
 ## Projects and backups
 
-Open **My projects** and save a named copy. The open project saves automatically. You can also search, rename, open, delete, or download projects there. Unnamed work is retained as a draft. Download a project JSON file as a backup or to transfer it, and use the project import control to open it. A damaged file should report a validation error without replacing the current project.
+Open **My projects** and save a named copy. The open project saves automatically. You can also search, rename, open, delete, or download projects there. Unnamed work is retained as a draft. Download a project JSON file as a backup or to transfer it, and click **Open** in the top bar to load it. A damaged file should report a validation error without replacing the current project.
 
 The library is stored in your browser and tied to the site address. Clearing site data or changing browsers, devices, or addresses can make it unavailable. Keep a separate project-file backup. Filament slots are stored separately in the browser and are not included in project JSON; configure them again on another device.
 
-## Prepare and export
+## Filaments and export options
 
-1. In **Print**, choose your printer and configuration or enter your build volume. Presets set dimensions only; they do not supply printer or material profiles.
-2. If needed, configure filament slots. On a U1, the first four correspond to T0–T3. In the export dialog, assign available slots to parts. Orca may assign the first filament to parts left unassigned.
-3. Choose the parts and format. **3MF** contains parts, colors, and selected slot assignments. **STL** does not contain color; multiple STL files download as a ZIP. **OBJ** uses an accompanying MTL for colors. 3MF does not include printer or filament profiles.
-4. Wait for the checks and download the file. Checks cover mesh closure and individual part dimensions, with a 2 mm margin at the bed edges. They do not check placement of the complete kit, overhangs, or fine features.
-5. Open the file in your slicer. Check the millimeter scale, orientation, arrangement of all objects, colors, and slot numbers. Choose your own printer and material profiles, slice the model, and inspect the layers before printing.
+For a multicolor 3MF, configure the available slots in **Print** with the same numbers and colors as your slicer. On a Snapmaker U1 the first four correspond to T0–T3. Assign a slot to each part in the download dialog, then verify the assignments in Snapmaker Orca. Unassigned parts may use the first filament. Your printer and material profiles come from your slicer.
 
-The owner confirmed import of a kit with three assigned slots in Snapmaker Orca 2.4.1. This does not guarantee compatibility with every slicer or model.
+For a colored OBJ, keep the OBJ and its MTL file in the same folder. The export check allows a 2 mm margin at the bed edges for each part. Arrange the whole kit and check overhangs and fine details in the slicer.
 
 ## Print a large organizer in sections
 
