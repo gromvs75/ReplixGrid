@@ -42,3 +42,16 @@ test('a 10 mm capsule wall accepts a large radius or chamfer at the sloped divid
   assert.ok(inspection.volume>0);
  }
 });
+
+test('finishing a long notched rim with inner fillets retains one connected tray',async()=>{
+ const p={...defaultProject(),width:268,depth:74,height:35,wallThickness:2,floorThickness:2,
+  cornerRadius:1.5,innerCornerRadius:3,heights:{front:21},transitions:['left' as const],
+  wallProfiles:{right:{start:20.4,end:35,style:'straight' as const}},
+  cutouts:{front:{shape:'smooth' as const,width:.21608623548922054,depth:10,position:.3}}};
+ const sharp=await buildOrganizer(p);
+ for(const style of ['chamfer','round'] as const){
+  const {inspection}=await buildOrganizer({...p,topEdge:{style,size:.4}});
+  assert.ok(inspection.volume<sharp.inspection.volume);
+  assert.ok(inspection.volume>sharp.inspection.volume*.99);
+ }
+});
