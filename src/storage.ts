@@ -86,3 +86,7 @@ export async function saveStyle(name:string,style:VisualStyle){
  return transaction<SavedStyle>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('visualStyles');r.onsuccess=()=>{s.put([...(Array.isArray(r.result)?r.result:[]),record],'visualStyles');done(record);};});
 }
 export async function deleteStyle(id:string){return transaction<void>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('visualStyles');r.onsuccess=()=>{s.put((Array.isArray(r.result)?r.result:[]).filter((v:SavedStyle)=>v.id!==id),'visualStyles');done();};});}
+
+// Drawer copies never write to the organizer library or its active session.
+export async function listDrawers(){return transaction<import('./drawer.js').DrawerLayout[]>('readonly',(tx,done)=>{const r=tx.objectStore('projects').get('drawerLayouts');r.onsuccess=()=>done(r.result??[]);});}
+export async function saveDrawer(drawer:import('./drawer.js').DrawerLayout){return transaction<void>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('drawerLayouts');r.onsuccess=()=>{s.put([structuredClone(drawer),...(r.result??[]).filter((v:{id:string})=>v.id!==drawer.id)],'drawerLayouts');done();};});}

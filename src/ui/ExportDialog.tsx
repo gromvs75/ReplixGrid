@@ -7,7 +7,7 @@ import type {inspectPrintParts} from '../preflight.js';
 import {download} from '../storage.js';
 import {filamentPrinterKey,slotMap,useFilaments} from '../filaments.js';
 export type ExportTarget='organizer'|'shell'|'all'|'kit'|'sample';
-export function ExportDialog({initial,project,onClose,onDone}:{initial:ExportTarget;project:Project;onClose:()=>void;onDone:(message:string)=>void}){
+export function ExportDialog({initial,project,onClose,onDone,fileName}:{initial:ExportTarget;project:Project;fileName?:string;onClose:()=>void;onDone:(message:string)=>void}){
  const dialog=useRef<HTMLDialogElement>(null),worker=useRef<Worker|null>(null),[format,setFormat]=useState<ExportFormat>('3mf'),[target,setTarget]=useState<ExportTarget>(initial),[report,setReport]=useState<ReturnType<typeof inspectPrintParts>|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(true);
  const palettes=useFilaments(s=>s.palettes),slots=palettes[filamentPrinterKey(project)]??[],mapping=slotMap(slots);
  const [partColors,setPartColors]=useState<{name:string;color:string}[]>([]);
@@ -17,10 +17,10 @@ export function ExportDialog({initial,project,onClose,onDone}:{initial:ExportTar
  useEffect(()=>{dialog.current?.showModal();return()=>dialog.current?.close();},[]);
  useEffect(()=>{
   setBusy(true);setReport(null);setError('');setChosenSlots({});let alive=true;
-  const w=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-hidden-fit-v2.js`,window.location.origin),{type:'module'});worker.current=w;
+  const w=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-drawer-v1.js`,window.location.origin),{type:'module'});worker.current=w;
   const timer=setTimeout(()=>{if(alive){w.terminate();setBusy(false);setError("Проверка заняла слишком много времени. Упростите узор или уменьшите число деталей.");}},120000);
   w.onerror=()=>{clearTimeout(timer);setBusy(false);setError("Не удалось запустить проверку геометрии.");};
-  w.onmessage=({data})=>{if(!alive)return;clearTimeout(timer);setBusy(false);if(!data.ok){setError(data.error);return;}if(data.report){setReport(data.report);setPartColors(data.partColors??[]);return;}if(data.formatted){download(data.formatted,`ReplixGrid-${target}.${data.extension}`,data.mime);done.current(`Скачано деталей: ${data.count}. Назначьте пластик и разложите детали в слайсере.`);}};
+  w.onmessage=({data})=>{if(!alive)return;clearTimeout(timer);setBusy(false);if(!data.ok){setError(data.error);return;}if(data.report){setReport(data.report);setPartColors(data.partColors??[]);return;}if(data.formatted){download(data.formatted,`${fileName?.replace(/[\\/:*?"<>|]/g,'-')||'ReplixGrid-'+target}.${data.extension}`,data.mime);done.current(`Скачано деталей: ${data.count}. Назначьте пластик и разложите детали в слайсере.`);}};
   w.postMessage({revision:1,project,part:target,purpose:'check'});
   return()=>{alive=false;clearTimeout(timer);w.terminate();worker.current=null;};
  },[project,target]);
