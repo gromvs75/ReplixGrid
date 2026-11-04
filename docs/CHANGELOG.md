@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — Wrapped shells on stacked trays
+
+- Add tiers while retaining a wrapped shell.
+- Size the stacking collar for the upper tier’s shell and keep the lower shell clear of it.
+- Export a separate shell for each decorated tier. Fit lower shells from underneath before stacking.
+
 ## 2026-11-04 — Shared styles
 
 - Save named color and pattern styles for reuse across projects and variants.

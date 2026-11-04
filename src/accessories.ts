@@ -1,3 +1,4 @@
+import {stackFit} from './stackFit.js';
 import {resolveWalls,type Project,type Cell,type Wall} from './model.js';
 import {regions} from './editor.js';
 import {honeyCellHeight,contourHeight,topAt} from './shell.js';
@@ -81,7 +82,7 @@ export function stackRimProblem(p:Project):string {
  return rimProblem(p,walls.map(w=>({...w,cutout:undefined})));
 }
 export function stackProblem(p:Project):string {
- return stackRimProblem(p)||(p.shell&&p.shell.mode!=='panels'?'Для ярусов выберите декоративные панели вместо цельной оболочки.':p.stack&&p.shell&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':p.relief?'Для посадки ярусов выберите гладкую поверхность.':'');
+ return stackRimProblem(p)||(p.shell?.snap?'Защёлки пока доступны для прямоугольной формы без наклона, рельефа, крышки, ярусов и разрезания.':p.stack&&p.shell?.mode==='panels'&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':p.relief?'Для посадки ярусов выберите гладкую поверхность.':'');
 }
 export const lidPlateThickness=(p:Project)=>p.lidDesign?.olive?3.2:2;
 export function validateAccessories(p:Project,walls:Wall[]) {
@@ -98,7 +99,8 @@ export function validateAccessories(p:Project,walls:Wall[]) {
   const s=p.stack;
   if(!Array.isArray(s.levels)||s.levels.length<2||s.levels.length>5||!Number.isInteger(s.active)||s.active<0||s.active>=s.levels.length||!Number.isFinite(s.gap)||s.gap<.2||s.gap>1)throw new Error('Некорректные параметры ярусов.');
   const problem=stackProblem({...p,stack:undefined});if(problem)throw new Error(problem);
-  for(const [i,level] of s.levels.entries())if(i!==s.active){const lp=levelProject(p,i);resolveWalls(lp);const why=stackRimProblem(lp);if(why)throw new Error(`Ярус ${i+1}: ${why}`);}
+  for(const [i,level] of s.levels.entries())if(i!==s.active){const lp=levelProject(p,i);resolveWalls(lp);const why=stackProblem(lp);if(why)throw new Error(`Ярус ${i+1}: ${why}`);}
+  for(let i=0;i<s.levels.length-1;i++){const lower=levelProject(p,i),fit=stackFit(levelProject(p,i+1),s.gap);if((lower.shell&&lower.shell.mode!=='panels'||fit.inner>s.gap)&&resolveWalls(lower)[0].startHeight-fit.flare-fit.clearance<lower.floorThickness+3)throw new Error('Для посадки с оболочкой увеличьте высоту нижнего яруса.');}
  }
  if(p.cups){
   if(!Array.isArray(p.cups)||p.cups.length>16||new Set(p.cups.map(c=>c.cellId)).size!==p.cups.length)throw new Error('Не больше 16 стаканчиков: один на отсек.');
@@ -155,3 +157,5 @@ export function setLevelCount(p:Project,count:number):Project {
  }
  return d;
 }
+
+export function hasAnyShell(p:Project):boolean {return !!p.shell||!!p.stack?.levels.some((level,i)=>i!==p.stack!.active&&!!level.settings?.shell);}

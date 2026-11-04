@@ -669,5 +669,7 @@
   "Не удалось сохранить стили.": "Impossibile salvare gli stili.",
   "Удалить стиль": "Elimina stile",
   "Цвет основы крышки": "Colore di base del coperchio",
-  "Цвет узора крышки": "Colore del motivo del coperchio"
+  "Цвет узора крышки": "Colore del motivo del coperchio",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta l’altezza del livello inferiore per contenere il guscio e il bordo.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Infila il guscio del livello inferiore dal basso fino al bordo di impilamento."
 }

@@ -679,5 +679,7 @@
   "Цвета крышки": "Lid colors",
   "Узор крышки": "Lid pattern",
   "Не удалось сохранить стили.": "Could not save styles.",
-  "Удалить стиль": "Delete style"
+  "Удалить стиль": "Delete style",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Increase the lower tier height to fit the shell and collar.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Slide the lower tier shell on from below, up to the stacking collar."
 }

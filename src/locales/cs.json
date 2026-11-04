@@ -669,5 +669,7 @@
   "Не удалось сохранить стили.": "Styly se nepodařilo uložit.",
   "Удалить стиль": "Smazat styl",
   "Цвет основы крышки": "Základní barva víka",
-  "Цвет узора крышки": "Barva vzoru víka"
+  "Цвет узора крышки": "Barva vzoru víka",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zvyšte spodní patro, aby se vešel plášť a spojovací lem.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuňte plášť spodního patra zespodu až ke spojovacímu lemu."
 }

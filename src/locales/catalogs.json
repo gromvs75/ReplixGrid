@@ -680,7 +680,9 @@
     "Цвета крышки": "Lid colors",
     "Узор крышки": "Lid pattern",
     "Не удалось сохранить стили.": "Could not save styles.",
-    "Удалить стиль": "Delete style"
+    "Удалить стиль": "Delete style",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Increase the lower tier height to fit the shell and collar.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Slide the lower tier shell on from below, up to the stacking collar."
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1361,7 +1363,9 @@
     "Цвета крышки": "Deckelfarben",
     "Узор крышки": "Deckelmuster",
     "Не удалось сохранить стили.": "Stile konnten nicht gespeichert werden.",
-    "Удалить стиль": "Stil löschen"
+    "Удалить стиль": "Stil löschen",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Erhöhen Sie den unteren Einsatz, damit Hülle und Stapelrand passen.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Schieben Sie die Hülle des unteren Einsatzes von unten bis zum Stapelrand auf."
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -2041,7 +2045,9 @@
     "Цвета крышки": "Couleurs du couvercle",
     "Узор крышки": "Motif du couvercle",
     "Не удалось сохранить стили.": "Impossible d’enregistrer les styles.",
-    "Удалить стиль": "Supprimer le style"
+    "Удалить стиль": "Supprimer le style",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Augmentez la hauteur du niveau inférieur pour loger la coque et le rebord.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Enfilez la coque du niveau inférieur par le bas jusqu’au rebord d’empilage."
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -2721,7 +2727,9 @@
     "Цвета крышки": "Colores de la tapa",
     "Узор крышки": "Patrón de la tapa",
     "Не удалось сохранить стили.": "No se pudieron guardar los estilos.",
-    "Удалить стиль": "Eliminar estilo"
+    "Удалить стиль": "Eliminar estilo",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta la altura del nivel inferior para alojar la carcasa y el reborde.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento."
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -3401,7 +3409,9 @@
     "Цвета крышки": "Χρώματα καπακιού",
     "Узор крышки": "Μοτίβο καπακιού",
     "Не удалось сохранить стили.": "Δεν ήταν δυνατή η αποθήκευση των στυλ.",
-    "Удалить стиль": "Διαγραφή στυλ"
+    "Удалить стиль": "Διαγραφή στυλ",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Αυξήστε το ύψος της κάτω βαθμίδας για να χωρέσουν το περίβλημα και το χείλος.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Περάστε το περίβλημα της κάτω βαθμίδας από κάτω μέχρι το χείλος στοίβαξης."
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -4081,7 +4091,9 @@
     "Цвета крышки": "Colori del coperchio",
     "Узор крышки": "Motivo del coperchio",
     "Не удалось сохранить стили.": "Impossibile salvare gli stili.",
-    "Удалить стиль": "Elimina stile"
+    "Удалить стиль": "Elimina stile",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta l’altezza del livello inferiore per contenere il guscio e il bordo.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Infila il guscio del livello inferiore dal basso fino al bordo di impilamento."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -4761,7 +4773,9 @@
     "Цвета крышки": "Кольори кришки",
     "Узор крышки": "Візерунок кришки",
     "Не удалось сохранить стили.": "Не вдалося зберегти стилі.",
-    "Удалить стиль": "Видалити стиль"
+    "Удалить стиль": "Видалити стиль",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Для посадки з оболонкою збільште висоту нижнього ярусу.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Оболонка нижнього ярусу надягається знизу до посадкового бортика."
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -5441,7 +5455,9 @@
     "Цвета крышки": "Barvy víka",
     "Узор крышки": "Vzor víka",
     "Не удалось сохранить стили.": "Styly se nepodařilo uložit.",
-    "Удалить стиль": "Smazat styl"
+    "Удалить стиль": "Smazat styl",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zvyšte spodní patro, aby se vešel plášť a spojovací lem.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuňte plášť spodního patra zespodu až ke spojovacímu lemu."
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -6121,7 +6137,9 @@
     "Цвета крышки": "Kolory pokrywy",
     "Узор крышки": "Wzór pokrywy",
     "Не удалось сохранить стили.": "Nie udało się zapisać stylów.",
-    "Удалить стиль": "Usuń styl"
+    "Удалить стиль": "Usuń styl",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zwiększ wysokość dolnego poziomu, aby zmieścić osłonę i kołnierz.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuń osłonę dolnego poziomu od dołu aż do kołnierza łączącego."
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -6803,6 +6821,8 @@
     "Цвета крышки": "盖子颜色",
     "Узор крышки": "盖子图案",
     "Не удалось сохранить стили.": "无法保存样式。",
-    "Удалить стиль": "删除样式"
+    "Удалить стиль": "删除样式",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "请增加下层高度，为外壳和堆叠边缘留出空间。",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "从下方套入下层外壳，直到堆叠边缘。"
   }
 }

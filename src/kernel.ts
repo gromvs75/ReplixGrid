@@ -17,9 +17,9 @@ import { resolveWalls, hasCapsuleSlope, capsuleTop, limitSteppedChamfer, type Pr
 import {shellLayout,wallOutline} from './shell.js';
 import { encodeSTL,decodeSTL,inspectSurface,removeCollapsedFaces,weldNearVertices,type Point,type Triangle } from './stl.js';
 let modulePromise: ReturnType<typeof Module> | undefined;
-export async function buildOrganizer(project: Project) {return buildPart(project,'organizer');}
-export async function buildShell(project:Project){if(project.shell?.mode==='panels')throw new Error('Панели экспортируются отдельными деталями комплекта.');return buildPart(project,'shell');}
-async function buildPart(project:Project,part:'organizer'|'shell') {
+export async function buildOrganizer(project: Project,shellSupport=true) {return buildPart(project,'organizer',shellSupport);}
+export async function buildShell(project:Project,shellSupport=true){if(project.shell?.mode==='panels')throw new Error('Панели экспортируются отдельными деталями комплекта.');return buildPart(project,'shell',shellSupport);}
+async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=true) {
   project=limitSteppedChamfer(project);
   const walls=part==='shell'?shellLayout(project).panels:resolveWalls(project);
   const wasm=await (modulePromise ??= Module()); wasm.setup();
@@ -81,7 +81,7 @@ async function buildPart(project:Project,part:'organizer'|'shell') {
     const clipped=applyShellClips(wasm,project,tilted,part==='shell',keep);
     let union=part==='organizer'?cutPanelSockets(wasm,project,clipped,keep):clipped;
     if(part==='organizer'&&project.baseBand)union=applyBaseBand(wasm,project,union,keep);
-    if(hasShellSupport(project)||hasDecorativeShellSupport(project)){
+    if(shellSupport&&(hasShellSupport(project)||hasDecorativeShellSupport(project))){
       if(part==='organizer'&&!project.baseBand){
         const support=keep(wasm.Manifold.extrude([footprintContour(project,shellSupportWidth(project))],shellSupportHeight(project)));
         union=keep(union.add(support));

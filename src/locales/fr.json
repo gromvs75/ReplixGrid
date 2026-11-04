@@ -669,5 +669,7 @@
   "Не удалось сохранить стили.": "Impossible d’enregistrer les styles.",
   "Удалить стиль": "Supprimer le style",
   "Цвет основы крышки": "Couleur de base du couvercle",
-  "Цвет узора крышки": "Couleur du motif du couvercle"
+  "Цвет узора крышки": "Couleur du motif du couvercle",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Augmentez la hauteur du niveau inférieur pour loger la coque et le rebord.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Enfilez la coque du niveau inférieur par le bas jusqu’au rebord d’empilage."
 }
