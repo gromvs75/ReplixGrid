@@ -731,5 +731,7 @@
   "Лоток": "Tray",
   "Создать и настроить": "Create and edit",
   "Добавляется независимая копия. Исходный проект или вариант не изменится.": "An independent copy is added. The original project or variant stays unchanged.",
-  "Сохранённых проектов пока нет. Можно создать новый органайзер прямо в ящике.": "No saved projects yet. You can create a new organizer directly in the drawer."
+  "Сохранённых проектов пока нет. Можно создать новый органайзер прямо в ящике.": "No saved projects yet. You can create a new organizer directly in the drawer.",
+  "Повернуть вид на 90°": "Otočit pohled o 90°",
+  "Передняя сторона": "Přední strana"
 }

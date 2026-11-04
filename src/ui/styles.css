@@ -328,3 +328,10 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 @media(max-width:1100px){.drawer-workspace{grid-template-columns:220px minmax(280px,1fr)}.drawer-inspector{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}.drawer-inspector h2{grid-column:1/-1}}@media(max-width:700px){.drawer-workspace{display:flex;flex-direction:column;padding:0 12px 20px}.drawer-settings,.drawer-inspector{width:100%;display:flex}.drawer-header{padding:12px;gap:8px}.drawer-save{flex-basis:100%;order:5}.drawer-title{padding:18px 14px;flex-wrap:wrap}.drawer-board{min-height:320px}.drawer-editor-context strong{display:none}}
 
 .drawer-app .modal-backdrop{position:fixed;inset:0;background:#182b4055;display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px}.drawer-app section{margin-top:0;padding-top:0;border-top:0}.drawer-app .drawer-dialog{padding:25px}.drawer-header{height:auto;min-height:82px}.drawer-app .drawer-settings,.drawer-app .drawer-inspector{max-height:none}.drawer-app .drawer-welcome{padding:35px}.drawer-app .drawer-number input{background:var(--control)}
+
+/* Match the organizer inspector to the rounded drawer and left tool cards. */
+.app>.workspace>.right-panel{align-self:start;margin:20px 20px 20px 0;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);max-height:calc(100vh - 160px);min-width:0;overscroll-behavior:contain;scrollbar-width:thin}
+@media(min-width:821px){.app>.workspace{grid-template-columns:minmax(0,1fr) 290px;background:var(--scene)}}
+@media(min-width:1600px){.app>.workspace{grid-template-columns:minmax(0,1fr) 300px}}
+@media(max-width:820px){.app>.workspace>.right-panel{margin:16px;max-height:none}}
+.drawer-board{user-select:none}.drawer-front{fill:var(--muted);font-size:5px;letter-spacing:.6px}.drawer-canvas-tools{flex-wrap:wrap}.drawer-canvas-tools .drawer-view-turn{font-size:12px}
