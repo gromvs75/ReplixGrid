@@ -1,4 +1,4 @@
-import {stackFit} from './stackFit.js';
+import {stackFit,SHELL_SEAM} from './stackFit.js';
 import {buildDecorativePanels} from './decorativePanels.js';
 import {oliveFace} from './oliveLid.js';
 import {shellGap} from './reliefSize.js';
@@ -58,31 +58,24 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
  };
  const ring=(source:Project,outer:number,inner:number,height:number,z:number)=>keep(keep(wasm.Manifold.extrude([footprintContour(source,outer),footprintContour(source,inner).reverse()],height)).translate([0,0,z]));
  try{
-  const count=p.stack?.levels.length??1;let baseZ=0;
+  const count=p.stack?.levels.length??1;let baseZ=0;const elevations:number[]=[];
   for(let i=0;i<count;i++){
    const lp=p.stack?levelProject(p,i):{...p,lid:undefined,cups:undefined};
+   const incoming=p.stack&&i>0?stackFit(lp,p.stack.gap,levelProject(p,i-1)):null;
+   const outgoing=p.stack&&i<count-1?stackFit(levelProject(p,i+1),p.stack.gap,lp):null;
+   const base=incoming?.hidden?incoming.base:0;
+   baseZ+=base;elevations.push(baseZ);
    // Keep lid presence when deciding whether a sleeve ledge is supported.
-   const built=await cachedOrganizer({...lp,lid:p.stack?undefined:p.lid,cups:undefined},!p.stack||i===count-1);let body:Manifold|null=null;
+   const built=await cachedOrganizer({...lp,lid:p.stack?undefined:p.lid,cups:undefined},!base);let body:Manifold|null=null;
    const h=resolveWalls(lp)[0].startHeight;
    if(p.stack&&i<count-1){
     body=keep(solid(built.stl).translate(built.position));
     const fit=stackFit(levelProject(p,i+1),p.stack.gap,lp),gap=fit.inner,out=fit.outer;
     // Collar belongs to the LOWER tray: the next tray still prints on its entire flat bottom.
     const additions:Manifold[]=[];
-    if(fit.refined){
-     // Continuous 45-degree transition: no modeled stair steps on a visible sleeve joint.
-     const loft=(r0:number,z0:number,r1:number,z1:number)=>keep(wasm.Manifold.hull([
-      ...footprintContour(lp,r0).map(([x,y])=>[x,y,z0] as Point),
-      ...footprintContour(lp,r1).map(([x,y])=>[x,y,z1] as Point)
-     ]));
-     const bore=keep(keep(wasm.Manifold.extrude([footprintContour(lp,-lp.wallThickness)],fit.flare+1)).translate([0,0,h-fit.flare-.5]));
-     additions.push(keep(loft(0,h-fit.flare,out,h).subtract(bore)));
-     additions.push(ring(lp,out,gap,1.9,h-.4));
-     // Small outside chamfer softens the rim while retaining a 1 mm top edge.
-     const lipBore=keep(keep(wasm.Manifold.extrude([footprintContour(lp,gap)],1)).translate([0,0,h+1.2]));
-     additions.push(keep(loft(out,h+1.5,out-.2,h+1.8).subtract(lipBore)));
+    if(fit.hidden){
+     additions.push(ring(lp,fit.tongueOuter,fit.tongueInner,fit.tongueHeight+.2,h-.2));
     }else{
-     // Preserve the established fit for trays without wrapped shells.
      const steps=Math.ceil(fit.flare/.45),rise=fit.flare/steps;
      for(let step=1;step<=steps;step++)additions.push(ring(lp,out*step/steps,-lp.wallThickness,rise,h-fit.flare+(step-1)*rise));
      additions.push(ring(lp,out,gap,2.4,h-.4));
@@ -106,7 +99,15 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Cut the seat from the finished tray, including any full-height dividers.
     const pocket=keep(wasm.Manifold.extrude([footprintContour(lp,seatOffset)],h+1));
     const cutter=keep(pocket.translate([0,0,h-plateThickness]));
-    body=keep(keep(solid(built.stl).translate(built.position)).subtract(cutter));
+    body=keep((body??keep(solid(built.stl).translate(built.position))).subtract(cutter));
+   }
+   if(base&&incoming){
+    body??=keep(solid(built.stl).translate(built.position));
+    const slab=keep(keep(wasm.Manifold.extrude([footprintContour(lp,0)],base)).translate([0,0,-base]));
+    body=keep(body.add(slab));
+    if(lp.shell&&lp.shell.mode!=='panels')body=keep(body.add(keep(keep(wasm.Manifold.extrude([footprintContour(lp,shellGap(lp)+lp.shell.thickness)],SHELL_SEAM)).translate([0,0,-base]))));
+    const socket=ring(lp,incoming.tongueOuter+p.stack!.gap,incoming.tongueInner-p.stack!.gap,incoming.socketDepth+.01,-base-.01);
+    body=keep(body.subtract(socket));
    }
    if(body)emit(body,count>1?`tray-${i+1}`:'organizer','organizer',i,[0,0,baseZ]);
    else parts.push({name:count>1?`tray-${i+1}`:'organizer',kind:'organizer',level:i,...built,position:[built.position[0],built.position[1],built.position[2]+baseZ],color:partColor(lp,'organizer')});
@@ -174,18 +175,17 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    }
    if(lp.shell?.mode==='panels')for(const b of await cachedPanels({...lp,cups:undefined}))parts.push({...b,name:count>1?`tier-${i+1}-${b.name}`:b.name,position:[b.position[0],b.position[1],b.position[2]+baseZ],kind:'shell',level:i,color:partColor(lp,'shell')});
    if(lp.shell&&lp.shell.mode!=='panels'){
-    const fit=p.stack&&i<count-1?stackFit(levelProject(p,i+1),p.stack.gap,lp):null;
-    // Regenerate a complete top border below the collar instead of cutting its pattern.
-    const sleeve=fit?{...lp,height:h-fit.flare-fit.clearance,heights:{},wallProfiles:undefined,transitions:[]}:{...lp,lid:p.stack?undefined:p.lid};
-    const b=await buildShell(sleeve,!fit);
-    parts.push({...b,name:count>1?`tier-${i+1}-shell`:'shell',kind:'shell',level:i,position:[b.position[0],b.position[1],b.position[2]+baseZ],color:partColor(lp,'shell')});
+    const extension=base?base-SHELL_SEAM:0;
+    const sleeve=extension?{...lp,height:h+extension,heights:{},wallProfiles:undefined,transitions:[]}:{...lp,lid:p.stack?undefined:p.lid};
+    const b=await buildShell(sleeve,!base);
+    parts.push({...b,name:count>1?`tier-${i+1}-shell`:'shell',kind:'shell',level:i,position:[b.position[0],b.position[1],b.position[2]+baseZ-extension],color:partColor(lp,'shell')});
    }
    baseZ+=h;
   }
   if(p.stack){
    let elevation=0;
    for(let level=0;level<count;level++){
-    const lp=levelProject(p,level);
+    const lp=levelProject(p,level);elevation=elevations[level];
     if(lp.cups?.length){
      const local=await buildKit({...lp,shell:undefined,lid:level===count-1&&p.lid&&p.lidDesign?.fit==='inset',lidDesign:p.lidDesign});
      for(const part of local.filter(part=>part.kind==='cup'))parts.push({...part,name:`tier-${level+1}-${part.name}`,level,position:[part.position[0],part.position[1],part.position[2]+elevation]});

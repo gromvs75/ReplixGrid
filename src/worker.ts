@@ -1,3 +1,4 @@
+import {tierElevation} from './accessories.js';
 import {buildKit} from './accessoryKernel.js';
 import {inspectPrintParts} from './preflight.js';
 import {formatExport,type ExportFormat,type ExportPart} from './exportFormats.js';
@@ -48,7 +49,7 @@ globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;
     if(purpose==='preview'&&(project.stack||project.lid||project.cups?.length||project.shell?.mode==='panels')){
       const parts=await buildKit(project),active=project.stack?.active??0;
       const organizer=parts.find(p=>p.kind==='organizer'&&p.level===active)!,shell=project.stack?undefined:parts.find(p=>p.kind==='shell');
-      const activeZ=parts.filter(p=>p.kind==='organizer'&&p.level<active).reduce((sum,_,i)=>sum+(i===active?project.height:project.stack!.levels[i].height),0);
+      const activeZ=project.stack?tierElevation(project,active):0;
       const extras=parts.filter(p=>p!==organizer&&p!==shell);
       globalThis.postMessage({revision,ok:true,organizer:organizer.stl,organizerPosition:[organizer.position[0],organizer.position[1],organizer.position[2]-activeZ],shell:shell?.stl,shellPosition:shell?.position,extras,activeZ},{transfer:parts.map(p=>p.stl)});return;
     }

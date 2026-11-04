@@ -682,7 +682,8 @@
     "Не удалось сохранить стили.": "Could not save styles.",
     "Удалить стиль": "Delete style",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Increase the lower tier height to fit the shell and collar.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Slide the lower tier shell on from below, up to the stacking collar."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Slide the lower tier shell on from below, up to the stacking collar.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce the fit clearance: the tongue must fit within the wall thickness."
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1365,7 +1366,8 @@
     "Не удалось сохранить стили.": "Stile konnten nicht gespeichert werden.",
     "Удалить стиль": "Stil löschen",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Erhöhen Sie den unteren Einsatz, damit Hülle und Stapelrand passen.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Schieben Sie die Hülle des unteren Einsatzes von unten bis zum Stapelrand auf."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Schieben Sie die Hülle des unteren Einsatzes von unten bis zum Stapelrand auf.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Verringern Sie das Passungsspiel: Der Steg muss in die Wandstärke passen."
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -2047,7 +2049,8 @@
     "Не удалось сохранить стили.": "Impossible d’enregistrer les styles.",
     "Удалить стиль": "Supprimer le style",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Augmentez la hauteur du niveau inférieur pour loger la coque et le rebord.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Enfilez la coque du niveau inférieur par le bas jusqu’au rebord d’empilage."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Enfilez la coque du niveau inférieur par le bas jusqu’au rebord d’empilage.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Réduisez le jeu : la languette doit tenir dans l’épaisseur de la paroi."
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -2729,7 +2732,8 @@
     "Не удалось сохранить стили.": "No se pudieron guardar los estilos.",
     "Удалить стиль": "Eliminar estilo",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta la altura del nivel inferior para alojar la carcasa y el reborde.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce la holgura: la lengüeta debe caber en el grosor de la pared."
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -3411,7 +3415,8 @@
     "Не удалось сохранить стили.": "Δεν ήταν δυνατή η αποθήκευση των στυλ.",
     "Удалить стиль": "Διαγραφή στυλ",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Αυξήστε το ύψος της κάτω βαθμίδας για να χωρέσουν το περίβλημα και το χείλος.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Περάστε το περίβλημα της κάτω βαθμίδας από κάτω μέχρι το χείλος στοίβαξης."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Περάστε το περίβλημα της κάτω βαθμίδας από κάτω μέχρι το χείλος στοίβαξης.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Μειώστε το διάκενο: η προεξοχή πρέπει να χωρά στο πάχος του τοιχώματος."
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -4093,7 +4098,8 @@
     "Не удалось сохранить стили.": "Impossibile salvare gli stili.",
     "Удалить стиль": "Elimina stile",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta l’altezza del livello inferiore per contenere il guscio e il bordo.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Infila il guscio del livello inferiore dal basso fino al bordo di impilamento."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Infila il guscio del livello inferiore dal basso fino al bordo di impilamento.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Riduci il gioco: la linguetta deve rientrare nello spessore della parete."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -4775,7 +4781,8 @@
     "Не удалось сохранить стили.": "Не вдалося зберегти стилі.",
     "Удалить стиль": "Видалити стиль",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Для посадки з оболонкою збільште висоту нижнього ярусу.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Оболонка нижнього ярусу надягається знизу до посадкового бортика."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Оболонка нижнього ярусу надягається знизу до посадкового бортика.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Зменште зазор посадки: гребінь має вміщатися в товщині стінки."
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -5457,7 +5464,8 @@
     "Не удалось сохранить стили.": "Styly se nepodařilo uložit.",
     "Удалить стиль": "Smazat styl",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zvyšte spodní patro, aby se vešel plášť a spojovací lem.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuňte plášť spodního patra zespodu až ke spojovacímu lemu."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuňte plášť spodního patra zespodu až ke spojovacímu lemu.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmenšete vůli: pero se musí vejít do tloušťky stěny."
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -6139,7 +6147,8 @@
     "Не удалось сохранить стили.": "Nie udało się zapisać stylów.",
     "Удалить стиль": "Usuń styl",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zwiększ wysokość dolnego poziomu, aby zmieścić osłonę i kołnierz.",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuń osłonę dolnego poziomu od dołu aż do kołnierza łączącego."
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuń osłonę dolnego poziomu od dołu aż do kołnierza łączącego.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmniejsz luz pasowania: wypust musi mieścić się w grubości ściany."
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -6823,6 +6832,7 @@
     "Не удалось сохранить стили.": "无法保存样式。",
     "Удалить стиль": "删除样式",
     "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "请增加下层高度，为外壳和堆叠边缘留出空间。",
-    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "从下方套入下层外壳，直到堆叠边缘。"
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "从下方套入下层外壳，直到堆叠边缘。",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "请减小配合间隙：凸榫必须位于壁厚范围内。"
   }
 }

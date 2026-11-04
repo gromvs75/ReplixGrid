@@ -671,5 +671,6 @@
   "Цвет основы крышки": "Color base de la tapa",
   "Цвет узора крышки": "Color del patrón de la tapa",
   "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta la altura del nivel inferior para alojar la carcasa y el reborde.",
-  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento."
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento.",
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce la holgura: la lengüeta debe caber en el grosor de la pared."
 }
