@@ -66,13 +66,27 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    const h=resolveWalls(lp)[0].startHeight;
    if(p.stack&&i<count-1){
     body=keep(solid(built.stl).translate(built.position));
-    const fit=stackFit(levelProject(p,i+1),p.stack.gap),gap=fit.inner,out=fit.outer;
+    const fit=stackFit(levelProject(p,i+1),p.stack.gap,lp),gap=fit.inner,out=fit.outer;
     // Collar belongs to the LOWER tray: the next tray still prints on its entire flat bottom.
-    // Short stepped flare supports the outward lip without a bridge across the tray floor.
     const additions:Manifold[]=[];
-    const steps=Math.ceil(fit.flare/.45),rise=fit.flare/steps;
-    for(let step=1;step<=steps;step++)additions.push(ring(lp,out*step/steps,-lp.wallThickness,rise,h-fit.flare+(step-1)*rise));
-    additions.push(ring(lp,out,gap,2.4,h-.4));
+    if(fit.refined){
+     // Continuous 45-degree transition: no modeled stair steps on a visible sleeve joint.
+     const loft=(r0:number,z0:number,r1:number,z1:number)=>keep(wasm.Manifold.hull([
+      ...footprintContour(lp,r0).map(([x,y])=>[x,y,z0] as Point),
+      ...footprintContour(lp,r1).map(([x,y])=>[x,y,z1] as Point)
+     ]));
+     const bore=keep(keep(wasm.Manifold.extrude([footprintContour(lp,-lp.wallThickness)],fit.flare+1)).translate([0,0,h-fit.flare-.5]));
+     additions.push(keep(loft(0,h-fit.flare,out,h).subtract(bore)));
+     additions.push(ring(lp,out,gap,1.9,h-.4));
+     // Small outside chamfer softens the rim while retaining a 1 mm top edge.
+     const lipBore=keep(keep(wasm.Manifold.extrude([footprintContour(lp,gap)],1)).translate([0,0,h+1.2]));
+     additions.push(keep(loft(out,h+1.5,out-.2,h+1.8).subtract(lipBore)));
+    }else{
+     // Preserve the established fit for trays without wrapped shells.
+     const steps=Math.ceil(fit.flare/.45),rise=fit.flare/steps;
+     for(let step=1;step<=steps;step++)additions.push(ring(lp,out*step/steps,-lp.wallThickness,rise,h-fit.flare+(step-1)*rise));
+     additions.push(ring(lp,out,gap,2.4,h-.4));
+    }
     let collar=keep(wasm.Manifold.union(additions));
     for(const side of ['left','right','front','back'] as const){
      const cut=lp.cutouts?.[side];if(!cut)continue;
@@ -160,7 +174,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    }
    if(lp.shell?.mode==='panels')for(const b of await cachedPanels({...lp,cups:undefined}))parts.push({...b,name:count>1?`tier-${i+1}-${b.name}`:b.name,position:[b.position[0],b.position[1],b.position[2]+baseZ],kind:'shell',level:i,color:partColor(lp,'shell')});
    if(lp.shell&&lp.shell.mode!=='panels'){
-    const fit=p.stack&&i<count-1?stackFit(levelProject(p,i+1),p.stack.gap):null;
+    const fit=p.stack&&i<count-1?stackFit(levelProject(p,i+1),p.stack.gap,lp):null;
     // Regenerate a complete top border below the collar instead of cutting its pattern.
     const sleeve=fit?{...lp,height:h-fit.flare-fit.clearance,heights:{},wallProfiles:undefined,transitions:[]}:{...lp,lid:p.stack?undefined:p.lid};
     const b=await buildShell(sleeve,!fit);
