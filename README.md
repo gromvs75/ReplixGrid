@@ -20,7 +20,7 @@ Prefer a local copy? Follow the Windows and macOS setup instructions below. Both
 
 Projects are saved in the browser at the address you use. To move between the local and online versions, download your project JSON and open it in the other version. Configure filament slots again at the new address.
 
-[Release notes](docs/CHANGELOG.md) · [Product roadmap](docs/ROADMAP.md)
+[Release notes](docs/CHANGELOG.md)
 
 ## Local installation
 
@@ -88,7 +88,7 @@ To start it again later, open a terminal in the same project folder as described
 
 If you see `EADDRINUSE` or a message that port `5173` is in use, an earlier instance or another program may already be using it. If ReplixGrid is already running, try opening the address above. Otherwise stop the earlier instance, or free that port and try `npm run dev` again.
 
-See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and printing, and the [developer guide](docs/DEVELOPMENT.md) for architecture and checks.
+See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and printing.
 
 
 ## Current status and limitations
