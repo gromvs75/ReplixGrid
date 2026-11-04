@@ -156,7 +156,7 @@ For a model that exceeds the bed, use the suggested cuts or choose two or three 
 | --- | --- |
 | The object fits the outside dimensions but will not fit in a bay | Select the compartment and check its inside measurements. Allow for wall thickness, curved ends, inside corner radius and removable inserts. |
 | Selecting a divider keeps selecting the wall in front | Switch to **Top** or open **All walls and compartments** on the right. |
-| The lid or next tier cannot be added | Check for a level rim, equal outside heights, protruding dividers, tilt or split printing. For a stack, also check the body relief, legacy shell clips and lower tier height. |
+| The lid or next tier cannot be added | Check for a level rim, equal outside heights, protruding dividers, tilt or split printing. For a stack, also check the body relief, legacy shell clips and fit clearance relative to wall thickness. |
 | A part exceeds the bed although the footprint seemed small enough | Read the finished dimensions in the download dialog. Tilt, relief, trim and shells can extend beyond the base. Check the selected printer configuration and rotation. |
 | A downloaded print has the wrong colors | Use 3MF, match the slot numbers in **Print**, then inspect the per-part assignments in the slicer. STL carries geometry only. |
 | A design saved on another device is missing | Transfer its project JSON and use **Open**. Browser libraries are local to each device and site address. |
