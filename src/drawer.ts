@@ -3,7 +3,7 @@ import {defaultProject,type Project} from './model.js';
 export interface TrayBounds {width:number;depth:number;height:number}
 export interface DrawerTray {id:string;name:string;x:number;y:number;rotation:0|90;project:Project}
 export interface DrawerLayout {schemaVersion:1;kind:'replixgrid-drawer';id:string;name:string;width:number;depth:number;height:number;gap:number;viewRotation?:0|90;trays:DrawerTray[]}
-export function newDrawer():DrawerLayout{return {schemaVersion:1,kind:'replixgrid-drawer',id:crypto.randomUUID(),name:'',width:180,depth:280,height:80,gap:2,trays:[]};}
+export function newDrawer():DrawerLayout{return {schemaVersion:1,kind:'replixgrid-drawer',id:crypto.randomUUID(),name:'',width:180,depth:280,height:80,gap:2,viewRotation:0,trays:[]};}
 export function newTray(name:string,width:number,depth:number,height:number):DrawerTray{
  const project={...defaultProject(),width,depth,height,cornerRadius:Math.min(6,width/4,depth/4),root:{id:crypto.randomUUID()}};
  return {id:crypto.randomUUID(),name,x:0,y:0,rotation:0,project:parseProject(JSON.stringify(project))};
@@ -15,7 +15,7 @@ export function parseDrawer(raw:string):DrawerLayout{
  for(const [v,min,max] of [[d.width,20,2000],[d.depth,20,2000],[d.height,5,1000],[d.gap,0,20]])if(!Number.isFinite(v)||v<min||v>max)throw new Error('Проверьте размеры ящика и зазоры.');
  if(d.viewRotation!==undefined&&![0,90].includes(d.viewRotation))throw new Error('Некорректный файл ящика.');
  if(new Set(d.trays.map(t=>t.id)).size!==d.trays.length)throw new Error('Некорректный файл ящика.');
- return {...d,trays:d.trays.map(t=>{
+ return {...d,viewRotation:d.viewRotation??(d.width>d.depth?90:0),trays:d.trays.map(t=>{
   if(!t||typeof t.id!=='string'||typeof t.name!=='string'||t.name.length>80||![0,90].includes(t.rotation)||![t.x,t.y].every(v=>Number.isFinite(v)&&Math.abs(v)<=4000))throw new Error('Некорректный файл ящика.');
   return {...t,project:parseProject(JSON.stringify(t.project))};
  })};

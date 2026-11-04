@@ -28,3 +28,11 @@ test('portrait defaults and view rotation preserve physical coordinates',()=>{
  assert.deepEqual(drawerViewPoint(260,12,d),{x:12,y:20});assert.equal(JSON.stringify(d.trays),original);
  assert.equal(parseDrawer(JSON.stringify(d)).viewRotation,90);
 });
+
+ test('legacy landscape drawers open rotated without changing their physical layout',()=>{
+ const d=newDrawer();d.width=280;d.depth=180;delete d.viewRotation;d.trays=[newTray('A',80,60,30)];
+ const restored=parseDrawer(JSON.stringify(d));
+ assert.equal(restored.viewRotation,90);assert.equal(restored.width,280);assert.equal(restored.depth,180);
+ assert.deepEqual(restored.trays,d.trays);
+ d.viewRotation=0;assert.equal(parseDrawer(JSON.stringify(d)).viewRotation,0);
+ });
