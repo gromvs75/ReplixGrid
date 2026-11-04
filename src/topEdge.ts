@@ -9,7 +9,10 @@ type Edge={a:number;b:number;dx:number;dy:number;gx:number;gy:number};
 export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(v:Manifold)=>Manifold){
  const r=topEdgeSize(p);if(!r)return solid;
  // Avoid sub-micron cutter faces at tightly tessellated inner fillets.
- const base=keep(keep(solid.asOriginal()).simplify(Math.min(.004,r/100)));
+ const original=keep(solid.asOriginal());
+ return finish(Math.min(.004,r/100),true);
+ function finish(tolerance:number,canRetry:boolean):Manifold{
+ const base=keep(original.simplify(tolerance));
  const mesh=base.getMesh();
  const point=(i:number):Vec3=>[0,1,2].map(k=>mesh.vertProperties[i*mesh.numProp+k]) as Vec3;
  const pairs=new Map<string,Face>(),edges:Edge[]=[],incident=new Map<number,Edge[]>();
@@ -72,5 +75,10 @@ export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(
  const result=keep(keep(base.subtract(cutter)).asOriginal());
  const cleaned=keep(result.simplify(.002)),components=cleaned.decompose();components.forEach(keep);
  const substantial=components.filter(c=>Math.abs(c.volume())>1e-7);
+ // Simplifying a long, notched rim can tilt a narrow face enough that its
+ // bevel cutter detaches a strip. Rebuild from the original joined surface
+ // at finer precision; never discard a substantial disconnected piece.
+ if(canRetry&&substantial.length>1)return finish(Math.min(tolerance,1e-5),false);
  return substantial.length===1?substantial[0]:cleaned;
+ }
 }
