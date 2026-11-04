@@ -8,6 +8,4 @@
 - Edit compartment dimensions and wall/endpoint heights directly on the model in a compact number-and-unit field; the right panel remains available.
 - Apply an inline edit by clicking outside or pressing Enter; cancel with Escape. Each committed change is one undo step.
 - Explain sequential sizing for a simple row: start with compartment 1; the last receives the remainder. Neighboring sizes are not locked.
-- Add geometry, export, draft and undo regression coverage and update the English guides.
-
-Next milestone: named variants of a project, independent persistence and undo histories, fast switching and export of the selected variant. Variants are not part of this release.
+- Update the English instructions for editing dimensions and wall heights.
