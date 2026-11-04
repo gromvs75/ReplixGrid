@@ -28,10 +28,16 @@ async function exportParts(project:Project,part?:string):Promise<ExportPart[]>{
  return (await buildKit(project)).filter(p=>part==='shell'?p.kind==='shell':part==='organizer'?p.kind!=='shell':true);
 }
 // Requests carry a revision; the future UI must discard stale revisions.
-globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;part?:'organizer'|'shell'|'kit'|'sample'|'all';format?:ExportFormat;objInstructions?:string;filamentSlots?:Record<string,number>;partSlots?:Array<number|null>;purpose?:'preview'|'check'|'download'}>)=>{
+globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;part?:'organizer'|'shell'|'kit'|'sample'|'all';format?:ExportFormat;objInstructions?:string;filamentSlots?:Record<string,number>;partSlots?:Array<number|null>;purpose?:'preview'|'check'|'download'|'drawer'}>)=>{
   const {revision,project,part,purpose,format,objInstructions,filamentSlots,partSlots}=event.data;
   try {
     if(purpose!=='preview'&&purpose!=='download'&&project.printing&&project.shell&&part!=='organizer'&&part!=='sample')throw new Error('Оболочка недоступна для печати по частям. Уберите оболочку или верните цельную модель.');
+    if(purpose==='drawer'){
+      const parts=await buildKit({...project,printing:undefined});
+      const min=[0,1,2].map(i=>Math.min(...parts.map(p=>p.position[i]+p.inspection.bounds.min[i])));
+      const max=[0,1,2].map(i=>Math.max(...parts.map(p=>p.position[i]+p.inspection.bounds.max[i])));
+      globalThis.postMessage({revision,ok:true,bounds:{width:max[0]-min[0],depth:max[1]-min[1],height:max[2]-min[2]}});return;
+    }
     if(purpose==='check'){
       prepared=null;const parts=await exportParts(project,part),report=inspectPrintParts(part==='sample'?{...project,printing:jointSampleProject(project).printing}:project,parts);
       if(report.ok)prepared=parts;

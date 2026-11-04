@@ -184,3 +184,18 @@ A style captures the organizer color and relief, plus the colors and patterns of
 Application is one undo step and creates an independent copy: later edits to one organizer do not change the others. Deleting a saved style does not change projects that already use it.
 
 Saved styles belong to this browser and site address. A project JSON preserves the applied appearance, but does not include the saved-style library. To reuse a style on another device, open the styled project's JSON there and save its current style again.
+
+
+## Drawer arrangements
+
+Choose **Drawer** next to **Organizer**, then **Create drawer**. Enter the measured inside width, depth, usable height and clearance. Clearance applies both at the drawer walls and between trays.
+
+New drawers start at 180 × 280 mm, with the front edge marked at the bottom. **Rotate view by 90°** changes only the viewing orientation; drawer dimensions, tray coordinates and exported models stay unchanged. Existing drawer arrangements retain their dimensions. Older landscape arrangements open with a 90° rotated view; an explicitly saved view orientation is preserved. The tray rotation button turns only the selected tray.
+
+Use **New organizer** to create a tray directly in the drawer. Set its dimensions, then edit compartments and accessories in the usual organizer editor. **Back to drawer** returns to its placement. **Add saved organizer** adds an independent copy of a saved project or variant; editing it never changes its source.
+
+Drag trays in top view or enter X/Y coordinates measured from the top-left corner to the tray’s outer bounds. Rotate by 90 degrees, duplicate or remove trays. Arrow keys move a focused tray by 1 mm (Shift: 10 mm). Arrangement undo/redo restores placements and completed tray edits.
+
+The diagram shows assembled outer bounding rectangles, including shells, trim, lids and tiers. Curved shapes are checked conservatively rather than tightly nested. Boundary, clearance and height conflicts are highlighted. Wait for the geometry check before relying on the fit status. This release uses free placement; it does not generate a mounting plate.
+
+Drawers save locally in this browser, separately from organizer projects. Download a drawer JSON file for backup or transfer; opening one creates a separate drawer copy. Select a tray and choose **Download selected tray** for its own STL, 3MF or OBJ export with the existing printer-size checks. Drawer coordinates do not become print-bed placement.
