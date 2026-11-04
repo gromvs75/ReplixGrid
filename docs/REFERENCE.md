@@ -170,3 +170,17 @@ Use the selector beside **+ Variant** to switch between related models, or choos
 Use **Separate project → Save a copy** to create an unrelated project. Rename or delete individual models in My projects; deleting the original does not delete its variants.
 
 **Download** exports the selected model for printing. **Save project** downloads that model as editable JSON; **File** on a library card downloads the corresponding model. JSON contains one model, without its related variants or undo history. Save each model separately to transfer or back up the complete set.
+
+
+## Shared styles
+
+1. Open a project with the colors and patterns you want to reuse.
+2. Under **Shape → Shared style**, enter a name and click **Save current style**.
+3. Open another project or variant, return to **Shared style**, and select the saved style.
+4. Choose **Colors**, **Patterns**, or both. Review **Will apply** and any **Will skip** messages, then click **Apply style**.
+
+A style captures the organizer color and relief, plus the colors and patterns of an existing shell and lid. A smooth body style removes the destination's body relief. Dimensions, compartment layouts, wall thicknesses, lid fit, handles, and shell clearances stay unchanged. Missing lids or shells are not added. Incompatible pattern settings are skipped with an explanation; compatible settings can still be applied. Insert colors and filament-slot assignments are not transferred.
+
+Application is one undo step and creates an independent copy: later edits to one organizer do not change the others. Deleting a saved style does not change projects that already use it.
+
+Saved styles belong to this browser and site address. A project JSON preserves the applied appearance, but does not include the saved-style library. To reuse a style on another device, open the styled project's JSON there and save its current style again.
