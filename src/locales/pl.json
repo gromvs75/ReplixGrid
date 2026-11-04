@@ -672,5 +672,8 @@
   "Цвет узора крышки": "Kolor wzoru pokrywy",
   "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zwiększ wysokość dolnego poziomu, aby zmieścić osłonę i kołnierz.",
   "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuń osłonę dolnego poziomu od dołu aż do kołnierza łączącego.",
-  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmniejsz luz pasowania: wypust musi mieścić się w grubości ściany."
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmniejsz luz pasowania: wypust musi mieścić się w grubości ściany.",
+  "Нижний кант доступен без наклона и разделения.": "Dolny rant jest dostępny bez pochylenia i podziału.",
+  "Нижний кант доступен только на первом ярусе.": "Dolny rant jest dostępny tylko na pierwszym poziomie.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "W stosie dolny rant jest dostępny tylko na pierwszym poziomie. Bez pochylenia, podziału i oddzielnych paneli."
 }

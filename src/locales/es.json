@@ -672,5 +672,8 @@
   "Цвет узора крышки": "Color del patrón de la tapa",
   "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta la altura del nivel inferior para alojar la carcasa y el reborde.",
   "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento.",
-  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce la holgura: la lengüeta debe caber en el grosor de la pared."
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce la holgura: la lengüeta debe caber en el grosor de la pared.",
+  "Нижний кант доступен без наклона и разделения.": "La banda inferior está disponible sin inclinación ni división.",
+  "Нижний кант доступен только на первом ярусе.": "La banda inferior solo está disponible en el primer nivel.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "En una pila, la banda inferior solo está disponible en el primer nivel. Sin inclinación, división ni paneles separados."
 }

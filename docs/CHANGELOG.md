@@ -2,6 +2,8 @@
 
 ## Unreleased — Wrapped shells on stacked trays
 
+- Bottom trim is now available on the first tier of a stack, including wrapped shells. Upper tiers keep their hidden joints without decorative bottom trim.
+
 - Add tiers while retaining a wrapped shell.
 - Hide the joint inside the lower wall and a socket below the upper floor, preserving compartment dimensions.
 - Export a separate shell for each decorated tier. Fit shells from above before stacking; matching shells meet at a narrow support band.

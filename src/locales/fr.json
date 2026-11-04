@@ -672,5 +672,8 @@
   "Цвет узора крышки": "Couleur du motif du couvercle",
   "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Augmentez la hauteur du niveau inférieur pour loger la coque et le rebord.",
   "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Enfilez la coque du niveau inférieur par le bas jusqu’au rebord d’empilage.",
-  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Réduisez le jeu : la languette doit tenir dans l’épaisseur de la paroi."
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Réduisez le jeu : la languette doit tenir dans l’épaisseur de la paroi.",
+  "Нижний кант доступен без наклона и разделения.": "Le bandeau inférieur est disponible sans inclinaison ni division.",
+  "Нижний кант доступен только на первом ярусе.": "Le bandeau inférieur est disponible uniquement au premier étage.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Dans une pile, le bandeau inférieur est réservé au premier étage. Sans inclinaison, division ni panneaux séparés."
 }

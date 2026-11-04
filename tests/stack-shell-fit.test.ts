@@ -11,6 +11,7 @@ import {buildOrganizer} from '../src/kernel.js';
 const source=():Project=>({...defaultProject(),width:80,depth:60,height:25,cornerRadius:8,shell:{pattern:'cellular',size:14,gap:.5,thickness:1.6}});
 for(const footprint of ['rounded','circle','oval'] as const)test(`wrapped ${footprint} tiers have complete separate sleeves and no solid collisions`,async()=>{
  let p=source();if(footprint==='circle'){p.footprint='circle';p.depth=p.width;}if(footprint==='oval')p.footprint='oval';
+ p.baseBand={height:4,style:footprint==='rounded'?'smooth':footprint==='circle'?'rings':'steps'};
  p=splitCell(p,'root','x',3);p=setLevelCount(p,3);p=switchLevel(p,1);p.height=30;p.shell={...p.shell!,pattern:'waves',gap:1,thickness:2};p=switchLevel(p,2);delete p.shell;p=switchLevel(p,0);
  resolveWalls(p);assert.deepEqual(parseProject(JSON.stringify(p)),JSON.parse(JSON.stringify(p)));
  const parts=await buildKit(p);assert.equal(parts.filter(v=>v.kind==='shell').length,2);assert.deepEqual(parts.filter(v=>v.kind==='shell').map(v=>v.level),[0,1]);
@@ -48,4 +49,15 @@ test('hidden sockets retain lids, inserts and their tier origins',async()=>{
  assert.ok(Math.abs(upper.position[2]-25)<.001);
  assert.ok(Math.abs(cup.position[2]-(tierElevation(p,1)+p.floorThickness))<.001);
  assert.ok(parts.some(v=>v.kind==='lid'));assert.equal(p.height,25);assert.equal(p.floorThickness,2);
+});
+
+test('bottom band stays on tier one through switching, adding, removing and serialization',()=>{
+ let p=source();p.baseBand={height:4,style:'rings'};p=setLevelCount(p,2);
+ assert.ok(levelProject(p,0).baseBand);assert.equal(levelProject(p,1).baseBand,undefined);
+ p=switchLevel(p,1);assert.equal(p.baseBand,undefined);resolveWalls(p);
+ const invalid=structuredClone(p);invalid.baseBand={height:4,style:'steps'};assert.throws(()=>resolveWalls(invalid),/только на первом/);
+ p=setLevelCount(p,3);assert.equal(levelProject(p,2).baseBand,undefined);
+ p=parseProject(JSON.stringify(p));p=switchLevel(p,0);assert.equal(p.baseBand?.style,'rings');
+ const stored=structuredClone(p);stored.stack!.levels[1].settings!.baseBand={height:4,style:'smooth'};assert.throws(()=>parseProject(JSON.stringify(stored)),/только на первом/);
+ p=setLevelCount(p,2);assert.equal(p.baseBand?.height,4);p=setLevelCount(p,1);resolveWalls(p);assert.equal(p.baseBand?.height,4);
 });

@@ -98,6 +98,7 @@ export function validateAccessories(p:Project,walls:Wall[]) {
  if(p.stack){
   const s=p.stack;
   if(!Array.isArray(s.levels)||s.levels.length<2||s.levels.length>5||!Number.isInteger(s.active)||s.active<0||s.active>=s.levels.length||!Number.isFinite(s.gap)||s.gap<.2||s.gap>1)throw new Error('Некорректные параметры ярусов.');
+  if(s.levels.some((l,i)=>i>0&&i!==s.active&&l.settings?.baseBand))throw new Error('Нижний кант доступен только на первом ярусе.');
   const problem=stackProblem({...p,stack:undefined});if(problem)throw new Error(problem);
   for(const [i,level] of s.levels.entries())if(i!==s.active){const lp=levelProject(p,i);resolveWalls(lp);const why=stackProblem(lp);if(why)throw new Error(`Ярус ${i+1}: ${why}`);}
   for(let i=0;i<s.levels.length-1;i++){const lower=levelProject(p,i),fit=stackFit(levelProject(p,i+1),s.gap,lower);if(fit.hidden&&lower.wallThickness<s.gap+1.4)throw new Error('Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.');}
@@ -117,7 +118,7 @@ export function validateAccessories(p:Project,walls:Wall[]) {
 }
 
 // Dimensions and outer footprint are shared for mating; contents and appearance are per tier.
-const localKeys=['height','root','heights','wallProfiles','transitions','transitionStyles','transitionWavelengths','cutouts','cups','colors','shell','innerCornerRadius','wallThickness','floorThickness','relief','label'] as const;
+const localKeys=['height','root','heights','wallProfiles','transitions','transitionStyles','transitionWavelengths','cutouts','cups','colors','shell','innerCornerRadius','wallThickness','floorThickness','relief','label','baseBand'] as const;
 function snapshot(p:Project):StackLevel {
  const settings:Partial<Project>={};
  for(const key of localKeys)(settings as Record<string,unknown>)[key]=structuredClone(p[key]);
@@ -126,7 +127,7 @@ function snapshot(p:Project):StackLevel {
 export function levelProject(p:Project,index:number):Project {
  const l=p.stack?.levels[index],current=!p.stack||index===p.stack.active;
  if(current)return {...p,stack:undefined,lid:undefined};
- const legacy={height:l!.height,root:structuredClone(l!.root),heights:{},wallProfiles:undefined,transitions:[],cutouts:l!.cutouts,cups:l!.cups};
+ const legacy={baseBand:index===0?p.baseBand:undefined,height:l!.height,root:structuredClone(l!.root),heights:{},wallProfiles:undefined,transitions:[],cutouts:l!.cutouts,cups:l!.cups};
  const settings=l!.settings?Object.fromEntries(localKeys.map(key=>[key,l!.settings![key]])):legacy;
  return {...p,...settings,stack:undefined,lid:undefined};
 }
@@ -152,7 +153,7 @@ export function setLevelCount(p:Project,count:number):Project {
  if(d.stack.active>=count)d=switchLevel(d,count-1);
  d.stack!.levels=d.stack!.levels.slice(0,count);
  while(d.stack!.levels.length<count){
-  const empty={...d,height:resolveWalls({...d,stack:undefined})[0].startHeight,root:{id:crypto.randomUUID()},cups:undefined,heights:{},wallProfiles:undefined,transitions:[]};
+  const empty={...d,baseBand:undefined,height:resolveWalls({...d,stack:undefined})[0].startHeight,root:{id:crypto.randomUUID()},cups:undefined,heights:{},wallProfiles:undefined,transitions:[]};
   d.stack!.levels.push(snapshot(empty));
  }
  return d;
