@@ -196,6 +196,18 @@ Use **New organizer** to create a tray directly in the drawer. Set its dimension
 
 Drag trays in top view or enter X/Y coordinates measured from the top-left corner to the tray’s outer bounds. Rotate by 90 degrees, duplicate or remove trays. Arrow keys move a focused tray by 1 mm (Shift: 10 mm). Arrangement undo/redo restores placements and completed tray edits.
 
-The diagram shows assembled outer bounding rectangles, including shells, trim, lids and tiers. Curved shapes are checked conservatively rather than tightly nested. Boundary, clearance and height conflicts are highlighted. Wait for the geometry check before relying on the fit status. This release uses free placement; it does not generate a mounting plate.
+The diagram shows assembled outer bounding rectangles, including shells, trim, lids and tiers. Curved shapes are checked conservatively rather than tightly nested. Boundary, clearance and height conflicts are highlighted. Wait for the geometry check before relying on the fit status. Choose free placement or enable a mounting plate as described below.
 
 Drawers save locally in this browser, separately from organizer projects. Download a drawer JSON file for backup or transfer; opening one creates a separate drawer copy. Select a tray and choose **Download selected tray** for its own STL, 3MF or OBJ export with the existing printer-size checks. Drawer coordinates do not become print-bed placement.
+
+### Mounting plates
+
+In **Drawer → Drawer base**, choose **Mounting plate**. Drawer width/depth and the wall clearance determine the covered area. Enter the usable width and depth of the **3D printer bed** separately: these dimensions determine the maximum section size and therefore the number of sections. The calculation includes joint projections and a 2 mm printing margin at each bed edge. Dimensions need not be multiples of the 20 mm peg grid; edge sections fit the remaining space.
+
+**Download sections (ZIP)** creates one numbered 3MF per print job, an SVG assembly map and a coordinate list. The map uses the original drawer orientation, independent of view rotation. R indicates rows from top to bottom, C columns from left to right. Lower adjoining dovetails into place from above. First print **Download joint sample**, containing two small adjoining sections; the section joints still require physical verification.
+
+With plate mode enabled, tray downloads include underside sockets for that tray's position and rotation. Internal compartment dimensions are preserved. The tray becomes 2.1 mm taller; including the 2 mm plate, the drawer fit check adds 4.1 mm. After moving or rotating a tray, download it again: its sockets must match the peg positions. Changing drawer clearance also changes the peg origin.
+
+Socket radial clearance is 0.12 mm, confirmed on a PLA fit coupon with 0.2 mm layers and a 0.25 mm first layer. This is lateral retention with removal upwards, not a vertical latch. Export uses geometry only; choose your actual printer and material profiles in the slicer and inspect the socket roofs. Full-size printed assemblies have not yet been verified.
+
+Mounting currently supports unsplit organizers without tilt, with at least three fully supported sockets. Small trays may need to be moved or enlarged. Upper tiers and shells retain their existing geometry. Turn plate mode off to export the original unmounted model. Saved source projects remain unchanged.
