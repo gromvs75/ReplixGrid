@@ -630,5 +630,13 @@
   "Enter — применить · Esc — отменить": "Invio: applica · Esc: annulla",
   "Проверьте размер и ограничения модели.": "Controlla la dimensione e i vincoli del modello.",
   "Нажмите на размер для изменения": "Fai clic sulla dimensione per modificarla",
-  "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "In una fila semplice, imposta le dimensioni in ordine dallo scomparto 1. L’ultimo riceve lo spazio restante. Le dimensioni vicine non sono bloccate e possono cambiare."
+  "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "In una fila semplice, imposta le dimensioni in ordine dallo scomparto 1. L’ultimo riceve lo spazio restante. Le dimensioni vicine non sono bloccate e possono cambiare.",
+  "Вариант проекта": "Variante del progetto",
+  "+ Вариант": "+ Variante",
+  "Создать из текущей модели": "Crea dal modello attuale",
+  "Новый вариант": "Nuova variante",
+  "Отдельный проект": "Progetto separato",
+  "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Una variante è una copia indipendente del modello attuale. Il modello originale viene conservato.",
+  "Создать вариант": "Crea variante",
+  "Варианты текущего проекта": "Varianti di questo progetto"
 }

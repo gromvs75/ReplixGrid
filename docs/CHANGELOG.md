@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Project variants
+
+- Create a named independent variant of the current model, retaining the original.
+- Switch between related variants in the header or My projects.
+- Preserve separate undo/redo histories across switching and browser reloads (up to 60 states per direction).
+- Keep Save a copy for a separate project; JSON backup/export remains specific to the selected model.
+- Keep older library entries compatible without changing project JSON.
+
+Local prototype; not deployed to the public site. See [VARIANTS.md](VARIANTS.md).
+
 ## 2026-11-04 — Exact dimensions and inline editing
 
 - Set a compartment’s internal width or depth by moving the nearest applicable divider.
