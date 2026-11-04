@@ -630,5 +630,13 @@
   "Enter — применить · Esc — отменить": "Enter: použít · Esc: zrušit",
   "Проверьте размер и ограничения модели.": "Zkontrolujte rozměr a omezení modelu.",
   "Нажмите на размер для изменения": "Kliknutím upravíte rozměr",
-  "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "V jednoduché řadě nastavujte rozměry postupně od přihrádky 1. Poslední dostane zbývající místo. Sousední rozměry nejsou uzamčené a mohou se změnit."
+  "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "V jednoduché řadě nastavujte rozměry postupně od přihrádky 1. Poslední dostane zbývající místo. Sousední rozměry nejsou uzamčené a mohou se změnit.",
+  "Вариант проекта": "Varianta projektu",
+  "+ Вариант": "+ Varianta",
+  "Создать из текущей модели": "Vytvořit z aktuálního modelu",
+  "Новый вариант": "Nová varianta",
+  "Отдельный проект": "Samostatný projekt",
+  "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Varianta je nezávislá kopie aktuálního modelu. Původní model zůstane zachován.",
+  "Создать вариант": "Vytvořit variantu",
+  "Варианты текущего проекта": "Varianty tohoto projektu"
 }

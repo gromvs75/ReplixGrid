@@ -160,3 +160,13 @@ For a model that exceeds the bed, use the suggested cuts or choose two or three 
 | A part exceeds the bed although the footprint seemed small enough | Read the finished dimensions in the download dialog. Tilt, relief, trim and shells can extend beyond the base. Check the selected printer configuration and rotation. |
 | A downloaded print has the wrong colors | Use 3MF, match the slot numbers in **Print**, then inspect the per-part assignments in the slicer. STL carries geometry only. |
 | A design saved on another device is missing | Transfer its project JSON and use **Open**. Browser libraries are local to each device and site address. |
+
+## Project variants
+
+Click **+ Variant** in the top bar, or open **My projects** and select **New variant**. Enter a name and click **Create variant**. The new variant is an independent copy; the original remains saved. An unnamed original is retained as **Draft**.
+
+Use the selector beside **+ Variant** to switch between related models, or choose one under **Variants of this project** in My projects. Each variant saves automatically and keeps its own undo/redo history after switching or reloading. A newly created variant starts with an empty history.
+
+Use **Separate project → Save a copy** to create an unrelated project. Rename or delete individual models in My projects; deleting the original does not delete its variants.
+
+**Download** exports the selected model for printing. **Save project** downloads that model as editable JSON; **File** on a library card downloads the corresponding model. JSON contains one model, without its related variants or undo history. Save each model separately to transfer or back up the complete set.

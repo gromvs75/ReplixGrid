@@ -643,7 +643,15 @@
     "Enter — применить · Esc — отменить": "Enter to apply · Esc to cancel",
     "Проверьте размер и ограничения модели.": "Check the dimension and model constraints.",
     "Нажмите на размер для изменения": "Click the dimension to edit",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "For a simple row, set dimensions in order starting with compartment 1. The last gets the remaining space. Neighboring dimensions are not locked and may change."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "For a simple row, set dimensions in order starting with compartment 1. The last gets the remaining space. Neighboring dimensions are not locked and may change.",
+    "Вариант проекта": "Project variant",
+    "+ Вариант": "+ Variant",
+    "Создать из текущей модели": "Create from current model",
+    "Новый вариант": "New variant",
+    "Отдельный проект": "Separate project",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "A variant is an independent copy of the current model. The original model is kept.",
+    "Создать вариант": "Create variant",
+    "Варианты текущего проекта": "Variants of this project"
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1287,7 +1295,15 @@
     "Enter — применить · Esc — отменить": "Enter: anwenden · Esc: abbrechen",
     "Проверьте размер и ограничения модели.": "Maß und Modellgrenzen prüfen.",
     "Нажмите на размер для изменения": "Zum Ändern auf das Maß klicken",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "Bei einer einfachen Reihe die Maße ab Fach 1 der Reihe nach einstellen. Das letzte Fach erhält den Rest. Nachbarmaße sind nicht gesperrt und können sich ändern."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "Bei einer einfachen Reihe die Maße ab Fach 1 der Reihe nach einstellen. Das letzte Fach erhält den Rest. Nachbarmaße sind nicht gesperrt und können sich ändern.",
+    "Вариант проекта": "Projektvariante",
+    "+ Вариант": "+ Variante",
+    "Создать из текущей модели": "Aus aktuellem Modell erstellen",
+    "Новый вариант": "Neue Variante",
+    "Отдельный проект": "Eigenständiges Projekt",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Eine Variante ist eine unabhängige Kopie des aktuellen Modells. Das Original bleibt erhalten.",
+    "Создать вариант": "Variante erstellen",
+    "Варианты текущего проекта": "Varianten dieses Projekts"
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -1930,7 +1946,15 @@
     "Enter — применить · Esc — отменить": "Entrée : appliquer · Échap : annuler",
     "Проверьте размер и ограничения модели.": "Vérifiez la dimension et les contraintes du modèle.",
     "Нажмите на размер для изменения": "Cliquez sur la dimension pour la modifier",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "Pour une rangée simple, réglez les dimensions dans l’ordre à partir du compartiment 1. Le dernier reçoit l’espace restant. Les dimensions voisines ne sont pas verrouillées et peuvent changer."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "Pour une rangée simple, réglez les dimensions dans l’ordre à partir du compartiment 1. Le dernier reçoit l’espace restant. Les dimensions voisines ne sont pas verrouillées et peuvent changer.",
+    "Вариант проекта": "Variante du projet",
+    "+ Вариант": "+ Variante",
+    "Создать из текущей модели": "Créer à partir du modèle actuel",
+    "Новый вариант": "Nouvelle variante",
+    "Отдельный проект": "Projet séparé",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Une variante est une copie indépendante du modèle actuel. Le modèle original est conservé.",
+    "Создать вариант": "Créer une variante",
+    "Варианты текущего проекта": "Variantes de ce projet"
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -2573,7 +2597,15 @@
     "Enter — применить · Esc — отменить": "Intro: aplicar · Esc: cancelar",
     "Проверьте размер и ограничения модели.": "Compruebe la dimensión y los límites del modelo.",
     "Нажмите на размер для изменения": "Pulse la dimensión para editarla",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "En una fila simple, ajuste las dimensiones en orden desde el compartimento 1. El último recibe el espacio restante. Las dimensiones vecinas no están fijadas y pueden cambiar."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "En una fila simple, ajuste las dimensiones en orden desde el compartimento 1. El último recibe el espacio restante. Las dimensiones vecinas no están fijadas y pueden cambiar.",
+    "Вариант проекта": "Variante del proyecto",
+    "+ Вариант": "+ Variante",
+    "Создать из текущей модели": "Crear a partir del modelo actual",
+    "Новый вариант": "Nueva variante",
+    "Отдельный проект": "Proyecto independiente",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Una variante es una copia independiente del modelo actual. Se conserva el modelo original.",
+    "Создать вариант": "Crear variante",
+    "Варианты текущего проекта": "Variantes de este proyecto"
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -3216,7 +3248,15 @@
     "Enter — применить · Esc — отменить": "Enter: εφαρμογή · Esc: ακύρωση",
     "Проверьте размер и ограничения модели.": "Ελέγξτε τη διάσταση και τους περιορισμούς του μοντέλου.",
     "Нажмите на размер для изменения": "Πατήστε τη διάσταση για επεξεργασία",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "Σε μια απλή σειρά, ορίστε τις διαστάσεις με τη σειρά από το διαμέρισμα 1. Το τελευταίο παίρνει τον υπόλοιπο χώρο. Οι γειτονικές διαστάσεις δεν είναι κλειδωμένες και μπορεί να αλλάξουν."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "Σε μια απλή σειρά, ορίστε τις διαστάσεις με τη σειρά από το διαμέρισμα 1. Το τελευταίο παίρνει τον υπόλοιπο χώρο. Οι γειτονικές διαστάσεις δεν είναι κλειδωμένες και μπορεί να αλλάξουν.",
+    "Вариант проекта": "Παραλλαγή έργου",
+    "+ Вариант": "+ Παραλλαγή",
+    "Создать из текущей модели": "Δημιουργία από το τρέχον μοντέλο",
+    "Новый вариант": "Νέα παραλλαγή",
+    "Отдельный проект": "Ξεχωριστό έργο",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Η παραλλαγή είναι ανεξάρτητο αντίγραφο του τρέχοντος μοντέλου. Το αρχικό μοντέλο διατηρείται.",
+    "Создать вариант": "Δημιουργία παραλλαγής",
+    "Варианты текущего проекта": "Παραλλαγές αυτού του έργου"
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -3859,7 +3899,15 @@
     "Enter — применить · Esc — отменить": "Invio: applica · Esc: annulla",
     "Проверьте размер и ограничения модели.": "Controlla la dimensione e i vincoli del modello.",
     "Нажмите на размер для изменения": "Fai clic sulla dimensione per modificarla",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "In una fila semplice, imposta le dimensioni in ordine dallo scomparto 1. L’ultimo riceve lo spazio restante. Le dimensioni vicine non sono bloccate e possono cambiare."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "In una fila semplice, imposta le dimensioni in ordine dallo scomparto 1. L’ultimo riceve lo spazio restante. Le dimensioni vicine non sono bloccate e possono cambiare.",
+    "Вариант проекта": "Variante del progetto",
+    "+ Вариант": "+ Variante",
+    "Создать из текущей модели": "Crea dal modello attuale",
+    "Новый вариант": "Nuova variante",
+    "Отдельный проект": "Progetto separato",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Una variante è una copia indipendente del modello attuale. Il modello originale viene conservato.",
+    "Создать вариант": "Crea variante",
+    "Варианты текущего проекта": "Varianti di questo progetto"
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -4502,7 +4550,15 @@
     "Enter — применить · Esc — отменить": "Enter — застосувати · Esc — скасувати",
     "Проверьте размер и ограничения модели.": "Перевірте розмір і обмеження моделі.",
     "Нажмите на размер для изменения": "Натисніть на розмір для зміни",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "У простому ряду задавайте розміри по порядку з відсіку 1. Останньому дістається залишок. Сусідні розміри не зафіксовані й можуть змінитися."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "У простому ряду задавайте розміри по порядку з відсіку 1. Останньому дістається залишок. Сусідні розміри не зафіксовані й можуть змінитися.",
+    "Вариант проекта": "Варіант проєкту",
+    "+ Вариант": "+ Варіант",
+    "Создать из текущей модели": "Створити з поточної моделі",
+    "Новый вариант": "Новий варіант",
+    "Отдельный проект": "Окремий проєкт",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Варіант — незалежна копія поточної моделі. Початкова модель збережеться.",
+    "Создать вариант": "Створити варіант",
+    "Варианты текущего проекта": "Варіанти поточного проєкту"
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -5145,7 +5201,15 @@
     "Enter — применить · Esc — отменить": "Enter: použít · Esc: zrušit",
     "Проверьте размер и ограничения модели.": "Zkontrolujte rozměr a omezení modelu.",
     "Нажмите на размер для изменения": "Kliknutím upravíte rozměr",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "V jednoduché řadě nastavujte rozměry postupně od přihrádky 1. Poslední dostane zbývající místo. Sousední rozměry nejsou uzamčené a mohou se změnit."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "V jednoduché řadě nastavujte rozměry postupně od přihrádky 1. Poslední dostane zbývající místo. Sousední rozměry nejsou uzamčené a mohou se změnit.",
+    "Вариант проекта": "Varianta projektu",
+    "+ Вариант": "+ Varianta",
+    "Создать из текущей модели": "Vytvořit z aktuálního modelu",
+    "Новый вариант": "Nová varianta",
+    "Отдельный проект": "Samostatný projekt",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Varianta je nezávislá kopie aktuálního modelu. Původní model zůstane zachován.",
+    "Создать вариант": "Vytvořit variantu",
+    "Варианты текущего проекта": "Varianty tohoto projektu"
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -5788,7 +5852,15 @@
     "Enter — применить · Esc — отменить": "Enter: zastosuj · Esc: anuluj",
     "Проверьте размер и ограничения модели.": "Sprawdź wymiar i ograniczenia modelu.",
     "Нажмите на размер для изменения": "Kliknij wymiar, aby go zmienić",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "W prostym rzędzie ustawiaj wymiary kolejno od przegródki 1. Ostatnia otrzyma pozostałe miejsce. Sąsiednie wymiary nie są zablokowane i mogą się zmieniać."
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "W prostym rzędzie ustawiaj wymiary kolejno od przegródki 1. Ostatnia otrzyma pozostałe miejsce. Sąsiednie wymiary nie są zablokowane i mogą się zmieniać.",
+    "Вариант проекта": "Wariant projektu",
+    "+ Вариант": "+ Wariant",
+    "Создать из текущей модели": "Utwórz z bieżącego modelu",
+    "Новый вариант": "Nowy wariant",
+    "Отдельный проект": "Osobny projekt",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "Wariant to niezależna kopia bieżącego modelu. Oryginalny model zostanie zachowany.",
+    "Создать вариант": "Utwórz wariant",
+    "Варианты текущего проекта": "Warianty tego projektu"
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -6433,6 +6505,14 @@
     "Enter — применить · Esc — отменить": "Enter 应用 · Esc 取消",
     "Проверьте размер и ограничения модели.": "请检查尺寸及模型限制。",
     "Нажмите на размер для изменения": "点击尺寸进行编辑",
-    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "对于简单的一排隔间，请从隔间 1 开始按顺序设置尺寸，最后一个使用剩余空间。相邻隔间的尺寸未锁定，可能随之变化。"
+    "В простом ряду задавайте размеры с отсека 1 по порядку. Последнему достаётся остаток. Соседние размеры не закреплены и могут измениться.": "对于简单的一排隔间，请从隔间 1 开始按顺序设置尺寸，最后一个使用剩余空间。相邻隔间的尺寸未锁定，可能随之变化。",
+    "Вариант проекта": "项目变体",
+    "+ Вариант": "+ 变体",
+    "Создать из текущей модели": "从当前模型创建",
+    "Новый вариант": "新建变体",
+    "Отдельный проект": "独立项目",
+    "Вариант — независимая копия текущей модели. Исходная модель сохранится.": "变体是当前模型的独立副本。原始模型会保留。",
+    "Создать вариант": "创建变体",
+    "Варианты текущего проекта": "此项目的变体"
   }
 }
