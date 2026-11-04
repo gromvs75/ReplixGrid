@@ -58,3 +58,8 @@ Download the joint sample, place its halves separately, and print at 100% scale.
 ## Shells
 
 A one-piece decorative shell is built around the organizer body. Automatic support and compatibility are limited: decorative panels, tiers, split printing, tilted walls, and special settings have separate constraints. If the interface reports an incompatibility, adjust the settings and inspect the result in both preview and slicer. Geometry tests do not guarantee the physical fit of every variant.
+
+
+## Match another organizer
+
+Use **Shape → Shared style** to save the current colors and patterns with a name. Open another project, choose that saved style, and click **Apply style**. You can transfer colors, patterns, or both while keeping the destination's dimensions and compartments. See [Shared styles](REFERENCE.md#shared-styles) for compatibility and browser-storage details.

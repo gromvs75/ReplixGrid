@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-04 — Shared styles
+
+- Save named color and pattern styles for reuse across projects and variants.
+- Apply colors, patterns, or both in one undo step, preserving dimensions and layout.
+- Review incompatible or missing components before applying.
+- Keep applied appearances independent of the saved-style library.
+
+See [Shared styles](REFERENCE.md#shared-styles) for instructions.
+
 ## 2026-11-04 — Project variants
 
 - Create a named variant while keeping the original model.

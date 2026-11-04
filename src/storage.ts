@@ -1,3 +1,4 @@
+import {parseStyle,type SavedStyle,type VisualStyle} from './visualStyles.js';
 import type {Project} from './model.js';
 import {parseProject} from './editor.js';
 export interface ProjectHistory {past:Project[];future:Project[]}
@@ -71,3 +72,17 @@ export async function renameProject(id:string,name:string){
 }
 export async function deleteProject(id:string){return transaction<void>('readwrite',(tx,done)=>{tx.objectStore('library').delete(id);const s=tx.objectStore('projects'),r=s.get('active');r.onsuccess=()=>{if(r.result===id)s.put(null,'active');};done();});}
 export function download(data:BlobPart,name:string,type:string){const url=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+
+// Presets share the existing settings store; no database upgrade or project migration.
+export async function listStyles(){return transaction<SavedStyle[]>('readonly',(tx,done)=>{
+ const r=tx.objectStore('projects').get('visualStyles');r.onsuccess=()=>{const valid:SavedStyle[]=[];
+  for(const item of Array.isArray(r.result)?r.result:[])try{if(typeof item.id==='string'&&typeof item.name==='string'&&Number.isFinite(item.createdAt))valid.push({...item,style:parseStyle(item.style)});}catch{/* Ignore a damaged preset, preserving the library. */}
+  done(valid.sort((a,b)=>b.createdAt-a.createdAt));
+ };
+});}
+export async function saveStyle(name:string,style:VisualStyle){
+ const clean=projectName(name);if(!clean)throw new Error('Style name is empty');
+ const record:SavedStyle={id:crypto.randomUUID(),name:clean,createdAt:Date.now(),style:parseStyle(style)};
+ return transaction<SavedStyle>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('visualStyles');r.onsuccess=()=>{s.put([...(Array.isArray(r.result)?r.result:[]),record],'visualStyles');done(record);};});
+}
+export async function deleteStyle(id:string){return transaction<void>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('visualStyles');r.onsuccess=()=>{s.put((Array.isArray(r.result)?r.result:[]).filter((v:SavedStyle)=>v.id!==id),'visualStyles');done();};});}
