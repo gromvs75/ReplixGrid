@@ -16,6 +16,6 @@ export function BaseBandControls(){
    {([['smooth','Гладкий'],['rings','Полосы'],['steps','Ступени']] as const).map(([value,label])=><button key={value} aria-pressed={band?.style===value} onClick={()=>choose(value)}>{t(label)}</button>)}
   </div>
   {band&&<><Field commitOnRelease label={t('Высота канта')} min={1.2} max={Math.max(1.2,max)} step={.2} value={band.height} onChange={height=>change(current=>editProject(current,d=>{if(d.baseBand)d.baseBand.height=height;}))}/><p className="hint">{t('Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.')}</p></>}
-  <p className="hint">{t('Пока без наклона, разделения и ярусов. С оболочкой — без отдельных панелей.')}</p>
+  <p className="hint">{t('В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.')}</p>
  </details>;
 }

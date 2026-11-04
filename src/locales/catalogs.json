@@ -680,7 +680,13 @@
     "Цвета крышки": "Lid colors",
     "Узор крышки": "Lid pattern",
     "Не удалось сохранить стили.": "Could not save styles.",
-    "Удалить стиль": "Delete style"
+    "Удалить стиль": "Delete style",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Increase the lower tier height to fit the shell and collar.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Slide the lower tier shell on from below, up to the stacking collar.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce the fit clearance: the tongue must fit within the wall thickness.",
+    "Нижний кант доступен без наклона и разделения.": "The bottom band is available without tilt or splitting.",
+    "Нижний кант доступен только на первом ярусе.": "The bottom band is available only on the first tier.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "In a stack, the bottom band is available only on the first tier. No tilt, splitting or separate panels."
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1361,7 +1367,13 @@
     "Цвета крышки": "Deckelfarben",
     "Узор крышки": "Deckelmuster",
     "Не удалось сохранить стили.": "Stile konnten nicht gespeichert werden.",
-    "Удалить стиль": "Stil löschen"
+    "Удалить стиль": "Stil löschen",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Erhöhen Sie den unteren Einsatz, damit Hülle und Stapelrand passen.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Schieben Sie die Hülle des unteren Einsatzes von unten bis zum Stapelrand auf.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Verringern Sie das Passungsspiel: Der Steg muss in die Wandstärke passen.",
+    "Нижний кант доступен без наклона и разделения.": "Der untere Rand ist ohne Neigung und Teilung verfügbar.",
+    "Нижний кант доступен только на первом ярусе.": "Der untere Rand ist nur auf der ersten Etage verfügbar.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Im Stapel ist der untere Rand nur auf der ersten Etage verfügbar. Ohne Neigung, Teilung und separate Paneele."
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -2041,7 +2053,13 @@
     "Цвета крышки": "Couleurs du couvercle",
     "Узор крышки": "Motif du couvercle",
     "Не удалось сохранить стили.": "Impossible d’enregistrer les styles.",
-    "Удалить стиль": "Supprimer le style"
+    "Удалить стиль": "Supprimer le style",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Augmentez la hauteur du niveau inférieur pour loger la coque et le rebord.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Enfilez la coque du niveau inférieur par le bas jusqu’au rebord d’empilage.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Réduisez le jeu : la languette doit tenir dans l’épaisseur de la paroi.",
+    "Нижний кант доступен без наклона и разделения.": "Le bandeau inférieur est disponible sans inclinaison ni division.",
+    "Нижний кант доступен только на первом ярусе.": "Le bandeau inférieur est disponible uniquement au premier étage.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Dans une pile, le bandeau inférieur est réservé au premier étage. Sans inclinaison, division ni panneaux séparés."
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -2721,7 +2739,13 @@
     "Цвета крышки": "Colores de la tapa",
     "Узор крышки": "Patrón de la tapa",
     "Не удалось сохранить стили.": "No se pudieron guardar los estilos.",
-    "Удалить стиль": "Eliminar estilo"
+    "Удалить стиль": "Eliminar estilo",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta la altura del nivel inferior para alojar la carcasa y el reborde.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Coloca la carcasa del nivel inferior desde abajo hasta el reborde de apilamiento.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce la holgura: la lengüeta debe caber en el grosor de la pared.",
+    "Нижний кант доступен без наклона и разделения.": "La banda inferior está disponible sin inclinación ni división.",
+    "Нижний кант доступен только на первом ярусе.": "La banda inferior solo está disponible en el primer nivel.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "En una pila, la banda inferior solo está disponible en el primer nivel. Sin inclinación, división ni paneles separados."
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -3401,7 +3425,13 @@
     "Цвета крышки": "Χρώματα καπακιού",
     "Узор крышки": "Μοτίβο καπακιού",
     "Не удалось сохранить стили.": "Δεν ήταν δυνατή η αποθήκευση των στυλ.",
-    "Удалить стиль": "Διαγραφή στυλ"
+    "Удалить стиль": "Διαγραφή στυλ",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Αυξήστε το ύψος της κάτω βαθμίδας για να χωρέσουν το περίβλημα και το χείλος.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Περάστε το περίβλημα της κάτω βαθμίδας από κάτω μέχρι το χείλος στοίβαξης.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Μειώστε το διάκενο: η προεξοχή πρέπει να χωρά στο πάχος του τοιχώματος.",
+    "Нижний кант доступен без наклона и разделения.": "Το κάτω περίγραμμα διατίθεται χωρίς κλίση ή διαχωρισμό.",
+    "Нижний кант доступен только на первом ярусе.": "Το κάτω περίγραμμα διατίθεται μόνο στο πρώτο επίπεδο.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Σε στοίβα, το κάτω περίγραμμα διατίθεται μόνο στο πρώτο επίπεδο. Χωρίς κλίση, διαχωρισμό ή ξεχωριστά πάνελ."
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -4081,7 +4111,13 @@
     "Цвета крышки": "Colori del coperchio",
     "Узор крышки": "Motivo del coperchio",
     "Не удалось сохранить стили.": "Impossibile salvare gli stili.",
-    "Удалить стиль": "Elimina stile"
+    "Удалить стиль": "Elimina stile",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta l’altezza del livello inferiore per contenere il guscio e il bordo.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Infila il guscio del livello inferiore dal basso fino al bordo di impilamento.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Riduci il gioco: la linguetta deve rientrare nello spessore della parete.",
+    "Нижний кант доступен без наклона и разделения.": "La fascia inferiore è disponibile senza inclinazione o divisione.",
+    "Нижний кант доступен только на первом ярусе.": "La fascia inferiore è disponibile solo al primo livello.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "In una pila, la fascia inferiore è disponibile solo al primo livello. Senza inclinazione, divisione o pannelli separati."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -4761,7 +4797,13 @@
     "Цвета крышки": "Кольори кришки",
     "Узор крышки": "Візерунок кришки",
     "Не удалось сохранить стили.": "Не вдалося зберегти стилі.",
-    "Удалить стиль": "Видалити стиль"
+    "Удалить стиль": "Видалити стиль",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Для посадки з оболонкою збільште висоту нижнього ярусу.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Оболонка нижнього ярусу надягається знизу до посадкового бортика.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Зменште зазор посадки: гребінь має вміщатися в товщині стінки.",
+    "Нижний кант доступен без наклона и разделения.": "Нижній кант доступний без нахилу та розділення.",
+    "Нижний кант доступен только на первом ярусе.": "Нижній кант доступний лише на першому ярусі.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "У стопці кант доступний лише на першому ярусі. Без нахилу, розділення та окремих панелей."
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -5441,7 +5483,13 @@
     "Цвета крышки": "Barvy víka",
     "Узор крышки": "Vzor víka",
     "Не удалось сохранить стили.": "Styly se nepodařilo uložit.",
-    "Удалить стиль": "Smazat styl"
+    "Удалить стиль": "Smazat styl",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zvyšte spodní patro, aby se vešel plášť a spojovací lem.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuňte plášť spodního patra zespodu až ke spojovacímu lemu.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmenšete vůli: pero se musí vejít do tloušťky stěny.",
+    "Нижний кант доступен без наклона и разделения.": "Spodní lem je dostupný bez náklonu a rozdělení.",
+    "Нижний кант доступен только на первом ярусе.": "Spodní lem je dostupný pouze v prvním patře.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Ve stohu je spodní lem dostupný pouze v prvním patře. Bez náklonu, rozdělení a samostatných panelů."
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -6121,7 +6169,13 @@
     "Цвета крышки": "Kolory pokrywy",
     "Узор крышки": "Wzór pokrywy",
     "Не удалось сохранить стили.": "Nie udało się zapisać stylów.",
-    "Удалить стиль": "Usuń styl"
+    "Удалить стиль": "Usuń styl",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zwiększ wysokość dolnego poziomu, aby zmieścić osłonę i kołnierz.",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuń osłonę dolnego poziomu od dołu aż do kołnierza łączącego.",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmniejsz luz pasowania: wypust musi mieścić się w grubości ściany.",
+    "Нижний кант доступен без наклона и разделения.": "Dolny rant jest dostępny bez pochylenia i podziału.",
+    "Нижний кант доступен только на первом ярусе.": "Dolny rant jest dostępny tylko na pierwszym poziomie.",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "W stosie dolny rant jest dostępny tylko na pierwszym poziomie. Bez pochylenia, podziału i oddzielnych paneli."
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -6803,6 +6857,12 @@
     "Цвета крышки": "盖子颜色",
     "Узор крышки": "盖子图案",
     "Не удалось сохранить стили.": "无法保存样式。",
-    "Удалить стиль": "删除样式"
+    "Удалить стиль": "删除样式",
+    "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "请增加下层高度，为外壳和堆叠边缘留出空间。",
+    "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "从下方套入下层外壳，直到堆叠边缘。",
+    "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "请减小配合间隙：凸榫必须位于壁厚范围内。",
+    "Нижний кант доступен без наклона и разделения.": "底部饰边支持无倾斜、无分割的模型。",
+    "Нижний кант доступен только на первом ярусе.": "底部饰边仅适用于第一层。",
+    "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "堆叠时，底部饰边仅适用于第一层。不支持倾斜、分割或独立面板。"
   }
 }

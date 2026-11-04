@@ -669,5 +669,11 @@
   "Не удалось сохранить стили.": "Impossibile salvare gli stili.",
   "Удалить стиль": "Elimina stile",
   "Цвет основы крышки": "Colore di base del coperchio",
-  "Цвет узора крышки": "Colore del motivo del coperchio"
+  "Цвет узора крышки": "Colore del motivo del coperchio",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Aumenta l’altezza del livello inferiore per contenere il guscio e il bordo.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Infila il guscio del livello inferiore dal basso fino al bordo di impilamento.",
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Riduci il gioco: la linguetta deve rientrare nello spessore della parete.",
+  "Нижний кант доступен без наклона и разделения.": "La fascia inferiore è disponibile senza inclinazione o divisione.",
+  "Нижний кант доступен только на первом ярусе.": "La fascia inferiore è disponibile solo al primo livello.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "In una pila, la fascia inferiore è disponibile solo al primo livello. Senza inclinazione, divisione o pannelli separati."
 }

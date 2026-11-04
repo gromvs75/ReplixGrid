@@ -670,5 +670,11 @@
   "Не удалось сохранить стили.": "Stile konnten nicht gespeichert werden.",
   "Удалить стиль": "Stil löschen",
   "Цвет основы крышки": "Deckelgrundfarbe",
-  "Цвет узора крышки": "Deckelmusterfarbe"
+  "Цвет узора крышки": "Deckelmusterfarbe",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Erhöhen Sie den unteren Einsatz, damit Hülle und Stapelrand passen.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Schieben Sie die Hülle des unteren Einsatzes von unten bis zum Stapelrand auf.",
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Verringern Sie das Passungsspiel: Der Steg muss in die Wandstärke passen.",
+  "Нижний кант доступен без наклона и разделения.": "Der untere Rand ist ohne Neigung und Teilung verfügbar.",
+  "Нижний кант доступен только на первом ярусе.": "Der untere Rand ist nur auf der ersten Etage verfügbar.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Im Stapel ist der untere Rand nur auf der ersten Etage verfügbar. Ohne Neigung, Teilung und separate Paneele."
 }

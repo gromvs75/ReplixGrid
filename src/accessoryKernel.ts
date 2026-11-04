@@ -1,3 +1,4 @@
+import {stackFit,SHELL_SEAM} from './stackFit.js';
 import {buildDecorativePanels} from './decorativePanels.js';
 import {oliveFace} from './oliveLid.js';
 import {shellGap} from './reliefSize.js';
@@ -26,9 +27,9 @@ export async function buildKit(p:Project):Promise<KitPart[]> {
 }
 const organizerCache=new Map<string,Awaited<ReturnType<typeof buildOrganizer>>>();
 const panelCache=new Map<string,Awaited<ReturnType<typeof buildDecorativePanels>>>();
-async function cachedOrganizer(p:Project){
- const key=JSON.stringify(p);let result=organizerCache.get(key);
- if(!result){result=await buildOrganizer(p);organizerCache.set(key,result);while(organizerCache.size>8)organizerCache.delete(organizerCache.keys().next().value!);}
+async function cachedOrganizer(p:Project,shellSupport=true){
+ const key=JSON.stringify([p,shellSupport]);let result=organizerCache.get(key);
+ if(!result){result=await buildOrganizer(p,shellSupport);organizerCache.set(key,result);while(organizerCache.size>8)organizerCache.delete(organizerCache.keys().next().value!);}
  return structuredClone(result);
 }
 async function cachedPanels(p:Project){
@@ -57,20 +58,28 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
  };
  const ring=(source:Project,outer:number,inner:number,height:number,z:number)=>keep(keep(wasm.Manifold.extrude([footprintContour(source,outer),footprintContour(source,inner).reverse()],height)).translate([0,0,z]));
  try{
-  const count=p.stack?.levels.length??1;let baseZ=0;
+  const count=p.stack?.levels.length??1;let baseZ=0;const elevations:number[]=[];
   for(let i=0;i<count;i++){
    const lp=p.stack?levelProject(p,i):{...p,lid:undefined,cups:undefined};
+   const incoming=p.stack&&i>0?stackFit(lp,p.stack.gap,levelProject(p,i-1)):null;
+   const outgoing=p.stack&&i<count-1?stackFit(levelProject(p,i+1),p.stack.gap,lp):null;
+   const base=incoming?.hidden?incoming.base:0;
+   baseZ+=base;elevations.push(baseZ);
    // Keep lid presence when deciding whether a sleeve ledge is supported.
-   const built=await cachedOrganizer({...lp,lid:p.stack?undefined:p.lid,cups:undefined});let body:Manifold|null=null;
+   const built=await cachedOrganizer({...lp,lid:p.stack?undefined:p.lid,cups:undefined},!base);let body:Manifold|null=null;
    const h=resolveWalls(lp)[0].startHeight;
    if(p.stack&&i<count-1){
     body=keep(solid(built.stl).translate(built.position));
-    const gap=p.stack.gap,out=gap+1.4;
+    const fit=stackFit(levelProject(p,i+1),p.stack.gap,lp),gap=fit.inner,out=fit.outer;
     // Collar belongs to the LOWER tray: the next tray still prints on its entire flat bottom.
-    // Short stepped flare supports the outward lip without a bridge across the tray floor.
     const additions:Manifold[]=[];
-    for(let step=1;step<=5;step++)additions.push(ring(lp,out*step/5,-lp.wallThickness, .45,h-2.25+(step-1)*.45));
-    additions.push(ring(lp,out,gap,2.4,h-.4));
+    if(fit.hidden){
+     additions.push(ring(lp,fit.tongueOuter,fit.tongueInner,fit.tongueHeight+.2,h-.2));
+    }else{
+     const steps=Math.ceil(fit.flare/.45),rise=fit.flare/steps;
+     for(let step=1;step<=steps;step++)additions.push(ring(lp,out*step/steps,-lp.wallThickness,rise,h-fit.flare+(step-1)*rise));
+     additions.push(ring(lp,out,gap,2.4,h-.4));
+    }
     let collar=keep(wasm.Manifold.union(additions));
     for(const side of ['left','right','front','back'] as const){
      const cut=lp.cutouts?.[side];if(!cut)continue;
@@ -90,13 +99,21 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Cut the seat from the finished tray, including any full-height dividers.
     const pocket=keep(wasm.Manifold.extrude([footprintContour(lp,seatOffset)],h+1));
     const cutter=keep(pocket.translate([0,0,h-plateThickness]));
-    body=keep(keep(solid(built.stl).translate(built.position)).subtract(cutter));
+    body=keep((body??keep(solid(built.stl).translate(built.position))).subtract(cutter));
+   }
+   if(base&&incoming){
+    body??=keep(solid(built.stl).translate(built.position));
+    const slab=keep(keep(wasm.Manifold.extrude([footprintContour(lp,0)],base)).translate([0,0,-base]));
+    body=keep(body.add(slab));
+    if(lp.shell&&lp.shell.mode!=='panels')body=keep(body.add(keep(keep(wasm.Manifold.extrude([footprintContour(lp,shellGap(lp)+lp.shell.thickness)],SHELL_SEAM)).translate([0,0,-base]))));
+    const socket=ring(lp,incoming.tongueOuter+p.stack!.gap,incoming.tongueInner-p.stack!.gap,incoming.socketDepth+.01,-base-.01);
+    body=keep(body.subtract(socket));
    }
    if(body)emit(body,count>1?`tray-${i+1}`:'organizer','organizer',i,[0,0,baseZ]);
    else parts.push({name:count>1?`tray-${i+1}`:'organizer',kind:'organizer',level:i,...built,position:[built.position[0],built.position[1],built.position[2]+baseZ],color:partColor(lp,'organizer')});
    parts[parts.length-1].color=partColor(lp,'organizer');
    if(i===count-1&&p.lid){
-    const offset=p.shell?shellGap(p)+p.shell.thickness:(p.relief?.depth??0),gap=.5,outer=inset?seatOffset-.35:offset+gap+1.4;
+    const offset=lp.shell?shellGap(lp)+lp.shell.thickness:(lp.relief?.depth??0),gap=.5,outer=inset?seatOffset-.35:offset+gap+1.4;
     let plate=keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness));
     const design=p.lidDesign,lipHeight=design?.rimHeight??2;
     let lip=inset?null:ring(lp,outer,offset+gap,lipHeight,plateThickness);
@@ -157,13 +174,18 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     }
    }
    if(lp.shell?.mode==='panels')for(const b of await cachedPanels({...lp,cups:undefined}))parts.push({...b,name:count>1?`tier-${i+1}-${b.name}`:b.name,position:[b.position[0],b.position[1],b.position[2]+baseZ],kind:'shell',level:i,color:partColor(lp,'shell')});
+   if(lp.shell&&lp.shell.mode!=='panels'){
+    const extension=base?base-SHELL_SEAM:0;
+    const sleeve=extension?{...lp,height:h+extension,heights:{},wallProfiles:undefined,transitions:[]}:{...lp,lid:p.stack?undefined:p.lid};
+    const b=await buildShell(sleeve,!base);
+    parts.push({...b,name:count>1?`tier-${i+1}-shell`:'shell',kind:'shell',level:i,position:[b.position[0],b.position[1],b.position[2]+baseZ-extension],color:partColor(lp,'shell')});
+   }
    baseZ+=h;
   }
-  if(p.shell&&p.shell.mode!=='panels'){const b=await buildShell(p);parts.push({name:'shell',kind:'shell',level:0,...b,color:partColor(p,'shell')});}
   if(p.stack){
    let elevation=0;
    for(let level=0;level<count;level++){
-    const lp=levelProject(p,level);
+    const lp=levelProject(p,level);elevation=elevations[level];
     if(lp.cups?.length){
      const local=await buildKit({...lp,shell:undefined,lid:level===count-1&&p.lid&&p.lidDesign?.fit==='inset',lidDesign:p.lidDesign});
      for(const part of local.filter(part=>part.kind==='cup'))parts.push({...part,name:`tier-${level+1}-${part.name}`,level,position:[part.position[0],part.position[1],part.position[2]+elevation]});

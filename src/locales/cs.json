@@ -669,5 +669,11 @@
   "Не удалось сохранить стили.": "Styly se nepodařilo uložit.",
   "Удалить стиль": "Smazat styl",
   "Цвет основы крышки": "Základní barva víka",
-  "Цвет узора крышки": "Barva vzoru víka"
+  "Цвет узора крышки": "Barva vzoru víka",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Zvyšte spodní patro, aby se vešel plášť a spojovací lem.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Nasuňte plášť spodního patra zespodu až ke spojovacímu lemu.",
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Zmenšete vůli: pero se musí vejít do tloušťky stěny.",
+  "Нижний кант доступен без наклона и разделения.": "Spodní lem je dostupný bez náklonu a rozdělení.",
+  "Нижний кант доступен только на первом ярусе.": "Spodní lem je dostupný pouze v prvním patře.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "Ve stohu je spodní lem dostupný pouze v prvním patře. Bez náklonu, rozdělení a samostatných panelů."
 }

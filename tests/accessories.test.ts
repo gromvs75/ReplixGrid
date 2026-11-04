@@ -9,8 +9,8 @@ test('stack: independent levels, connected printable collar, flat bottoms',async
  let p=setLevelCount({...defaultProject(),cornerRadius:8},3);p.height=40;p=splitCell(p,p.root.id,'x',2);p=switchLevel(p,1);assert.equal(p.height,30);assert.equal(p.root.split,undefined);p.height=25;p=switchLevel(p,0);assert.equal(p.height,40);assert.ok(p.root.split);p.lid=true;
  const kit=await buildKit(p);assert.equal(kit.length,4);assert.deepEqual(kit.filter(p=>p.kind==='organizer').map(p=>p.position[2]),[0,40,65]);assert.ok(kit.every(p=>p.inspection.bounds.min[2]===0));assert.ok(inspectPrintParts(p,kit).ok);
 });
-test('stack refuses waves, tilt, shell and protruding dividers',()=>{
- const p=defaultProject();assert.throws(()=>setLevelCount({...p,tilt:10},2));assert.throws(()=>setLevelCount({...p,shell:{pattern:'waves',gap:.5,thickness:1.6,size:12}},2));assert.throws(()=>setLevelCount({...p,wallProfiles:{left:{start:30,end:30,style:'wavy',wavelength:20}}},2));let q=splitCell(p,'root','x',2);q.root.split!.height=60;assert.throws(()=>setLevelCount(q,2));
+test('stack refuses waves, tilt and protruding dividers',()=>{
+ const p=defaultProject();assert.throws(()=>setLevelCount({...p,tilt:10},2));assert.throws(()=>setLevelCount({...p,wallProfiles:{left:{start:30,end:30,style:'wavy',wavelength:20}}},2));let q=splitCell(p,'root','x',2);q.root.split!.height=60;assert.throws(()=>setLevelCount(q,2));
 });
 test('lid adapts to shell envelope; cups support four shapes and validate missing cells',async()=>{
  const p={...defaultProject(),cornerRadius:6,lid:true,shell:{pattern:'diamonds' as const,gap:.5,thickness:1.6,size:12}};const kit=await buildKit(p);assert.equal(kit.length,3);const lid=kit.find(p=>p.kind==='lid')!;assert.ok(lid.inspection.bounds.max[0]>104);assert.equal(lid.inspection.bounds.max[2],4);

@@ -1,3 +1,4 @@
+import {stackFit,SOCKET_BASE} from './stackFit.js';
 import {resolveWalls,type Project,type Cell,type Wall} from './model.js';
 import {regions} from './editor.js';
 import {honeyCellHeight,contourHeight,topAt} from './shell.js';
@@ -81,7 +82,7 @@ export function stackRimProblem(p:Project):string {
  return rimProblem(p,walls.map(w=>({...w,cutout:undefined})));
 }
 export function stackProblem(p:Project):string {
- return stackRimProblem(p)||(p.shell&&p.shell.mode!=='panels'?'Для ярусов выберите декоративные панели вместо цельной оболочки.':p.stack&&p.shell&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':p.relief?'Для посадки ярусов выберите гладкую поверхность.':'');
+ return stackRimProblem(p)||(p.shell?.snap?'Защёлки пока доступны для прямоугольной формы без наклона, рельефа, крышки, ярусов и разрезания.':p.stack&&p.shell?.mode==='panels'&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':p.relief?'Для посадки ярусов выберите гладкую поверхность.':'');
 }
 export const lidPlateThickness=(p:Project)=>p.lidDesign?.olive?3.2:2;
 export function validateAccessories(p:Project,walls:Wall[]) {
@@ -97,8 +98,10 @@ export function validateAccessories(p:Project,walls:Wall[]) {
  if(p.stack){
   const s=p.stack;
   if(!Array.isArray(s.levels)||s.levels.length<2||s.levels.length>5||!Number.isInteger(s.active)||s.active<0||s.active>=s.levels.length||!Number.isFinite(s.gap)||s.gap<.2||s.gap>1)throw new Error('Некорректные параметры ярусов.');
+  if(s.levels.some((l,i)=>i>0&&i!==s.active&&l.settings?.baseBand))throw new Error('Нижний кант доступен только на первом ярусе.');
   const problem=stackProblem({...p,stack:undefined});if(problem)throw new Error(problem);
-  for(const [i,level] of s.levels.entries())if(i!==s.active){const lp=levelProject(p,i);resolveWalls(lp);const why=stackRimProblem(lp);if(why)throw new Error(`Ярус ${i+1}: ${why}`);}
+  for(const [i,level] of s.levels.entries())if(i!==s.active){const lp=levelProject(p,i);resolveWalls(lp);const why=stackProblem(lp);if(why)throw new Error(`Ярус ${i+1}: ${why}`);}
+  for(let i=0;i<s.levels.length-1;i++){const lower=levelProject(p,i),fit=stackFit(levelProject(p,i+1),s.gap,lower);if(fit.hidden&&lower.wallThickness<s.gap+1.4)throw new Error('Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.');}
  }
  if(p.cups){
   if(!Array.isArray(p.cups)||p.cups.length>16||new Set(p.cups.map(c=>c.cellId)).size!==p.cups.length)throw new Error('Не больше 16 стаканчиков: один на отсек.');
@@ -115,7 +118,7 @@ export function validateAccessories(p:Project,walls:Wall[]) {
 }
 
 // Dimensions and outer footprint are shared for mating; contents and appearance are per tier.
-const localKeys=['height','root','heights','wallProfiles','transitions','transitionStyles','transitionWavelengths','cutouts','cups','colors','shell','innerCornerRadius','wallThickness','floorThickness','relief','label'] as const;
+const localKeys=['height','root','heights','wallProfiles','transitions','transitionStyles','transitionWavelengths','cutouts','cups','colors','shell','innerCornerRadius','wallThickness','floorThickness','relief','label','baseBand'] as const;
 function snapshot(p:Project):StackLevel {
  const settings:Partial<Project>={};
  for(const key of localKeys)(settings as Record<string,unknown>)[key]=structuredClone(p[key]);
@@ -124,7 +127,7 @@ function snapshot(p:Project):StackLevel {
 export function levelProject(p:Project,index:number):Project {
  const l=p.stack?.levels[index],current=!p.stack||index===p.stack.active;
  if(current)return {...p,stack:undefined,lid:undefined};
- const legacy={height:l!.height,root:structuredClone(l!.root),heights:{},wallProfiles:undefined,transitions:[],cutouts:l!.cutouts,cups:l!.cups};
+ const legacy={baseBand:index===0?p.baseBand:undefined,height:l!.height,root:structuredClone(l!.root),heights:{},wallProfiles:undefined,transitions:[],cutouts:l!.cutouts,cups:l!.cups};
  const settings=l!.settings?Object.fromEntries(localKeys.map(key=>[key,l!.settings![key]])):legacy;
  return {...p,...settings,stack:undefined,lid:undefined};
 }
@@ -150,8 +153,12 @@ export function setLevelCount(p:Project,count:number):Project {
  if(d.stack.active>=count)d=switchLevel(d,count-1);
  d.stack!.levels=d.stack!.levels.slice(0,count);
  while(d.stack!.levels.length<count){
-  const empty={...d,height:resolveWalls({...d,stack:undefined})[0].startHeight,root:{id:crypto.randomUUID()},cups:undefined,heights:{},wallProfiles:undefined,transitions:[]};
+  const empty={...d,baseBand:undefined,height:resolveWalls({...d,stack:undefined})[0].startHeight,root:{id:crypto.randomUUID()},cups:undefined,heights:{},wallProfiles:undefined,transitions:[]};
   d.stack!.levels.push(snapshot(empty));
  }
  return d;
 }
+
+export function hasAnyShell(p:Project):boolean {return !!p.shell||!!p.stack?.levels.some((level,i)=>i!==p.stack!.active&&!!level.settings?.shell);}
+
+export function tierElevation(p:Project,index:number){let z=0;for(let i=0;i<index;i++){const lower=levelProject(p,i),upper=levelProject(p,i+1);z+=resolveWalls(lower)[0].startHeight+(stackFit(upper,p.stack!.gap,lower).hidden?SOCKET_BASE:0);}return z;}

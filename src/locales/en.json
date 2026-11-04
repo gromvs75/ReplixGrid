@@ -679,5 +679,11 @@
   "Цвета крышки": "Lid colors",
   "Узор крышки": "Lid pattern",
   "Не удалось сохранить стили.": "Could not save styles.",
-  "Удалить стиль": "Delete style"
+  "Удалить стиль": "Delete style",
+  "Для посадки с оболочкой увеличьте высоту нижнего яруса.": "Increase the lower tier height to fit the shell and collar.",
+  "Оболочка нижнего яруса надевается снизу до посадочного бортика.": "Slide the lower tier shell on from below, up to the stacking collar.",
+  "Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.": "Reduce the fit clearance: the tongue must fit within the wall thickness.",
+  "Нижний кант доступен без наклона и разделения.": "The bottom band is available without tilt or splitting.",
+  "Нижний кант доступен только на первом ярусе.": "The bottom band is available only on the first tier.",
+  "В стопке кант доступен только на первом ярусе. Без наклона, разделения и отдельных панелей.": "In a stack, the bottom band is available only on the first tier. No tilt, splitting or separate panels."
 }

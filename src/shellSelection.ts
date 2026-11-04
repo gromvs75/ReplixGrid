@@ -1,7 +1,7 @@
 import type {Project,ShellSettings} from './model.js';
 import {defaultShell} from './shell.js';
 
-/** A tier cannot accept a wrapped sleeve: create the compatible panel mode. */
+/** Keep the existing panel default for a new tier decoration; wrapped sleeves can be selected explicitly. */
 export function shellForPattern(p:Project,pattern:ShellSettings['pattern']):ShellSettings{
  if(p.shell)return {...p.shell,pattern,size:pattern==='cubes'?Math.max(5,p.shell.size):p.shell.size};
  const shell=defaultShell(pattern);
