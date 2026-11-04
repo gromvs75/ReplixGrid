@@ -43,6 +43,18 @@ Choose **Flat** for a level rim, **Sloped** for a continuous rise, or **Steps** 
 
 **Shape → Additional** contains wall and bottom thickness. Thicker walls take space from the compartments. **Tilt on a flat base** leans the walls forward by up to 25° while the bottom stays horizontal. This differs from a sloped rim, which changes wall height along the body. With tilt enabled, use the finished dimensions in the download dialog to check the space the printed part will occupy.
 
+## Exact internal dimensions
+
+Select a compartment and use **Internal dimensions** in the right panel, or click its blue dimension label directly on the model. Choose width or depth, enter millimeters and click outside the inline field to apply. Enter also applies; Escape cancels. The right panel retains its Apply button. Invalid values cannot change the model. Each committed edit can be undone in one step.
+
+The orange divider is its current position; the dashed blue line previews the new position. The closest enclosing split on the chosen axis moves, keeping the outside body size and wall thickness unchanged. The panel shows affected neighboring sizes. If there is no divider on that axis, adjust the overall dimensions or split the compartment first.
+
+In a simple row, start with compartment 1 and continue in order; the last compartment takes the remainder. Neighboring dimensions are not locked, so editing an earlier compartment can resize a later one.
+
+Rounded corners, capsule contours, chamfers and inner fillets remain supported. The blue line measures the actual internal span at the compartment centreline, just above the floor. Space can narrow elsewhere around curves: add clearance and check the whole object footprint. Circle, oval, honeycomb and tilted walls do not currently support exact compartment editing.
+
+Select a wall or divider to edit its height directly on the model. Flat walls show one value; two-point profiles show A/B values. Linked-height and stepped-wall rules match the right panel. These labels edit height, not wall length or global thickness.
+
 ## Compartments and dividers
 
 For a quick layout, use **Compartments → + Compartment** to split the largest compartment. **− Compartment** merges a neighboring pair. In a honeycomb, these controls add or remove an outside cell and preserve the size of the others. Two neighboring honeycomb cells share a wall as high as the taller cell.
