@@ -1,6 +1,16 @@
 # Changelog
 
-## Unreleased — Wrapped shells on stacked trays
+## 2026-11-04 — Drawer arrangements
+
+- Start with measured drawer dimensions and clearance in the separate Drawer workspace.
+- Create organizers directly in a drawer or add independent copies of saved projects and variants.
+- Move, rotate, duplicate and edit trays, with assembled size and clearance checks.
+- Save multiple drawers locally, transfer layouts as JSON and export individual trays.
+- Rotate the viewing orientation without changing physical dimensions or exports.
+
+See [Drawer arrangements](REFERENCE.md#drawer-arrangements) for instructions. Placement is free; this release does not generate a mounting plate.
+
+## 2026-11-04 — Wrapped shells on stacked trays
 
 - Bottom trim is now available on the first tier of a stack, including wrapped shells. Upper tiers keep their hidden joints without decorative bottom trim.
 
