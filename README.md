@@ -20,6 +20,8 @@ Prefer a local copy? Follow the Windows and macOS setup instructions below. Both
 
 Projects are saved in the browser at the address you use. To move between the local and online versions, download your project JSON and open it in the other version. Configure filament slots again at the new address.
 
+[Release notes](docs/CHANGELOG.md) · [Product roadmap](docs/ROADMAP.md)
+
 ## Local installation
 
 These instructions are for Windows and macOS, including people who have never used a terminal. You will download the project, install Node.js, and start the app on your own computer. **You need an internet connection for the first installation.** No GitHub account, Git installation, or programming experience is required.
