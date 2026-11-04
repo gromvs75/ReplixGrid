@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — Shared styles
+## 2026-11-04 — Shared styles
 
 - Save named color and pattern styles for reuse across projects and variants.
 - Apply colors, patterns, or both in one undo step, preserving dimensions and layout.
