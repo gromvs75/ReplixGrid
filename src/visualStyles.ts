@@ -27,7 +27,7 @@ export function parseStyle(value:unknown):VisualStyle {
  if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('Invalid style');
  const s=value as VisualStyle;if(s.version!==1||!/^#[0-9a-f]{6}$/i.test(s.organizerColor))throw new Error('Invalid style');
  const p=defaultProject();p.colors={organizer:s.organizerColor};
- if(s.relief!==null){if(!s.relief||typeof s.relief!=='object')throw new Error('Invalid style');p.relief={pattern:s.relief.pattern,spacing:s.relief.spacing,depth:s.relief.depth};}
+ if(s.relief!==null){if(!s.relief||typeof s.relief!=='object')throw new Error('Invalid style');p.relief={pattern:s.relief.pattern,spacing:s.relief.spacing,depth:s.relief.depth,...(s.relief.svg?{svg:structuredClone(s.relief.svg)}:{})};}
  if(s.shell){p.colors.shell=s.shell.color;p.shell={pattern:s.shell.pattern,size:s.shell.size,gap:.4,thickness:1.2};}
  if(s.lid){
   if(!s.lid.surface||typeof s.lid.surface!=='object')throw new Error('Invalid style');

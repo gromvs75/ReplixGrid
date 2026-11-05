@@ -113,8 +113,9 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
     catch(error){
       // Close vertices on fine perforations can be distinct: retry with a
       // smaller weld, retaining the same strict closed-surface inspection.
-      if(!(error instanceof Error)||error.message!=='Open or non-manifold oriented edge')throw error;
-      const distances=part==='shell'?[.0001]:project.topEdge?[.000005,.0001,.0005,.001,.003]:[];
+      // Wrapped SVG strips can also meet at Float32-scale seams.
+      if(!(error instanceof Error)||(error.message!=='Open or non-manifold oriented edge'&&!(project.relief?.svg&&error.message==='Degenerate triangle')))throw error;
+      const distances=part==='shell'?[.0001]:(project.topEdge||project.relief?.svg)?[.000005,.0001,.0005,.001,.003]:[];
       let valid=false;
       for(const distance of distances){
         cleaned=removeCollapsedFaces(weldNearVertices(triangles,distance));

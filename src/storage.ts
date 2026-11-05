@@ -1,3 +1,4 @@
+import {validateSvgAsset} from './svgPattern.js';
 import {t} from './i18n.js';
 import {readRecovery,writeRecovery,clearRecovery} from './recovery.js';
 import {parseDrawer} from './drawer.js';
@@ -209,3 +210,14 @@ export async function saveDrawer(drawer:Drawer){
  if(recovery&&recovery.key!==journal.key){clearRecovery(recovery.key,recovery.raw);if(drawerRecovery===recovery)drawerRecovery=null;}
  return result;
 }
+
+export interface SavedSvg {id:string;createdAt:number;asset:import('./svgPattern.js').SvgAsset}
+export async function listSvgAssets(){
+ return transaction<SavedSvg[]>('readonly',(tx,done)=>{const r=tx.objectStore('projects').getAll(IDBKeyRange.bound('svg:','svg;'));r.onsuccess=()=>{const valid:SavedSvg[]=[];for(const record of r.result)try{validateSvgAsset(record.asset);if(typeof record.id==='string'&&Number.isFinite(record.createdAt))valid.push(record);}catch{}done(valid.sort((a,b)=>b.createdAt-a.createdAt));};});
+}
+export async function saveSvgAsset(asset:import('./svgPattern.js').SvgAsset){
+ validateSvgAsset(asset);
+ const record:SavedSvg={id:crypto.randomUUID(),createdAt:Date.now(),asset:structuredClone(asset)};
+ return transaction<SavedSvg>('readwrite',(tx,done)=>{tx.objectStore('projects').put(record,'svg:'+record.id);done(record);});
+}
+export async function deleteSvgAsset(id:string){return transaction<void>('readwrite',(tx,done)=>{tx.objectStore('projects').delete('svg:'+id);done();});}

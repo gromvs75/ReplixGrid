@@ -1,3 +1,4 @@
+import {applySvgRelief} from './svgRelief.js';
 import {reliefValue} from './reliefPatterns.js';
 import {contourHeight,honeyCellHeight} from './shell.js';
 import type {Manifold,ManifoldToplevel} from 'manifold-3d';
@@ -5,7 +6,7 @@ import {resolveWalls,type Project} from './model.js';
 import {footprintContour,honeyEdgeOwner,offsetContour} from './footprint.js';
 /** A closed relief skin overlaps the intact wall and is fused to it. */
 export function applyRelief(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold){
- const r=p.relief;if(!r)return body;
+ const r=p.relief;if(!r)return body;if(r.svg)return applySvgRelief(wasm,p,body,keep);
  const resolution=16;
  const walls=resolveWalls(p);
  const contour=footprintContour(p),inner=offsetContour(contour,-.25),outer=offsetContour(contour,1),depth=r.depth;

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 — Custom SVG relief
+
+- Import filled SVG artwork into a local library and apply it to selected organizer walls.
+- Place one motif or repeat it with adjustable size, rotation, position and spacing.
+- Keep repeated motifs whole at wall edges and cutouts, including small patterns.
+- Carry SVG contours with saved projects and shared styles; export the relief for printing.
+
+See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and instructions.
+
 ## 2026-11-04 — Drawer arrangements
 
 - Start with measured drawer dimensions and clearance in the separate Drawer workspace.
