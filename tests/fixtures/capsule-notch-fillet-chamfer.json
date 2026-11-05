@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "units": "mm",
+  "width": 180,
+  "depth": 90,
+  "height": 36,
+  "wallThickness": 2,
+  "floorThickness": 2,
+  "heights": {
+    "left": 22,
+    "right": 70
+  },
+  "transitions": [
+    "front",
+    "back"
+  ],
+  "root": {
+    "id": "root",
+    "split": {
+      "axis": "x",
+      "ratio": 0.32950191570881227,
+      "first": {
+        "id": "73962644-d701-47ab-8f65-cbf7bd7a77a1"
+      },
+      "second": {
+        "id": "d7eed080-b147-4f9b-bf84-573e34afcfde",
+        "split": {
+          "axis": "x",
+          "ratio": 0.5000000000000001,
+          "first": {
+            "id": "456e196a-4f00-408e-b6f3-29dc85b01920"
+          },
+          "second": {
+            "id": "be5cc8bf-c36b-4f45-8562-5e88f38a3856"
+          },
+          "profile": {
+            "start": 53.91111111111112,
+            "end": 53.91111111111112,
+            "style": "straight"
+          }
+        }
+      },
+      "profile": {
+        "start": 38.08888888888889,
+        "end": 38.08888888888889,
+        "style": "straight"
+      }
+    }
+  },
+  "cornerRadius": 45,
+  "capsuleSlope": true,
+  "innerCornerRadius": 4,
+  "tilt": 25,
+  "topEdge": {
+    "style": "chamfer",
+    "size": 0.7
+  },
+  "cutouts": {
+    "front": {
+      "shape": "smooth",
+      "width": 0.5,
+      "depth": 12,
+      "position": 0.5
+    }
+  }
+}
