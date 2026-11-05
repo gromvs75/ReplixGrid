@@ -10,7 +10,9 @@ import {buildPrintPieces,buildJointPins,jointSampleProject} from './assemblyKern
 import {splitPlan} from './splitting.js';
 import {zipFiles} from './zip.js';
 import type {Project} from './model.js';
-let prepared:ExportPart[]|null=null;
+let prepared:{parts:ExportPart[];key:string;revision:number}|null=null;
+let checkSerial=0;
+const exportKey=(project:Project,part:unknown,mounting:unknown)=>JSON.stringify({project,part,mounting});
 // Relief edits cannot change the sleeve. Keep one completed sleeve in the preview worker.
 let previewShellCache:{key:string;value:Awaited<ReturnType<typeof buildShell>>}|null=null;
 async function previewShell(project:Project){
@@ -42,13 +44,14 @@ globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;
       globalThis.postMessage({revision,ok:true,bounds:{width:max[0]-min[0],depth:max[1]-min[1],height:max[2]-min[2]}});return;
     }
     if(purpose==='check'){
-      prepared=null;const parts=mounting&&part!=='shell'?(await mountedKit(mounting)).filter(p=>part==='organizer'?p.kind!=='shell':true):await exportParts(project,part),report=inspectPrintParts(mounting?.layout.plate?{...project,printArea:{...(project.printArea??{bedHeight:270}),bedWidth:mounting.layout.plate.bedWidth,bedDepth:mounting.layout.plate.bedDepth}}:part==='sample'?{...project,printing:jointSampleProject(project).printing}:project,parts);
-      if(report.ok)prepared=parts;
+      const serial=++checkSerial;prepared=null;const parts=mounting&&part!=='shell'?(await mountedKit(mounting)).filter(p=>part==='organizer'?p.kind!=='shell':true):await exportParts(project,part),report=inspectPrintParts(mounting?.layout.plate?{...project,printArea:{...(project.printArea??{bedHeight:270}),bedWidth:mounting.layout.plate.bedWidth,bedDepth:mounting.layout.plate.bedDepth}}:part==='sample'?{...project,printing:jointSampleProject(project).printing}:project,parts);
+      if(serial!==checkSerial)return;
+      if(report.ok)prepared={parts,key:exportKey(project,part,mounting),revision};
       globalThis.postMessage({revision,ok:true,report,partColors:parts.map(p=>({name:p.name,color:p.color}))});return;
     }
     if(purpose==='download'){
-      if(!prepared)throw new Error('Сначала проверьте детали.');
-      const result=formatExport(prepared,format??'3mf',objInstructions,filamentSlots,partSlots);globalThis.postMessage({revision,ok:true,formatted:result.data,extension:result.extension,mime:result.mime,count:prepared.length},{transfer:[result.data]});return;
+      if(!prepared||prepared.revision!==revision||prepared.key!==exportKey(project,part,mounting))throw new Error('Сначала проверьте детали.');
+      const result=formatExport(prepared.parts,format??'3mf',objInstructions,filamentSlots,partSlots);globalThis.postMessage({revision,ok:true,formatted:result.data,extension:result.extension,mime:result.mime,count:prepared.parts.length},{transfer:[result.data]});return;
     }
     if(purpose==='preview'&&project.printing){
       const pieces=await buildPrintPieces(project);

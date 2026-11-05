@@ -1,3 +1,5 @@
+import {readRecovery,writeRecovery,clearRecovery} from './recovery.js';
+import {parseDrawer} from './drawer.js';
 import {parseStyle,type SavedStyle,type VisualStyle} from './visualStyles.js';
 import type {Project} from './model.js';
 import {parseProject} from './editor.js';
@@ -27,25 +29,49 @@ async function transact<T>(mode:IDBTransactionMode,run:(tx:IDBTransaction,done:(
  try{run(tx,value=>{result=value;});}catch(e){tx.abort();reject(e);}
  });
 }
-export async function loadSession(){return transaction<{project:Project|null;activeId:string|null;history:ProjectHistory}>('readonly',(tx,done)=>{
- const state={project:null as Project|null,activeId:null as string|null,history:emptyHistory()};done(state);
- const latest=tx.objectStore('projects').get('latest');latest.onsuccess=()=>{try{state.project=latest.result?parseProject(latest.result):null;}catch{tx.abort();}};
- const history=tx.objectStore('projects').get('history');history.onsuccess=()=>{state.history=readHistory(history.result);};
- const active=tx.objectStore('projects').get('active');active.onsuccess=()=>{if(typeof active.result==='string'){const r=tx.objectStore('library').get(active.result);r.onsuccess=()=>{if(r.result)state.activeId=active.result;};}};
-});}
+async function loadDatabaseSession(){
+ const raw=await transaction<{latest:unknown;active:unknown;history:unknown;backup:unknown;activeExists:boolean}>('readonly',(tx,done)=>{
+  const state={latest:null as unknown,active:null as unknown,history:null as unknown,backup:null as unknown,activeExists:false};done(state);
+  const store=tx.objectStore('projects');
+  for(const [key,field]of [['latest','latest'],['history','history'],['lastGoodSession','backup']] as const){const r=store.get(key);r.onsuccess=()=>{state[field]=r.result;};}
+  const r=store.get('active');r.onsuccess=()=>{state.active=r.result;if(typeof r.result==='string'){const q=tx.objectStore('library').get(r.result);q.onsuccess=()=>{state.activeExists=!!q.result;};}};
+ });
+ try{if(raw.latest==null&&raw.backup)throw new Error('Missing current snapshot');return {project:raw.latest==null?null:parseProject(raw.latest as string),activeId:raw.activeExists?raw.active as string:null,history:readHistory(raw.history)};}
+ catch(error){
+  const backup=raw.backup as {project:Project;activeId:string|null;history:ProjectHistory}|null;
+  if(!backup)throw error;
+  return {project:parseProject(JSON.stringify(backup.project)),activeId:raw.activeExists&&backup.activeId===raw.active?backup.activeId:null,history:readHistory(backup.history)};
+ }
+}
+const sessionRecoveryKey='replixgrid.pending-session';
+function recoverSession(){
+ try{const value=readRecovery(sessionRecoveryKey) as {project:Project;activeId:string|null;history:ProjectHistory}|null;
+  if(!value)return null;
+  if(value.activeId!==null&&typeof value.activeId!=='string')return null;
+  return {project:parseProject(JSON.stringify(value.project)),activeId:value.activeId,history:readHistory(value.history)};
+ }catch{return null;}
+}
+export async function loadSession(){
+ const recovery=recoverSession();
+ if(recovery)return recovery;
+ return loadDatabaseSession();
+}
 export async function loadSaved():Promise<Project|null>{return (await loadSession()).project;}
 export async function saveCurrent(project:Project,activeId:string|null=null,history:ProjectHistory=emptyHistory()){
+ const snapshot=structuredClone({project,activeId,history:historyCopy(history)});
+ const journal=writeRecovery(sessionRecoveryKey,snapshot);
+ project=snapshot.project;history=snapshot.history;
  return transaction<void>('readwrite',(tx,done)=>{
-  tx.objectStore('projects').put(JSON.stringify(project),'latest');tx.objectStore('projects').put(activeId,'active');tx.objectStore('projects').put(historyCopy(history),'history');
+  tx.objectStore('projects').put(snapshot,'lastGoodSession');tx.objectStore('projects').put(JSON.stringify(project),'latest');tx.objectStore('projects').put(activeId,'active');tx.objectStore('projects').put(historyCopy(history),'history');
   if(activeId){const library=tx.objectStore('library'),r=library.get(activeId);r.onsuccess=()=>{if(r.result)library.put({...r.result,project,history:historyCopy(history),updatedAt:Date.now()});};}done();
- });
+ }).then(()=>clearRecovery(sessionRecoveryKey,journal));
 }
 export async function listProjects(){return transaction<SavedProject[]>('readonly',(tx,done)=>{const r=tx.objectStore('library').getAll();r.onsuccess=()=>done((r.result as SavedProject[]).sort((a,b)=>b.updatedAt-a.updatedAt));});}
 export function projectName(name:string){return name.trim().slice(0,80);}
 export async function saveNamedProject(name:string,project:Project){
  const clean=projectName(name);if(!clean)throw new Error('Project name is empty');
  const record:SavedProject={id:crypto.randomUUID(),name:clean,createdAt:Date.now(),updatedAt:Date.now(),project:structuredClone(project)};
- return transaction<SavedProject>('readwrite',(tx,done)=>{tx.objectStore('library').add(record);tx.objectStore('projects').put(JSON.stringify(project),'latest');tx.objectStore('projects').put(record.id,'active');tx.objectStore('projects').put(emptyHistory(),'history');done(record);});
+ return transaction<SavedProject>('readwrite',(tx,done)=>{tx.objectStore('library').add(record);tx.objectStore('projects').put(JSON.stringify(project),'latest');tx.objectStore('projects').put(record.id,'active');tx.objectStore('projects').put(emptyHistory(),'history');tx.objectStore('projects').put({project:record.project,activeId:record.id,history:emptyHistory()},'lastGoodSession');done(record);});
 }
 /** Atomic fork: retain the current original and activate an independent copy. */
 export async function createVariant(name:string,project:Project,sourceId:string|null,history:ProjectHistory,draftName:string){
@@ -59,7 +85,7 @@ export async function createVariant(name:string,project:Project,sourceId:string|
    const groupId=original.groupId??original.id;
    library.put({...original,groupId,project:snapshot,history:savedHistory,updatedAt:Date.now()});
    const variant:SavedProject={id:crypto.randomUUID(),name:clean,groupId,createdAt:Date.now(),updatedAt:Date.now(),project:structuredClone(snapshot),history:emptyHistory()};
-   library.add(variant);session.put(JSON.stringify(snapshot),'latest');session.put(variant.id,'active');session.put(emptyHistory(),'history');done(variant);
+   library.add(variant);session.put(JSON.stringify(snapshot),'latest');session.put(variant.id,'active');session.put(emptyHistory(),'history');session.put({project:variant.project,activeId:variant.id,history:emptyHistory()},'lastGoodSession');done(variant);
   };
   if(sourceId){const r=library.get(sourceId);r.onsuccess=()=>fork(r.result);}else fork();
  });
@@ -88,5 +114,24 @@ export async function saveStyle(name:string,style:VisualStyle){
 export async function deleteStyle(id:string){return transaction<void>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('visualStyles');r.onsuccess=()=>{s.put((Array.isArray(r.result)?r.result:[]).filter((v:SavedStyle)=>v.id!==id),'visualStyles');done();};});}
 
 // Drawer copies never write to the organizer library or its active session.
-export async function listDrawers(){return transaction<import('./drawer.js').DrawerLayout[]>('readonly',(tx,done)=>{const r=tx.objectStore('projects').get('drawerLayouts');r.onsuccess=()=>done(r.result??[]);});}
-export async function saveDrawer(drawer:import('./drawer.js').DrawerLayout){return transaction<void>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('drawerLayouts');r.onsuccess=()=>{s.put([structuredClone(drawer),...(r.result??[]).filter((v:{id:string})=>v.id!==drawer.id)],'drawerLayouts');done();};});}
+const drawerRecoveryKey='replixgrid.pending-drawers';
+function recoverDrawers():import('./drawer.js').DrawerLayout[]{
+ const raw=readRecovery(drawerRecoveryKey);if(!Array.isArray(raw))return [];
+ const valid:import('./drawer.js').DrawerLayout[]=[];
+ for(const item of raw)try{valid.push(parseDrawer(JSON.stringify(item)));}catch{/* A damaged copy must not block other drawers. */}
+ return valid;
+}
+export async function listDrawers(){
+ const pending=recoverDrawers();
+ try{return await transaction<import('./drawer.js').DrawerLayout[]>('readonly',(tx,done)=>{const r=tx.objectStore('projects').get('drawerLayouts');r.onsuccess=()=>done([...pending,...(r.result??[]).filter((v:{id:string})=>!pending.some(p=>p.id===v.id))]);});}
+ catch(error){if(pending.length)return pending;throw error;}
+}
+export async function saveDrawer(drawer:import('./drawer.js').DrawerLayout){
+ const snapshot=structuredClone(drawer),copies=[snapshot,...recoverDrawers().filter(v=>v.id!==drawer.id)];
+ writeRecovery(drawerRecoveryKey,copies);
+ return transaction<void>('readwrite',(tx,done)=>{const s=tx.objectStore('projects'),r=s.get('drawerLayouts');r.onsuccess=()=>{s.put([snapshot,...(r.result??[]).filter((v:{id:string})=>v.id!==snapshot.id)],'drawerLayouts');done();};}).then(()=>{
+  // Clear only this committed revision; keep failed writes for other drawers.
+  const current=recoverDrawers(),remaining=current.filter(v=>v.id!==snapshot.id||JSON.stringify(v)!==JSON.stringify(snapshot));
+  if(remaining.length!==current.length)writeRecovery(drawerRecoveryKey,remaining);
+ });
+}

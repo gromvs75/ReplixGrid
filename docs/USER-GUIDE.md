@@ -41,6 +41,10 @@ For printing, choose **3MF** and assign the base and pattern to their filament s
 
 Open **My projects** and save a named copy. The open project saves automatically. You can also search, rename, open, delete, or download projects there. Unnamed work is retained as a draft. Download a project JSON file as a backup or to transfer it, and click **Open** in the top bar to load it. A damaged file should report a validation error without replacing the current project.
 
+Applied edits are saved immediately. If a write is interrupted, reopening the app restores its temporary recovery copy. If the current session is damaged, the app tries its last successful snapshot. When neither copy can be restored, automatic saving stops to protect the stored data; use **Open** to restore a downloaded JSON backup. If saving reports an error, download a project backup before leaving.
+
+Export checks use the latest applied edits and the selected parts. After changing dimensions or mounting placement, wait for a new check before downloading.
+
 The library is stored in your browser and tied to the site address. Clearing site data or changing browsers, devices, or addresses can make it unavailable. Keep a separate project-file backup. Filament slots are stored separately in the browser and are not included in project JSON; configure them again on another device.
 
 ## Filaments and export options
