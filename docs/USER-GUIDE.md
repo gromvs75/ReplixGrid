@@ -72,4 +72,4 @@ Use **Shape → Shared style** to save the current colors and patterns with a na
 
 ## Use your own SVG pattern
 
-Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. Internal compartments stay unchanged. The pattern is embedded in the saved project. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.
+Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. In repeat mode, only complete motifs are placed: reducing the width does not leave clipped fragments at edges or cutouts. Internal compartments stay unchanged. The pattern is embedded in the saved project. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.
