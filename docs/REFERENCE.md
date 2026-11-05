@@ -125,6 +125,10 @@ Panels require a compatible rectangular base. Switching to panels can raise wall
 
 Use **My projects → Save a copy** to name a design or make a variant before experimenting. The open project saves automatically in this browser. The library lets you search, open, rename, delete or download a project. **Save project** in the top bar downloads an editable JSON backup. Use **Open** to load that file, including on another computer or in a local installation.
 
+Committed edits are saved immediately. A temporary local recovery copy protects changes while the browser database is saving; reopening restores that copy if a write was interrupted. A separate last-successful snapshot can recover a damaged current session, including undo history. If no valid copy can be restored, automatic saving stops instead of replacing the stored project with a starter model. Keep downloadable JSON backups: browser data clearing or failure of both storage mechanisms cannot be recovered automatically.
+
+Export checks belong to the current project revision, selected parts and mounting position. Changing these invalidates the previous check; an old result cannot be downloaded as the new model. Failed calculations retain edits. A stalled preview reports an error after two minutes; the next geometry edit starts a new calculation.
+
 Keep a downloaded backup before clearing browser data. Each browser and site address has its own library. Filament slots are stored separately for the printer in the browser. Set them up again when moving to another device. For the downloadable local app, see [Local installation](../README.md#local-installation).
 
 ## Print setup and sectioning
