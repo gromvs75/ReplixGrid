@@ -45,6 +45,8 @@ Applied edits are saved immediately. If a write is interrupted, reopening the ap
 
 Export checks use the latest applied edits and the selected parts. After changing dimensions or mounting placement, wait for a new check before downloading.
 
+When the same project or drawer is edited in multiple tabs, conflicting changes are saved as a separate **Copy from another tab**. The other version is kept, and the editing tab continues with its copy. Compare the versions in **My projects** or the drawer selector and rename the copy if you want to keep it. Reopening an organizer tab restores its own saved project. Changes are not automatically merged between tabs.
+
 The library is stored in your browser and tied to the site address. Clearing site data or changing browsers, devices, or addresses can make it unavailable. Keep a separate project-file backup. Filament slots are stored separately in the browser and are not included in project JSON; configure them again on another device.
 
 ## Filaments and export options
