@@ -35,3 +35,19 @@ test('single SVG retains its hole and follows only the selected wall',async()=>{
  try{assert.ok(Math.abs(hit.volume())<1e-6,'the SVG hole must stay open above the intact wall');}finally{[hit,probe,cube,solid].forEach(x=>x.delete());}
 });
 test('repeat complexity limit produces an actionable error',async()=>{const p=make({width:400,depth:400,height:180});p.relief!.svg!.width=4;p.relief!.svg!.gap=0;await assert.rejects(buildOrganizer(p),/повторений SVG/);});
+for(const rotation of [0,25])test(`small repeated SVGs stay whole at edges and cutouts (${rotation}°)`,async()=>{
+ const p=make({cornerRadius:0,cutouts:{front:{shape:'smooth',width:.5,depth:12,position:.5}}});
+ p.relief!.svg!.width=5;p.relief!.svg!.rotation=rotation;
+ const w=await Module();w.setup();
+ const {applySvgRelief}=await import('../src/svgRelief.js');
+ const solids:import('manifold-3d').Manifold[]=[];
+ const keep=(m:import('manifold-3d').Manifold)=>{solids.push(m);return m;};
+ try{
+  const cube=keep(w.Manifold.cube([1,1,1]));
+  const relief=applySvgRelief(w,p,keep(cube.subtract(cube)),keep);
+  const motifs=relief.decompose();solids.push(...motifs);
+  assert.ok(motifs.length>10,`a small repeat must still populate the walls: ${motifs.length}, ${relief.status()}, ${relief.volume()}`);
+  const completeVolume=25*(1-.4*.4)*1.15;
+  for(const motif of motifs)assert.ok(Math.abs(motif.volume()-completeVolume)<completeVolume*.04,`partial motif: ${motif.volume()} instead of ${completeVolume}`);
+ }finally{solids.forEach(s=>s.delete());}
+});

@@ -25,17 +25,30 @@ export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(
    const roof=Math.max(...group.flatMap(({i})=>[contourHeight(p,walls,...contour[i]),contourHeight(p,walls,...contour[(i+1)%contour.length])]));
    const cx=length/2+s.offsetX,cy=(low+roof)/2+s.offsetY,px=mw+s.gap,py=mh+s.gap;
    const nx=s.mode==='repeat'?Math.ceil((length+Math.abs(s.offsetX)*2)/px)+1:0,ny=s.mode==='repeat'?Math.ceil((roof+Math.abs(s.offsetY)*2)/py)+1:0;
+   const margin=Math.max(.6,(p.topEdge?.size??0)+.4);
+   const roofs=group.map(({i,length:len,start})=>{
+    const a=contour[i],b=contour[(i+1)%contour.length],steps=Math.max(1,Math.ceil(len)),points:[number,number][]=[];
+    for(let k=steps;k>=0;k--){const t=k/steps;points.push([start+len*t,Math.max(low,contourHeight(p,walls,a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)-margin)]);}
+    return points;
+   });
+   // Test whole repeats against the same roof used to wrap the relief. This also
+   // excludes fragments at cutouts and at the boundary between adjacent sides.
+   const usable=s.mode==='repeat'?hold(new w.CrossSection([[[0,low],[length,low],...roofs.slice().reverse().flat()]])):undefined;
    const instances:CrossSection[]=[];
    for(let x=-nx;x<=nx;x++)for(let y=-ny;y<=ny;y++){
-    const ux=cx+x*px,z=cy+y*py;if(ux+mw/2<0||ux-mw/2>length||z+mh/2<low||z-mh/2>roof)continue;
+    const ux=cx+x*px,z=cy+y*py;
+    if(ux+box.max[0]<0||ux+box.min[0]>length||z+box.max[1]<low||z+box.min[1]>roof)continue;
+    if(usable&&(ux+box.min[0]<.6||ux+box.max[0]>length-.6||z+box.min[1]<low))continue;
+    const candidate=rotated.translate([ux,z]);
+    if(usable){const outside=candidate.subtract(usable);const fits=outside.area()<1e-8;outside.delete();if(!fits){candidate.delete();continue;}}
+    hold(candidate);
     if(++copies>300||copies*s.asset.shapes.flat().reduce((n,v)=>n+v.length,0)>120000)throw new Error('Слишком много повторений SVG. Увеличьте размер или интервал.');
-    instances.push(hold(rotated.translate([ux,z])));
+    instances.push(candidate);
    }
    if(!instances.length)continue;
    const pattern=hold(w.CrossSection.union(instances));
-   for(const {i,length:len,start} of group){const j=(i+1)%contour.length,a=contour[i],b=contour[j];
-    const steps=Math.max(1,Math.ceil(len)),margin=Math.max(.6,(p.topEdge?.size??0)+.4),roofPoints:[number,number][]=[];
-    for(let k=steps;k>=0;k--){const t=k/steps,x=a[0]+(b[0]-a[0])*t,y=a[1]+(b[1]-a[1])*t;roofPoints.push([start+len*t,Math.max(low,contourHeight(p,walls,x,y)-margin)]);}
+   for(const [index,{i,length:len,start}] of group.entries()){const j=(i+1)%contour.length;
+    const roofPoints=roofs[index].map(([x,y]):[number,number]=>[x,y]);
     // Micron-scale overlap closes numerical seams between curved/chamfered strips.
     const pad=contour.length>4?.003:0;
     roofPoints[0][0]+=pad;roofPoints[roofPoints.length-1][0]-=pad;
