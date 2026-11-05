@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node --import tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "build:kernel": "esbuild src/worker.ts --bundle --format=esm --platform=browser --outfile=public/kernel/worker-recovery-v1.js --external:node:* && node --input-type=module -e \"import {copyFileSync} from 'node:fs'; copyFileSync('node_modules/manifold-3d/manifold.wasm','public/kernel/manifold.wasm')\"",
+    "build:kernel": "esbuild src/worker.ts --bundle --format=esm --platform=browser --outfile=public/kernel/worker-geometry-v1.js --external:node:* && node --input-type=module -e \"import {copyFileSync} from 'node:fs'; copyFileSync('node_modules/manifold-3d/manifold.wasm','public/kernel/manifold.wasm')\"",
     "samples": "node --import tsx tests/samples.ts",
     "dev": "npm run build:kernel && vite --host 127.0.0.1 --port 5173 --strictPort",
     "build": "npm run typecheck && npm run build:kernel && vite build",

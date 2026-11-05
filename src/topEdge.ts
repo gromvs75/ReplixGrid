@@ -11,7 +11,7 @@ export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(
  // Avoid sub-micron cutter faces at tightly tessellated inner fillets.
  const original=keep(solid.asOriginal());
  return finish(Math.min(.004,r/100),true);
- function finish(tolerance:number,canRetry:boolean):Manifold{
+ function finish(tolerance:number,canRetry:boolean,extended=false):Manifold{
  const base=keep(original.simplify(tolerance));
  const mesh=base.getMesh();
  const point=(i:number):Vec3=>[0,1,2].map(k=>mesh.vertProperties[i*mesh.numProp+k]) as Vec3;
@@ -52,9 +52,10 @@ export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(
    dx-=excess*tx;dy-=excess*ty;
    for(let k=0;k<3;k++)q[k]+=.002*(q[k]-opposite[k])/len;
    const add=(u:number,z:number)=>coords.push(q[0]+u*dx,q[1]+u*dy,q[2]+u*(dx*e.gx+dy*e.gy)+z);
-   add(-.01,-r);add(-.01,.02);
+   const clearance=extended?2*r+.02:.02;
+   add(-.01,-r);add(-.01,clearance);
    for(let i=0;i<=steps;i++){const a=i*Math.PI/(2*steps);
-    add(r*(1-Math.cos(a)),-r*(1-Math.sin(a)));add(r*(1-Math.cos(a)),.02);}
+    add(r*(1-Math.cos(a)),-r*(1-Math.sin(a)));add(r*(1-Math.cos(a)),clearance);}
   }
   const m=2*(steps+2);
   const quad=(a:number,b:number,c:number,d:number)=>tri.push(a,b,c,a,c,d);
@@ -79,6 +80,10 @@ export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(
  // bevel cutter detaches a strip. Rebuild from the original joined surface
  // at finer precision; never discard a substantial disconnected piece.
  if(canRetry&&substantial.length>1)return finish(Math.min(tolerance,1e-5),false);
+ // A crossing sloped rim can rise above the narrow cutter cap and leave
+ // a detached chip. Extend only the empty upper side on the final retry;
+ // retain the requested bevel depth and never discard detached material.
+ if(!extended&&substantial.length>1)return finish(Math.min(tolerance,1e-5),false,true);
  return substantial.length===1?substantial[0]:cleaned;
  }
 }
