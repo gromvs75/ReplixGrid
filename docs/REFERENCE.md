@@ -129,6 +129,8 @@ Committed edits are saved immediately. A temporary local recovery copy protects 
 
 Export checks belong to the current project revision, selected parts and mounting position. Changing these invalidates the previous check; an old result cannot be downloaded as the new model. Failed calculations retain edits. A stalled preview reports an error after two minutes; the next geometry edit starts a new calculation.
 
+When the same project or drawer is edited in multiple tabs, conflicting changes are saved as a separate **Copy from another tab**. The other version is kept, and the editing tab continues with its copy. Compare the versions in **My projects** or the drawer selector and rename the copy if you want to keep it. Reopening an organizer tab restores its own saved project. Changes are not automatically merged between tabs.
+
 Keep a downloaded backup before clearing browser data. Each browser and site address has its own library. Filament slots are stored separately for the printer in the browser. Set them up again when moving to another device. For the downloadable local app, see [Local installation](../README.md#local-installation).
 
 ## Print setup and sectioning

@@ -773,7 +773,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1547,7 +1550,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -2320,7 +2326,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -3093,7 +3102,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -3866,7 +3878,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -4639,7 +4654,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -5412,7 +5430,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -6185,7 +6206,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -6958,7 +6982,10 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -7733,6 +7760,9 @@
     "Скачать образец стыка": "Download joint sample",
     "Экспорт с креплением снизу для выбранной позиции в ящике.": "Export includes underside mounts for the selected drawer position.",
     "Лоток с креплением не помещается в ящик.": "The mounted tray does not fit the drawer.",
-    "Высота с пластиной": "Height including plate"
+    "Высота с пластиной": "Height including plate",
+    "Копия из другой вкладки": "Copy from another tab",
+    "Проект изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This project changed in another tab. Your edits were saved in a separate copy.",
+    "Ящик изменён в другой вкладке. Ваши изменения сохранены в отдельной копии.": "This drawer changed in another tab. Your edits were saved in a separate copy."
   }
 }
