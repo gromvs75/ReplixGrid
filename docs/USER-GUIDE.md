@@ -69,3 +69,7 @@ A one-piece decorative shell is built around the organizer body. Automatic suppo
 ## Match another organizer
 
 Use **Shape → Shared style** to save the current colors and patterns with a name. Open another project, choose that saved style, and click **Apply style**. You can transfer colors, patterns, or both while keeping the destination's dimensions and compartments. See [Shared styles](REFERENCE.md#shared-styles) for compatibility and browser-storage details.
+
+## Use your own SVG pattern
+
+Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. Internal compartments stay unchanged. The pattern is embedded in the saved project. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.

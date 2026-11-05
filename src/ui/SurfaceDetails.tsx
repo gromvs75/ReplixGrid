@@ -1,3 +1,5 @@
+import {useEffect,useState} from 'react';
+import {SvgControls} from './SvgControls.js';
 import {t} from '../i18n.js';
 import {reliefNames,reliefPatterns,reliefValue,type ReliefPattern} from '../reliefPatterns.js';
 import {useEditor} from '../store.js';
@@ -13,9 +15,10 @@ export function CutoutControls({wall}:{wall:Wall}){
 }
 export function ReliefControls(){
  const p=useEditor(s=>s.project),change=useEditor(s=>s.change),relief=p.relief;
- const maxDepth=3;
+ const maxDepth=3;const [tab,setTab]=useState<'builtin'|'svg'>(relief?.svg?'svg':'builtin');
+ useEffect(()=>{if(relief?.svg)setTab('svg');},[relief?.svg?.asset]);
  const set=(patch:Partial<Relief>)=>change(p=>editProject(p,d=>{d.relief={pattern:'ribs',spacing:8,depth:1,...d.relief,...patch};}));
- return <details className="surface-details"><summary>{t("Рельеф органайзера")}{relief?t(" · включён"):''}</summary><p className="hint">{t("Узоры · прокрутите каталог, чтобы увидеть все.")}</p><div className="surface-options relief-gallery" role="group" aria-label={t("Рельеф органайзера")}><button aria-pressed={!relief} onClick={()=>change(p=>editProject(p,d=>{delete d.relief;}))}>{t("Гладкий")}</button>{reliefPatterns.map(pattern=><button key={pattern} aria-pressed={relief?.pattern===pattern} onClick={()=>set({pattern})}><ReliefSwatch pattern={pattern}/>{t(reliefNames[pattern])}</button>)}</div>{relief&&<><Field commitOnRelease label={t("Размер узора")} value={relief.spacing} min={4} max={16} onChange={spacing=>set({spacing})}/><Field commitOnRelease label={t("Выраженность")} value={Math.min(relief.depth,maxDepth)} min={Math.min(.2,maxDepth)} max={maxDepth} step={.01} onChange={depth=>set({depth})}/><p className="hint">{t("Объёмный узор снаружи, внутри — гладко. Выступы нарастают наружу, основная стенка остаётся целой. Пересчёт — после отпускания ползунка. Оболочка учитывает выступы. Полный габарит увеличивается.")}</p></>}</details>;
+ return <details className="surface-details"><summary>{t("Рельеф органайзера")}{relief?t(" · включён"):''}</summary><div className="surface-options svg-tabs"><button aria-pressed={tab==='builtin'} onClick={()=>setTab('builtin')}>{t("Встроенные")}</button><button aria-pressed={tab==='svg'} onClick={()=>setTab('svg')}>{t("Мои SVG")}</button></div>{tab==='svg'?<SvgControls/>:<><p className="hint">{t("Узоры · прокрутите каталог, чтобы увидеть все.")}</p><div className="surface-options relief-gallery" role="group" aria-label={t("Рельеф органайзера")}><button aria-pressed={!relief} onClick={()=>change(p=>editProject(p,d=>{delete d.relief;}))}>{t("Гладкий")}</button>{reliefPatterns.map(pattern=><button key={pattern} aria-pressed={!relief?.svg&&relief?.pattern===pattern} onClick={()=>set({pattern,svg:undefined})}><ReliefSwatch pattern={pattern}/>{t(reliefNames[pattern])}</button>)}</div></>}{relief&&<>{!relief.svg&&<Field commitOnRelease label={t("Размер узора")} value={relief.spacing} min={4} max={16} onChange={spacing=>set({spacing})}/>}<button className="text-button" onClick={()=>change(p=>editProject(p,d=>{delete d.relief;}))}>{t("Убрать рельеф")}</button><Field commitOnRelease label={t("Выраженность")} value={Math.min(relief.depth,maxDepth)} min={Math.min(.2,maxDepth)} max={maxDepth} step={.01} onChange={depth=>set({depth})}/><p className="hint">{t("Объёмный узор снаружи, внутри — гладко. Выступы нарастают наружу, основная стенка остаётся целой. Пересчёт — после отпускания ползунка. Оболочка учитывает выступы. Полный габарит увеличивается.")}</p></>}</details>;
 }
 
 const swatches=Object.fromEntries(reliefPatterns.map(pattern=>{

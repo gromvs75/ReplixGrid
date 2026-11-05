@@ -350,3 +350,16 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 @media(min-width:1101px){.drawer-canvas-panel{position:sticky;top:16px;align-self:start;height:calc(100vh - 215px);min-height:510px}.drawer-board{min-height:0}.drawer-board svg{min-height:0}}
 
 .plate-height-label{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+
+.svg-tabs {margin:12px 0;}
+.svg-upload {border:1px dashed var(--line);border-radius:12px;padding:12px;display:grid;gap:8px;text-align:center;}
+.svg-upload .hint {margin:0;font-size:12px;}
+.svg-library {display:grid;gap:6px;max-height:220px;overflow-y:auto;margin:12px 0;}
+.svg-library-item {display:flex;gap:4px;min-width:0;}
+.svg-pick {display:flex;align-items:center;gap:10px;flex:1;min-width:0;text-align:left;}
+.svg-pick span {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.svg-pick svg,.svg-current svg {width:44px;height:36px;flex:0 0 44px;color:var(--ink);}
+.svg-delete {flex:0 0 32px;padding:4px;}
+.svg-current {display:flex;align-items:center;gap:12px;padding:12px 0;overflow-wrap:anywhere;}
+.svg-controls .field {margin-top:12px;}
+.svg-confirm {border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0;}

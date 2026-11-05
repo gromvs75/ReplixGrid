@@ -1,3 +1,4 @@
+import {validateSvgPattern,type SvgPattern} from './svgPattern.js';
 import {PANEL_WALL_MIN} from './panelSettings.js';
 import {shellClipIssue} from './shellClips.js';
 import {reliefPatterns,type ReliefPattern} from './reliefPatterns.js';
@@ -7,7 +8,7 @@ import {footprintContour,lineSpan,type Footprint} from './footprint.js';
 import {maxCornerRadius,roundedContour,clipRectangle,polygonArea} from './rounding.js';
 export type TransitionStyle = 'straight' | 'wavy' | 'zigzag';
 export interface WallCutout {shape:'smooth'|'round'|'square';width:number;depth:number;position:number}
-export interface Relief {pattern:ReliefPattern;spacing:number;depth:number}
+export interface Relief {svg?:SvgPattern;pattern:ReliefPattern;spacing:number;depth:number}
 export interface WallProfile {start:number;end:number;style:TransitionStyle;wavelength?:number}
 export type Side = 'front' | 'back' | 'left' | 'right';
 export interface ShellSettings { pattern: 'honeycomb' | 'diamonds' | 'waves' | 'petals' | 'cubes' | 'triangles' | 'slots' | 'cellular'; gap: number; thickness: number; size: number; border?:number; snap?:boolean; mode?:'wrap'|'panels'; sides?:Side[]; margin?:number; mounts?:boolean }
@@ -171,6 +172,7 @@ export function resolveWalls(p: Project): Wall[] {
   if(p.transitionWavelengths!==undefined){if(!p.transitionWavelengths||typeof p.transitionWavelengths!=='object'||Array.isArray(p.transitionWavelengths))throw new Error('Invalid wavelengths');for(const [side,value] of Object.entries(p.transitionWavelengths)){if(!sides.includes(side as Side))throw new Error('Invalid wavelength side');range(value,6,200,'wavelength');}}
   if(p.colors!==undefined){if(!p.colors||typeof p.colors!=='object'||Array.isArray(p.colors)||Object.entries(p.colors).some(([key,value])=>!['organizer','shell'].includes(key)||typeof value!=='string'||!/^#[0-9a-f]{6}$/i.test(value)))throw new Error('Invalid colors');}
   if(p.relief){
+    if(p.relief.svg)validateSvgPattern(p.relief.svg);
     if(!reliefPatterns.includes(p.relief.pattern))throw new Error('Invalid relief');
     range(p.relief.spacing,4,16,'relief spacing');range(p.relief.depth,.2,3,'relief depth');
     if(p.wallThickness<.8)throw new Error('Для рельефа нужна стенка от 0,8 мм.');
