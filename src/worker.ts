@@ -1,3 +1,5 @@
+import {plateArchive,mountedKit,type MountingRequest} from './mountingKernel.js';
+import type {DrawerLayout} from './drawer.js';
 import {tierElevation} from './accessories.js';
 import {buildKit} from './accessoryKernel.js';
 import {inspectPrintParts} from './preflight.js';
@@ -28,9 +30,10 @@ async function exportParts(project:Project,part?:string):Promise<ExportPart[]>{
  return (await buildKit(project)).filter(p=>part==='shell'?p.kind==='shell':part==='organizer'?p.kind!=='shell':true);
 }
 // Requests carry a revision; the future UI must discard stale revisions.
-globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;part?:'organizer'|'shell'|'kit'|'sample'|'all';format?:ExportFormat;objInstructions?:string;filamentSlots?:Record<string,number>;partSlots?:Array<number|null>;purpose?:'preview'|'check'|'download'|'drawer'}>)=>{
-  const {revision,project,part,purpose,format,objInstructions,filamentSlots,partSlots}=event.data;
+globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;part?:'organizer'|'shell'|'kit'|'sample'|'all';format?:ExportFormat;objInstructions?:string;filamentSlots?:Record<string,number>;partSlots?:Array<number|null>;mounting?:MountingRequest;layout?:DrawerLayout;purpose?:'preview'|'check'|'download'|'drawer'|'plate'}>)=>{
+  const {revision,project,part,purpose,format,objInstructions,filamentSlots,partSlots,mounting,layout}=event.data;
   try {
+    if(purpose==='plate'){if(!layout)throw new Error('Не найден ящик.');const archive=await plateArchive(layout);globalThis.postMessage({revision,ok:true,archive},{transfer:[archive]});return;}
     if(purpose!=='preview'&&purpose!=='download'&&project.printing&&project.shell&&part!=='organizer'&&part!=='sample')throw new Error('Оболочка недоступна для печати по частям. Уберите оболочку или верните цельную модель.');
     if(purpose==='drawer'){
       const parts=await buildKit({...project,printing:undefined});
@@ -39,7 +42,7 @@ globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;
       globalThis.postMessage({revision,ok:true,bounds:{width:max[0]-min[0],depth:max[1]-min[1],height:max[2]-min[2]}});return;
     }
     if(purpose==='check'){
-      prepared=null;const parts=await exportParts(project,part),report=inspectPrintParts(part==='sample'?{...project,printing:jointSampleProject(project).printing}:project,parts);
+      prepared=null;const parts=mounting&&part!=='shell'?(await mountedKit(mounting)).filter(p=>part==='organizer'?p.kind!=='shell':true):await exportParts(project,part),report=inspectPrintParts(mounting?.layout.plate?{...project,printArea:{...(project.printArea??{bedHeight:270}),bedWidth:mounting.layout.plate.bedWidth,bedDepth:mounting.layout.plate.bedDepth}}:part==='sample'?{...project,printing:jointSampleProject(project).printing}:project,parts);
       if(report.ok)prepared=parts;
       globalThis.postMessage({revision,ok:true,report,partColors:parts.map(p=>({name:p.name,color:p.color}))});return;
     }
@@ -60,7 +63,7 @@ globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;
       globalThis.postMessage({revision,ok:true,organizer:organizer.stl,organizerPosition:[organizer.position[0],organizer.position[1],organizer.position[2]-activeZ],shell:shell?.stl,shellPosition:shell?.position,extras,activeZ},{transfer:parts.map(p=>p.stl)});return;
     }
     if(project.stack||project.lid||project.cups?.length||project.shell?.mode==='panels'){
-      const parts=await exportParts(project,part),report=inspectPrintParts(project,parts);if(!report.ok)throw new Error('Детали не помещаются в указанную область печати.');
+      const parts=mounting&&part!=='shell'?(await mountedKit(mounting)).filter(p=>part==='organizer'?p.kind!=='shell':true):await exportParts(project,part),report=inspectPrintParts(project,parts);if(!report.ok)throw new Error('Детали не помещаются в указанную область печати.');
       const result=formatExport(parts,format??'stl',objInstructions);globalThis.postMessage({revision,ok:true,formatted:result.data,extension:result.extension,mime:result.mime,count:parts.length},{transfer:[result.data]});return;
     }
     if(purpose==='preview'){
