@@ -1,6 +1,6 @@
 import type {DrawerLayout} from './drawer.js';
 /** Coupon confirmed by owner: PLA, 0.2 mm layers, 0.25 mm first layer. */
-export const MOUNT={pitch:20,pegRadius:3,pegHeight:1.8,plateThickness:2,socketDepth:2.1,clearance:.12,addedHeight:4.1,tabDepth:4,seamGap:.2} as const;
+export const MOUNT={pitch:20,pegRadius:3,pegHeight:1.8,plateThickness:2,socketDepth:2.1,clearance:.12,addedHeight:4.1,tabDepth:4,seamGap:.05,jointClearance:.03} as const;
 export interface PlateSettings {enabled:boolean;bedWidth:number;bedDepth:number}
 export interface PlateTile {row:number;column:number;x:number;y:number;width:number;depth:number}
 function cuts(length:number,interiorMax:number,lastMax:number){

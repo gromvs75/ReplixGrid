@@ -17,7 +17,7 @@ export function parseDrawer(raw:string):DrawerLayout{
  if(d.plate&&(![true,false].includes(d.plate.enabled)||![d.plate.bedWidth,d.plate.bedDepth].every(v=>Number.isFinite(v)&&v>=60&&v<=1000)))throw new Error('Некорректные размеры стола для пластины.');
  if(d.viewRotation!==undefined&&![0,90].includes(d.viewRotation))throw new Error('Некорректный файл ящика.');
  if(new Set(d.trays.map(t=>t.id)).size!==d.trays.length)throw new Error('Некорректный файл ящика.');
- return {...d,viewRotation:d.viewRotation??(d.width>d.depth?90:0),trays:d.trays.map(t=>{
+ return {...d,viewRotation:d.viewRotation??0,trays:d.trays.map(t=>{
   if(!t||typeof t.id!=='string'||typeof t.name!=='string'||t.name.length>80||![0,90].includes(t.rotation)||![t.x,t.y].every(v=>Number.isFinite(v)&&Math.abs(v)<=4000))throw new Error('Некорректный файл ящика.');
   return {...t,project:parseProject(JSON.stringify(t.project))};
  })};

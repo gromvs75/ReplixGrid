@@ -49,3 +49,15 @@ test('shells and upper tiers stay unchanged; only the bottom organizer receives 
  for(let i=0;i<original.length;i++)if(original[i].kind!=='organizer'||original[i].level!==0)assert.deepEqual(mounted[i],original[i]);
  const i=original.findIndex(v=>v.kind==='organizer'&&v.level===0);assert.ok(Math.abs(mounted[i].inspection.bounds.max[2]-original[i].inspection.bounds.max[2]-2.1)<.001);
 });
+
+test('default plate joints reproduce the print-validated V3 coupon',async()=>{
+ const d=drawer(84,44,64),actual=await buildPlateTiles(d),validated=await buildPlateTiles(d,.03,.05);
+ assert.equal(actual.length,2);assert.equal(MOUNT.clearance,.12);
+ for(let i=0;i<actual.length;i++)assert.deepEqual(actual[i].stl,validated[i].stl);
+ const wasm=await Module();wasm.setup();const owned:any[]=[];
+ try{
+  const solids=actual.map(p=>{const tris=decodeSTL(p.stl),mesh=new wasm.Mesh({numProp:3,vertProperties:new Float32Array(tris.flat(2)),triVerts:new Uint32Array(Array.from({length:tris.length*3},(_,i)=>i))});mesh.merge();const m=new wasm.Manifold(mesh);owned.push(m);const placed=m.translate(p.position);owned.push(placed);return placed;});
+  const nominal=solids[0].intersect(solids[1]);owned.push(nominal);assert.ok(Math.abs(nominal.volume())<1e-6);
+  const separated=solids[1].translate([.1,0,0]);owned.push(separated);const collision=solids[0].intersect(separated);owned.push(collision);assert.ok(collision.volume()>.01,'joint must stop sections separating by 0.1 mm');
+ }finally{owned.reverse().forEach(m=>m.delete());}
+});

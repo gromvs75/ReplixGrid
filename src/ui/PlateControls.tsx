@@ -11,7 +11,7 @@ export function PlateControls({layout,onChange}:{layout:DrawerLayout;onChange:(f
  let count=0,planError='';try{count=platePlan(layout).tiles.length;}catch(e){planError=(e as Error).message;}
  const enabled=!!layout.plate?.enabled,settings=layout.plate??{enabled:false,bedWidth:270,bedDepth:270};
  const exportPlate=(sample=false)=>{
-  setBusy(true);setError('');const w=new Worker('/kernel/worker-mounting-v1.js',{type:'module'});worker.current=w;
+  setBusy(true);setError('');const w=new Worker('/kernel/worker-mounting-v2.js',{type:'module'});worker.current=w;
   timer.current=setTimeout(()=>{w.terminate();setBusy(false);setError('Не удалось построить пластину. Уменьшите размер ящика.');},120000);
   w.onerror=()=>{clearTimeout(timer.current);setBusy(false);setError('Не удалось построить пластину.');w.terminate();};
   w.onmessage=({data})=>{clearTimeout(timer.current);setBusy(false);if(data.ok)download(data.archive,sample?'ReplixGrid-joint-sample.zip':'ReplixGrid-plate.zip','application/zip');else setError(data.error);w.terminate();};

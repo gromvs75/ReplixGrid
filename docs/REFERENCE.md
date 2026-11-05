@@ -188,9 +188,9 @@ Saved styles belong to this browser and site address. A project JSON preserves t
 
 ## Drawer arrangements
 
-Choose **Drawer** next to **Organizer**, then **Create drawer**. Enter the measured inside width, depth, usable height and clearance. Clearance applies both at the drawer walls and between trays.
+Choose **Drawer** next to **Organizer**, then **Create drawer**. Enter the measured inside length, width, usable height and clearance. Clearance applies both at the drawer walls and between trays.
 
-New drawers start at 180 × 280 mm, with the front edge marked at the bottom. **Rotate view by 90°** changes only the viewing orientation; drawer dimensions, tray coordinates and exported models stay unchanged. Existing drawer arrangements retain their dimensions. Older landscape arrangements open with a 90° rotated view; an explicitly saved view orientation is preserved. The tray rotation button turns only the selected tray.
+New drawers start at 180 × 280 mm, with the front edge marked at the bottom. **Rotate view by 90°** changes only the viewing orientation; drawer dimensions, tray coordinates and exported models stay unchanged. Existing drawer arrangements retain their dimensions. Saved drawers open with length horizontal and width vertical; dimension labels follow manual view rotation. The tray rotation button turns only the selected tray.
 
 Use **New organizer** to create a tray directly in the drawer. Set its dimensions, then edit compartments and accessories in the usual organizer editor. **Back to drawer** returns to its placement. **Add saved organizer** adds an independent copy of a saved project or variant; editing it never changes its source.
 
@@ -202,12 +202,12 @@ Drawers save locally in this browser, separately from organizer projects. Downlo
 
 ### Mounting plates
 
-In **Drawer → Drawer base**, choose **Mounting plate**. Drawer width/depth and the wall clearance determine the covered area. Enter the usable width and depth of the **3D printer bed** separately: these dimensions determine the maximum section size and therefore the number of sections. The calculation includes joint projections and a 2 mm printing margin at each bed edge. Dimensions need not be multiples of the 20 mm peg grid; edge sections fit the remaining space.
+In **Drawer → Drawer base**, choose **Mounting plate**. Drawer length/width and the wall clearance determine the covered area. Enter the usable width and depth of the **3D printer bed** separately: these dimensions determine the maximum section size and therefore the number of sections. The calculation includes joint projections and a 2 mm printing margin at each bed edge. Dimensions need not be multiples of the 20 mm peg grid; edge sections fit the remaining space.
 
-**Download sections (ZIP)** creates one numbered 3MF per print job, an SVG assembly map and a coordinate list. The map uses the original drawer orientation, independent of view rotation. R indicates rows from top to bottom, C columns from left to right. Lower adjoining dovetails into place from above. First print **Download joint sample**, containing two small adjoining sections; the section joints still require physical verification.
+**Download sections (ZIP)** creates one numbered 3MF per print job, an SVG assembly map and a coordinate list. The map uses the original drawer orientation, independent of view rotation. R indicates rows from top to bottom, C columns from left to right. Lower adjoining dovetails into place from above. First print **Download joint sample**, containing two small adjoining sections; check assembly with your printer before printing the full set. The joints use a 0.05 mm seam and a 0.03 mm profile allowance. A faint seam and slight play can remain between bare sections.
 
 With plate mode enabled, tray downloads include underside sockets for that tray's position and rotation. Internal compartment dimensions are preserved. The tray becomes 2.1 mm taller; including the 2 mm plate, the drawer fit check adds 4.1 mm. After moving or rotating a tray, download it again: its sockets must match the peg positions. Changing drawer clearance also changes the peg origin.
 
-Socket radial clearance is 0.12 mm, confirmed on a PLA fit coupon with 0.2 mm layers and a 0.25 mm first layer. This is lateral retention with removal upwards, not a vertical latch. Export uses geometry only; choose your actual printer and material profiles in the slicer and inspect the socket roofs. Full-size printed assemblies have not yet been verified.
+Socket radial clearance is 0.12 mm, confirmed on a PLA fit coupon and a small organizer bridging two sections, with 0.2 mm layers and a 0.25 mm first layer. The bridging organizer held securely without reported play and remained easy to remove. This is lateral retention with removal upwards, not a vertical latch. Export uses geometry only; choose your actual printer and material profiles in the slicer and inspect the socket roofs. Full-size printed assemblies have not yet been verified.
 
 Mounting currently supports unsplit organizers without tilt, with at least three fully supported sockets. Small trays may need to be moved or enlarged. Upper tiers and shells retain their existing geometry. Turn plate mode off to export the original unmounted model. Saved source projects remain unchanged.

@@ -12,14 +12,16 @@ function serialize(body:Manifold){
  for(let i=0;i<mesh.triVerts.length;i+=3)triangles.push([0,1,2].map(j=>{const k=mesh.triVerts[i+j]*mesh.numProp;return [mesh.vertProperties[k],mesh.vertProperties[k+1],mesh.vertProperties[k+2]] as Point;}) as Triangle);
  const stl=encodeSTL(triangles);return {stl,inspection:inspectSurface(decodeSTL(stl))};
 }
-export async function buildPlateTiles(input:DrawerLayout){
+export async function buildPlateTiles(input:DrawerLayout,jointClearance:number=MOUNT.jointClearance,seamGap:number=MOUNT.seamGap){
+ if(!Number.isFinite(jointClearance)||jointClearance<0||jointClearance>.2)throw new Error('Invalid plate joint clearance.');
+ if(!Number.isFinite(seamGap)||seamGap<0||seamGap>.2)throw new Error('Invalid plate seam gap.');
  const d=parseDrawer(JSON.stringify(input)),plan=platePlan(d),wasm=await(modulePromise??=Module());wasm.setup();
  const result:({name:string;position:Point}&ReturnType<typeof serialize>)[]=[];
  for(const tile of plan.tiles){
   const owned:Manifold[]=[],keep=(m:Manifold)=>{owned.push(m);return m;};
   try{
-   const left=tile.column>0?MOUNT.seamGap/2:0,top=tile.row>0?MOUNT.seamGap/2:0;
-   const right=tile.column<plan.columns-1?MOUNT.seamGap/2:0,bottom=tile.row<plan.rows-1?MOUNT.seamGap/2:0;
+   const left=tile.column>0?seamGap/2:0,top=tile.row>0?seamGap/2:0;
+   const right=tile.column<plan.columns-1?seamGap/2:0,bottom=tile.row<plan.rows-1?seamGap/2:0;
    let body=keep(wasm.Manifold.cube([tile.width-left-right,tile.depth-top-bottom,2]).translate([left,top,0]));
    // Dovetails lie between peg rows, preserve the global 20 mm grid.
    for(const axis of ['x','y'] as const)for(const outgoing of [false,true]){
@@ -28,7 +30,7 @@ export async function buildPlateTiles(input:DrawerLayout){
     const span=axis==='x'?tile.depth:tile.width,seam=outgoing?(axis==='x'?tile.width:tile.depth):0;
     const anchors:number[]=[];for(let a=20;a<=span-10;a+=60)anchors.push(a);if(!anchors.length)anchors.push(span/2);
     for(const anchor of anchors){
-     const g=outgoing?0:.2;
+     const g=outgoing?0:jointClearance;
      const polygon:Vec2[]=[[-1,-3-g],[4+g,-5-g],[4+g,5+g],[-1,3+g]];
      let joint=keep(wasm.Manifold.extrude([polygon],2+(outgoing?0:.2)));
      joint=keep(joint.translate([seam,anchor,outgoing?0:-.1]));
@@ -50,7 +52,7 @@ export async function plateArchive(d:DrawerLayout){
  const tiles=await buildPlateTiles(d),plan=platePlan(d);
  const map=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -20 ${d.width+20} ${d.depth+30}"><rect x="-10" y="-20" width="${d.width+20}" height="${d.depth+30}" fill="white"/><text x="0" y="-7" font-size="8">${d.width} × ${d.depth} mm — ReplixGrid</text>${plan.tiles.map(t=>`<rect x="${t.x}" y="${t.y}" width="${t.width}" height="${t.depth}" fill="#e3edf8" stroke="#526477" stroke-width=".5"/><text x="${t.x+t.width/2}" y="${t.y+t.depth/2}" text-anchor="middle" font-size="8">R${t.row+1} C${t.column+1}</text>`).join('')}</svg>`;
  const files=tiles.map(p=>({name:p.name+'.3mf',data:formatExport([{name:p.name,stl:p.stl,color:'#a6bcb1'}],'3mf').data}));
- return zipFiles([...files,{name:'assembly.svg',data:map},{name:'assembly.json',data:JSON.stringify({units:'mm',drawer:[d.width,d.depth],gap:d.gap,tiles:tiles.map(({name,position,inspection})=>({name,position,bounds:inspection.bounds}))},null,2)},{name:'README.txt',data:'ReplixGrid mounting plate — millimetres, scale 100%.\nEach numbered 3MF contains one section for a separate print job. R = row (top to bottom), C = column (left to right) in original drawer coordinates. Assemble dovetails by lowering neighbouring sections from above. The 20 mm peg grid continues across seams.\nPeg/socket radial clearance 0.12 mm was tested in PLA, layers 0.2 mm / first layer 0.25 mm. Section dovetails are experimental: test two adjoining sections before printing the entire drawer. No slicer profiles are included.\nMounted trays gain an external socket base; export them from this drawer with plate mode enabled. Existing flat-bottom trays will not engage the pegs.\n'}]);
+ return zipFiles([...files,{name:'assembly.svg',data:map},{name:'assembly.json',data:JSON.stringify({units:'mm',drawer:[d.width,d.depth],gap:d.gap,tiles:tiles.map(({name,position,inspection})=>({name,position,bounds:inspection.bounds}))},null,2)},{name:'README.txt',data:'ReplixGrid mounting plate — millimetres, scale 100%.\nEach numbered 3MF contains one section for a separate print job. R = row (top to bottom), C = column (left to right) in original drawer coordinates. Assemble dovetails by lowering neighbouring sections from above. The 20 mm peg grid continues across seams.\nPeg/socket radial clearance 0.12 mm was tested in PLA, layers 0.2 mm / first layer 0.25 mm. Section dovetails use a 0.05 mm seam and 0.03 mm profile allowance. A small PLA assembly with a tray bridging the seam was print-tested. Test two adjoining sections with your printer before printing the entire drawer. No slicer profiles are included.\nMounted trays gain an external socket base; export them from this drawer with plate mode enabled. Existing flat-bottom trays will not engage the pegs.\n'}]);
 }
 export interface MountingRequest {layout:DrawerLayout;trayId:string}
 export async function mountedKit(request:MountingRequest):Promise<KitPart[]>{
