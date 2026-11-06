@@ -1,9 +1,10 @@
+import {packBeds,type BedSettings} from './bedPacking.js';
 import {MOUNT,type PlateSettings} from './mountingPlate.js';
 import {parseProject} from './editor.js';
 import {defaultProject,type Project} from './model.js';
 export interface TrayBounds {width:number;depth:number;height:number}
 export interface DrawerTray {id:string;name:string;x:number;y:number;rotation:0|90;project:Project}
-export interface DrawerLayout {schemaVersion:1;kind:'replixgrid-drawer';id:string;name:string;width:number;depth:number;height:number;gap:number;viewRotation?:0|90;plate?:PlateSettings;trays:DrawerTray[]}
+export interface DrawerLayout {schemaVersion:1;kind:'replixgrid-drawer';id:string;name:string;width:number;depth:number;height:number;gap:number;viewRotation?:0|90;plate?:PlateSettings;printBed?:BedSettings;trays:DrawerTray[]}
 export function newDrawer():DrawerLayout{return {schemaVersion:1,kind:'replixgrid-drawer',id:crypto.randomUUID(),name:'',width:180,depth:280,height:80,gap:2,viewRotation:0,trays:[]};}
 export function newTray(name:string,width:number,depth:number,height:number):DrawerTray{
  const project={...defaultProject(),width,depth,height,cornerRadius:Math.min(6,width/4,depth/4),root:{id:crypto.randomUUID()}};
@@ -14,6 +15,7 @@ export function parseDrawer(raw:string):DrawerLayout{
  const d=JSON.parse(raw) as DrawerLayout;
  if(!d||d.kind!=='replixgrid-drawer'||d.schemaVersion!==1||typeof d.id!=='string'||typeof d.name!=='string'||d.name.length>80||!Array.isArray(d.trays)||d.trays.length>24)throw new Error('Некорректный файл ящика.');
  for(const [v,min,max] of [[d.width,20,2000],[d.depth,20,2000],[d.height,5,1000],[d.gap,0,20]])if(!Number.isFinite(v)||v<min||v>max)throw new Error('Проверьте размеры ящика и зазоры.');
+ if(d.printBed)packBeds([],d.printBed);
  if(d.plate&&(![true,false].includes(d.plate.enabled)||![d.plate.bedWidth,d.plate.bedDepth].every(v=>Number.isFinite(v)&&v>=60&&v<=1000)))throw new Error('Некорректные размеры стола для пластины.');
  if(d.viewRotation!==undefined&&![0,90].includes(d.viewRotation))throw new Error('Некорректный файл ящика.');
  if(new Set(d.trays.map(t=>t.id)).size!==d.trays.length)throw new Error('Некорректный файл ящика.');

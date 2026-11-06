@@ -1,12 +1,17 @@
 import type {CrossSection,Manifold,ManifoldToplevel} from 'manifold-3d';
 import {resolveWalls,type Project,type Side} from './model.js';
 import {footprintContour,offsetContour} from './footprint.js';
+import {shellGap} from './reliefSize.js';
+import {hasDecorativeShellSupport,hasShellSupport,hasLegacyShellSupport,shellSupportHeight} from './shellSupport.js';
 import {contourHeight} from './shell.js';
 /** Unwrap each exterior side in arc-length coordinates, then wrap filled vector strips back onto it. */
-export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold){
- const r=p.relief!,s=r.svg!,cs:CrossSection[]=[];const hold=(c:CrossSection)=>{cs.push(c);return c;};
+export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold,shell=false){
+ const r=p.relief,s=(shell?p.shell?.svg:r?.svg)!,cs:CrossSection[]=[];const hold=(c:CrossSection)=>{cs.push(c);return c;};
  try{
-  const contour=footprintContour(p),out=offsetContour(contour,r.depth),inside=offsetContour(contour,-.15),walls=resolveWalls(p);
+  const offset=shell?shellGap(p)+p.shell!.thickness:0;
+  const contour=footprintContour(p,offset),out=offsetContour(contour,shell?.3:r!.depth),inside=offsetContour(contour,shell?-p.shell!.thickness-.3:-.15),walls=resolveWalls(p);
+  const border=shell?(p.shell!.border??Math.max(3,p.shell!.thickness*2)):0;
+  const support=shell&&(hasDecorativeShellSupport(p)||(hasShellSupport(p)&&!hasLegacyShellSupport(p)))?shellSupportHeight(p):0;
   const pieces:Manifold[]=[];const groups=new Map<Side,{i:number;length:number;start:number}[]>();
   for(let i=0;i<contour.length;i++){
    const a=contour[i],b=contour[(i+1)%contour.length],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);
@@ -21,11 +26,11 @@ export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(
   const box=rotated.bounds(),mw=box.max[0]-box.min[0],mh=box.max[1]-box.min[1];
   let copies=0;
   for(const side of s.sides){const group=groups.get(side);if(!group?.length)continue;
-   const length=group.reduce((n,v)=>n+v.length,0),low=p.floorThickness+.5;
+   const length=group.reduce((n,v)=>n+v.length,0),low=shell?support+border:p.floorThickness+.5;
    const roof=Math.max(...group.flatMap(({i})=>[contourHeight(p,walls,...contour[i]),contourHeight(p,walls,...contour[(i+1)%contour.length])]));
-   const cx=length/2+s.offsetX,cy=(low+roof)/2+s.offsetY,px=mw+s.gap,py=mh+s.gap;
+   const cx=length/2+s.offsetX,cy=(low+roof-(shell?border:0))/2+s.offsetY,px=mw+s.gap,py=mh+s.gap;
    const nx=s.mode==='repeat'?Math.ceil((length+Math.abs(s.offsetX)*2)/px)+1:0,ny=s.mode==='repeat'?Math.ceil((roof+Math.abs(s.offsetY)*2)/py)+1:0;
-   const margin=Math.max(.6,(p.topEdge?.size??0)+.4);
+   const margin=shell?border:Math.max(.6,(p.topEdge?.size??0)+.4);
    const roofs=group.map(({i,length:len,start})=>{
     const a=contour[i],b=contour[(i+1)%contour.length],steps=Math.max(1,Math.ceil(len)),points:[number,number][]=[];
     for(let k=steps;k>=0;k--){const t=k/steps;points.push([start+len*t,Math.max(low,contourHeight(p,walls,a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)-margin)]);}
@@ -33,12 +38,12 @@ export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(
    });
    // Test whole repeats against the same roof used to wrap the relief. This also
    // excludes fragments at cutouts and at the boundary between adjacent sides.
-   const usable=s.mode==='repeat'?hold(new w.CrossSection([[[0,low],[length,low],...roofs.slice().reverse().flat()]])):undefined;
+   const usable=(shell||s.mode==='repeat')?hold(new w.CrossSection([[[0,low],[length,low],...roofs.slice().reverse().flat()]])):undefined;
    const instances:CrossSection[]=[];
    for(let x=-nx;x<=nx;x++)for(let y=-ny;y<=ny;y++){
     const ux=cx+x*px,z=cy+y*py;
     if(ux+box.max[0]<0||ux+box.min[0]>length||z+box.max[1]<low||z+box.min[1]>roof)continue;
-    if(usable&&(ux+box.min[0]<.6||ux+box.max[0]>length-.6||z+box.min[1]<low))continue;
+    if(usable&&(ux+box.min[0]<(shell?border:.6)||ux+box.max[0]>length-(shell?border:.6)||z+box.min[1]<low))continue;
     const candidate=rotated.translate([ux,z]);
     if(usable){const outside=candidate.subtract(usable);const fits=outside.area()<1e-8;outside.delete();if(!fits){candidate.delete();continue;}}
     hold(candidate);
@@ -65,6 +70,6 @@ export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(
   if(!pieces.length)throw new Error('SVG находится за пределами стенки. Уменьшите размер или смещение.');
   // Simplify only the added relief, never the original compartment walls.
   const relief=keep(keep(keep(w.Manifold.union(pieces)).asOriginal()).simplify(.002));
-  return keep(body.add(relief));
+  return keep(shell?body.subtract(relief):body.add(relief));
  }finally{cs.forEach(c=>c.delete());}
 }

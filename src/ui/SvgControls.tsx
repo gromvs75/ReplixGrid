@@ -4,17 +4,26 @@ import {useEditor} from '../store.js';
 import {editProject} from '../editor.js';
 import {defaultSvgPattern,SVG_MAX_BYTES,type SvgAsset,type SvgPattern} from '../svgPattern.js';
 import {deleteSvgAsset,listSvgAssets,saveSvgAsset,type SavedSvg} from '../storage.js';
+import {resolveWalls} from '../model.js';
+import {shellForPattern} from '../shellSelection.js';
 import {Field} from './Field.js';
 export function SvgSwatch({asset}:{asset:SvgAsset}){
  return <svg viewBox={`0 0 1 ${asset.aspect}`} aria-hidden="true"><g transform={`translate(0 ${asset.aspect}) scale(1 -1)`}>{asset.shapes.map((shape,i)=><path key={i} fill="currentColor" fillRule="evenodd" stroke="none" d={shape.map(loop=>'M'+loop.map(v=>v.join(' ')).join('L')+'Z').join('')}/>)}</g></svg>;
 }
-export function SvgControls(){
- const project=useEditor(s=>s.project),change=useEditor(s=>s.change),svg=project.relief?.svg;
+export function SvgControls({target='relief',studio=false}:{target?:'relief'|'lid'|'shell';studio?:boolean}){
+ const project=useEditor(s=>s.project),change=useEditor(s=>s.change),svg=target==='lid'?project.lidDesign?.svg:target==='shell'?project.shell?.svg:project.relief?.svg;
  const [items,setItems]=useState<SavedSvg[]>([]),[busy,setBusy]=useState(false),[error,setError]=useState(''),[remove,setRemove]=useState('');
  const file=useRef<HTMLInputElement>(null),alive=useRef(true),working=useRef(false);
  useEffect(()=>{alive.current=true;const refresh=()=>{void listSvgAssets().then(v=>{if(alive.current)setItems(v);}).catch(()=>{if(alive.current)setError('Не удалось прочитать библиотеку SVG.');});};refresh();window.addEventListener('focus',refresh);return()=>{alive.current=false;window.removeEventListener('focus',refresh);};},[]);
- const apply=(asset:SvgAsset)=>{setError('');change(p=>editProject(p,d=>{d.relief={pattern:'ribs',spacing:8,depth:d.relief?.depth??1,svg:defaultSvgPattern(structuredClone(asset))};}));};
- const set=(patch:Partial<SvgPattern>)=>change(p=>editProject(p,d=>{if(d.relief?.svg)d.relief.svg={...d.relief.svg,...patch};}));
+ const apply=(asset:SvgAsset)=>{setError('');change(p=>editProject(p,d=>{const svg=defaultSvgPattern(structuredClone(asset));
+  if(target==='lid')d.lidDesign={pattern:'smooth',rimHeight:2,handle:'none',...d.lidDesign,svg,svgMode:d.lidDesign?.svgMode??'raised'};
+  else if(target==='shell'){svg.sides=['front','back','left','right'];svg.mode='repeat';const shell=d.shell??shellForPattern(d,'honeycomb');
+   const inset=shell.mode==='panels'?(shell.margin??4)+Math.max(4,shell.thickness*2):shell.border??Math.max(3,shell.thickness*2);
+   const height=Math.min(...resolveWalls(d).slice(0,4).flatMap(w=>[w.startHeight,w.endHeight]));
+   svg.width=Math.max(4,Math.min(svg.width,(height-2*inset-4)/asset.aspect,Math.min(d.width,d.depth)-2*inset-1));
+   d.shell={...shell,svg};}
+  else d.relief={pattern:'ribs',spacing:8,depth:d.relief?.depth??1,svg};}));};
+ const set=(patch:Partial<SvgPattern>)=>change(p=>editProject(p,d=>{const settings=target==='lid'?d.lidDesign:target==='shell'?d.shell:d.relief;if(settings?.svg)settings.svg={...settings.svg,...patch};}));
  const upload=async(f?:File)=>{
   if(!f||working.current)return;working.current=true;setBusy(true);setError('');const source=useEditor.getState().project;
   try{
@@ -25,6 +34,37 @@ export function SvgControls(){
   }catch(e){if(alive.current)setError(e instanceof Error?e.message:'Не удалось сохранить SVG.');}
   finally{working.current=false;if(alive.current)setBusy(false);}
  };
+ const setLid=(patch:Partial<NonNullable<typeof project.lidDesign>>)=>change(p=>editProject(p,d=>{d.lidDesign={pattern:'smooth',rimHeight:2,handle:'none',...d.lidDesign,...patch};}));
+ if(studio)return <div className="studio-content">
+  <div className="studio-library" onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();void upload(e.dataTransfer.files[0]);}}>
+   <div className="studio-library-heading"><strong>{t('Мои SVG')}</strong>{svg&&<button className="studio-reset" onClick={()=>change(p=>editProject(p,d=>{const settings=target==='lid'?d.lidDesign:d.shell;if(settings)delete settings.svg;}))}>{t('Убрать рисунок')}</button>}</div>
+   <input ref={file} type="file" accept=".svg,image/svg+xml" aria-label={t('Загрузить SVG')} hidden onChange={e=>{void upload(e.target.files?.[0]);e.target.value='';}}/>
+   <div className="studio-gallery" aria-label={t('Библиотека SVG')}>
+    {items.map(item=><button className="studio-asset" key={item.id} disabled={busy} aria-pressed={svg?.asset.name===item.asset.name&&JSON.stringify(svg.asset.shapes)===JSON.stringify(item.asset.shapes)} onClick={()=>apply(item.asset)}><SvgSwatch asset={item.asset}/><span>{item.asset.name}</span></button>)}
+    {svg&&!items.some(item=>JSON.stringify(item.asset)===JSON.stringify(svg.asset))&&<button className="studio-asset" aria-pressed="true"><SvgSwatch asset={svg.asset}/><span>{svg.asset.name}</span></button>}
+    <button className="studio-upload" disabled={busy} aria-label={t('Загрузить SVG')} onClick={()=>file.current?.click()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 16V3m-4 4 4-4 4 4M4 14v6h16v-6"/></svg><span>{t(busy?'Загрузка…':'Загрузить')}</span></button>
+   </div>
+   {error&&<p className="validation-error" role="alert">{t(error)}</p>}
+  </div>
+  {svg?<>
+   <div className="studio-transforms">
+    <div className="studio-repeat" role="group" aria-label={t('Размещение SVG')}>{(['single','repeat'] as const).map(mode=><button aria-pressed={svg.mode===mode} key={mode} onClick={()=>set({mode})}>{t(mode==='single'?'Один рисунок':'Повторять')}</button>)}</div>
+    <div className="studio-transform-grid">
+     <Field label={t('Ширина рисунка')} value={svg.width} min={4} max={200} step={.5} onChange={width=>set({width})}/>
+     <Field label={t('Поворот рисунка')} value={svg.rotation} min={-180} max={180} step={5} unit="°" onChange={rotation=>set({rotation})}/>
+     <Field label={t('Интервал рисунков')} value={svg.gap} min={0} max={50} step={.5} onChange={gap=>set({gap})}/>
+     <Field label="X" value={svg.offsetX} min={-200} max={200} onChange={offsetX=>set({offsetX})}/>
+     <Field label="Y" value={svg.offsetY} min={-100} max={100} onChange={offsetY=>set({offsetY})}/>
+     <button className="studio-center" onClick={()=>set({offsetX:0,offsetY:0,rotation:0})} aria-label={t('По центру')} title={t('По центру')}>⌖</button>
+    </div>
+   </div>
+   <div className="studio-surface">
+    <label className="studio-cutout"><input type="checkbox" role="switch" checked={target==='shell'||project.lidDesign?.svgMode==='cutout'} disabled={target==='shell'} onChange={e=>setLid({svgMode:e.target.checked?'cutout':'raised'})}/><span>{t('Сквозные прорези')}</span></label>
+    {target==='lid'?(project.lidDesign?.svgMode!=='cutout'?<Field label={t('Высота рельефа')} value={project.lidDesign?.patternDepth??.5} min={.2} max={1} step={.1} onChange={patternDepth=>setLid({patternDepth})}/>:<div className="studio-frame">{t('Рамка')}: 2 {t('мм')}</div>):project.shell?.mode==='panels'?<div className="studio-frame">{t('Рамка')}: {Math.max(4,project.shell.thickness*2)} {t('мм')}</div>:<Field label={t('Ширина канта')} value={project.shell?.border??Math.max(3,(project.shell?.thickness??1.6)*2)} min={2} max={12} step={.5} onChange={border=>change(p=>editProject(p,d=>{if(d.shell?.mode!=='panels'&&d.shell)d.shell.border=border;}))}/>}
+    {target==='shell'&&project.shell?.mode!=='panels'?<details className="studio-side-picker"><summary>{t('Стенки для SVG')} · {svg.sides.length}</summary><div>{([['front','Передняя'],['back','Задняя'],['left','Левая'],['right','Правая']] as const).map(([side,label])=><label key={side}><input type="checkbox" checked={svg.sides.includes(side)} disabled={svg.sides.length===1&&svg.sides[0]===side} onChange={()=>set({sides:svg.sides.includes(side)?svg.sides.filter(v=>v!==side):[...svg.sides,side]})}/>{t(label)}</label>)}</div></details>:target==='lid'?<label className="studio-color"><input type="color" aria-label={t('Цвет основы крышки')} value={project.lidDesign?.baseColor??project.colors?.organizer??'#90b9aa'} onChange={e=>setLid({baseColor:e.target.value})}/>{t('Цвет основы крышки')}</label>:<span className="studio-frame">{t('На выбранных панелях')}</span>}
+   </div>
+  </>:<div className="studio-empty">{t('Выберите рисунок или загрузите SVG')}</div>}
+ </div>;
  return <div className="svg-controls">
   <div className="svg-upload" onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();void upload(e.dataTransfer.files[0]);}}>
    <input ref={file} type="file" accept=".svg,image/svg+xml" aria-label={t('Загрузить SVG')} hidden onChange={e=>{void upload(e.target.files?.[0]);e.target.value='';}}/>
@@ -36,15 +76,15 @@ export function SvgControls(){
   {svg&&<>
    <div className="svg-current"><SvgSwatch asset={svg.asset}/><strong>{svg.asset.name}</strong></div>
    <div className="surface-options" role="group" aria-label={t('Размещение SVG')}>{(['single','repeat'] as const).map(mode=><button key={mode} aria-pressed={svg.mode===mode} onClick={()=>set({mode})}>{t(mode==='single'?'Один рисунок':'Повторять')}</button>)}</div>
-   <div className="surface-options" role="group" aria-label={t('Стенки для SVG')}>{([['front','Передняя'],['back','Задняя'],['left','Левая'],['right','Правая']] as const).map(([side,label])=><button key={side} aria-pressed={svg.sides.includes(side)} disabled={svg.sides.length===1&&svg.sides[0]===side} onClick={()=>set({sides:svg.sides.includes(side)?svg.sides.filter(v=>v!==side):[...svg.sides,side]})}>{t(label)}</button>)}</div>
-   <Field commitOnRelease label={t('Ширина рисунка')} value={svg.width} min={4} max={200} step={.5} onChange={width=>set({width})}/>
-   <p className="hint">{t('Высота рисунка')}: {(svg.width*svg.asset.aspect).toFixed(1)} {t('мм')}</p>
+   {target!=='lid'&&!(target==='shell'&&project.shell?.mode==='panels')&&<div className="surface-options" role="group" aria-label={t('Стенки для SVG')}>{([['front','Передняя'],['back','Задняя'],['left','Левая'],['right','Правая']] as const).map(([side,label])=><button key={side} aria-pressed={svg.sides.includes(side)} disabled={svg.sides.length===1&&svg.sides[0]===side} onClick={()=>set({sides:svg.sides.includes(side)?svg.sides.filter(v=>v!==side):[...svg.sides,side]})}>{t(label)}</button>)}</div>}
+   <div className="svg-transform-fields"><Field commitOnRelease label={t('Ширина рисунка')} value={svg.width} min={4} max={200} step={.5} onChange={width=>set({width})}/>
+
    <Field commitOnRelease label={t('Поворот рисунка')} value={svg.rotation} min={-180} max={180} step={5} unit="°" onChange={rotation=>set({rotation})}/>
    <Field commitOnRelease label={t('Сдвиг по горизонтали')} value={svg.offsetX} min={-200} max={200} onChange={offsetX=>set({offsetX})}/>
    <Field commitOnRelease label={t('Сдвиг по вертикали')} value={svg.offsetY} min={-100} max={100} onChange={offsetY=>set({offsetY})}/>
    {svg.mode==='repeat'&&<Field commitOnRelease label={t('Интервал рисунков')} value={svg.gap} min={0} max={50} step={.5} onChange={gap=>set({gap})}/>}
-   <button onClick={()=>set({offsetX:0,offsetY:0,rotation:0})}>{t('По центру')}</button>
-   <p className="hint">{t('Рисунок повторяется на выбранных стенках. У краёв и вырезов он обрезается. Пропорции сохраняются.')}</p>
+   <button onClick={()=>set({offsetX:0,offsetY:0,rotation:0})}>{t('По центру')}</button></div>
+   <p className="hint">{t(target==='relief'?'Рисунок повторяется на выбранных стенках. У краёв и вырезов он обрезается. Пропорции сохраняются.':'Рисунки размещаются целиком внутри рамки. Пропорции сохраняются. Для прорезей добавьте перемычки к замкнутым внутренним деталям SVG.')}</p>
   </>}
   <p className="hint">{t('SVG обрабатывается в браузере и сохраняется внутри проекта. Библиотека доступна на этом устройстве.')}</p>
  </div>;

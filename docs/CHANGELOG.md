@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-06 — Surface patterns, compact editors and whole-drawer export
+
+- Use your own SVG artwork on lids and perforated shells in Pattern Studio, with separate lid and shell tabs.
+- Keep tool navigation on the left and edit the selected section in a compact, centered panel below the model.
+- Switch visible parts above the model, in the center; on smaller windows the switches occupy their own row.
+- Export the whole drawer as a ZIP of 3MF print beds, including mounting plate sections and organizer accessories. The bed count uses the configured printer dimensions.
+- Updated the [Quick Start](USER-GUIDE.md#find-your-controls) and [full user guide](REFERENCE.md) for the current controls, SVG surfaces and drawer export.
+
 ## 2026-11-05 — Custom SVG relief
 
 - Import filled SVG artwork into a local library and apply it to selected organizer walls.

@@ -55,6 +55,7 @@ export function wallOutline(w:Wall):P2[]{
   return points;
 }
 export function holesFor(w:Wall,settings:ShellSettings,border:number,sideMargin=border):P2[][]{
+  if(settings.svg)return [];
   const result:P2[][]=[],size=settings.size,web=Math.max(1,Math.min(1.2,settings.thickness)),r=size/2;
   const add=(poly:P2[])=>{const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),lo=Math.min(...xs),hi=Math.max(...xs);
     const epsilon=1e-8;

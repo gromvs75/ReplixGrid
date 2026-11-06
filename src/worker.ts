@@ -1,3 +1,4 @@
+import {exportParts} from './exportParts.js';
 import {plateArchive,mountedKit,type MountingRequest} from './mountingKernel.js';
 import type {DrawerLayout} from './drawer.js';
 import {tierElevation} from './accessories.js';
@@ -19,17 +20,6 @@ async function previewShell(project:Project){
  const key=JSON.stringify({...project,relief:project.relief?{depth:project.relief.depth}:undefined,colors:undefined});
  if(previewShellCache?.key!==key)previewShellCache={key,value:await buildShell(project)};
  return {...previewShellCache.value,stl:previewShellCache.value.stl.slice(0)};
-}
-async function exportParts(project:Project,part?:string):Promise<ExportPart[]>{
- if(project.printing&&project.shell&&part!=='organizer'&&part!=='sample')throw new Error('Оболочка недоступна для печати по частям. Уберите оболочку или верните цельную модель.');
- if(project.printing||part==='sample'){
-  const source=part==='sample'?jointSampleProject(project):project;
-  const pieces=await buildPrintPieces(source,part==='shell'?'shell':part==='organizer'?'organizer':undefined);
-  const pins=part==='shell'?[]:await buildJointPins(source);
-  const extras=part==='shell'||part==='sample'||(!project.stack&&!project.lid&&!project.cups?.length)?[]:(await buildKit({...project,printing:undefined})).filter(item=>item.kind!=='organizer'&&item.kind!=='shell').map(item=>({name:item.name,stl:item.stl,color:item.color}));
-  return [...pieces.map(piece=>({name:piece.name.replace(/\.stl$/,''),stl:piece.stl,color:partColor(project,piece.kind)})),...pins.map(pin=>({...pin,color:partColor(project,'organizer')})),...extras];
- }
- return (await buildKit(project)).filter(p=>part==='shell'?p.kind==='shell':part==='organizer'?p.kind!=='shell':true);
 }
 // Requests carry a revision; the future UI must discard stale revisions.
 globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;part?:'organizer'|'shell'|'kit'|'sample'|'all';format?:ExportFormat;objInstructions?:string;filamentSlots?:Record<string,number>;partSlots?:Array<number|null>;mounting?:MountingRequest;layout?:DrawerLayout;purpose?:'preview'|'check'|'download'|'drawer'|'plate'}>)=>{
