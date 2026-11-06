@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-06 — Floating editor preview fix
+
+- Keep the scene and grid visible behind the bottom settings editor, without a blank full-width band. Opening or collapsing the editor no longer shortens the canvas.
+
 ## 2026-11-06 — Surface patterns, compact editors and whole-drawer export
 
 - Use your own SVG artwork on lids and perforated shells in Pattern Studio, with separate lid and shell tabs.
