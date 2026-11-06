@@ -9,7 +9,7 @@ Start with a three-compartment organizer for your desk. The example below is 180
 ## Find your controls
 
 - **Upper left:** choose **Shape**, **Compartments**, **Shell** or **Print**. The left menu lists the sections of that tool.
-- **Below the model:** selecting a section opens its compact settings editor. Only the selected section appears here. Use the chevron to collapse it or **×** to close it; choose another section on the left to continue.
+- **At the bottom of the preview:** selecting a section opens a compact, floating settings editor. The scene and grid continue behind it. Only the selected section appears here. Use the chevron to collapse it or **×** to close it; choose another section on the left to continue.
 - **Above the model, in the center:** **Together**, **Organizer**, **Inserts**, **Shell** and **Lid** control which parts you see. Available buttons depend on your design. On narrower windows, they move onto a separate row below the toolbars.
 - **On the right:** click a compartment number, wall or divider to edit that element.
 
