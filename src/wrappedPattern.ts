@@ -1,3 +1,4 @@
+import {applySvgRelief} from './svgRelief.js';
 import {cellularOpenings} from './cellularPattern.js';
 import {shellGap} from './reliefSize.js';
 import type {Manifold,ManifoldToplevel} from 'manifold-3d';
@@ -9,6 +10,7 @@ import {hasDecorativeShellSupport,hasShellSupport,hasLegacyShellSupport,shellSup
 
 /** Develop the perimeter into a strip, then fold its perforations back onto each facet. */
 export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold){
+ if(p.shell?.svg)return applySvgRelief(wasm,p,body,keep,true);
  const s=p.shell!,border=s.border??Math.max(3,s.thickness*2),offset=shellGap(p)+s.thickness;
  const contour=(!p.footprint&&!p.cornerRadius?[[ -offset,-offset],[p.width+offset,-offset],[p.width+offset,p.depth+offset],[-offset,p.depth+offset]]:footprintContour(p,offset)) as [number,number][];
  const penetration=Math.max(.3,Math.max(p.width,p.depth)*.003),outside=offsetContour(contour,penetration),inside=offsetContour(contour,-s.thickness-penetration);

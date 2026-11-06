@@ -1,3 +1,4 @@
+import {svgSurface,SVG_ISLAND_ERROR} from './svgSurface.js';
 import {stackFit,SHELL_SEAM} from './stackFit.js';
 import {buildDecorativePanels} from './decorativePanels.js';
 import {oliveFace} from './oliveLid.js';
@@ -125,7 +126,27 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Engraved decoration is on the face printed against the build plate.
     // Clip to an inset so the edge and the existing mating lip remain intact.
     let accent:Manifold|undefined;
-    if(design?.olive){
+    if(design?.svg){
+     const face=keepSection(new wasm.CrossSection([footprintContour(lp,outer)]));
+     let mask=keepSection(face.offset(-2,'Round',2,32));
+     // Reserve an unperforated landing for the separately printed handle.
+     if(design.handle!=='none'){
+      const width=Math.min(design.handleWidth??(design.handle==='round'?10:26),lp.width-8),depth=design.handle==='round'?width:Math.min(8,width);
+      const landing=keepSection(new wasm.CrossSection([[[lp.width/2-width/2-1,lp.depth/2-depth/2-1],[lp.width/2+width/2+1,lp.depth/2-depth/2-1],[lp.width/2+width/2+1,lp.depth/2+depth/2+1],[lp.width/2-width/2-1,lp.depth/2+depth/2+1]]]));
+      mask=keepSection(mask.subtract(landing));
+     }
+     const motif=svgSurface(wasm,design.svg,mask,keepSection);
+     if(design.svgMode==='cutout'){
+      const remaining=keepSection(face.subtract(motif)),islands=remaining.decompose();
+      islands.forEach(keepSection);if(islands.length!==1)throw new Error(SVG_ISLAND_ERROR);
+      plate=keep(remaining.extrude(plateThickness));
+     }else{
+      const depth=design.patternDepth??.5;
+      const raisedPattern=keep(motif.extrude(depth));
+      const backing=keep(keep(face.extrude(plateThickness-depth)).translate([0,0,depth]));
+      plate=keep(backing.add(raisedPattern));
+     }
+    }else if(design?.olive){
      const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection,design.motif,design.cutwork);
      accent=keep(motif.extrude(plateThickness/2));
      plate=design.raised
@@ -148,10 +169,11 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     // Print broad face down; invert for assembled preview only (see preview worker).
     const lidZ=baseZ+h+(inset?0:4.5);
     // Raised inset lids print backing first. Both colors must keep the same Z origin.
-    const raised=!!(design?.olive&&design.raised),faceUp=raised&&inset;
+    const raised=!!(design?.svg?design.svgMode!=='cutout':design?.olive&&design.raised),faceUp=raised&&inset;
     const orient=(m:Manifold)=>faceUp?keep(keep(m.rotate([180,0,0])).translate([0,lp.depth,plateThickness])):m;
     const origin:Point=[0,0,lidZ-(faceUp?plateThickness:0)];
     emit(orient(lip?keep(plate.add(lip)):plate),'lid','lid',i,origin,raised);
+    if(design?.svg)parts[parts.length-1].color=design.baseColor??partColor(p,'organizer');
     if(accent){
      parts[parts.length-1].color=design?.baseColor??'#f7f3e8';
      emit(orient(accent),'lid-olive','lid',i,origin,raised);

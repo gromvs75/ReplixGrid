@@ -15,19 +15,25 @@ Design an organizer in millimeters, check its fit, and download the parts for yo
 | Print a decorative cover for the outside | [Sleeves and panels](#sleeves-and-panels) |
 | Reopen a design or move it to another computer | [Projects and backups](#projects-and-backups) |
 | Choose a printer, split a large model or assign filament | [Print setup and sectioning](#print-setup-and-sectioning) · [Download and slice](#download-and-slice) |
+| Keep alternative designs or reuse colors and patterns | [Project variants](#project-variants) · [Shared styles](#shared-styles) |
+| Arrange organizers in a measured drawer or fix them to a plate | [Drawer arrangements](#drawer-arrangements) · [Mounting plates](#mounting-plates) |
+| Import artwork for walls, lids or a perforated shell | [Custom SVG](#custom-svg-relief) · [Pattern Studio](#pattern-studio) |
+| Download all drawer parts arranged for the printer | [Whole-drawer export](#whole-drawer-export) |
 | Work out why a control or download is unavailable | [Troubleshooting](#troubleshooting) |
 
 ## Workspace and views
 
 Open a tool in the upper left. **Shape** changes the body and its accessories. **Compartments** changes the layout. **Shell** designs a separate outer cover. **Print** sets the build volume, filament slots and optional section cuts. Click a compartment number, wall or divider on the model to open its settings on the right. If a part is hard to click, expand **All walls and compartments** and select it by name.
 
-Drag the background to rotate, scroll to zoom, and drag with the right mouse button to pan. **Return camera** restores the camera framing. **Top** helps you select a narrow compartment or move a divider. **3D** shows wall heights and the finished assembly. **Grid** toggles the reference grid, with fine lines every 10 mm and major lines every 50 mm. Use the part buttons below the model to isolate the organizer, inserts, shell or lid when present. With the lid isolated, choose **Bottom** to inspect its underside. Press **Esc** to close the tool panel. Use the curved arrows above the model to undo or redo a design change.
+The left panel is section navigation. Select a section to open only its settings in the centered editor below the model. The editor uses compact groups; it does not replace the left menu. Its chevron collapses the editor and **×** closes it. Choose another section on the left to switch settings. The right panel remains dedicated to the selected wall or compartment.
+
+Drag the background to rotate, scroll to zoom, and drag with the right mouse button to pan. **Return camera** restores the camera framing. **Top** helps you select a narrow compartment or move a divider. **3D** shows wall heights and the finished assembly. **Grid** toggles the reference grid, with fine lines every 10 mm and major lines every 50 mm. Use the part buttons centered above the model to isolate the organizer, inserts, shell or lid when present. **Together** restores the assembly view. On narrower windows these buttons move to their own row below the toolbars. With the lid isolated, choose **Bottom** to inspect its underside. Press **Esc** to close the tool panel. Use the curved arrows above the model to undo or redo a design change.
 
 Use the top bar to choose an interface language or switch between light, dark and system appearance. The English names in this guide match the English interface.
 
 ## Shape and dimensions
 
-Under **Shape**, choose a base and height profile, then click **Create from template**. The button replaces the current construction. Save a named copy first if you want to keep both designs. **Basic templates** also offers an empty body and a four-compartment starting point.
+Under **Shape → Base**, choose a base and height profile, then click **Create from template**. The button replaces the current construction. Save a named copy first if you want to keep both designs. **Basic templates** also offers an empty body and a four-compartment starting point.
 
 | Base | When to choose it |
 | --- | --- |
@@ -220,10 +226,36 @@ Mounting currently supports unsplit organizers without tilt, with at least three
 
 ## Custom SVG relief
 
-Under **Shape → Organizer relief → My SVGs**, choose **Upload SVG** or drop a file into the upload area. Select a saved thumbnail to reuse it. The first version adds raised decoration to the organizer body; it does not yet import custom lid patterns or cut openings in the shell.
+Under **Shape → Organizer relief → My SVGs**, choose **Upload SVG** or drop a file into the upload area. Select a saved thumbnail to reuse it. The same library is available under **Shape → Lid → My SVGs** and **Shell → Pattern → My SVGs**. Each target keeps its own pattern and placement settings.
 
 Choose **Single motif** or **Repeat**, select the exterior walls, and adjust motif width in millimeters, rotation, horizontal/vertical offset, and repeat gap. Width and height keep the original proportions. Placement is centered on each selected side; on curved bodies the sides correspond to four exterior sectors. Positive vertical offset moves the motif upward. The pattern follows the exterior contour. Repeats are placed only where a complete motif fits below the top rim, around cutouts and within each side. Single motifs are clipped at these boundaries. Relief depth uses the existing **Relief depth / Intensity** control. The original wall and internal compartments are preserved; the external dimensions increase. Wait until the updated preview finishes, then check and download the part.
 
 Supported SVGs contain filled paths, polygons, rectangles, circles or ellipses, including holes and group transforms. Convert text and strokes to filled paths before exporting from your vector editor. Photos, external references, filters, masks, clipping paths and reusable definitions are not supported in this version. Colors become a single raised shape using the organizer color. The limit is 200 KB and 6,000 sampled contour points; overly complex patterns or excessive repetitions are rejected with a message. Curves are approximated by polygonal contours for printing.
 
-SVGs are processed locally in the browser. The library stays on this device. Each project embeds an independent copy of its used contours, so downloaded projects can be reopened on another device without the source SVG or library. Deleting a library entry leaves existing projects unchanged. **Shared style** also carries the custom relief to another organizer. Keep a downloaded project as a backup.
+SVGs are processed locally in the browser. The library stays on this device. Each project embeds an independent copy of its used contours, so downloaded projects can be reopened on another device without the source SVG or library. Deleting a library entry leaves existing projects unchanged. **Shared style** also carries custom body, lid and shell patterns to another organizer. Missing lids or shells are skipped, as with built-in styles. Keep a downloaded project as a backup.
+
+### SVG lids and perforated shells
+
+Add a lid, then choose **My SVGs**. **Raised pattern** makes a single connected lid with the motif on a solid backing; set its relief height (0.2–1 mm) and base color. **Through openings** removes the filled SVG areas through the lid. Both modes preserve a 2 mm edge frame and the mating lip. A separate handle keeps a solid landing; move the drawing if a single motif conflicts with it. Outer and inset fits use the same controls. SVG artwork colors are not imported as separate filaments.
+
+For a shell, select **My SVGs**, then a library drawing. Filled areas become through openings. Use one motif or repeats on selected sides of a wrapped sleeve. On **Decorative panels**, the drawing is repeated independently on every selected panel; existing frames and mount locations are retained. The initial motif size takes the shell height into account. Adjust the frame width, motif size, rotation, position and spacing as needed. The organizer's internal compartments and shell clearance remain unchanged.
+
+On lids and shells, only complete motifs are placed inside the available frame, including single motifs. If none fit, reduce the size or offset. Closed inner details (for example the center of a ring-shaped cutout) can become loose islands. Add bridges in your vector editor or use raised decoration on the lid. The application blocks disconnected geometry instead of silently discarding pieces. Avoid very narrow webs and check a small test print for your material and nozzle.
+
+Patterns are included in individual-part exports, complete kits and whole-drawer print jobs. Switching back to **Built-in** removes the custom pattern only from that target. Deleting a library thumbnail does not remove embedded patterns from projects.
+
+## Whole-drawer export
+
+Choose **Drawer → Print entire drawer** to prepare all trays, their accessories and any enabled mounting plate sections. Mounted trays receive sockets for their saved positions; ordinary free-placement trays keep their existing bases. Split-printing projects include their parts and pins. Overlaps, insufficient drawer clearances, unsupported mounting or invalid geometry block the download and identify the affected tray.
+
+Set **Printer bed length** (horizontal), **Printer bed width** (vertical), print height and spacing. Initial dimensions come from the mounting plate settings or the first tray's print area; subsequent export settings are saved with this drawer. Mounting plate sections are regenerated for the chosen bed. This does not move trays or modify saved source projects.
+
+The layout uses actual exported bounding boxes, a 2 mm margin at the bed edges and the chosen spacing. Parts may rotate 90 degrees. Multicolour lid components stay together. The displayed bed count is for this arrangement, not a guaranteed minimum. Supports, brim, purge towers, printer exclusion zones and different material jobs are not included; reserve appropriate space and check the result in your slicer. No printer profile or filament slot assignments are embedded.
+
+The ZIP contains **bed-NN.3mf** for each bed, matching **bed-NN.svg** diagrams, **assembly.svg**, **print-plan.json**, **drawer.replixdrawer.json** and a numbered parts list in **README.txt**. Open each 3MF as a separate print job, retain the relative positions of its objects, use millimetres at 100% scale and assign filaments. The SVG diagrams show bounding rectangles; the 3MF contains the full printable geometry. Drawer assembly coordinates always use length horizontally and width vertically.
+
+Changes to the layout or export settings invalidate the previous calculation. Closing the window cancels preparation. Oversized individual parts are reported rather than silently scaled or automatically split. Very large sets may need to be exported in smaller groups.
+
+### Pattern Studio
+
+Open **Shape → Lid → My SVGs** or **Shell → Pattern → My SVGs** to edit accessory patterns in the bottom drawer. **Lid** and **Shell** tabs keep independent settings while sharing the SVG library. Use the width, rotation, interval and X/Y controls to position motifs; the center button resets position and rotation. The lid supports raised relief or through openings. Shell openings keep the frame and mounting areas. Close with × or Escape while focused in the studio; edits remain saved. Arrow keys switch the focused surface tab.

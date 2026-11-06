@@ -2,15 +2,25 @@ import Module,{type Manifold,type Vec2} from 'manifold-3d';
 import {MOUNT,platePlan} from './mountingPlate.js';
 import {parseDrawer,trayRect,type DrawerLayout} from './drawer.js';
 import {buildKit,type KitPart} from './accessoryKernel.js';
-import {encodeSTL,decodeSTL,inspectSurface,type Point,type Triangle} from './stl.js';
+import {encodeSTL,decodeSTL,inspectSurface,removeCollapsedFaces,type Point,type Triangle} from './stl.js';
 import {formatExport} from './exportFormats.js';
 import {zipFiles} from './zip.js';
 let modulePromise:ReturnType<typeof Module>|undefined;
 function serialize(body:Manifold){
  if(body.status()!=='NoError')throw new Error('Не удалось построить крепление.');
- const mesh=body.getMesh(),triangles:Triangle[]=[];
- for(let i=0;i<mesh.triVerts.length;i+=3)triangles.push([0,1,2].map(j=>{const k=mesh.triVerts[i+j]*mesh.numProp;return [mesh.vertProperties[k],mesh.vertProperties[k+1],mesh.vertProperties[k+2]] as Point;}) as Triangle);
- const stl=encodeSTL(triangles);return {stl,inspection:inspectSurface(decodeSTL(stl))};
+ let failure:unknown;
+ for(const tolerance of [0,.00001,.0001,.001]){
+  const original=tolerance?body.asOriginal():null,candidate=original?.simplify(tolerance)??body;
+  try{
+   const mesh=candidate.getMesh(),triangles:Triangle[]=[];
+   for(let i=0;i<mesh.triVerts.length;i+=3)triangles.push([0,1,2].map(j=>{const k=mesh.triVerts[i+j]*mesh.numProp;return [mesh.vertProperties[k],mesh.vertProperties[k+1],mesh.vertProperties[k+2]] as Point;}) as Triangle);
+   const stl=encodeSTL(removeCollapsedFaces(triangles)),inspection=inspectSurface(decodeSTL(stl));
+   if(Math.abs(inspection.volume-body.volume())>Math.max(.01,body.volume()*1e-5))throw Error('Mounting STL volume mismatch');
+   return {stl,inspection};
+  }catch(e){failure??=e;}finally{if(candidate!==body)candidate.delete();original?.delete();}
+ }
+ throw failure;
+
 }
 export async function buildPlateTiles(input:DrawerLayout,jointClearance:number=MOUNT.jointClearance,seamGap:number=MOUNT.seamGap){
  if(!Number.isFinite(jointClearance)||jointClearance<0||jointClearance>.2)throw new Error('Invalid plate joint clearance.');

@@ -1,3 +1,4 @@
+import {svgSurface,SVG_ISLAND_ERROR} from './svgSurface.js';
 import {PANEL_SEATED_GAP,panelSides,panelIssue,panelMountsAvailable} from './panelSettings.js';
 import Module,{type Manifold,type ManifoldToplevel,type CrossSection} from 'manifold-3d';
 import {resolveWalls,type Project,type Side} from './model.js';
@@ -111,6 +112,10 @@ export async function buildDecorativePanels(p:Project){
    for(const hole of holes)for(const point of hole){point[0]+=dx;point[1]+=dy;}
   }
   let perforated=shape;
+  if(s.svg){
+   perforated=section(shape.subtract(svgSurface(wasm,s.svg,mask,section)));
+   const islands=perforated.decompose();islands.forEach(section);if(islands.length!==1)throw new Error(SVG_ISLAND_ERROR);
+  }
   if(holes.length){const all=section(new wasm.CrossSection(holes.map(h=>h.slice().reverse()),'NonZero'));perforated=section(shape.subtract(section(all.intersect(mask))));}
   let local=keep(perforated.extrude(s.thickness).translate([0,0,shellGap(p)]));
   if(anchors.length)local=keep(local.add(panelFastener(wasm,p,side,false,keep)));

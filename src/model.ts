@@ -11,7 +11,7 @@ export interface WallCutout {shape:'smooth'|'round'|'square';width:number;depth:
 export interface Relief {svg?:SvgPattern;pattern:ReliefPattern;spacing:number;depth:number}
 export interface WallProfile {start:number;end:number;style:TransitionStyle;wavelength?:number}
 export type Side = 'front' | 'back' | 'left' | 'right';
-export interface ShellSettings { pattern: 'honeycomb' | 'diamonds' | 'waves' | 'petals' | 'cubes' | 'triangles' | 'slots' | 'cellular'; gap: number; thickness: number; size: number; border?:number; snap?:boolean; mode?:'wrap'|'panels'; sides?:Side[]; margin?:number; mounts?:boolean }
+export interface ShellSettings { svg?:SvgPattern; pattern: 'honeycomb' | 'diamonds' | 'waves' | 'petals' | 'cubes' | 'triangles' | 'slots' | 'cellular'; gap: number; thickness: number; size: number; border?:number; snap?:boolean; mode?:'wrap'|'panels'; sides?:Side[]; margin?:number; mounts?:boolean }
 export type Cell = { id: string; split?: {
   axis: 'x' | 'y'; ratio: number; height?: number; profile?:WallProfile; first: Cell; second: Cell;
 } };
@@ -28,7 +28,7 @@ export interface Project {
   label?:{text:string;icon:''|'★'|'♥';mode:'raised'|'engraved';side?:Side;font?:'pixel'|'sans'|'bold'|'serif';size?:number;depth?:number;position?:number};
   stack?:StackSettings;
   lid?:boolean;
-  lidDesign?:{motif?:import("./lidMotifs.js").LidMotif;olive?:boolean;raised?:boolean;cutwork?:boolean;baseColor?:string;patternColor?:string;fit?:'outer'|'inset';pattern:'smooth'|'lines'|ReliefPattern;rimHeight:number;rimPattern?:'smooth'|'rings';handle:'none'|'round'|'bar';patternSpacing?:number;patternDepth?:number;handleWidth?:number;handleHeight?:number;handleEdge?:'none'|'chamfer'|'round';edgeSize?:number};
+  lidDesign?:{svg?:SvgPattern;svgMode?:'raised'|'cutout';motif?:import("./lidMotifs.js").LidMotif;olive?:boolean;raised?:boolean;cutwork?:boolean;baseColor?:string;patternColor?:string;fit?:'outer'|'inset';pattern:'smooth'|'lines'|ReliefPattern;rimHeight:number;rimPattern?:'smooth'|'rings';handle:'none'|'round'|'bar';patternSpacing?:number;patternDepth?:number;handleWidth?:number;handleHeight?:number;handleEdge?:'none'|'chamfer'|'round';edgeSize?:number};
   cups?:CupSettings[];
   colors?:{organizer?:string;shell?:string};
   cutouts?:Record<string,WallCutout>;
@@ -122,6 +122,7 @@ export function resolveWalls(p: Project): Wall[] {
     if(p.baseBand.height>=lowest)throw new Error('Высота нижнего канта должна быть меньше высоты стенок.');
   }
   if(p.shell){
+    if(p.shell.svg)validateSvgPattern(p.shell.svg);
     if(!['honeycomb','diamonds','waves','petals','cubes','triangles','slots','cellular'].includes(p.shell.pattern))throw new Error('Unknown shell pattern');
     range(p.shell.gap,.2,2,'shell gap');range(p.shell.thickness,1,4,'shell thickness');range(p.shell.size,2,24,'shell size');
     if(p.shell.pattern==='cubes'&&p.shell.size<5)throw new Error('Для узора «Кубы» выберите размер не меньше 5 мм.');

@@ -1,3 +1,4 @@
+import {validateSvgPattern} from './svgPattern.js';
 import {stackFit,SOCKET_BASE} from './stackFit.js';
 import {resolveWalls,type Project,type Cell,type Wall} from './model.js';
 import {regions} from './editor.js';
@@ -84,15 +85,16 @@ export function stackRimProblem(p:Project):string {
 export function stackProblem(p:Project):string {
  return stackRimProblem(p)||(p.shell?.snap?'Защёлки пока доступны для прямоугольной формы без наклона, рельефа, крышки, ярусов и разрезания.':p.stack&&p.shell?.mode==='panels'&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':p.relief?'Для посадки ярусов выберите гладкую поверхность.':'');
 }
-export const lidPlateThickness=(p:Project)=>p.lidDesign?.olive?3.2:2;
+export const lidPlateThickness=(p:Project)=>(p.lidDesign?.svg?p.lidDesign.svgMode!=='cutout':p.lidDesign?.olive)?3.2:2;
 export function validateAccessories(p:Project,walls:Wall[]) {
  if(p.lid!==undefined&&typeof p.lid!=='boolean')throw new Error('Некорректная крышка.');
- if(p.lidDesign){const d=p.lidDesign;if((d.motif!==undefined&&!Object.prototype.hasOwnProperty.call(lidMotifs,d.motif))||(d.cutwork!==undefined&&typeof d.cutwork!=='boolean')||(d.raised!==undefined&&typeof d.raised!=='boolean')||(d.olive!==undefined&&typeof d.olive!=='boolean')||[d.baseColor,d.patternColor].some(c=>c!==undefined&&(typeof c!=='string'||!/^#[0-9a-f]{6}$/i.test(c)))||(d.fit!==undefined&&!['outer','inset'].includes(d.fit))||!['smooth','lines',...reliefPatterns].includes(d.pattern)||!['none','round','bar'].includes(d.handle)||(d.rimPattern!==undefined&&!['smooth','rings'].includes(d.rimPattern))||!Number.isFinite(d.rimHeight)||d.rimHeight<2||d.rimHeight>8||(d.handleEdge!==undefined&&!['none','chamfer','round'].includes(d.handleEdge))||[[d.patternSpacing,4,16],[d.patternDepth,.2,1],[d.handleWidth,6,40],[d.handleHeight,3,20],[d.edgeSize,0,4]].some(([v,lo,hi])=>v!==undefined&&(!Number.isFinite(v)||v<lo!||v>hi!)))throw new Error('Некорректные настройки крышки.');}
+ if(p.lidDesign){const d=p.lidDesign;if(d.svg)validateSvgPattern(d.svg);if(d.svgMode!==undefined&&!['raised','cutout'].includes(d.svgMode))throw new Error('Некорректный режим SVG крышки.');if((d.motif!==undefined&&!Object.prototype.hasOwnProperty.call(lidMotifs,d.motif))||(d.cutwork!==undefined&&typeof d.cutwork!=='boolean')||(d.raised!==undefined&&typeof d.raised!=='boolean')||(d.olive!==undefined&&typeof d.olive!=='boolean')||[d.baseColor,d.patternColor].some(c=>c!==undefined&&(typeof c!=='string'||!/^#[0-9a-f]{6}$/i.test(c)))||(d.fit!==undefined&&!['outer','inset'].includes(d.fit))||!['smooth','lines',...reliefPatterns].includes(d.pattern)||!['none','round','bar'].includes(d.handle)||(d.rimPattern!==undefined&&!['smooth','rings'].includes(d.rimPattern))||!Number.isFinite(d.rimHeight)||d.rimHeight<2||d.rimHeight>8||(d.handleEdge!==undefined&&!['none','chamfer','round'].includes(d.handleEdge))||[[d.patternSpacing,4,16],[d.patternDepth,.2,1],[d.handleWidth,6,40],[d.handleHeight,3,20],[d.edgeSize,0,4]].some(([v,lo,hi])=>v!==undefined&&(!Number.isFinite(v)||v<lo!||v>hi!)))throw new Error('Некорректные настройки крышки.');}
  if(p.lid){const problem=rimProblem(p,walls);if(problem)throw new Error(problem);}
  if(p.lid&&p.lidDesign?.fit==='inset'){
   const top=p.stack?levelProject(p,p.stack.levels.length-1):p;
   const rim=p.stack?resolveWalls(top)[0].startHeight:walls[0].startHeight;
-  if(p.lidDesign.olive&&rim-top.floorThickness<5.2)throw new Error('Для двухцветной внутренней крышки нужна глубина от 5,2 мм.');
+  if(!p.lidDesign.svg&&p.lidDesign.olive&&rim-top.floorThickness<5.2)throw new Error('Для двухцветной внутренней крышки нужна глубина от 5,2 мм.');
+  if(p.lidDesign.svg&&p.lidDesign.svgMode!=='cutout'&&rim-top.floorThickness<5.2)throw new Error('Для внутренней крышки с рельефом нужна глубина от 5,2 мм.');
   if(top.wallThickness<2||rim-top.floorThickness<4)throw new Error('Для внутренней крышки нужна стенка от 2 мм и глубина от 4 мм.');
  }
  if(p.stack){

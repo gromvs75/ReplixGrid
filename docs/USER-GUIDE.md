@@ -6,6 +6,17 @@ Start with a three-compartment organizer for your desk. The example below is 180
 
 [Watch the Quick Start video in English (1:03)](https://grid.replixcast.com/guides/quick-start-en.mp4) to see how to split a compartment, bevel the top edges, add a two-tone lid and export a 3MF.
 
+## Find your controls
+
+- **Upper left:** choose **Shape**, **Compartments**, **Shell** or **Print**. The left menu lists the sections of that tool.
+- **Below the model:** selecting a section opens its compact settings editor. Only the selected section appears here. Use the chevron to collapse it or **×** to close it; choose another section on the left to continue.
+- **Above the model, in the center:** **Together**, **Organizer**, **Inserts**, **Shell** and **Lid** control which parts you see. Available buttons depend on your design. On narrower windows, they move onto a separate row below the toolbars.
+- **On the right:** click a compartment number, wall or divider to edit that element.
+
+In **Shape**, start with **Base**, then use **Dimensions**. In **Shell**, choose the pattern, shell type, color, thickness/rim and fit in their separate sections. In **Print**, choose a printer, configure filament slots, or open the section-printing controls.
+
+The Quick Start video was recorded with the earlier panel layout. The modeling steps still apply; use the locations above to find the current controls.
+
 ## Build the example
 
 1. **Open** [grid.replixcast.com](https://grid.replixcast.com/?lang=en). Use the language menu in the top bar to change languages. If you already have a design you want to keep, click **Save project** to download an editable copy before starting.
@@ -72,4 +83,10 @@ Use **Shape → Shared style** to save the current colors and patterns with a na
 
 ## Use your own SVG pattern
 
-Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. In repeat mode, only complete motifs are placed: reducing the width does not leave clipped fragments at edges or cutouts. Internal compartments stay unchanged. The pattern is embedded in the saved project. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.
+Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. In repeat mode, only complete motifs are placed: reducing the width does not leave clipped fragments at edges or cutouts. Internal compartments stay unchanged. The pattern is embedded in the saved project. The same library works in **Shape → Lid → My SVGs** (raised pattern or through openings) and **Shell → Pattern → My SVGs** (perforations). For lids and shells, **My SVGs** opens the bottom **Pattern Studio**. Use its **Lid / Shell** tabs to switch surfaces. The library is on the left; size, rotation, spacing and X/Y offsets are alongside it. Choose relief or through openings for a lid; shell patterns cut through the shell. Closing the studio keeps your changes. Frames and fitting surfaces are retained. For cutouts, add bridges to any enclosed inner details so they remain attached. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.
+
+## Print an entire drawer
+
+In **Drawer**, choose **Print entire drawer**. Set the printer bed length (horizontal), width (vertical), print height and spacing between parts. Review the part count, calculated bed count and numbered layouts, then choose **Download all beds (ZIP)**.
+
+The archive contains one 3MF per bed, bed diagrams, an assembly diagram and a copy of the drawer project. Open each 3MF as a separate job in your slicer. See [Whole-drawer export](REFERENCE.md#whole-drawer-export) for details.
