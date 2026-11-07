@@ -6,11 +6,14 @@ export function importSvg(text:string,name:string):SvgAsset {
  if(/<!DOCTYPE|<!ENTITY/i.test(text))throw new Error('Этот SVG содержит неподдерживаемые элементы.');
  const doc=new DOMParser().parseFromString(text,'image/svg+xml');
  if(doc.querySelector('parsererror')||doc.documentElement.localName!=='svg')throw new Error('Не удалось прочитать SVG.');
- const allowed=new Set(['svg','g','path','rect','circle','ellipse','polygon','polyline','title','desc','metadata']);
+ const allowed=new Set(['svg','g','path','rect','circle','ellipse','polygon','polyline','defs','title','desc','metadata']);
  const elements=Array.from(doc.querySelectorAll('*'));
  if(elements.length>512)throw new Error('SVG слишком сложный. Упростите контуры.');
  for(const el of elements){
   if(el.closest('metadata'))continue;
+  if(el.localName==='image')throw new Error('SVG содержит изображение. Нужны векторные контуры, а не встроенное фото.');
+  if(el.localName==='use')throw new Error('Разверните клоны и символы в обычные контуры перед загрузкой SVG.');
+  if(['mask','clipPath','filter','linearGradient','radialGradient','style'].includes(el.localName))throw new Error('Уберите маски, обрезку, фильтры, градиенты и стили CSS. Сохраните видимый рисунок заполненными контурами.');
   if(el.localName==='text')throw new Error('Преобразуйте текст в контуры перед загрузкой SVG.');
   if((el.localName==='svg'&&el!==doc.documentElement)||!allowed.has(el.localName))throw new Error('Этот SVG содержит неподдерживаемые элементы.');
   for(const attr of Array.from(el.attributes))if(/^on/i.test(attr.name)||/href$/i.test(attr.name)||/url\s*\(/i.test(attr.value))throw new Error('Этот SVG содержит неподдерживаемые элементы.');
@@ -18,14 +21,16 @@ export function importSvg(text:string,name:string):SvgAsset {
   if(style.split(';').some(s=>s.trim()&&!/^(fill|fill-rule|fill-opacity|opacity|stroke|stroke-width|stroke-opacity|display|visibility)\s*:/i.test(s.trim())))throw new Error('Этот SVG содержит неподдерживаемые элементы.');
   if(['clip-path','mask','filter'].some(k=>el.hasAttribute(k)))throw new Error('Этот SVG содержит неподдерживаемые элементы.');
  }
- doc.querySelectorAll('metadata').forEach(el=>el.remove());
+ // Unreferenced definitions do not paint anything. References remain rejected above.
+ doc.querySelectorAll('metadata, defs').forEach(el=>el.remove());
  for(const el of Array.from(doc.querySelectorAll('*')))if(el.getAttribute('display')==='none'||/(?:^|;)\s*display\s*:\s*none\s*(?:;|$)/i.test(el.getAttribute('style')??''))el.remove();
  const parsed=new SVGLoader().parse(new XMLSerializer().serializeToString(doc)),shapes:SvgPoint[][][]=[];
  for(const path of parsed.paths){
   const style=path.userData?.style as Record<string,string|number>|undefined;
+  if(Number(style?.opacity??1)===0||style?.display==='none'||style?.visibility==='hidden')continue;
   if(style?.stroke&&style.stroke!=='none'&&Number(style.strokeOpacity??1)>0)throw new Error('Преобразуйте обводки в контуры перед загрузкой SVG.');
-  if(style?.fill==='none'||Number(style?.fillOpacity??1)===0||Number(style?.opacity??1)===0||style?.display==='none'||style?.visibility==='hidden')continue;
-  for(const shape of SVGLoader.createShapes(path)){
+  if(style?.fill==='none'||Number(style?.fillOpacity??1)===0)continue;
+  for(const shape of path.toShapes()){
    const points=shape.extractPoints(64);
    const loops=[points.shape,...points.holes].map(loop=>{
     const clean=loop.map(v=>[v.x,v.y] as SvgPoint).filter((v,i,a)=>i===0||Math.hypot(v[0]-a[i-1][0],v[1]-a[i-1][1])>1e-8);

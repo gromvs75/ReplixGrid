@@ -6,7 +6,7 @@ async(page)=>{
   const parsing=await p.evaluate(async()=>{const {importSvg}=await import('/src/svgImport.ts');const wrap=s=>'<svg xmlns="http://www.w3.org/2000/svg">'+s+'</svg>';const a=importSvg(wrap('<g transform="translate(5 10) scale(2)"><rect width="30" height="20"/></g>'),'rectangle');
    const hole=importSvg(wrap('<path fill-rule="evenodd" d="M0 0h30v30H0z M10 10v10h10V10z"/>'),'hole');
    const hidden=importSvg(wrap('<g style="display:none"><rect width="100" height="100"/></g><rect width="30" height="20"/>'),'hidden');
-   const invalid=['<script>alert(1)</script>','<text>hello</text>','<path fill="none" stroke="black" d="M0 0L10 10"/>','<image href="https://example.org/a.png"/>','<rect width="30" height="20" onclick="alert(1)"/>','<defs><path id="a"/></defs>'];let rejected=0;for(const value of invalid)try{importSvg(wrap(value),'bad');}catch{rejected++;}
+   const invalid=['<script>alert(1)</script>','<text>hello</text>','<path fill="none" stroke="black" d="M0 0L10 10"/>','<image href="https://example.org/a.png"/>','<rect width="30" height="20" onclick="alert(1)"/>','<use href="#a"/>'];let rejected=0;for(const value of invalid)try{importSvg(wrap(value),'bad');}catch{rejected++;}
    return {aspect:a.aspect,hole:hole.shapes[0].length,hidden:hidden.aspect,rejected};
   });check(parsing.aspect===2/3&&parsing.hole===2&&parsing.hidden===2/3&&parsing.rejected===6,'SVG transforms, holes, hidden shapes and unsupported elements');
   await p.getByText('Рельеф органайзера',{exact:true}).click();await p.getByRole('button',{name:'Мои SVG',exact:true}).click();

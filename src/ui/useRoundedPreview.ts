@@ -15,11 +15,11 @@ export function useRoundedPreview(project:Project){
   const [result,setResult]=useState<{extras:(Omit<KitPart,'stl'>&{geometry:BufferGeometry})[];activeZ:number;organizer:BufferGeometry|null;shell:BufferGeometry|null;pieces:PreviewPiece[];pending:boolean;error:string;sourceProject:Project|null}>({extras:[],activeZ:0,organizer:null,shell:null,pieces:[],pending:false,error:'',sourceProject:null});
   const runtime=useRef<{submit:(p:Project)=>void}|null>(null);
   useEffect(()=>{
-    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-tier-panels-v1.js`,window.location.origin),{type:'module'});
+    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-svg-guidance-v1.js`,window.location.origin),{type:'module'});
     const queue=new PreviewQueue<Project>(enabled);
     let watchdog:ReturnType<typeof setTimeout>|undefined;
     let active=true,needsRestart=false;
-    const send=()=>{const job=queue.take();if(job){if(needsRestart){worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-tier-panels-v1.js`,window.location.origin),{type:'module'});worker.onmessage=receive;worker.onerror=failed;needsRestart=false;}setResult(old=>({...old,pending:true,error:''}));watchdog=setTimeout(failed,120000);worker.postMessage({...job,purpose:'preview'});}};
+    const send=()=>{const job=queue.take();if(job){if(needsRestart){worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-svg-guidance-v1.js`,window.location.origin),{type:'module'});worker.onmessage=receive;worker.onerror=failed;needsRestart=false;}setResult(old=>({...old,pending:true,error:''}));watchdog=setTimeout(failed,120000);worker.postMessage({...job,purpose:'preview'});}};
     const receive=(event:MessageEvent)=>{
       const {data}=event;
       if(!active)return;
@@ -45,5 +45,5 @@ export function useRoundedPreview(project:Project){
   },[]);
   useEffect(()=>{runtime.current?.submit(geometryProject);},[geometryProject]);
   useEffect(()=>()=>{result.extras.forEach(p=>p.geometry.dispose());result.organizer?.dispose();result.shell?.dispose();result.pieces.forEach(p=>p.geometry.dispose());},[result.organizer,result.shell,result.pieces,result.extras]);
-  return result;
+  return {...result,stale:!!result.sourceProject&&result.sourceProject!==geometryProject};
 }

@@ -4,11 +4,26 @@ import {useEditor} from '../store.js';
 import {editProject} from '../editor.js';
 import {defaultSvgPattern,SVG_MAX_BYTES,type SvgAsset,type SvgPattern} from '../svgPattern.js';
 import {deleteSvgAsset,listSvgAssets,saveSvgAsset,type SavedSvg} from '../storage.js';
+import {lidPlateThickness} from '../accessories.js';
 import {resolveWalls} from '../model.js';
 import {shellForPattern} from '../shellSelection.js';
 import {Field} from './Field.js';
 export function SvgSwatch({asset}:{asset:SvgAsset}){
  return <svg viewBox={`0 0 1 ${asset.aspect}`} aria-hidden="true"><g transform={`translate(0 ${asset.aspect}) scale(1 -1)`}>{asset.shapes.map((shape,i)=><path key={i} fill="currentColor" fillRule="evenodd" stroke="none" d={shape.map(loop=>'M'+loop.map(v=>v.join(' ')).join('L')+'Z').join('')}/>)}</g></svg>;
+}
+function SvgHelp({asset,target}:{asset?:SvgAsset;target:'relief'|'lid'|'shell'}){
+ return <div className="svg-help">
+
+  <details><summary>{t('Какие SVG подходят?')}</summary>
+  <p>{t('SVG: заполненные контуры до 200 КБ. Загрузка не гарантирует пригодность для прорезей.')}</p>
+  {asset?.shapes.some(shape=>shape.length>1)&&<p className="hint">{t('В рисунке есть замкнутые внутренние области. Для рельефа это допустимо; в прорезях они могут стать отдельными кусочками. Увеличение интервала не соединит их с основой.')}</p>}
+   <p>{t('Подходят заполненные пути, многоугольники, прямоугольники, круги и эллипсы. Текст и обводки сначала преобразуйте в контуры. Удалите фон: любой заполненный фон тоже станет частью узора. Цвета SVG не переносятся.')}</p>
+   <p>{t('Фото, маски, обрезка, фильтры, градиенты и ссылки на другие элементы не поддерживаются. Лимиты: 512 элементов, 128 фигур и 6000 точек после преобразования кривых.')}</p>
+   <p>{t(target==='relief'?'На корпусе SVG создаёт рельеф на сплошной стенке.':'На крышке рельеф держится на сплошной основе. В сквозных прорезях крышки и оболочки оставшийся материал должен быть соединён: добавьте перемычки к внутренним деталям рисунка.')}</p>
+   <p>{t('На крышке и оболочке рисунок размещается целиком внутри рамки. Ширина задаётся для всего SVG, даже если в нём уже много повторов. Если рисунок не помещается, уменьшите ширину или смещение. Проверяйте итоговую геометрию перед экспортом.')}</p>
+   <a href="https://github.com/gromvs75/ReplixGrid/blob/main/docs/REFERENCE.md#custom-svg-relief" target="_blank" rel="noreferrer">{t('Инструкция по SVG')}</a>
+  </details>
+ </div>;
 }
 export function SvgControls({target='relief',studio=false}:{target?:'relief'|'lid'|'shell';studio?:boolean}){
  const project=useEditor(s=>s.project),change=useEditor(s=>s.change),svg=target==='lid'?project.lidDesign?.svg:target==='shell'?project.shell?.svg:project.relief?.svg;
@@ -45,6 +60,7 @@ export function SvgControls({target='relief',studio=false}:{target?:'relief'|'li
     <button className="studio-upload" disabled={busy} aria-label={t('Загрузить SVG')} onClick={()=>file.current?.click()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 16V3m-4 4 4-4 4 4M4 14v6h16v-6"/></svg><span>{t(busy?'Загрузка…':'Загрузить')}</span></button>
    </div>
    {error&&<p className="validation-error" role="alert">{t(error)}</p>}
+   <SvgHelp asset={svg?.asset} target={target}/>
   </div>
   {svg?<>
    <div className="studio-transforms">
@@ -52,20 +68,30 @@ export function SvgControls({target='relief',studio=false}:{target?:'relief'|'li
     <div className="studio-transform-grid">
      <Field label={t('Ширина рисунка')} value={svg.width} min={4} max={200} step={.5} onChange={width=>set({width})}/>
      <Field label={t('Поворот рисунка')} value={svg.rotation} min={-180} max={180} step={5} unit="°" onChange={rotation=>set({rotation})}/>
-     <Field label={t('Интервал рисунков')} value={svg.gap} min={0} max={50} step={.5} onChange={gap=>set({gap})}/>
      <Field label="X" value={svg.offsetX} min={-200} max={200} onChange={offsetX=>set({offsetX})}/>
      <Field label="Y" value={svg.offsetY} min={-100} max={100} onChange={offsetY=>set({offsetY})}/>
      <button className="studio-center" onClick={()=>set({offsetX:0,offsetY:0,rotation:0})} aria-label={t('По центру')} title={t('По центру')}>⌖</button>
     </div>
    </div>
    <div className="studio-surface">
-    <label className="studio-cutout"><input type="checkbox" role="switch" checked={target==='shell'||project.lidDesign?.svgMode==='cutout'} disabled={target==='shell'} onChange={e=>setLid({svgMode:e.target.checked?'cutout':'raised'})}/><span>{t('Сквозные прорези')}</span></label>
-    {target==='lid'?(project.lidDesign?.svgMode!=='cutout'?<Field label={t('Высота рельефа')} value={project.lidDesign?.patternDepth??.5} min={.2} max={1} step={.1} onChange={patternDepth=>setLid({patternDepth})}/>:<div className="studio-frame">{t('Рамка')}: 2 {t('мм')}</div>):project.shell?.mode==='panels'?<div className="studio-frame">{t('Рамка')}: {Math.max(4,project.shell.thickness*2)} {t('мм')}</div>:<Field label={t('Ширина канта')} value={project.shell?.border??Math.max(3,(project.shell?.thickness??1.6)*2)} min={2} max={12} step={.5} onChange={border=>change(p=>editProject(p,d=>{if(d.shell?.mode!=='panels'&&d.shell)d.shell.border=border;}))}/>}
+    <div className="studio-modes" role="group" aria-label={t('Способ нанесения SVG')}>
+     <button aria-pressed={target==='lid'&&project.lidDesign?.svgMode!=='cutout'} disabled={target==='shell'} onClick={()=>setLid({svgMode:'raised'})}><svg viewBox="0 0 28 24" aria-hidden="true"><path d="m3 17 5-3 5 3 6-3 6 3M3 21h22M6 10l2-4 3 4m7 0 2-4 3 4"/></svg>{t('Рельеф (декор)')}</button>
+     <button aria-pressed={target==='shell'||project.lidDesign?.svgMode==='cutout'} onClick={()=>{if(target==='lid')setLid({svgMode:'cutout'});}}><svg viewBox="0 0 28 24" aria-hidden="true"><path d="M3 3h22v18H3zM10 3v18M18 3v18M3 9h22M3 15h22"/></svg>{t('Сквозной трафарет (рез)')}</button>
+    </div>
+    <div className="studio-material-grid">
+     {target==='lid'&&project.lidDesign?.svgMode!=='cutout'?<Field label={t('Высота рельефа')} value={project.lidDesign?.patternDepth??.5} min={.2} max={1} step={.1} onChange={patternDepth=>setLid({patternDepth})}/>:target==='shell'&&project.shell?.mode!=='panels'?<Field label={t('Ширина канта')} value={project.shell?.border??Math.max(3,(project.shell?.thickness??1.6)*2)} min={2} max={12} step={.5} onChange={border=>change(p=>editProject(p,d=>{if(d.shell?.mode!=='panels'&&d.shell)d.shell.border=border;}))}/>:<div className="studio-frame">{t('Рамка')}: {target==='lid'?2:Math.max(4,(project.shell?.thickness??1.6)*2)} {t('мм')}</div>}
+     <label className="field studio-material"><span className="field-top"><span>{t('Толщина материала')}</span></span><span className="number-wrap"><input aria-label={t('Толщина материала')} readOnly value={target==='lid'?lidPlateThickness(project):project.shell?.thickness??1.6}/><small>{t('мм')}</small></span></label>
+     {svg.mode==='repeat'&&<Field label={t('Интервал рисунков')} value={svg.gap} min={0} max={50} step={.5} onChange={gap=>set({gap})}/>}
+    </div>
+    <p className="studio-mode-note"><span aria-hidden="true">ⓘ</span>{t('Сквозной трафарет удаляет материал насквозь и требует перемычки.')}</p>
+    <details className="studio-extra"><summary>{t('Дополнительно')}</summary>
     {target==='shell'&&project.shell?.mode!=='panels'?<details className="studio-side-picker"><summary>{t('Стенки для SVG')} · {svg.sides.length}</summary><div>{([['front','Передняя'],['back','Задняя'],['left','Левая'],['right','Правая']] as const).map(([side,label])=><label key={side}><input type="checkbox" checked={svg.sides.includes(side)} disabled={svg.sides.length===1&&svg.sides[0]===side} onChange={()=>set({sides:svg.sides.includes(side)?svg.sides.filter(v=>v!==side):[...svg.sides,side]})}/>{t(label)}</label>)}</div></details>:target==='lid'?<label className="studio-color"><input type="color" aria-label={t('Цвет основы крышки')} value={project.lidDesign?.baseColor??project.colors?.organizer??'#90b9aa'} onChange={e=>setLid({baseColor:e.target.value})}/>{t('Цвет основы крышки')}</label>:<span className="studio-frame">{t('На выбранных панелях')}</span>}
+    </details>
    </div>
   </>:<div className="studio-empty">{t('Выберите рисунок или загрузите SVG')}</div>}
  </div>;
  return <div className="svg-controls">
+  <SvgHelp asset={svg?.asset} target={target}/>
   <div className="svg-upload" onDragOver={e=>e.preventDefault()} onDrop={e=>{e.preventDefault();void upload(e.dataTransfer.files[0]);}}>
    <input ref={file} type="file" accept=".svg,image/svg+xml" aria-label={t('Загрузить SVG')} hidden onChange={e=>{void upload(e.target.files?.[0]);e.target.value='';}}/>
    <button disabled={busy} onClick={()=>file.current?.click()}>{t(busy?'Загрузка…':'＋ Загрузить SVG')}</button><span className="hint">{t('Или перетащите SVG сюда')}</span>
@@ -84,7 +110,7 @@ export function SvgControls({target='relief',studio=false}:{target?:'relief'|'li
    <Field commitOnRelease label={t('Сдвиг по вертикали')} value={svg.offsetY} min={-100} max={100} onChange={offsetY=>set({offsetY})}/>
    {svg.mode==='repeat'&&<Field commitOnRelease label={t('Интервал рисунков')} value={svg.gap} min={0} max={50} step={.5} onChange={gap=>set({gap})}/>}
    <button onClick={()=>set({offsetX:0,offsetY:0,rotation:0})}>{t('По центру')}</button></div>
-   <p className="hint">{t(target==='relief'?'Рисунок повторяется на выбранных стенках. У краёв и вырезов он обрезается. Пропорции сохраняются.':'Рисунки размещаются целиком внутри рамки. Пропорции сохраняются. Для прорезей добавьте перемычки к замкнутым внутренним деталям SVG.')}</p>
+   <p className="hint">{t(target==='relief'?'Один рисунок может обрезаться у краёв стенки. В режиме повтора размещаются только целые рисунки. Пропорции сохраняются.':'Рисунки размещаются целиком внутри рамки. Пропорции сохраняются. Для прорезей добавьте перемычки к замкнутым внутренним деталям SVG.')}</p>
   </>}
   <p className="hint">{t('SVG обрабатывается в браузере и сохраняется внутри проекта. Библиотека доступна на этом устройстве.')}</p>
  </div>;

@@ -23,7 +23,7 @@ export function ExportDialog({initial,project,onClose,onDone,fileName,mounting}:
  useEffect(()=>{dialog.current?.showModal();return()=>dialog.current?.close();},[]);
  useEffect(()=>{
   setBusy(true);setReport(null);setError('');setChosenSlots({});checkedKey.current='';const requestRevision=++serial.current;let alive=true;
-  const w=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-tier-panels-v1.js`,window.location.origin),{type:'module'});worker.current=w;
+  const w=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-svg-guidance-v1.js`,window.location.origin),{type:'module'});worker.current=w;
   const timer=setTimeout(()=>{if(alive){w.terminate();setBusy(false);setError("Проверка заняла слишком много времени. Упростите узор или уменьшите число деталей.");}},120000);
   w.onerror=()=>{if(!alive||currentKey.current!==requestKey)return;clearTimeout(timer);clearTimeout(downloadTimer.current);setBusy(false);setError("Не удалось запустить проверку геометрии.");};
   w.onmessage=({data})=>{if(!alive||currentKey.current!==requestKey||data.revision!==requestRevision)return;clearTimeout(timer);clearTimeout(downloadTimer.current);setBusy(false);if(!data.ok){setError(data.error);return;}if(data.report){checkedKey.current=requestKey;setReport(data.report);setPartColors(data.partColors??[]);return;}if(data.formatted){download(data.formatted,`${fileName?.replace(/[\\/:*?"<>|]/g,'-')||'ReplixGrid-'+target}.${data.extension}`,data.mime);done.current(`Скачано деталей: ${data.count}. Назначьте пластик и разложите детали в слайсере.`);}};

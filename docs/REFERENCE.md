@@ -243,13 +243,35 @@ Under **Shape → Organizer relief → My SVGs**, choose **Upload SVG** or drop 
 
 Choose **Single motif** or **Repeat**, select the exterior walls, and adjust motif width in millimeters, rotation, horizontal/vertical offset, and repeat gap. Width and height keep the original proportions. Placement is centered on each selected side; on curved bodies the sides correspond to four exterior sectors. Positive vertical offset moves the motif upward. The pattern follows the exterior contour. Repeats are placed only where a complete motif fits below the top rim, around cutouts and within each side. Single motifs are clipped at these boundaries. Relief depth uses the existing **Relief depth / Intensity** control. The original wall and internal compartments are preserved; the external dimensions increase. Wait until the updated preview finishes, then check and download the part.
 
-Supported SVGs contain filled paths, polygons, rectangles, circles or ellipses, including holes and group transforms. Convert text and strokes to filled paths before exporting from your vector editor. Photos, external references, filters, masks, clipping paths and reusable definitions are not supported in this version. Colors become a single raised shape using the organizer color. The limit is 200 KB and 6,000 sampled contour points; overly complex patterns or excessive repetitions are rejected with a message. Curves are approximated by polygonal contours for printing.
+Supported SVGs contain filled paths, polygons, rectangles, circles or ellipses, including holes and group transforms. Convert text and strokes to filled paths before exporting from your vector editor. Photos, external references, filters, masks, clipping paths, gradients, CSS style blocks and references to reusable elements (`use`) are not supported. Empty or unused definitions containing supported shapes are ignored. Colors become a single raised shape using the organizer color. The limits are 200 KB, 512 XML elements, 128 filled shapes and 6,000 sampled contour points; overly complex patterns or excessive repetitions are rejected with a message. Curves are approximated by polygonal contours for printing.
 
 SVGs are processed locally in the browser. The library stays on this device. Each project embeds an independent copy of its used contours, so downloaded projects can be reopened on another device without the source SVG or library. Deleting a library entry leaves existing projects unchanged. **Shared style** also carries custom body, lid and shell patterns to another organizer. Missing lids or shells are skipped, as with built-in styles. Keep a downloaded project as a backup.
 
+### Choose an SVG for its intended use
+
+An SVG is a drawing format, not a guarantee of printable geometry. **Import success only means the supported filled outlines were read.** The chosen surface, size and application mode still need to pass the geometry check.
+
+| Intended use | What the filled areas become | What to prepare |
+| --- | --- | --- |
+| Organizer relief | Raised material attached to a solid wall | Separate motifs and inner holes can work because the wall supports them. |
+| Raised lid pattern | Raised material on a solid backing | Inner holes are allowed; keep the entire drawing inside the available frame and clear of the handle landing. |
+| Lid through openings | Material removed from the lid | Every remaining piece must connect to the surrounding lid. Enclosed inner details need stencil bridges. |
+| Wrapped shell or decorative panels | Openings cut through the cover | Use a stencil-compatible drawing. The remaining frame and pattern must form connected material. |
+
+To prepare a file:
+
+1. Keep the intended filled paths or basic shapes. Convert text and **strokes to outlines** in your vector editor. A visible line with `fill="none"` is a stroke, not a filled area.
+2. Remove background rectangles unless you want that whole area to become relief or an opening. SVG colors do not separate materials and white shapes do not automatically erase darker shapes underneath.
+3. Check compound paths in the vector editor. A comment saying “hole” does not create one: the path's winding and `fill-rule` determine whether an inner area is filled.
+4. For through openings, connect enclosed inner details to the surrounding material with bridges. Increasing the gap between repeated motifs does **not** attach a loose detail inside a motif. Alternatively, use raised relief on the lid.
+5. Prefer a single motif for repeat mode. If the SVG already contains a grid of motifs, its width setting scales the **entire grid**, not each motif. Small features may become too thin to print.
+6. Wait for a successful build and export check, then inspect the slicer preview. If building fails, the scene may retain the last successful model; that model does not represent the current failed settings.
+
+For example, a solid leaf silhouette can work both as relief and as a leaf-shaped opening. A leaf with a fully enclosed vein can work as relief, but cutting out the surrounding leaf can leave the vein loose. A filled hexagon grid can work as perforations if the remaining webs stay connected and thick enough; a multicolor illustration drawn with strokes must be prepared first.
+
 ### SVG lids and perforated shells
 
-Add a lid, then choose **My SVGs**. **Raised pattern** makes a single connected lid with the motif on a solid backing; set its relief height (0.2–1 mm) and base color. **Through openings** removes the filled SVG areas through the lid. Both modes preserve a 2 mm edge frame and the mating lip. A separate handle keeps a solid landing; move the drawing if a single motif conflicts with it. Outer and inset fits use the same controls. SVG artwork colors are not imported as separate filaments.
+Add a lid, then choose **My SVGs**. **Raised relief (decoration)** makes a single connected lid with the motif on a solid backing; set its relief height (0.2–1 mm) and base color. **Through stencil (cut)** removes the filled SVG areas through the lid. Both modes preserve a 2 mm edge frame and the mating lip. A separate handle keeps a solid landing; move the drawing if a single motif conflicts with it. Outer and inset fits use the same controls. SVG artwork colors are not imported as separate filaments.
 
 For a shell, select **My SVGs**, then a library drawing. Filled areas become through openings. Use one motif or repeats on selected sides of a wrapped sleeve. On **Decorative panels**, the drawing is repeated independently on every selected panel; existing frames and mount locations are retained. The initial motif size takes the shell height into account. Adjust the frame width, motif size, rotation, position and spacing as needed. The organizer's internal compartments and shell clearance remain unchanged.
 
@@ -270,5 +292,7 @@ The ZIP contains **bed-NN.3mf** for each bed, matching **bed-NN.svg** diagrams, 
 Changes to the layout or export settings invalidate the previous calculation. Closing the window cancels preparation. Oversized individual parts are reported rather than silently scaled or automatically split. Very large sets may need to be exported in smaller groups.
 
 ### Pattern Studio
+
+Choose **Raised relief (decoration)** or **Through stencil (cut)** at the top of the right-hand settings. Shells support the stencil mode only. The settings show relief height only for relief, and spacing only for repeat placement. **Material thickness** is a read-only value: a relief lid is 3.2 mm, a stencil lid is 2 mm, and a shell uses its configured thickness. **Additional** contains lid color or shell wall selection. Open **Which SVG files work?** for import limits and preparation advice.
 
 Open **Shape → Lid → My SVGs** or **Shell → Pattern → My SVGs** to edit accessory patterns in the bottom drawer. **Lid** and **Shell** tabs keep independent settings while sharing the SVG library. Use the width, rotation, interval and X/Y controls to position motifs; the center button resets position and rotation. The lid supports raised relief or through openings. Shell openings keep the frame and mounting areas. Close with × or Escape while focused in the studio; edits remain saved. Arrow keys switch the focused surface tab.

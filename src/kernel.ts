@@ -1,3 +1,4 @@
+import {SVG_ISLAND_ERROR} from './svgSurface.js';
 import {finishTopEdge} from './topEdge.js';
 import {cutPanelSockets} from './decorativePanels.js';
 import {hasShellSupport,hasDecorativeShellSupport,shellSupportHeight,shellSupportWidth} from './shellSupport.js';
@@ -100,7 +101,7 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
     const body=keep(original.simplify(part==='shell'?Math.max(tolerance,.005):tolerance));
     if(body.status()!=='NoError') throw new Error(`Geometry error: ${body.status()}`);
     const components=body.decompose();components.forEach(keep);
-    if(components.length!==1) throw new Error(project.shell?.svg&&part==='shell'?'Прорези SVG оставляют отдельные кусочки. Добавьте перемычки в рисунок или увеличьте интервал.':'Disconnected solid');
+    if(components.length!==1) throw new Error(project.shell?.svg&&part==='shell'?SVG_ISLAND_ERROR:'Disconnected solid');
     const mesh=body.getMesh();
     const triangles:Triangle[]=[];
     for(let i=0;i<mesh.triVerts.length;i+=3) triangles.push([0,1,2].map(j=>{

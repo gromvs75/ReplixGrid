@@ -87,13 +87,19 @@ Use **Shape → Shared style** to save the current colors and patterns with a na
 
 ## Use your own SVG pattern
 
-Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. In repeat mode, only complete motifs are placed: reducing the width does not leave clipped fragments at edges or cutouts. Internal compartments stay unchanged. The pattern is embedded in the saved project. The same library works in **Shape → Lid → My SVGs** (raised pattern or through openings) and **Shell → Pattern → My SVGs** (perforations). For lids and shells, **My SVGs** opens the bottom **Pattern Studio**. Use its **Lid / Shell** tabs to switch surfaces. The library is on the left; size, rotation, spacing and X/Y offsets are alongside it. Choose relief or through openings for a lid; shell patterns cut through the shell. Closing the studio keeps your changes. Frames and fitting surfaces are retained. For cutouts, add bridges to any enclosed inner details so they remain attached. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.
+Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose a single motif or a repeating pattern. Select the walls, set the width, rotation and position, then adjust relief depth. In repeat mode, only complete motifs are placed: reducing the width does not leave clipped fragments at edges or cutouts. Internal compartments stay unchanged. The pattern is embedded in the saved project. The same library works in **Shape → Lid → My SVGs** (raised pattern or through openings) and **Shell → Pattern → My SVGs** (perforations). For lids and shells, **My SVGs** opens the bottom **Pattern Studio**. Use its **Lid / Shell** tabs to switch surfaces. The library is on the left; size, rotation, spacing and X/Y offsets are alongside it. Choose **Raised relief (decoration)** or **Through stencil (cut)** at the top of the right-hand settings. Relief height appears only for relief; repeat spacing appears only in repeat mode. **Material thickness** shows the actual generated thickness and is read-only (3.2 mm for a relief lid, 2 mm for a stencil lid). Shell patterns always cut through the shell, so relief is unavailable there. Base color is under **Additional**; file requirements are under **Which SVG files work?**. Closing the studio keeps your changes. Frames and fitting surfaces are retained. For cutouts, add bridges to any enclosed inner details so they remain attached. See [Custom SVG relief](REFERENCE.md#custom-svg-relief) for supported files and limits.
 
 ## Print an entire drawer
 
 In **Drawer**, choose **Print entire drawer**. Set the printer bed length (horizontal), width (vertical), print height and spacing between parts. Review the part count, calculated bed count and numbered layouts, then choose **Download all beds (ZIP)**.
 
 The archive contains one 3MF per bed, bed diagrams, an assembly diagram and a copy of the drawer project. Open each 3MF as a separate job in your slicer. See [Whole-drawer export](REFERENCE.md#whole-drawer-export) for details.
+
+### Before uploading an SVG
+
+Use filled vector outlines up to 200 KB. Convert text and strokes to outlines and remove any unwanted background. Images, masks, clipping, filters, gradients, CSS style blocks and element references are not supported. A file that imports successfully is not automatically suitable for every surface.
+
+Body and lid **relief** have solid backing. **Through openings** in lids and shells must leave connected material: enclosed details need stencil bridges. Increasing repeat spacing cannot fix an isolated detail inside the drawing. Width scales the whole SVG, including any grid already drawn in it. If a build fails, the last successful preview may remain; correct the settings before exporting. See [Choose an SVG for its intended use](REFERENCE.md#choose-an-svg-for-its-intended-use) for preparation steps and examples.
 
 ### Add text or an icon
 

@@ -6,6 +6,7 @@ export interface SvgPattern {asset:SvgAsset;sides:Side[];mode:'single'|'repeat';
 export const SVG_MAX_BYTES=200_000;
 export function validateSvgAsset(a:SvgAsset){
  const fail=()=>{throw new Error('Некорректные контуры SVG.');};
+ if(a&&Array.isArray(a.shapes)&&a.shapes.length>128)throw new Error('SVG содержит больше 128 фигур. Оставьте один мотив или упростите рисунок.');
  if(!a||a.version!==1||typeof a.name!=='string'||!a.name.trim()||a.name.length>80||!Number.isFinite(a.aspect)||a.aspect<.02||a.aspect>50||!Array.isArray(a.shapes)||!a.shapes.length||a.shapes.length>128)fail();
  let count=0;
  for(const shape of a.shapes){if(!Array.isArray(shape)||!shape.length||shape.length>64)fail();for(const loop of shape){if(!Array.isArray(loop)||loop.length<3)fail();count+=loop.length;for(const pt of loop){if(!Array.isArray(pt)||pt.length!==2||pt.some(v=>!Number.isFinite(v))||pt[0]<-1e-5||pt[0]>1.00001||pt[1]<-1e-5||pt[1]>a.aspect+1e-5)fail();}}}

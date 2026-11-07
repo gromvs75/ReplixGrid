@@ -690,3 +690,41 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 
 .stage>.stage-assembly{flex-wrap:wrap;justify-content:center}
 .assembly-choice{display:inline-flex;align-items:center;gap:2px}.stage-tier-select{width:auto;min-width:82px;max-width:170px;margin:0;border:0;border-radius:8px;background-color:var(--control);color:var(--ink);font:inherit;font-size:12px;padding:7px 26px 7px 8px;cursor:pointer}
+
+.svg-help{grid-column:1/-1;min-width:0;border-top:1px solid var(--line);padding-top:8px;font-size:11px;line-height:1.45}
+.svg-help p{margin:4px 0}.svg-help summary{cursor:pointer;font-weight:600}.svg-help details p{max-width:90ch}.svg-help a{color:var(--ink);text-decoration:underline}
+.pattern-studio .studio-library{height:auto;min-height:116px}
+.pattern-studio .validation-error{max-height:none;overflow:visible}
+.preview-status span{display:block;margin-top:4px;font-weight:600}
+
+.pattern-studio .studio-content{max-height:55vh;overflow:auto}
+.stage.studio-open .preview-status{bottom:auto;top:8px;z-index:6}
+@media(max-width:650px){.pattern-studio .studio-content{max-height:40vh}}
+
+/* Mode-first SVG studio: library, placement, then outcome settings. */
+.pattern-studio .studio-content{grid-template-columns:minmax(0,34fr) minmax(0,25fr) minmax(0,39fr);gap:20px;padding:20px 48px 16px 24px}
+.pattern-studio .studio-library{min-height:166px}
+.pattern-studio .studio-transforms{border-right:1px solid var(--line);padding-right:20px;min-height:166px}
+.pattern-studio .studio-transform-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pattern-studio .studio-center{grid-column:1/-1}
+.pattern-studio .studio-surface{padding-top:0;gap:12px}
+.studio-modes{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.studio-modes button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:32px;padding:4px 7px;border-radius:4px;font-size:10px;white-space:nowrap}
+.studio-modes button[aria-pressed=true]{border-color:var(--accent);background:var(--selected);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 15%,transparent)}
+.studio-modes button:disabled{opacity:.4;cursor:not-allowed}
+.studio-modes svg{width:25px;height:23px;flex:none;stroke:currentColor;stroke-width:2;fill:none}
+.studio-material-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.studio-material input[readonly]{cursor:default;color:var(--muted)}
+.studio-mode-note{display:flex;align-items:center;gap:8px;border:1px solid var(--muted);border-radius:4px;padding:7px 10px;margin:0;font-size:10px;color:var(--muted);line-height:1.4}
+.studio-mode-note>span{font-size:17px}
+.studio-extra{margin:0;font-size:10px;color:var(--muted)}
+.studio-extra summary{cursor:pointer}.studio-extra .studio-color{margin-top:8px}
+.pattern-studio .svg-help{padding:0;border:0;margin-top:-8px}
+@media(max-width:900px){.pattern-studio .studio-content{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);padding:20px;gap:16px}.pattern-studio .studio-library{grid-column:1/-1;min-height:90px;border-right:0;border-bottom:1px solid var(--line);padding-bottom:12px}.studio-modes button{white-space:normal}}
+@media(max-width:550px){.pattern-studio .studio-content{grid-template-columns:1fr}.pattern-studio .studio-transforms{border-right:0;padding-right:0;min-height:0}.pattern-studio .studio-surface{grid-row:2}.studio-modes button{font-size:11px}}
+
+.pattern-studio .svg-help details,.pattern-studio .studio-extra{border:0;padding:0;margin:0}
+.pattern-studio .svg-help{margin-top:0}
+.pattern-studio .svg-help summary,.pattern-studio .studio-extra summary{font-size:10px}
+
+.pattern-studio .studio-library .svg-help{margin-top:12px}

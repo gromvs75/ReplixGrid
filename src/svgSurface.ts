@@ -17,4 +17,4 @@ export function svgSurface(w:ManifoldToplevel,s:SvgPattern,mask:CrossSection,kee
  if(!copies.length)throw new Error('SVG не помещается внутри рамки. Уменьшите размер или смещение.');
  return keep(w.CrossSection.union(copies));
 }
-export const SVG_ISLAND_ERROR='Прорези SVG оставляют отдельные кусочки. Добавьте перемычки в рисунок или увеличьте интервал.';
+export const SVG_ISLAND_ERROR='Прорези SVG оставляют отдельные кусочки. Добавьте перемычки, соединяющие их с основой рисунка. Для крышки можно выбрать рельеф вместо прорезей.';
