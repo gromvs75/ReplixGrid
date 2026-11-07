@@ -17,6 +17,34 @@ export function regions(p:Project):Region[]{
 }
 export function cellById(root:Cell,id:string):Cell|undefined{return root.id===id?root:root.split?(cellById(root.split.first,id)??cellById(root.split.second,id)):undefined;}
 export function editProject(p:Project,edit:(draft:Project)=>void):Project{let draft=structuredClone(p);edit(draft);if(draft.printing&&draft.shell&&!(p.printing&&p.shell))throw new Error('Оболочка недоступна для печати по частям. Уберите оболочку или верните цельную модель.');ensurePanelThickness(draft);draft=limitSteppedChamfer(draft);resolveWalls(draft);if(draft.shell)shellLayout(draft);if(draft.printing)splitPlan(draft);return draft;}
+/** Move one divider while retaining the absolute positions of all other dividers. */
+export function moveDivider(p:Project,id:string,ratio:number):Project {
+  if(!Number.isFinite(ratio))throw new Error('Invalid split ratio');
+  const before=regions(p),selected=before.find(r=>r.cell.id===id);
+  if(!selected?.cell.split)throw new Error('Выберите перегородку');
+  const positions=new Map(before.filter(r=>r.cell.split).map(r=>{
+    const axis=r.cell.split!.axis;
+    return [r.cell.id,(axis==='x'?r.x:r.y)+((axis==='x'?r.width:r.depth)-p.wallThickness)*r.cell.split!.ratio];
+  }));
+  const axis=selected.cell.split.axis;
+  positions.set(id,(axis==='x'?selected.x:selected.y)+((axis==='x'?selected.width:selected.depth)-p.wallThickness)*ratio);
+  return editProject(p,d=>{
+    const walk=(cell:Cell,x:number,y:number,width:number,depth:number)=>{
+      const split=cell.split;if(!split)return;
+      const available=(split.axis==='x'?width:depth)-d.wallThickness;
+      const first=positions.get(cell.id)!-(split.axis==='x'?x:y);
+      split.ratio=first/available;
+      if(split.axis==='x'){
+        walk(split.first,x,y,first,depth);
+        walk(split.second,x+first+d.wallThickness,y,available-first,depth);
+      }else{
+        walk(split.first,x,y,width,first);
+        walk(split.second,x,y+first+d.wallThickness,width,available-first);
+      }
+    };
+    walk(d.root,d.wallThickness,d.wallThickness,d.width-2*d.wallThickness,d.depth-2*d.wallThickness);
+  });
+}
 export function resizeFootprint(p:Project,key:'width'|'depth',value:number):Project{
   return editProject(p,d=>{
     d[key]=value;

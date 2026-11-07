@@ -15,6 +15,8 @@ Start with a three-compartment organizer for your desk. The example below is 180
 
 In **Shape**, start with **Base**, then use **Dimensions**. In **Shell**, choose the pattern, shell type, color, thickness/rim and fit in their separate sections. In **Print**, choose a printer, configure filament slots, or open the section-printing controls.
 
+While you move a slider, the model updates as each calculation finishes. Complex models may take longer; the final value is always calculated at full precision. Wait for the finished preview before checking or exporting the result. Editor notifications disappear after 10 seconds, or you can close them with **×**.
+
 The Quick Start video was recorded with the earlier panel layout. The modeling steps still apply; use the locations above to find the current controls.
 
 ## Build the example
@@ -22,7 +24,7 @@ The Quick Start video was recorded with the earlier panel layout. The modeling s
 1. **Open** [grid.replixcast.com](https://grid.replixcast.com/?lang=en). Use the language menu in the top bar to change languages. If you already have a design you want to keep, click **Save project** to download an editable copy before starting.
 2. **Create the body.** Open **Shape**, choose **Capsule** under **Base** and **Sloped** under **Height profile**, then click **Create from template**. The preview should show two dividers and three numbered compartments. The rim rises from 22 to 70 mm. Creating a template replaces the current design; the curved undo arrow restores it.
 3. **Fit it to your space.** Under **Shape → Dimensions**, enter the outside width and depth in millimeters. Click a numbered compartment to read its inside dimensions. Under **Internal dimensions**, enter the required width or depth, or click the blue dimension label on the model and type the value. Click outside to apply. Start with compartment 1 and work in order in a simple row; the last compartment receives the remainder. Rounded ends can narrow away from the measurement line, so check the object footprint and leave clearance.
-4. **Adjust the layout if needed.** Switch to **Top**, select a compartment, set **Number of parts** to **2**, then click **Split in width** or **Split in depth**. Only the selected compartment splits. Click a divider to adjust its position, or select an element from **All walls and compartments** in the right panel. Return to **3D** to inspect the result.
+4. **Adjust the layout if needed.** Switch to **Top**, select a compartment, set **Number of parts** to **2**, then click **Split in width** or **Split in depth**. Only the selected compartment splits. Click a divider to adjust its position, or select an element from **All walls and compartments** in the right panel. Moving a selected divider changes the compartments on either side while keeping other divider positions fixed. Return to **3D** to inspect the result.
 
 5. **Finish the top edges (optional).** Under **Shape → Corners and chamfers**, find **Top edge of walls and dividers**. Choose **Chamfer** for a flat bevel or **Rounded** for a curved edge. Enter the size in millimeters; the maximum depends on wall thickness so a flat strip remains on top. The finish follows both sides of the exterior walls and dividers. Choose **None** to restore square edges. When combining a cutout, internal corner rounding and a sloped or tilted body, wait for the finished preview before downloading. Check the final dimensions in the download dialog: tilting can increase the outside footprint. Cutouts in individual honeycomb edges are not supported.
 

@@ -69,7 +69,7 @@ For an exact layout, switch to **Top** and select the compartment you want to di
 
 ![Top-view example with one full-depth bay and two smaller compartments](images/compartment-splits.svg)
 
-Select the divider to drag it, or adjust **First compartment** under **Partition position**. Check the new inside dimensions on each side. **Remove partition** combines the compartments and can also remove dividers nested inside that split. Review the highlighted selection and the confirmation before removing it.
+Select the divider to drag it, or adjust **First compartment** under **Partition position**. Only the selected divider moves; other divider positions remain fixed. The adjacent compartments change size. Moves that leave too little space are rejected. Check the new inside dimensions on each side. **Remove partition** combines the compartments and can also remove dividers nested inside that split. Review the highlighted selection and the confirmation before removing it.
 
 ## Wall heights and cutouts
 
@@ -95,7 +95,7 @@ For example, on a 2 mm wall try a 0.5 mm chamfer. Each side loses 0.5 mm at the 
 
 - **Organizer color** changes the preview and color-capable exports. Choose a swatch, a custom color or a configured filament color. Assign the actual filament slot at export.
 - **Bottom trim** adds a projecting band around the base. Choose smooth, striped or stepped trim and set its height. A compatible sleeve can rest on it. Trim requires an untilted, single-piece, single-tier body and is incompatible with separate panels.
-- **Organizer relief** adds a raised pattern directly to the outside wall. Scroll the pattern catalogue, set pattern size and relief height, and release the slider to rebuild. The inside stays smooth. The projections increase the outside dimensions. Choose **Smooth** to remove the relief.
+- **Organizer relief** adds a raised pattern directly to the outside wall. Scroll the pattern catalogue, set pattern size and relief height, and watch the model update during dragging as each calculation finishes. The final value uses full precision. The inside stays smooth. The projections increase the outside dimensions. Choose **Smooth** to remove the relief.
 - **Label and icon** puts lettering or a symbol on a selected side. Enter the text, choose a font, set letter height and vertical position, then choose raised lettering or engraving and set its height or depth. A star or heart can accompany the text. If the inscription runs into a cutout or exceeds the available face, lower the position or reduce the letter size.
 
 ## Inserts, tiers and lids
