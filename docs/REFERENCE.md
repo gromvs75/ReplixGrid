@@ -179,7 +179,7 @@ For a model that exceeds the bed, use the suggested cuts or choose two or three 
 | --- | --- |
 | The object fits the outside dimensions but will not fit in a bay | Select the compartment and check its inside measurements. Allow for wall thickness, curved ends, inside corner radius and removable inserts. |
 | Selecting a divider keeps selecting the wall in front | Switch to **Top** or open **All walls and compartments** on the right. |
-| The lid or next tier cannot be added | Check for a level rim, equal outside heights, protruding dividers, tilt or split printing. For a stack, also check the body relief, legacy shell clips and fit clearance relative to wall thickness. |
+| The lid or next tier cannot be added | Check for a level rim, equal outside heights, protruding dividers, tilt or split printing. For a stack, also check legacy shell clips and fit clearance relative to wall thickness. Built-in and SVG relief are supported on individual tiers; the mating surfaces remain smooth. |
 | A part exceeds the bed although the footprint seemed small enough | Read the finished dimensions in the download dialog. Tilt, relief, trim and shells can extend beyond the base. Check the selected printer configuration and rotation. |
 | Hidden panel fasteners are unavailable | Use walls at least 3.2 mm thick without relief, or leave fasteners off and glue the panels. Changing to panels does not thicken the walls. |
 | Panels overlap the bottom trim or tier rim in an old design | Set an edge offset of at least 3 mm for tiers. The lower offset is measured from the top of the bottom trim. Regenerate and download the parts after changing the settings. |
