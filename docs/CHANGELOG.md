@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-07 — Live preview and divider editing
+
+- Update the model while dragging geometry sliders, without waiting for the gesture to stop. Complex shapes refresh as each calculation completes; the final value is always built.
+- Keep full model precision and the existing export checks.
+- Move a selected divider without shifting the other dividers, both on the model and through its position controls.
+- Automatically dismiss editor notifications after 10 seconds; manual dismissal remains available.
+
 ## 2026-11-06 — Floating editor preview fix
 
 - Keep the scene and grid visible behind the bottom settings editor, without a blank full-width band. Opening or collapsing the editor no longer shortens the canvas.
