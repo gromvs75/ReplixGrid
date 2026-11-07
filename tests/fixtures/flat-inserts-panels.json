@@ -4,7 +4,7 @@
   "width": 180,
   "depth": 90,
   "height": 36,
-  "wallThickness": 2,
+  "wallThickness": 3.2,
   "floorThickness": 2,
   "heights": {},
   "transitions": [

@@ -1,4 +1,3 @@
-import {ensurePanelThickness} from './panelSettings.js';
 import {maxCornerRadius} from './rounding.js';
 import {footprintContour,honeyCells,honeyBounds} from './footprint.js';
 import {defaultProject,resolveWalls,limitSteppedChamfer,type Project,type Cell} from './model.js';
@@ -16,7 +15,7 @@ export function regions(p:Project):Region[]{
   };walk(p.root,p.wallThickness,p.wallThickness,p.width-2*p.wallThickness,p.depth-2*p.wallThickness);return result;
 }
 export function cellById(root:Cell,id:string):Cell|undefined{return root.id===id?root:root.split?(cellById(root.split.first,id)??cellById(root.split.second,id)):undefined;}
-export function editProject(p:Project,edit:(draft:Project)=>void):Project{let draft=structuredClone(p);edit(draft);if(draft.printing&&draft.shell&&!(p.printing&&p.shell))throw new Error('Оболочка недоступна для печати по частям. Уберите оболочку или верните цельную модель.');ensurePanelThickness(draft);draft=limitSteppedChamfer(draft);resolveWalls(draft);if(draft.shell)shellLayout(draft);if(draft.printing)splitPlan(draft);return draft;}
+export function editProject(p:Project,edit:(draft:Project)=>void):Project{let draft=structuredClone(p);edit(draft);if(draft.printing&&draft.shell&&!(p.printing&&p.shell))throw new Error('Оболочка недоступна для печати по частям. Уберите оболочку или верните цельную модель.');draft=limitSteppedChamfer(draft);resolveWalls(draft);if(draft.shell)shellLayout(draft);if(draft.printing)splitPlan(draft);return draft;}
 /** Move one divider while retaining the absolute positions of all other dividers. */
 export function moveDivider(p:Project,id:string,ratio:number):Project {
   if(!Number.isFinite(ratio))throw new Error('Invalid split ratio');
@@ -70,7 +69,7 @@ export function preset(name:string):Project{
 }
 export function parseProject(text:string):Project{
   if(text.length>2_000_000)throw new Error('Файл проекта слишком большой');
-  let value=JSON.parse(text);ensurePanelThickness(value);value=limitSteppedChamfer(value);resolveWalls(value);if(value.shell)shellLayout(value);if(value.printing)splitPlan(value);return value;
+  let value=JSON.parse(text);value=limitSteppedChamfer(value);resolveWalls(value);if(value.shell)shellLayout(value);if(value.printing)splitPlan(value);return value;
 }
 
 /** Match the ends to the perpendicular walls they physically touch. */

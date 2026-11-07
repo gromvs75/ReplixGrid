@@ -117,7 +117,7 @@ export function resolveWalls(p: Project): Wall[] {
     range(p.baseBand.height,1.2,12,'base band height');
     if(p.tilt||p.printing)throw new Error('Нижний кант доступен без наклона и разделения.');
     if(p.stack&&p.stack.active!==0)throw new Error('Нижний кант доступен только на первом ярусе.');
-    if(p.shell&&(p.shell.mode==='panels'||p.shell.snap||p.floorThickness<1.2))throw new Error('Нижний кант с оболочкой пока недоступен для панелей, прежних защёлок и дна тоньше 1,2 мм.');
+    if(p.shell&&(p.shell.snap||p.floorThickness<1.2))throw new Error('Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.');
     const lowest=Math.min(p.height,...Object.values(p.heights),...Object.values(p.wallProfiles??{}).flatMap(v=>[v.start,v.end]),...(p.honeycombHeights??[]).filter((h):h is number=>h!==null));
     if(p.baseBand.height>=lowest)throw new Error('Высота нижнего канта должна быть меньше высоты стенок.');
   }

@@ -82,3 +82,22 @@ test('a sloping rim too narrow for the validated foot is rejected without wideni
  assert.equal(panelBorder(p),4);
  assert.throws(()=>panelAnchors(wasm,p,'front'),/не помещается в кант/);
 });
+for(const style of ['smooth','rings','steps'] as const)for(const mounts of [false,true])test(`${style} base band: ${mounts?'mounted':'2.4 mm glued'} tier panels preserve fit and printable exports`,async()=>{
+ const {setLevelCount,switchLevel,levelProject}=await import('../src/accessories.js');
+ const {regions,editProject}=await import('../src/editor.js');
+ let p=example();p.wallThickness=mounts?3.2:2.4;p.floorThickness=2;p.baseBand={height:12,style};delete p.shell;
+ p=setLevelCount(p,2);const before=regions(p);
+ p=editProject(p,d=>{d.shell={...example().shell!,mounts,margin:3};});
+ assert.deepEqual(regions(p),before);assert.equal(p.wallThickness,mounts?3.2:2.4);
+ p=switchLevel(p,1);assert.equal(p.baseBand,undefined);
+ p=editProject(p,d=>{d.shell={...example().shell!,mounts,margin:3};});
+ assert.equal(levelProject(p,0).baseBand?.height,12);
+ const parts=await buildKit(p);assert.equal(parts.length,10);assert.ok(inspectPrintParts(p,parts).ok);
+ const wasm=await Module();wasm.setup();const owned:import('manifold-3d').Manifold[]=[];
+ try{
+  const bodies=parts.map(part=>{assert.ok(part.inspection.volume>0);const t=decodeSTL(part.stl),mesh=new wasm.Mesh({numProp:3,vertProperties:new Float32Array(t.flat(2)),triVerts:new Uint32Array(t.flat().map((_,i)=>i))});mesh.merge();const raw=new wasm.Manifold(mesh),placed=raw.translate(part.position);owned.push(raw,placed);assert.equal(placed.status(),'NoError');return placed;});
+  for(let i=0;i<bodies.length;i++)for(let j=i+1;j<bodies.length;j++){const overlap=bodies[i].intersect(bodies[j]);owned.push(overlap);assert.ok(Math.abs(overlap.volume())<.001,`${parts[i].name} intersects ${parts[j].name}`);}
+  for(const part of parts.filter(part=>part.kind==='shell'&&part.level===0))assert.ok(part.position[2]>=13.9,'panel and feet clear 12 mm band');
+  for(const dz of [1,5,50])for(let i=0;i<bodies.length;i++)if(parts[i].level===1){const lifted=bodies[i].translate([0,0,dz]);owned.push(lifted);for(let j=0;j<bodies.length;j++)if(parts[j].level===0){const overlap=lifted.intersect(bodies[j]);owned.push(overlap);assert.ok(Math.abs(overlap.volume())<.001,`tier extracts freely at ${dz} mm: ${parts[i].name}/${parts[j].name}`);}}
+ }finally{owned.reverse().forEach(m=>m.delete());}
+});

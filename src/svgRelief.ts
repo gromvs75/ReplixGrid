@@ -3,9 +3,10 @@ import {resolveWalls,type Project,type Side} from './model.js';
 import {footprintContour,offsetContour} from './footprint.js';
 import {shellGap} from './reliefSize.js';
 import {hasDecorativeShellSupport,hasShellSupport,hasLegacyShellSupport,shellSupportHeight} from './shellSupport.js';
+import type {ReliefBounds} from './relief.js';
 import {contourHeight} from './shell.js';
 /** Unwrap each exterior side in arc-length coordinates, then wrap filled vector strips back onto it. */
-export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold,shell=false){
+export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold,shell=false,bounds:ReliefBounds={}){
  const r=p.relief,s=(shell?p.shell?.svg:r?.svg)!,cs:CrossSection[]=[];const hold=(c:CrossSection)=>{cs.push(c);return c;};
  try{
   const offset=shell?shellGap(p)+p.shell!.thickness:0;
@@ -26,14 +27,15 @@ export function applySvgRelief(w:ManifoldToplevel,p:Project,body:Manifold,keep:(
   const box=rotated.bounds(),mw=box.max[0]-box.min[0],mh=box.max[1]-box.min[1];
   let copies=0;
   for(const side of s.sides){const group=groups.get(side);if(!group?.length)continue;
-   const length=group.reduce((n,v)=>n+v.length,0),low=shell?support+border:p.floorThickness+.5;
-   const roof=Math.max(...group.flatMap(({i})=>[contourHeight(p,walls,...contour[i]),contourHeight(p,walls,...contour[(i+1)%contour.length])]));
+   const length=group.reduce((n,v)=>n+v.length,0),low=Math.max(shell?support+border:p.floorThickness+.5,bounds.minZ??0);
+   const roof=Math.min(bounds.maxZ??Infinity,Math.max(...group.flatMap(({i})=>[contourHeight(p,walls,...contour[i]),contourHeight(p,walls,...contour[(i+1)%contour.length])])));
+   if(roof<=low)continue;
    const cx=length/2+s.offsetX,cy=(low+roof-(shell?border:0))/2+s.offsetY,px=mw+s.gap,py=mh+s.gap;
    const nx=s.mode==='repeat'?Math.ceil((length+Math.abs(s.offsetX)*2)/px)+1:0,ny=s.mode==='repeat'?Math.ceil((roof+Math.abs(s.offsetY)*2)/py)+1:0;
    const margin=shell?border:Math.max(.6,(p.topEdge?.size??0)+.4);
    const roofs=group.map(({i,length:len,start})=>{
     const a=contour[i],b=contour[(i+1)%contour.length],steps=Math.max(1,Math.ceil(len)),points:[number,number][]=[];
-    for(let k=steps;k>=0;k--){const t=k/steps;points.push([start+len*t,Math.max(low,contourHeight(p,walls,a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)-margin)]);}
+    for(let k=steps;k>=0;k--){const t=k/steps;points.push([start+len*t,Math.max(low,Math.min(bounds.maxZ??Infinity,contourHeight(p,walls,a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t)-margin))]);}
     return points;
    });
    // Test whole repeats against the same roof used to wrap the relief. This also

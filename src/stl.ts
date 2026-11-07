@@ -5,14 +5,15 @@ const cross = (a: Point,b: Point): Point => [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*
 const dot = (a: Point,b: Point) => a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
 /** Weld numerical duplicates before float32 export, never relax the final inspector. */
 export function weldNearVertices(triangles:Triangle[],tolerance:number):Triangle[]{
-  const buckets=new Map<string,Point[]>();
+  const buckets=new Map<string,Point[]>(),exact=new Map<string,Point>();
   const weld=(p:Point):Point=>{
+    const identity=p.join(','),known=exact.get(identity);if(known)return known;
     const cell=p.map(v=>Math.floor(v/tolerance));
     for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++){
       for(const q of buckets.get(`${cell[0]+x},${cell[1]+y},${cell[2]+z}`)??[])
-        if(Math.hypot(p[0]-q[0],p[1]-q[1],p[2]-q[2])<=tolerance)return q;
+        if(Math.hypot(p[0]-q[0],p[1]-q[1],p[2]-q[2])<=tolerance){exact.set(identity,q);return q;}
     }
-    const key=cell.join(','),bucket=buckets.get(key)??[];bucket.push(p);buckets.set(key,bucket);return p;
+    const key=cell.join(','),bucket=buckets.get(key)??[];bucket.push(p);buckets.set(key,bucket);exact.set(identity,p);return p;
   };
   return triangles.map(tri=>tri.map(weld) as Triangle);
 }

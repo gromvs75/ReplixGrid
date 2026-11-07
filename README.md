@@ -4,7 +4,7 @@
 
 ReplixGrid is a project from ReplixCast, the brand behind ReplixGrid. It is a local-first browser tool for designing customizable 3D-printable organizers. Set the dimensions, arrange compartments, adjust walls and add supported accessories or decorative shells, then export the parts for a slicer. Use the separate **Drawer** workspace to measure your drawer first, then create or add organizers and check their arrangement. No CAD application, account or application backend is required.
 
-The interface is available in 11 languages. Translation catalogs need further native-speaker review. Printer presets set the build volume only; select the actual printer and material profiles in your slicer. ReplixGrid is an independent project and is not an official Snapmaker product.
+The interface is available in 11 languages. Printer presets set the build volume only; select the actual printer and material profiles in your slicer. ReplixGrid is an independent project and is not an official Snapmaker product.
 
 ## Two ways to use ReplixGrid
 
@@ -19,8 +19,6 @@ The interface is available in 11 languages. Translation catalogs need further na
 Prefer a local copy? Follow the Windows and macOS setup instructions below. Both options let you design organizers and export files for your slicer.
 
 Projects are saved in the browser at the address you use. To move between the local and online versions, download your project JSON and open it in the other version. Configure filament slots again at the new address.
-
-[Release notes](docs/CHANGELOG.md)
 
 ## Local installation
 
@@ -37,7 +35,7 @@ These instructions are for Windows and macOS, including people who have never us
 
 ### 2. Install Node.js
 
-Node.js is the program needed to run ReplixGrid. Its installer also includes npm, which downloads the project's dependencies. A clean install and build were tested on macOS with Node.js 24.12.0 and npm 11.6.2; the Windows instructions have not yet been tested separately.
+Node.js is the program needed to run ReplixGrid. Its installer also includes npm, which downloads the project's dependencies. Use Node.js 24 LTS or a newer supported LTS version.
 
 1. Visit the official [Node.js download page](https://nodejs.org/en/download).
 2. Choose a **Long Term Support (LTS)** version and the installer for your operating system: Windows Installer (`.msi`) for Windows, or macOS Installer (`.pkg`) for macOS. If asked, choose the architecture matching your computer.
@@ -91,9 +89,7 @@ If you see `EADDRINUSE` or a message that port `5173` is in use, an earlier inst
 See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and printing.
 
 
-## Current status and limitations
-
-A whole organizer with a shell has been physically printed; panel attachment fit and a section joint using pins and glue have also been tested by the user. A three-slot 3MF kit was imported in Snapmaker Orca 2.4.1. These observations do not validate every model, printer or combination of settings.
+## Before printing
 
 - Download project JSON files for backup. Browser storage is local to the browser and site address; clearing it can remove projects. Filament slots are stored separately and must be configured again on another device.
 - Split printing currently requires removing shells and inserts. Sections use pins and glue; wall and floor thicknesses increase to at least 5 mm and 3 mm respectively.

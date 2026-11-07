@@ -830,5 +830,8 @@
   "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
   "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
   "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-  "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+  "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+  "Ярус {0}": "Tier {0}",
+  "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panels preserve wall thickness and compartment dimensions. Hidden fasteners require at least 3.2 mm; glue panels to thinner walls. The lower panel edge is offset from the top of the bottom trim.",
+  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Bottom trim with a shell is unavailable with legacy clips or floors thinner than 1.2 mm."
 }

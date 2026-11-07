@@ -52,7 +52,8 @@ test('decorative band supports a sleeve on a sloped oval body',async()=>{
  try{const a=make(tray.stl),b=make(sleeve.stl);for(const dz of [0,5,60]){const moved=b.translate([sleeve.position[0],sleeve.position[1],sleeve.position[2]+dz]);owned.push(moved);const overlap=a.intersect(moved);owned.push(overlap);assert.ok(Math.abs(overlap.volume())<.001);}const below=b.translate([sleeve.position[0],sleeve.position[1],sleeve.position[2]-.2]);owned.push(below);const overlap=a.intersect(below);owned.push(overlap);assert.ok(overlap.volume()>.1);}finally{owned.reverse().forEach(s=>s.delete());}
 });
 test('band rejects unsafe combinations',()=>{
- const p=defaultProject();p.baseBand={style:'rings',height:4};p.shell={...defaultShell('diamonds'),mode:'panels'};assert.throws(()=>resolveWalls(p),/кант/);
+ const p=defaultProject();p.baseBand={style:'rings',height:4};p.shell={...defaultShell('diamonds'),snap:true};assert.throws(()=>resolveWalls(p),/кант/);
+ p.shell.snap=false;p.floorThickness=1;assert.throws(()=>resolveWalls(p),/кант/);
 });
 test('wavy triangle shell with band and pen insert exports closed solids',async()=>{
  const p=parseProject(await readFile(new URL('./fixtures/wavy-triangles-band.json',import.meta.url),'utf8'));
