@@ -22,9 +22,11 @@ export function placePanel(wasm:ManifoldToplevel,p:Project,side:Side,m:Manifold,
 export function panelProfile(wasm:ManifoldToplevel,p:Project,side:Side,keep:(s:CrossSection)=>CrossSection){
  const wall=resolveWalls(p).find(w=>w.id===side)!;
  const margin=p.shell?.margin??4,r=p.cornerRadius??0;
+ // Inset from the top of the external base band; shared by panel and socket anchors.
+ const bottom=p.baseBand?.height??0;
  const profile=keep(new wasm.CrossSection([wallOutline(wall)]));
  // Stay on the straight portion of the face; rounded organizer corners remain visible.
- const box=keep(new wasm.CrossSection([[[r,0],[wall.length-r,0],[wall.length-r,Math.max(wall.startHeight,wall.endHeight)+1],[r,Math.max(wall.startHeight,wall.endHeight)+1]]]));
+ const box=keep(new wasm.CrossSection([[[r,bottom],[wall.length-r,bottom],[wall.length-r,Math.max(wall.startHeight,wall.endHeight)+1],[r,Math.max(wall.startHeight,wall.endHeight)+1]]]));
  const clipped=keep(profile.intersect(box));
  const inset=keep(clipped.offset(-margin,'Round',2,32));
  const inner=keep(inset.offset(-2,'Round',2,32));

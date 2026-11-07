@@ -835,7 +835,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Tier {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panels preserve wall thickness and compartment dimensions. Hidden fasteners require at least 3.2 mm; glue panels to thinner walls. The lower panel edge is offset from the top of the bottom trim.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Bottom trim with a shell is unavailable with legacy clips or floors thinner than 1.2 mm."
   },
   "de": {
     "+ Крышка": "+ Abdeckung",
@@ -1667,7 +1670,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Ebene {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Paneele erhalten Wandstärke und Innenmaße. Verdeckte Befestigungen benötigen mindestens 3,2 mm; an dünnere Wände werden Paneele geklebt. Der untere Abstand beginnt an der Oberkante des unteren Zierbands.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Unteres Zierband mit Hülle ist mit alten Clips oder Böden unter 1,2 mm nicht verfügbar."
   },
   "fr": {
     "+ Крышка": "+ Couverture",
@@ -2498,7 +2504,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Niveau {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Les panneaux conservent l’épaisseur des parois et les dimensions intérieures. Les fixations cachées nécessitent au moins 3,2 mm ; collez les panneaux sur les parois plus fines. Le retrait inférieur part du haut de la bordure basse.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "La bordure basse avec coque est indisponible avec les anciens clips ou un fond de moins de 1,2 mm."
   },
   "es": {
     "+ Крышка": "+ Portada",
@@ -3329,7 +3338,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Nivel {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Los paneles conservan el grosor de las paredes y las dimensiones interiores. Las fijaciones ocultas requieren al menos 3,2 mm; pegue los paneles a paredes más finas. El margen inferior comienza en la parte superior del borde inferior.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "El borde inferior con carcasa no está disponible con clips antiguos ni fondos de menos de 1,2 mm."
   },
   "el": {
     "+ Крышка": "+ Εξώφυλλο",
@@ -4160,7 +4172,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Επίπεδο {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Τα πάνελ διατηρούν το πάχος των τοιχωμάτων και τις εσωτερικές διαστάσεις. Οι κρυφές στερεώσεις απαιτούν τουλάχιστον 3,2 mm· κολλήστε τα πάνελ σε λεπτότερα τοιχώματα. Η κάτω απόσταση ξεκινά από την κορυφή του κάτω περιθωρίου.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Το κάτω περιθώριο με περίβλημα δεν είναι διαθέσιμο με παλιά κλιπ ή βάση λεπτότερη από 1,2 mm."
   },
   "it": {
     "+ Крышка": "+ Copertina",
@@ -4991,7 +5006,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Livello {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "I pannelli mantengono lo spessore delle pareti e le dimensioni interne. I fissaggi nascosti richiedono almeno 3,2 mm; incollare i pannelli su pareti più sottili. Il margine inferiore parte dalla sommità del bordo inferiore.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Il bordo inferiore con guscio non è disponibile con vecchie clip o fondi inferiori a 1,2 mm."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -5822,7 +5840,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Ярус {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Панелі зберігають товщину стінок і внутрішні розміри відсіків. Приховані кріплення доступні від 3,2 мм; до тонших стінок панелі приклеюються. Нижній край панелі відступає від верху нижнього канта.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Нижній кант з оболонкою недоступний для старих засувок і дна тоншого за 1,2 мм."
   },
   "cs": {
     "+ Крышка": "+ obálka",
@@ -6653,7 +6674,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Patro {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panely zachovávají tloušťku stěn a vnitřní rozměry. Skryté úchyty vyžadují alespoň 3,2 mm; na tenčí stěny panely přilepte. Spodní odstup začíná na horní hraně spodního lemu.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Spodní lem s pláštěm není dostupný se starými západkami nebo dnem tenčím než 1,2 mm."
   },
   "pl": {
     "+ Крышка": "+ Okładka",
@@ -7484,7 +7508,10 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "Poziom {0}",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panele zachowują grubość ścian i wymiary wewnętrzne. Ukryte mocowania wymagają co najmniej 3,2 mm; do cieńszych ścian panele należy przykleić. Dolny odstęp zaczyna się od górnej krawędzi dolnej listwy.",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Dolna listwa z osłoną jest niedostępna ze starymi zatrzaskami lub dnem cieńszym niż 1,2 mm."
   },
   "zh-CN": {
     "+ Крышка": "+ 封面",
@@ -8317,6 +8344,9 @@
     "Не удалось подготовить архив. Закройте окно и повторите.": "Could not prepare the archive. Close this dialog and retry.",
     "Проверьте размеры стола и промежуток между деталями.": "Check printer bed dimensions and part spacing.",
     "Ящик пуст. Добавьте органайзер или включите пластину.": "The drawer is empty. Add an organizer or enable the mounting plate.",
-    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately."
+    "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
+    "Ярус {0}": "第 {0} 层",
+    "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "面板保持壁厚和隔间内部尺寸不变。隐藏式固定件要求壁厚至少 3.2 毫米；较薄的壁面需粘贴面板。面板下边缘的间距从底部饰边的顶部开始计算。",
+    "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "使用旧式卡扣或底厚小于 1.2 毫米时，外壳不能搭配底部饰边。"
   }
 }

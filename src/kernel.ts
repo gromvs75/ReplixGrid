@@ -7,7 +7,7 @@ import {shellGap} from './reliefSize.js';
 import {applyLabel} from './lettering.js';
 import {roundInnerCorners} from './innerCorners.js';
 import {roundStepCorners} from './stepCorners.js';
-import {applyRelief} from './relief.js';
+import {applyRelief,type ReliefBounds} from './relief.js';
 import {perforateShell} from './wrappedPattern.js';
 import {tiltOnBase} from './tilt.js';
 import {contourBody} from './contourKernel.js';
@@ -17,9 +17,9 @@ import { resolveWalls, hasCapsuleSlope, capsuleTop, limitSteppedChamfer, type Pr
 import {shellLayout,wallOutline} from './shell.js';
 import { encodeSTL,decodeSTL,inspectSurface,removeCollapsedFaces,weldNearVertices,type Point,type Triangle } from './stl.js';
 let modulePromise: ReturnType<typeof Module> | undefined;
-export async function buildOrganizer(project: Project,shellSupport=true) {return buildPart(project,'organizer',shellSupport);}
+export async function buildOrganizer(project: Project,shellSupport=true,reliefBounds:ReliefBounds={}) {return buildPart(project,'organizer',shellSupport,reliefBounds);}
 export async function buildShell(project:Project,shellSupport=true){if(project.shell?.mode==='panels')throw new Error('Панели экспортируются отдельными деталями комплекта.');return buildPart(project,'shell',shellSupport);}
-async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=true) {
+async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=true,reliefBounds:ReliefBounds={}) {
   project=limitSteppedChamfer(project);
   const walls=part==='shell'?shellLayout(project).panels:resolveWalls(project);
   const wasm=await (modulePromise ??= Module()); wasm.setup();
@@ -76,8 +76,8 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
     const joined=part==='organizer'?roundInnerCorners(wasm,project,resolveWalls(project),baseJoined,keep):baseJoined;
     const stepped=part==='organizer'?roundStepCorners(wasm,project,resolveWalls(project),joined,keep):joined;
     const labeled=part==='organizer'?applyLabel(wasm,project,finishTopEdge(wasm,project,stepped,keep),keep):stepped;
-    const decorated=part==='organizer'&&!project.tilt?applyRelief(wasm,project,labeled,keep):labeled;
-    const tilted=tiltOnBase(wasm,project,decorated,part==='shell',keep,part==='shell'?body=>perforateShell(wasm,project,body,keep):body=>applyRelief(wasm,project,body,keep));
+    const decorated=part==='organizer'&&!project.tilt?applyRelief(wasm,project,labeled,keep,reliefBounds):labeled;
+    const tilted=tiltOnBase(wasm,project,decorated,part==='shell',keep,part==='shell'?body=>perforateShell(wasm,project,body,keep):body=>applyRelief(wasm,project,body,keep,reliefBounds));
     const clipped=applyShellClips(wasm,project,tilted,part==='shell',keep);
     let union=part==='organizer'?cutPanelSockets(wasm,project,clipped,keep):clipped;
     if(part==='organizer'&&project.baseBand)union=applyBaseBand(wasm,project,union,keep);
@@ -92,10 +92,12 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
         union=keep(union.intersect(upper));
       }
     }
-    // Below a micron at normal organizer sizes; also above float32 rounding.
+    // Keep organizer accuracy unchanged. Perforated sleeves accumulate Boolean
+    // slivers; a 5-micron simplification removes these before Float32 export.
+    // Both preview and export use this same solid and strict surface validation.
     const tolerance=Math.max(project.width,project.depth,project.height,...walls.map(w=>Math.max(w.startHeight,w.endHeight)))*1e-6;
     const original=keep(union.asOriginal());
-    const body=keep(original.simplify(tolerance));
+    const body=keep(original.simplify(part==='shell'?Math.max(tolerance,.005):tolerance));
     if(body.status()!=='NoError') throw new Error(`Geometry error: ${body.status()}`);
     const components=body.decompose();components.forEach(keep);
     if(components.length!==1) throw new Error(project.shell?.svg&&part==='shell'?'Прорези SVG оставляют отдельные кусочки. Добавьте перемычки в рисунок или увеличьте интервал.':'Disconnected solid');
@@ -105,9 +107,9 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
       const start=mesh.triVerts[i+j]*mesh.numProp;
       return [mesh.vertProperties[start],mesh.vertProperties[start+1],mesh.vertProperties[start+2]] as Point;
     }) as Triangle);
-    // Perforation booleans may leave sub-micron seams. Weld within 1 micron,
-    // then enforce the same exact closed-surface check on the serialized STL.
-    let cleaned=removeCollapsedFaces(weldNearVertices(triangles,part==='shell'?.001:tolerance*.2));
+    // Preserve exact shell vertices first: welding close but distinct edges can
+    // damage fine perforations. Only weld if strict serialized validation fails.
+    let cleaned=removeCollapsedFaces(part==='shell'?triangles:weldNearVertices(triangles,tolerance*.2));
     let stl=encodeSTL(cleaned),inspection!:ReturnType<typeof inspectSurface>;
     try{inspection=inspectSurface(decodeSTL(stl));}
     catch(error){
@@ -115,7 +117,11 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
       // smaller weld, retaining the same strict closed-surface inspection.
       // Wrapped SVG strips can also meet at Float32-scale seams.
       if(!(error instanceof Error)||(error.message!=='Open or non-manifold oriented edge'&&!(project.relief?.svg&&error.message==='Degenerate triangle')))throw error;
-      const distances=part==='shell'?[.0001]:(project.topEdge||project.relief?.svg)?[.000005,.0001,.0005,.001,.003]:[];
+      // Boolean slivers on rounded/sloped perforated sleeves may leave
+      // seams up to 3 microns apart, below the existing 5-micron simplification.
+      // Keep this fallback shell-only; every candidate must still pass the
+      // exact serialized topology and volume checks below.
+      const distances=part==='shell'?[.001,.0001,.003]:(project.topEdge||project.relief?.svg)?[.000005,.0001,.0005,.001,.003]:[];
       let valid=false;
       for(const distance of distances){
         cleaned=removeCollapsedFaces(weldNearVertices(triangles,distance));
@@ -128,7 +134,7 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
       // Output sits at origin for slicers; keep project coordinates for preview only.
       const min=inspection.bounds.min;
       const shifted=cleaned.map(tri=>tri.map(p=>p.map((v,i)=>Math.fround(v-min[i])) as Point) as Triangle);
-      const output=encodeSTL(shifted),check=inspectSurface(decodeSTL(output));
+      const output=encodeSTL(removeCollapsedFaces(shifted)),check=inspectSurface(decodeSTL(output));
       if(Math.abs(check.volume-body.volume())>Math.max(.01,body.volume()*1e-4))throw new Error('Shell STL volume mismatch');
       return {stl:output,inspection:check,position:min};
     }

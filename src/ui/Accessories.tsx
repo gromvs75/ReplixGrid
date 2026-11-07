@@ -2,7 +2,7 @@ import {lidMotifs,type LidMotif} from '../lidMotifs.js';
 import {t} from '../i18n.js';
 import {ColorPicker} from './ColorPalette.js';
 import {defaultInsertColor} from '../appearance.js';
-import {labelProblem} from '../lettering.js';
+import {labelProblem,labelLayout} from '../lettering.js';
 import {useState} from 'react';
 import {useEditor} from '../store.js';
 import {editProject,regions} from '../editor.js';
@@ -74,6 +74,8 @@ export function LabelControls(){
  const {project:p,change,selection}=useEditor();const label=p.label,[text,setText]=useState(''),[chosen,setChosen]=useState<Side|null>(null);
  const selected=selection.type==='wall'?selection.id.split('@')[0]:'';
  const side=label?(label.side??'left'):(chosen??(sideOrder.includes(selected as Side)?selected as Side:'left')),reason=labelProblem(p,side);
+ const metrics=(()=>{try{return labelLayout({...p,label:label??{text:text||'Кабели',icon:'',mode:'raised',font:'sans',side}},true);}catch{return null;}})();
+ const maxSize=Math.max(4,Math.floor((metrics?.maxSize??30)*100)/100);
  const update=(patch:Partial<NonNullable<typeof p.label>>)=>change(p=>editProject(p,d=>{
   d.label={text:text||'Кабели',icon:'',mode:'raised',font:'sans',side,...d.label,...patch};
  }));
@@ -82,10 +84,10 @@ export function LabelControls(){
   {!reason&&<div className="compact-actions">{(['','★','♥'] as const).map(icon=><button key={icon} aria-label={icon||t("Без значка")} aria-pressed={label?.icon===icon} onClick={()=>update({icon})}>{icon||t("Без значка")}</button>)}</div>}{label&&<button className="quiet" onClick={()=>change(p=>editProject(p,d=>{delete d.label;}))}>{t("Убрать подпись")}</button>}</section>{reason?<p className="hint">{t(reason??'')}</p>:<><section className="editor-group">
  <label className="count-label">{t("Текст")}<input aria-label={t("Текст подписи")} maxLength={18} placeholder={t("Кабели")} value={label?.text??text} onChange={e=>{setText(e.target.value);if(label)update({text:e.target.value});}}/></label>
  <label className="count-label">{t("Шрифт")}<select aria-label={t("Шрифт подписи")} value={label?.font??(label?'pixel':'sans')} onChange={e=>update({font:e.target.value as NonNullable<typeof p.label>['font']})}><option value="sans">Droid Sans</option><option value="bold">Droid Sans Bold</option><option value="serif">Droid Serif</option><option value="pixel">{t("Пиксельный")}</option></select></label>
- <Field label={t("Высота букв")} value={label?.size??(label?.font==='pixel'||label&&!label.font?7.7:10)} min={4} max={30} step={.5} commitOnRelease onChange={size=>update({size})}/>
- </section><section className="editor-group"><Field label={t("Положение по высоте")} value={label?.position??0} min={0} max={100} step={1} unit="%" commitOnRelease onChange={position=>update({position})}/>
+ <Field label={t("Высота букв")} value={label?.size??metrics?.height??10} min={4} max={maxSize} step={.1} onChange={size=>update({size})}/>
+ </section><section className="editor-group"><Field label={t("Положение по высоте")} value={label?.position??0} min={0} max={100} step={1} unit="%" onChange={position=>update({position})}/>
  <p className="hint">{t("0% — снизу · 50% — по центру · 100% — сверху, ниже выреза.")}</p>
- <Field label={label?.mode==='engraved'?t("Глубина гравировки"):t("Высота рельефа")} value={label?.depth??(label?.mode==='engraved'?.4:.6)} min={.2} max={label?.mode==='engraved'?Math.min(2,p.wallThickness-.6):2} step={.1} commitOnRelease onChange={depth=>update({depth})}/>
+ <Field label={label?.mode==='engraved'?t("Глубина гравировки"):t("Высота рельефа")} value={label?.depth??(label?.mode==='engraved'?.4:.6)} min={.2} max={label?.mode==='engraved'?Math.min(2,p.wallThickness-.6):2} step={.1} onChange={depth=>update({depth})}/>
 
  <div className="compact-actions">{(['raised','engraved'] as const).map(mode=><button key={mode} aria-pressed={label?.mode===mode} onClick={()=>update({mode,depth:mode==='engraved'?Math.min(label?.depth??.4,p.wallThickness-.6):label?.depth??.6})}>{mode==='raised'?t("Выпуклая"):t("Утопленная")}</button>)}</div>
  <p className="hint">{t("Размеры в миллиметрах. Шрифты поддерживают кириллицу. Надпись остаётся ниже выреза; слишком крупный текст нужно уменьшить.")}</p>

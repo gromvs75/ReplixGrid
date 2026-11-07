@@ -21,6 +21,10 @@ async function previewShell(project:Project){
  if(previewShellCache?.key!==key)previewShellCache={key,value:await buildShell(project)};
  return {...previewShellCache.value,stl:previewShellCache.value.stl.slice(0)};
 }
+const geometryMessage=(error:unknown)=>{
+ const message=error instanceof Error?error.message:'Geometry failed';
+ return /Open or non-manifold oriented edge|Degenerate (STL )?triangle|Expected one positive-volume connected surface|Geometry failed/.test(message)?'Не удалось построить форму. Измените размеры или упростите узор.':message;
+};
 // Requests carry a revision; the future UI must discard stale revisions.
 globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;part?:'organizer'|'shell'|'kit'|'sample'|'all';format?:ExportFormat;objInstructions?:string;filamentSlots?:Record<string,number>;partSlots?:Array<number|null>;mounting?:MountingRequest;layout?:DrawerLayout;purpose?:'preview'|'check'|'download'|'drawer'|'plate'}>)=>{
   const {revision,project,part,purpose,format,objInstructions,filamentSlots,partSlots,mounting,layout}=event.data;
@@ -61,7 +65,13 @@ globalThis.onmessage=async (event:MessageEvent<{revision:number;project:Project;
     }
     if(purpose==='preview'){
       const organizer=await buildOrganizer(project);
-      const shell=project.shell?await previewShell(project):null;
+      let shell:Awaited<ReturnType<typeof previewShell>>|null=null;
+      try{shell=project.shell?await previewShell(project):null;}
+      catch(error){
+        // A failed sleeve must not discard the successfully built organizer.
+        // This is preview only; export still requires every requested solid.
+        globalThis.postMessage({revision,ok:true,organizer:organizer.stl,organizerPosition:organizer.position,error:geometryMessage(error)},{transfer:[organizer.stl]});return;
+      }
       globalThis.postMessage({revision,ok:true,organizer:organizer.stl,shell:shell?.stl,organizerPosition:organizer.position,shellPosition:shell?.position},{transfer:shell?[organizer.stl,shell.stl]:[organizer.stl]});return;
     }
     if(format&&(format!=='stl'||part==='all')){
@@ -95,8 +105,6 @@ organizer — органайзер; shell — оболочка; pin — отде
     const result=await (part==='shell'?buildShell(project):buildOrganizer(project));
     globalThis.postMessage({revision,ok:true,...result},{transfer:[result.stl]});
   } catch(error) {
-    const message=error instanceof Error?error.message:'Geometry failed';
-    const userMessage=/Open or non-manifold oriented edge|Degenerate (STL )?triangle|Expected one positive-volume connected surface|Geometry failed/.test(message)?'Не удалось построить форму. Измените размеры или упростите узор.':message;
-    globalThis.postMessage({revision,ok:false,error:userMessage});
+    globalThis.postMessage({revision,ok:false,error:geometryMessage(error)});
   }
 };

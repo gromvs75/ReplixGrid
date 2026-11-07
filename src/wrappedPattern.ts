@@ -18,7 +18,7 @@ export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,kee
  const lengths=contour.map((a,i)=>{const b=contour[(i+1)%contour.length];return Math.hypot(b[0]-a[0],b[1]-a[1]);});
  const perimeter=lengths.reduce((a,b)=>a+b,0);
  const planar=hasCapsuleSlope(p);
- const height=(i:number,end:boolean)=>{
+ const calculateHeight=(i:number,end:boolean)=>{
   const j=(i+1)%contour.length,k=end?j:i;
   if(planar)return capsuleTop(p,contour[k][0],offset);
   if(p.footprint==='honeycomb')return honeyCellHeight(p,walls,honeyEdgeOwner(p,base[i],base[j]),...base[k]);
@@ -31,6 +31,10 @@ export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,kee
   if(x>=p.width+offset-band-1e-6)hs.push(topAt(walls[3],Math.max(0,Math.min(p.depth,y))));
   return Math.max(...hs);
  };
+ // Each facet endpoint is immutable during this build. Reuse it while sampling
+ // the border instead of repeatedly evaluating every wall profile and cutout.
+ const endpointHeights=contour.map((_,i)=>[calculateHeight(i,false),calculateHeight(i,true)]);
+ const height=(i:number,end:boolean)=>endpointHeights[i][end?1:0];
  // Leaning preserves Z, so the lower rim stays horizontal in pattern space.
  const hasCutout=walls.some(w=>w.cutout);
  // The sleeve is trimmed to sit on the decorative ledge later. Preserve a

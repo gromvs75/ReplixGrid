@@ -83,7 +83,7 @@ export function stackRimProblem(p:Project):string {
  return rimProblem(p,walls.map(w=>({...w,cutout:undefined})));
 }
 export function stackProblem(p:Project):string {
- return stackRimProblem(p)||(p.shell?.snap?'Защёлки пока доступны для прямоугольной формы без наклона, рельефа, крышки, ярусов и разрезания.':p.stack&&p.shell?.mode==='panels'&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':p.relief?'Для посадки ярусов выберите гладкую поверхность.':'');
+ return stackRimProblem(p)||(p.shell?.snap?'Защёлки пока доступны для прямоугольной формы без наклона, рельефа, крышки, ярусов и разрезания.':p.stack&&p.shell?.mode==='panels'&&(p.shell.margin??4)<3?'Для ярусов нужен отступ панелей от краёв не меньше 3 мм.':'');
 }
 export const lidPlateThickness=(p:Project)=>(p.lidDesign?.svg?p.lidDesign.svgMode!=='cutout':p.lidDesign?.olive)?3.2:2;
 export function validateAccessories(p:Project,walls:Wall[]) {
@@ -101,6 +101,7 @@ export function validateAccessories(p:Project,walls:Wall[]) {
   const s=p.stack;
   if(!Array.isArray(s.levels)||s.levels.length<2||s.levels.length>5||!Number.isInteger(s.active)||s.active<0||s.active>=s.levels.length||!Number.isFinite(s.gap)||s.gap<.2||s.gap>1)throw new Error('Некорректные параметры ярусов.');
   if(s.levels.some((l,i)=>i>0&&i!==s.active&&l.settings?.baseBand))throw new Error('Нижний кант доступен только на первом ярусе.');
+  for(let i=0;i<s.levels.length;i++){const lp=levelProject(p,i);if(lp.shell?.mode==='panels'&&(lp.shell.margin??4)<3)throw new Error('Для ярусов нужен отступ панелей от краёв не меньше 3 мм.');}
   const problem=stackProblem({...p,stack:undefined});if(problem)throw new Error(problem);
   for(const [i,level] of s.levels.entries())if(i!==s.active){const lp=levelProject(p,i);resolveWalls(lp);const why=stackProblem(lp);if(why)throw new Error(`Ярус ${i+1}: ${why}`);}
   for(let i=0;i<s.levels.length-1;i++){const lower=levelProject(p,i),fit=stackFit(levelProject(p,i+1),s.gap,lower);if(fit.hidden&&lower.wallThickness<s.gap+1.4)throw new Error('Уменьшите зазор посадки: гребень должен помещаться в толщине стенки.');}

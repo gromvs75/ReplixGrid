@@ -10,7 +10,7 @@ Start with a three-compartment organizer for your desk. The example below is 180
 
 - **Upper left:** choose **Shape**, **Compartments**, **Shell** or **Print**. The left menu lists the sections of that tool.
 - **At the bottom of the preview:** selecting a section opens a compact, floating settings editor. The scene and grid continue behind it. Only the selected section appears here. Use the chevron to collapse it or **×** to close it; choose another section on the left to continue.
-- **Above the model, in the center:** **Together**, **Organizer**, **Inserts**, **Shell** and **Lid** control which parts you see. Available buttons depend on your design. On narrower windows, they move onto a separate row below the toolbars.
+- **Above the model, in the center:** **Assembly**, **Organizer**, **Inserts**, **Shell** and **Lid** control which parts you see. For stacked designs, use the tier dropdown beside **Organizer** to select the active tier without closing the bottom settings editor. Choose **View stack** in the same dropdown to see all tiers and accessories together. Available buttons depend on your design. On narrower windows, they move onto a separate row below the toolbars.
 - **On the right:** click a compartment number, wall or divider to edit that element.
 
 In **Shape**, start with **Base**, then use **Dimensions**. In **Shell**, choose the pattern, shell type, color, thickness/rim and fit in their separate sections. In **Print**, choose a printer, configure filament slots, or open the section-printing controls.
@@ -72,11 +72,13 @@ For a colored OBJ, keep the OBJ and its MTL file in the same folder. The export 
 
 In **Print**, set the build volume and choose two or three sections, or use the suggested cuts. The app raises wall thickness to at least 5 mm and floor thickness to at least 3 mm, changing compartment sizes. Shells and inserts are unavailable when splitting; the app prompts you to remove them. Some shapes and settings also restrict splitting.
 
-Download the joint sample, place its halves separately, and print at 100% scale. Once cool, check the fit of the pins. Then download the kit, inspect all parts in the slicer, print them, and assemble them after cooling using pins and glue. Nominal pin dimensions are Ø 3.2 × 8 mm; each hole is Ø 3.3 mm and 4.5 mm deep. Fit and strength depend on print settings, material, and glue quality. The owner tested and accepted this joint for organizers; that does not validate every combination.
+Download the joint sample, place its halves separately, and print at 100% scale. Once cool, check the fit of the pins. Then download the kit, inspect all parts in the slicer, print them, and assemble them after cooling using pins and glue. Nominal pin dimensions are Ø 3.2 × 8 mm; each hole is Ø 3.3 mm and 4.5 mm deep. Fit and strength depend on print settings, material, and glue quality.
 
 ## Shells
 
-A one-piece decorative shell is built around the organizer body. Automatic support and compatibility are limited: decorative panels, tiers, split printing, tilted walls, and special settings have separate constraints. If the interface reports an incompatibility, adjust the settings and inspect the result in both preview and slicer. Geometry tests do not guarantee the physical fit of every variant.
+Dense shell patterns can take several seconds to recalculate. If a shell fails to build, the successfully built organizer remains visible and the error stays available; this does not make the shell ready for printing. Correct the shell settings and run the download check again. Export still validates every requested part.
+
+A one-piece decorative shell is built around the organizer body. When adding a shell pattern to a stacked organizer with bottom trim, the app selects a one-piece shell automatically; the trim remains on the first tier. To use separate panels instead, open **Shell → Shell type → Decorative panels**. Panels preserve wall thickness and compartment sizes. With 2.4 mm walls and a 2 mm floor, leave **Hidden fasteners** off and glue the panels in place. Hidden fasteners require walls at least 3.2 mm thick without relief. Panel bottoms sit above the trim; **Edge offset** starts at the top of the trim and must be at least 3 mm on stacked trays. Legacy snap fittings and floors thinner than 1.2 mm cannot be combined with shell-supporting bottom trim. Inspect the preview and slicer output, and check the fit with a small print before printing a full set.
 
 
 ## Match another organizer
@@ -92,3 +94,11 @@ Open **Shape → Organizer relief → My SVGs**, upload a filled SVG, and choose
 In **Drawer**, choose **Print entire drawer**. Set the printer bed length (horizontal), width (vertical), print height and spacing between parts. Review the part count, calculated bed count and numbered layouts, then choose **Download all beds (ZIP)**.
 
 The archive contains one 3MF per bed, bed diagrams, an assembly diagram and a copy of the drawer project. Open each 3MF as a separate job in your slicer. See [Whole-drawer export](REFERENCE.md#whole-drawer-export) for details.
+
+### Add text or an icon
+
+Open **Shape → Label and icon**, choose the side, enter text and select a font or a star/heart. Adjust letter height, vertical position and raised or engraved depth. These sliders update the model while you drag; complex models refresh as each calculation finishes. Letter height is limited to the space on the selected wall beneath the current text. Lower walls and cutouts on other sides do not restrict it. Vertical position runs from the bottom (0%) to the highest safe position below the opening or cutout (100%). On circular and oval models the inscription follows the curved wall and is included in the print export. If it does not fit, shorten the text or reduce letter height.
+
+### Relief on stacked trays
+
+Select **Tier 1**, **Tier 2**, or another tier from the dropdown beside **Organizer** above the model, then open **Shape → Organizer relief** to choose a built-in pattern or your SVG. Each tier can have its own relief. Decoration stays on the exterior walls, clear of the smooth mating collars, tongues and sockets. Internal compartment dimensions remain unchanged. STL and 3MF exports include the relief and retain separate printable tier parts. Verify physical fit with a small test print when changing printer or material.

@@ -12,11 +12,8 @@ work/
 public/guides/FormaNest-SnapFit-U1-eSUN-PLA.3mf
 public/guides/FormaNest-sample.zip
 
-# Internal working documents stay local; public docs describe app usage.
-docs/ROADMAP.md
-docs/FOLLOW-UP-TASKS.md
-docs/INTERNAL-DIMENSIONS-PROTOTYPE.md
-docs/DEVELOPMENT.md
-docs/VARIANTS.md
-docs/RELEASE-*.md
-docs/internal/
+# Public documentation is limited to user instructions and their illustrations.
+docs/*
+!docs/USER-GUIDE.md
+!docs/REFERENCE.md
+!docs/images/

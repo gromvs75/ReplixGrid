@@ -4,9 +4,10 @@ import {contourHeight,honeyCellHeight} from './shell.js';
 import type {Manifold,ManifoldToplevel} from 'manifold-3d';
 import {resolveWalls,type Project} from './model.js';
 import {footprintContour,honeyEdgeOwner,offsetContour} from './footprint.js';
+export type ReliefBounds={minZ?:number;maxZ?:number};
 /** A closed relief skin overlaps the intact wall and is fused to it. */
-export function applyRelief(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold){
- const r=p.relief;if(!r)return body;if(r.svg)return applySvgRelief(wasm,p,body,keep);
+export function applyRelief(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold,bounds:ReliefBounds={}){
+ const r=p.relief;if(!r)return body;if(r.svg)return applySvgRelief(wasm,p,body,keep,false,bounds);
  const resolution=16;
  const walls=resolveWalls(p);
  const contour=footprintContour(p),inner=offsetContour(contour,-.25),outer=offsetContour(contour,1),depth=r.depth;
@@ -21,12 +22,13 @@ export function applyRelief(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(
  }
  // Keep the added skin off the floor and top seam; overlapping coplanar faces
  // otherwise create Float32 slivers at cutouts and stepped honeycomb edges.
- const low=p.floorThickness+.35,step=Math.min(1.5,pitch/resolution),n=samples.length;
+ const low=Math.max(p.floorThickness+.35,bounds.minZ??0),step=Math.min(1.5,pitch/resolution),n=samples.length;
+ if(bounds.maxZ!==undefined&&bounds.maxZ<=low+.05)return body;
  const verts:number[]=[],faces:number[]=[];
  // Every column uses the same absolute Z lattice. Scaling rows to the local
  // roof sheared triangles across many pattern periods beside a deep cutout.
  const columns=samples.map(a=>{
-  const top=Math.max(low+.05,a.top-.35),levels:number[]=[low];
+  const top=Math.max(low+.05,Math.min(a.top-.35,bounds.maxZ??Infinity)),levels:number[]=[low];
   for(let z=low+step;z<top-.02;z+=step)levels.push(z);
   levels.push(top);
   const ids=levels.map(z=>{

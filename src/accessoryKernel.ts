@@ -1,3 +1,4 @@
+import type {ReliefBounds} from './relief.js';
 import {svgSurface,SVG_ISLAND_ERROR} from './svgSurface.js';
 import {stackFit,SHELL_SEAM} from './stackFit.js';
 import {buildDecorativePanels} from './decorativePanels.js';
@@ -28,9 +29,9 @@ export async function buildKit(p:Project):Promise<KitPart[]> {
 }
 const organizerCache=new Map<string,Awaited<ReturnType<typeof buildOrganizer>>>();
 const panelCache=new Map<string,Awaited<ReturnType<typeof buildDecorativePanels>>>();
-async function cachedOrganizer(p:Project,shellSupport=true){
- const key=JSON.stringify([p,shellSupport]);let result=organizerCache.get(key);
- if(!result){result=await buildOrganizer(p,shellSupport);organizerCache.set(key,result);while(organizerCache.size>8)organizerCache.delete(organizerCache.keys().next().value!);}
+async function cachedOrganizer(p:Project,shellSupport=true,reliefBounds:ReliefBounds={}){
+ const key=JSON.stringify([p,shellSupport,reliefBounds]);let result=organizerCache.get(key);
+ if(!result){result=await buildOrganizer(p,shellSupport,reliefBounds);organizerCache.set(key,result);while(organizerCache.size>8)organizerCache.delete(organizerCache.keys().next().value!);}
  return structuredClone(result);
 }
 async function cachedPanels(p:Project){
@@ -67,8 +68,13 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    const base=incoming?.hidden?incoming.base:0;
    baseZ+=base;elevations.push(baseZ);
    // Keep lid presence when deciding whether a sleeve ledge is supported.
-   const built=await cachedOrganizer({...lp,lid:p.stack?undefined:p.lid,cups:undefined},!base);let body:Manifold|null=null;
    const h=resolveWalls(lp)[0].startHeight;
+   // Decoration belongs to the exterior wall, never to the mating collar or tongue.
+   const reliefBounds:ReliefBounds={
+    minZ:incoming&&!incoming.hidden?2.4:undefined,
+    maxZ:outgoing?h-(outgoing.hidden?.6:outgoing.flare+.4):undefined,
+   };
+   const built=await cachedOrganizer({...lp,lid:p.stack?undefined:p.lid,cups:undefined},!base,reliefBounds);let body:Manifold|null=null;
    if(p.stack&&i<count-1){
     body=keep(solid(built.stl).translate(built.position));
     const fit=stackFit(levelProject(p,i+1),p.stack.gap,lp),gap=fit.inner,out=fit.outer;
