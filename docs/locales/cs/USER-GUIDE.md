@@ -12,14 +12,14 @@ Průvodce znovu otevřete přes **Nápověda → Průvodce: tři kroky**. Samotn
 
 Rychlý start, příručka i nabídka nápovědy používají zvolený jazyk rozhraní. Video zůstává v angličtině.
 
-Kroky, rady i potvrzení v průvodci jsou přeloženy. Řádek uloženého modelu se jmenuje **Předchozí projekt**. Skutečné názvy v **Mých projektech** zůstávají takové, jaké jste uložili.
+Kroky, rady i potvrzení v průvodci jsou přeloženy. Řádek uloženého modelu se jmenuje **Předchozí projekt**. Skutečné názvy v **Moje projekty** zůstávají takové, jaké jste uložili.
 
-Klikněte na **Nový projekt** v horní liště a začněte s prázdnou plochou. Předchozí práce včetně nepojmenovaného konceptu se uloží do **Mých projektů**. Řádek **Předchozí projekt** s náhledem otevře knihovnu. Plocha zůstane prázdná až do výběru tvaru. Nový model nemá přepážky ani příslušenství; voština si ponechá propojené buňky. Otevření uloženého projektu obnoví jeho model. Šablona v **Tvar → Základna** mění aktuální projekt, zatímco **Nový projekt** vytváří samostatný.
+Klikněte na **Nový projekt** v horní liště a začněte s prázdnou plochou. Předchozí práce včetně nepojmenovaného konceptu se uloží do **Moje projekty**. Řádek **Předchozí projekt** s náhledem otevře knihovnu. Plocha zůstane prázdná až do výběru tvaru. Nový model nemá přepážky ani příslušenství; voština si ponechá propojené buňky. Otevření uloženého projektu obnoví jeho model. Šablona v **Tvar → Warp** mění aktuální projekt, zatímco **Nový projekt** vytváří samostatný.
 
 
 [Otevřít ReplixGrid](https://grid.replixcast.com/?lang=cs) · [Uživatelská příručka](REFERENCE.md)
 
-Začněte s tříkompartmentovým organizátorem pro Váš stůl. Příklad níže je 180 × 90 mm, s nízkou frontou pro snadný přístup a vyšší záda. Vše, co potřebujete navrhnout, je prohlížeč. Chcete-li připravit soubor pro vaši tiskárnu, otevřete jej ve svém obvyklém kráječi.
+Začněte s tříkompartmentovým organizátorem pro Váš stůl. Příklad níže je 180 × 90 mm, s nízkou frontou pro snadný přístup a vyšší záda. Vše, co potřebujete navrhnout, je prohlížeč. Chcete-li připravit soubor pro vaši tiskárnu, otevřete jej ve svém obvyklém sliceru.
 
 [Podívejte se na video Quick Start v angličtině (1: 03)](https://grid.replixcast.com/guides/quick-start-en.mp4) Chcete-li vidět, jak rozdělit přihrádku, zasunout horní hrany, přidat dvoutónové víko a exportovat 3MF.
 
@@ -28,12 +28,12 @@ Začněte s tříkompartmentovým organizátorem pro Váš stůl. Příklad ní�
 
 - **Vlevo nahoře:** vybrat **Tvar**, **Přihrádky**, **Plášť** nebo **Tisk**. V levém menu jsou uvedeny části tohoto nástroje.
 - **V dolní části náhledu:** Výběr sekce otevře kompaktní, plovoucí editor nastavení. Scéna a mřížka za ní pokračují. Zde se objeví pouze vybraná sekce. Použijte Chevron ke kolapsu nebo **×** k jeho zavření; zvolte další část vlevo pokračovat.
-- **Nad modelem, v centru:** **Sestava**, **Organizér**, **Vložky**, **Plášť** a **Víko** Kontrolujte, které části vidíte. Pro naskládané vzory použijte level dropdown vedle **Organizér** vybrat aktivní úroveň bez zavření editoru nastavení dna. Vyberte **Zobrazit zásobník** ve stejném pádu vidět všechny úrovně a příslušenství dohromady. Dostupné tlačítka závisejí na vašem návrhu. Na užších oknech se pohybují do samostatného řádku pod nástrojovými lištami.
-- **Vpravo:** kliknutím na políčko číslo, zeď nebo dělič pro úpravu tohoto prvku.
+- **Nad modelem:** zvolte **Sestava**, **Organizér**, **Vložky**, **Plášť** nebo **Víko**. Nabídka vedle **Organizér** otevře patro k úpravě nebo celou sestavu pomocí **Zobrazit zásobník**, aniž zavře dolní editor. Dostupné jsou jen existující díly. V úzkém okně se tlačítka přesunou do samostatného řádku.
+- **Vpravo:** kliknutím na číslo přihrádky, stěnu nebo přepážku otevřete její nastavení.
 
-V **Tvar**, začít s **Warp**, pak použít **Rozměry**. V **Plášť**, Vyberte vzor, typ skořápky, barva, tloušťka / ráfek a zapadnout do jejich samostatných sekcí. V **Tisk**, zvolte tiskárnu, konfigurujte sloty vlákna, nebo otevřete ovládání sekčního tisku.
+V **Tvar**, začít s **Warp**, pak použít **Rozměry**. V **Plášť**, Vyberte vzor, typ pláště, barva, tloušťka / ráfek a zapadnout do jejich samostatných sekcí. V **Tisk**, zvolte tiskárnu, konfigurujte sloty vlákna, nebo otevřete ovládání sekčního tisku.
 
-Zatímco budete pohybovat posuvníkem, model aktualizace jako každý výpočet dokončí. Složité modely mohou trvat déle; konečná hodnota je vždy vypočítána s plnou přesností. Před kontrolou nebo exportováním výsledku počkejte na hotový náhled. Oznámení editoru zmizí po 10 sekundách, nebo je můžete zavřít **×**.
+Při pohybu posuvníku se model aktualizuje po každém výpočtu. Složité modely mohou vyžadovat více času; konečná hodnota se vždy počítá s plnou přesností. Před kontrolou nebo exportem počkejte na dokončení náhledu. Oznámení zmizí po 10 sekundách nebo je zavřete tlačítkem **×**.
 
 Video Quick Start bylo nahráno s dřívějším rozvržením obrazu. Modelovací kroky stále platí; pro nalezení aktuálních ovladačů použijte výše uvedená místa.
 
@@ -45,22 +45,22 @@ Video Quick Start bylo nahráno s dřívějším rozvržením obrazu. Modelovac�
 3. **Zařaď to do svého prostoru.** Pod **Tvar → Rozměry**, zadejte vnější šířku a hloubku v milimetrech. Kliknutím na očíslovanou přihrádku přečtete její vnitřní rozměry. Pod **Vnitřní rozměry** zadejte požadovanou šířku nebo hloubku, nebo klikněte na štítek modré dimenze na modelu a zadejte hodnotu. Klepněte na tlačítko venku pro aplikaci. Začněte s oddílem 1 a háčkujte v jednoduchém pořadí; poslední oddíl obdrží zbytek. Zaokrouhlené konce se mohou zúžit od měřicí čáry, takže zkontrolujte stopu objektu a opusťte prostor.
 4. **V případě potřeby upravte rozvržení.** Přepnout na **Shora**, vyberte prostor, set **Počet dílů** do **2**, pak klikněte **Rozdělit na šířku** nebo **Rozdělit do hloubky**. Rozdělí se pouze vybraný prostor. Klepněte na dělič nastavit svou pozici, nebo vyberte prvek z **Všechny stěny a přihrádky** na pravém panelu. Přesun vybraného děliče změní oddíly na obou stranách při upevnění dalších dělicích poloh. Návrat **3D** aby zkontrolovali výsledek.
 
-5. **Dokončete horní hrany (nepovinné).** Pod **Tvar → Rohy a zkosení**, najít **Horní hrana stěn a přepážek**. Vyberte **Zkosení** pro plochý kužel nebo **Zaoblený** na zakřivený okraj. Zadejte velikost v milimetrech; maximální závisí na tloušťce stěny, takže plochý pás zůstává na vrcholu. Koncovka následuje po obou stranách vnějších stěn a děličů. Vyberte **Bez úpravy** k obnovení čtvercových hran. Při kombinování řezu, vnitřní rohové zaokrouhlení a nakloněné nebo nakloněné tělo, počkejte na hotový náhled před stažením. Zkontrolujte konečné rozměry v dialogovém okně ke stažení: naklánění může zvýšit vnější stopu. Výřezy v jednotlivých hranách voštin nejsou podporovány.
+5. **Dokončete horní hrany (nepovinné).** Pod **Tvar → Rohy a zkosení**, najít **Horní hrana stěn a přepážek**. Vyberte **Zkosení** pro plochý kužel nebo **Filé** na zakřivený okraj. Zadejte velikost v milimetrech; maximální závisí na tloušťce stěny, takže plochý pás zůstává na vrcholu. Koncovka následuje po obou stranách vnějších stěn a děličů. Vyberte **Bez úpravy** k obnovení čtvercových hran. Při kombinování řezu, vnitřní rohové zaokrouhlení a nakloněné nebo nakloněné tělo, počkejte na hotový náhled před stažením. Zkontrolujte konečné rozměry v dialogovém okně ke stažení: naklánění může zvýšit vnější stopu. Výřezy v jednotlivých hranách voštin nejsou podporovány.
 
 ![Ovládání tvaru a dokončená nakloněná kapsle se třemi přihrádkami](../../images/capsule-sloped.jpg)
 
 <a id="try-a-two-tone-lid-optional"></a>
 ## Vyzkoušejte dvoubarevné víko
 
-Víko potřebuje horní okraj. Pokud chcete, aby se nakloněné kapsle z příkladu, klikněte na tlačítko **Uložit projekt** Nejdřív. Tak si vyberte. **Kapsle** a **Flat** Výškový profil pod **Tvar** a klepněte na tlačítko **Vytvořit ze šablony**.
+Víko vyžaduje horní okraj ve stejné výšce. Chcete-li zachovat nakloněnou kapsli z příkladu, nejprve stáhněte kopii pomocí **Uložit projekt**. Poté v **Tvar** vyberte **Kapsle** a profil **Hladký** a klikněte na **Vytvořit ze šablony**.
 
 1. Otevřít **Tvar → Víko** a přidejte víko. Pod **Usazení víka**, vybrat **Vnější** pro víko, které pokrývá ráfek nebo **Zapuštěné** za víko, které uvnitř sedí splachované. Dvoutónové víko potřebuje stěny o tloušťce nejméně 2 mm a vnitřní hloubku nejméně 5,2 mm.
-2. Povolit **Dvoubarevný vzor** a vybrat **Vzor víka**. Chcete-li vyzkoušet větráky v galerii, vyberte **Listy jinanu**.
+2. Povolit **Dvoubarevný vzor** a vybrat **Lid pattern**. Chcete-li vyzkoušet větráky v galerii, vyberte **Listy jinanu**.
 3. Nastavit **Základní barva víka** na barvu pozadí a **Barva vzoru víka** na barvu výkresu. Pro níže uvedenou kombinaci zvolte krém pro podklad a olivovou zelenou pro vzor.
 
 ![Two- tone víčka, zleva doprava. Horní řada ukazuje Olive větev, Ginkgo listy a Fern frond. Dolní řada ukazuje přílivové vlny, říční oblázky a růstové kroužky.](../../images/lid-motifs.svg)
 
-Pro tisk vyberte **3MF** a přiřadí základ a vzor k jejich vlákninovým štěrbinám. Držte obě barvy pohromadě jako jeden objekt. Pro olivovou ratolest, Ginkgo listy, Fern frond, Přílivové vlny a růstové kroužky, **Prořezávaný vzor** dělá motiv z otvorů v kontinuálním horním listu. Zkombinuj to s **Vystouplý vzor** aby odhalila zapuštěnou podporu skrz otvory. S **Vystouplý vzor** na, motiv stojí 1.6 mm nad pevným 1.6 mm podkladem; otvory neprocházejí víkem. Vypněte to pro hladký, flush inlay. Zvednutá vložená víčka exportují zadní stranu dolů. Překrývající se víčka exportují vzor směrem dolů, aby vyhovovaly jejich ráfku: zkontrolujte mosty přes zákoutí ve vašem kráječi před potiskem.
+**Dvoubarevný vzor** je dostupný pro oba typy víka. Vyberte olivovou větvičku, listy jinanu, kapradinu, vlny, říční oblázky, letokruhy nebo Voroného buňky a barvy podkladu i vzoru. Deska 3,2 mm má plný podklad 1,6 mm a vzorovanou vrstvu 1,6 mm. Vnější okraj a úchyt zvětšují celkovou výšku. Zapuštěné víko potřebuje vnitřní hloubku alespoň 5,2 mm. Exportujte 3MF, aby obě barevné části zůstaly spolu, a přiřaďte filamenty. Pro olivu, jinan, kapradinu, vlny a letokruhy vytváří **Prořezávaný vzor** otvory v horní vrstvě. **Vystouplý vzor** je nechává prázdné do hloubky 1,6 mm a odhaluje podklad; vypněte jej pro hladkou vložku. Zapuštěná reliéfní víka se tisknou podkladem dolů, vnější víka vzorem dolů. Ve sliceru zkontrolujte mosty nad prohlubněmi.
 
 <a id="download-your-first-print"></a>
 ## Stažení prvního modelu k tisku
@@ -69,12 +69,12 @@ Pro tisk vyberte **3MF** a přiřadí základ a vzor k jejich vlákninovým št�
 2. Kliknout **↓ Stáhnout** v horním baru. V **Ověření a stažení**, vybrat **Organizér a příslušenství**. Pokud jste přidali skořápku a chcete ji také, vyberte celou sadu.
 3. Vyberte **STL** pro jednobarevné tělo, nebo **3MF** k uchování oddělených částí, barev a úloh vlákna. Počkejte na kontrolu geometrie a velikosti. Pokud se část nehodí, opravte rozměry nebo sestavte objem a znovu otevřete dialog.
 4. Kliknout **↓ Stáhnout STL** nebo **↓ Stáhnout 3MF** v dolní části dialogu. Pokud několik STL soubory dorazí v ZIP Nejdřív je vyndej.
-5. Otevřete model v kráječi. Zkontrolujte jeho velikost v milimetrech, umístěte organizační základnu na postel, a uspořádejte všechny samostatné díly. Vyberte si tiskárnu a materiálové profily, plátky, a zkontrolujte první vrstvu a děliče v náhledu vrstvy před potiskem.
+5. Otevřete model ve sliceru a zkontrolujte rozměry v milimetrech. Položte organizér dnem na tiskovou podložku a rozmístěte ostatní díly. Vyberte profily tiskárny a materiálu, připravte tiskové dráhy a před tiskem zkontrolujte první vrstvu a přepážky v náhledu vrstev.
 
 <a id="projects-and-backups"></a>
 ## Projekty a zálohy
 
-Otevřít **Moje projekty** a uložte jmenovanou kopii. Otevřený projekt automaticky ušetří. Můžete také vyhledávat, přejmenovat, otevřít, smazat, nebo stáhnout projekty tam. Nepojmenovaná práce je zachována jako návrh. Stáhnout projekt JSON soubor jako zálohu nebo pro přenos, a klepněte na tlačítko **Otevřít** v horním baru, aby to naložili. Poškozený soubor by měl hlásit chybu ověření bez nahrazení stávajícího projektu.
+Otevřete **Moje projekty** a uložte pojmenovanou kopii. Otevřený projekt se ukládá automaticky. V knihovně můžete projekty hledat, přejmenovat, otevřít, smazat nebo stáhnout; nepojmenovaná práce zůstane jako koncept. Stáhněte JSON pro zálohu nebo přenos a načtěte jej tlačítkem **Otevřít** na horní liště. Poškozený soubor má vyvolat chybu ověření, aniž by nahradil aktuální projekt.
 
 Aplikované edity jsou okamžitě zachráněny. Pokud je zápis přerušen, obnova aplikace obnoví svou dočasnou kopii. Pokud je aktuální relace poškozena, aplikace zkusí svůj poslední úspěšný snímek. Pokud nelze obnovit žádnou kopii, automatická úsporná zastavení pro ochranu uložených dat; použít **Otevřít** Obnovit stažené JSON Záloha. Pokud uložení hlásí chybu, stahujte zálohu projektu před odjezdem.
 
@@ -87,23 +87,23 @@ Knihovna je uložena ve vašem prohlížeči a vázaná na adresu webu. Čiště
 <a id="filaments-and-export-options"></a>
 ## Filamenty a formáty exportu
 
-Pro multikolory 3MF, Nastavit dostupné sloty v **Tisk** se stejnými čísly a barvami jako kráječ. Na... Snapmaker U1 první čtyři odpovídají T0 – T3. Přiřadit slot do každé části v dialogovém okně ke stažení, pak ověřit úkoly v Snapmaker Orca. Nepřiřazené části mohou použít první vlákno. Vaše tiskárna a materiálové profily pocházejí z vašeho kráječe.
+Pro vícebarevný 3MF nastavte sloty v **Tisk** se stejnými čísly a barvami jako ve sliceru. U Snapmaker U1 odpovídají první čtyři sloty T0–T3. V okně stahování přiřaďte slot každému dílu a ověřte přiřazení v Snapmaker Orca. Nepřiřazené díly mohou použít první filament. Profily tiskárny a materiálu nastavte ve sliceru.
 
-Pro barevný OBJ, udržet OBJ a jeho MTL soubor ve stejné složce. Kontrola exportu umožňuje 2 mm rozpětí na posteli hrany pro každou část. Uspořádat celou sadu a zkontrolovat převisy a jemné detaily v kráječi.
+Pro barevný OBJ, udržet OBJ a jeho MTL soubor ve stejné složce. Kontrola exportu umožňuje 2 mm rozpětí na tiskové podložce hrany pro každou část. Uspořádat celou sadu a zkontrolovat převisy a jemné detaily v sliceru.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Tisk velkého organizéru po částech
 
-V **Tisk**, nastavit objem konstrukce a vybrat dva nebo tři oddíly, nebo použít navrhované řezy. Aplikace zvyšuje tloušťku stěny na nejméně 5 mm a tloušťku podlahy na nejméně 3 mm, čímž mění velikost prostoru. Nábojnice a vložky jsou při dělení nedostupné; aplikace vás vyzývá, abyste je odstranili. Některé tvary a nastavení také omezují dělení.
+V **Tisk** nastavte tiskový prostor a vyberte dvě či tři části nebo navržené řezy. Stěny se zesílí alespoň na 5 mm a dno na 3 mm, takže se změní vnitřní rozměry. Aplikace vás před rozdělením vyzve k odstranění plášťů a vložek. Některé tvary a nastavení rozdělení neumožňují.
 
-Stáhnout společný vzorek, umístit jeho poloviny odděleně, a tisknout na 100% stupnice. Po chladu, zkontrolujte uložení kolíky. Poté stáhnout sadu, zkontrolovat všechny díly v kráječi, vytisknout, a sestavit je po chlazení pomocí kolíky a lepidlem. Nominální rozměry kolíku jsou Ø 3,2 × 8 mm; každý otvor je Ø 3,3 mm a 4,5 mm hluboké. Pevnost a pevnost závisí na nastavení tisku, materiál a kvalita lepidla.
+Stáhnout společný vzorek, umístit jeho poloviny odděleně, a tisknout na 100% stupnice. Po chladu, zkontrolujte uložení kolíky. Poté stáhnout sadu, zkontrolovat všechny díly v sliceru, vytisknout, a sestavit je po chlazení pomocí kolíky a lepidlem. Nominální rozměry kolíku jsou Ø 3,2 × 8 mm; každý otvor je Ø 3,3 mm a 4,5 mm hluboké. Pevnost a pevnost závisí na nastavení tisku, materiál a kvalita lepidla.
 
 <a id="shells"></a>
 ## Pláště
 
 Hustota shell vzory mohou trvat několik sekund přepočítat. Pokud shell selže stavět, úspěšně postavený organizátor zůstává viditelný a chyba zůstává k dispozici; to neznamená, že shell připraven k tisku. Opravte nastavení shell a spustit kontrolu stahování znovu. Export stále validuje každou požadovanou část.
 
-Kolem těla organizátora je postavena jednodílná dekorativní skořápka. Při přidávání shellového vzoru k naskládanému organizátorovi se spodním lemováním aplikace automaticky vybere jednodílnou skořápku; lemování zůstává na prvním stupni. Chcete-li použít samostatné panely místo, otevřít **Plášť → Typ skořápky → Dekorativní panely**. Panely zachovávají tloušťku stěny a velikost prostoru. S 2,4 mm stěnami a 2 mm podlahou, dovolená **Skryté spojovací prostředky** Odlepit a přilepit panely na místo. Skryté spojovací prostředky vyžadují stěny o tloušťce nejméně 3,2 mm bez reliéfu. Spodní část panelu sedí nad obrubou; **Odsazení okraje** začíná v horní části obruče a musí být nejméně 3 mm na skládaných podnosech. Legacy snap fitinky a podlahy tenčí než 1.2 mm nelze kombinovat s Shell- nosné spodní lemování. Před vytisknutím celé sady zkontrolujte výstup náhledu a kráječe a zaškrtněte jej malým potiskem.
+Kolem těla organizátora je postavena jednodílná dekorativní skořápka. Při přidávání shellového vzoru k naskládanému organizátorovi se spodním lemováním aplikace automaticky vybere jednodílnou skořápku; lemování zůstává na prvním stupni. Chcete-li použít samostatné panely místo, otevřít **Plášť → Тип оболочки → Dekorativní panely**. Panely zachovávají tloušťku stěny a velikost prostoru. S 2,4 mm stěnami a 2 mm dnem, dovolená **Skryté zapínání** Odlepit a přilepit panely na místo. Skryté spojovací prostředky vyžadují stěny o tloušťce nejméně 3,2 mm bez reliéfu. Spodní část panelu sedí nad obrubou; **Odsazení okraje** začíná v horní části obruče a musí být nejméně 3 mm na skládaných podnosech. Legacy snap fitinky a dna tenčí než 1.2 mm nelze kombinovat s Shell- nosné spodní lemování. Před vytisknutím celé sady zkontrolujte výstup náhledu a sliceru a zaškrtněte jej malým potiskem.
 
 
 <a id="match-another-organizer"></a>
@@ -114,28 +114,28 @@ Použití **Tvar → Společný styl** uložit aktuální barvy a vzory s názve
 <a id="use-your-own-svg-pattern"></a>
 ## Vlastní vzor SVG
 
-Otevřít **Tvar → Úleva pořadatele → My SVGs**, nahrát vyplněný SVG, a vyberte jeden motiv nebo opakující se vzor. Zvolte stěny, nastavte šířku, rotaci a polohu a pak upravte hloubku reliéfu. V opakovaném režimu jsou umístěny pouze kompletní motivy: zmenšení šířky nezanechává odstřižené úlomky na okrajích nebo vystřiženích. Vnitřní prostory zůstávají nezměněny. Vzor je vložen do uloženého projektu. Stejná knihovna pracuje v **Tvar → Víko → My SVGs** (zvýšený vzor nebo otvory) a **Plášť → Vzorec → My SVGs** (perforace). Pro víčka a skořápky, **My SVGs** Otevře spodek **Studio vzorců**. Použít jeho **Lid / Shell** záložky pro přepínání ploch a automatické izolování odpovídající části náhledu. Knihovna je vlevo, vedle ní jsou rozměry, rotace, rozestupy a posuny X / Y. Vyberte **Povrchová reliéf (výzdoba)** nebo **Přes šablonu (řez)** v horní části pravé ruky nastavení. Výška reliéfu se objevuje pouze pro reliéf; opakovaná vzdálenost se objevuje pouze v opakovacím režimu. **Materiál tloušťka** změní generovanou desku (1.2-6 mm pro SVG víko, 1-4 mm pro krunýř). Stávající výpadky víka jsou 3,2 mm pro reliéf a 2 mm pro šablonu; při přepínání se udržuje výslovně zvolená tloušťka. Inset SVG víko potřebuje vnitřní hloubku alespoň své tloušťky plus 2 mm. Nábojnice se vždy prořezávají skořápkou, takže tam není žádná úleva. Base barva je pod **Dodatečné**; požadavky na soubory jsou v rámci **Které soubory SVG fungují?**. Uzavření studia si nechává vaše změny. Rámy a montážní plochy jsou zachovány. Pro výřezy přidejte mosty do všech uzavřených vnitřních detailů, aby zůstaly připevněné. Vidíš? [Vlastní reliéf SVG](REFERENCE.md#custom-svg-relief) pro podporované soubory a limity.
+Otevřete **Tvar** → **Úleva pořadatele** → **My SVGs**, nahrajte vyplněné SVG a zvolte jeden motiv nebo opakování. Nastavte stěny, šířku, otočení, polohu a výšku reliéfu. Opakované motivy se umísťují pouze celé: zmenšení nezanechává úlomky u hran a výřezů. Přihrádky se nemění a vzor se ukládá do projektu. Otevřete **Tvar** → **Víko** → **My SVGs** nebo **Plášť** → **Pattern** → **My SVGs**. Karty **Víko** a **Plášť** sdílejí knihovnu, ale mají nezávislá nastavení. Přepnutí zobrazí příslušný díl; pokud ještě neexistuje, zůstává viditelná sestava. Pohled na celek lze zvolit nad modelem. Šířka, otočení, rozestup a X/Y určují polohu motivu; centrovací tlačítko resetuje polohu a otočení. Víko podporuje reliéf i otvory, plášť jen otvory. Rámy a místa uchycení zůstávají zachovány. **×** nebo **Escape** zavře aktivní studio a ponechá změny. Šipky klávesnice přepínají vybranou kartu. Zvolte **Raised relief (decoration)** pro reliéf nebo **Through stencil (cut)** pro průchozí otvory. Pláště podporují pouze otvory. Výška se zobrazuje jen u reliéfu, rozestup jen u opakování. **Material thickness** mění náhled i export: 1,2–6 mm pro SVG víko, 1–4 mm pro plášť. Výchozí tloušťka je 3,2 mm pro reliéf a 2 mm pro šablonu; zvolená hodnota zůstává při změně režimu. Výška reliéfu je součástí tloušťky. Zapuštěné SVG víko vyžaduje vnitřní hloubku alespoň tloušťka desky plus 2 mm. **Dodatečné** obsahuje barvu víka nebo výběr stěn pláště. **Which SVG files work?** vysvětluje požadavky a přípravu souborů. [Vlastní reliéf SVG](REFERENCE.md#custom-svg-relief).
 
 <a id="print-an-entire-drawer"></a>
 ## Tisk celé zásuvky
 
-V **DRAWER**, vybrat **Print entire drawer**. Nastavte délku tiskařského lůžka (vodorovně), šířku (svisle), výšku tisku a vzdálenost mezi částmi. Zkontrolujte počet dílů, vypočtený počet lůžek a číslovaných rozložení, pak vyberte **Download all beds (ZIP)**.
+V **Drawer**, vybrat **Print entire drawer**. Nastavte délku tiskařského lůžka (vodorovně), šířku (svisle), výšku tisku a vzdálenost mezi částmi. Zkontrolujte počet dílů, vypočtený počet tiskových podložek a číslovaných rozložení, pak vyberte **Download all beds (ZIP)**.
 
-Archiv obsahuje jeden 3MF na postel, diagramy postele, montážní diagram a kopie projektu zásuvky. Otevřít každý 3MF jako samostatnou práci ve vašem kráječi. Vidíš? [Export celé zásuvky](REFERENCE.md#whole-drawer-export) detaily.
+Archiv obsahuje jeden 3MF na tiskovou podložku, diagramy tiskové podložky, montážní diagram a kopie projektu zásuvky. Otevřít každý 3MF jako samostatnou práci ve vašem sliceru. Vidíš? [Export celé zásuvky](REFERENCE.md#whole-drawer-export) detaily.
 
 <a id="ready-made-stencil-examples"></a>
 ### Hotové příklady šablon
 
-Stáhnout [listy révy vinné](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/organic_leaf_pattern-stencil.svg) nebo [dvojšestiúhelník](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/3d_print_pattern-stencil.svg). Uložit jako `.svg`, pak nahrávat přes **My SVGs** na víku nebo krunýři. Pro víko vyberte **Přes šablonu (řez)**; shells již používají tento režim. Vyberte **Repeat** u více kopií začněte s šířkou přibližně 20 mm a rozestupem 4 mm a zmenšte šířku, pokud se výkres nehodí. Šestiúhelníkový soubor obsahuje jednu opakovatelnou dlaždici; listový soubor obsahuje pět listů. Vidíš? [Stažení hotových šablon SVG](REFERENCE.md#download-ready-to-use-stencil-svgs) pro povrchy i velikost mostu.
+Stáhnout [listy révy vinné](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/organic_leaf_pattern-stencil.svg) nebo [dvojšestiúhelník](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/3d_print_pattern-stencil.svg). Uložit jako `.svg`, pak nahrávat přes **My SVGs** na víku nebo plášti. Pro víko vyberte **Through stencil (cut)**; shells již používají tento režim. Vyberte **Repeat** u více kopií začněte s šířkou přibližně 20 mm a rozestupem 4 mm a zmenšte šířku, pokud se výkres nehodí. Šestiúhelníkový soubor obsahuje jednu opakovatelnou dlaždici; listový soubor obsahuje pět listů. Vidíš? [Stažení hotových šablon SVG](REFERENCE.md#download-ready-to-use-stencil-svgs) pro povrchy i velikost mostu.
 
 Číslicové posuvníky zobrazují své skutečné **Min / Max** mezní hodnoty a bílá značka hodnoty v zeleném povoleném intervalu. Červené koncové uzávěry indikují hodnoty, které překračují limity. Můžete také zadat přesnou hodnotu.
 
 <a id="before-uploading-an-svg"></a>
 ### Před nahráním SVG
 
-Použijte vyplněný vektor načrtne až 200 KB. Převést text a tahy na obrysy a odstranit nežádoucí pozadí. Obrázky, masky, výstřižky, filtry, gradienty, CSS styl bloky a reference prvků nejsou podporovány. Soubor, který úspěšně import není vhodný pro každý povrch.
+Používejte SVG do 200 KB s vyplněnými vektorovými obrysy. Převeďte text a tahy na vyplněné obrysy a odstraňte nepotřebné pozadí. Obrázky, masky, ořezové cesty, filtry, přechody, bloky CSS a odkazy na jiné prvky nejsou podporovány. Úspěšný import nezaručuje vhodnost vzoru pro každý povrch.
 
-Tělo a víko **úleva** mají solidní podporu. **Přes otvory** v víčkách a skořápkách musí zůstat připojený materiál: přiložené detaily potřebují mosty. Zvyšování opakovacího rozstupu nemůže opravit izolovaný detail uvnitř výkresu. Šířka stupnice celek SVG, včetně jakékoli mřížky, která je v ní již nakreslena. Pokud build selže, může zůstat poslední úspěšný náhled; před exportem opravte nastavení. Vidíš? [Výběr SVG podle účelu](REFERENCE.md#choose-an-svg-for-its-intended-use) pro přípravné kroky a příklady.
+**Reliéf** na těle a víku má souvislý podklad. U **průchozích otvorů** musí zbývající materiál zůstat propojený: uzavřené vnitřní detaily potřebují můstky. Větší rozestup opakování nepřipevní volný detail uvnitř motivu. Šířka mění měřítko celého SVG včetně již nakreslené mřížky. Při chybě výpočtu může zůstat zobrazen poslední platný náhled; před exportem opravte nastavení. Viz [Výběr SVG podle účelu](REFERENCE.md#choose-an-svg-for-its-intended-use).
 
 <a id="add-text-or-an-icon"></a>
 ### Přidání textu nebo ikony
@@ -145,11 +145,11 @@ Otevřít **Tvar → Podpis a odznak**, Vyberte stranu, zadejte text a vyberte p
 <a id="relief-on-stacked-trays"></a>
 ### Reliéf na patrech
 
-Vybrat **Patro 1**, **Patro 2**, nebo jiný stupeň z dropdown vedle **Organizér** nad modelem, poté otevřený **Tvar → Úleva pořadatele** si vybrat built- ve vzorci nebo SVG. Každý stupeň může mít svou vlastní úlevu. Dekorace zůstává na vnějších stěnách, bez hladkých pářících límců, jazyků a důlků. Rozměry vnitřního prostoru zůstávají nezměněny. STL a 3MF vývozy zahrnují úlevu a ponechávají si samostatné výtiskové části úrovně. Při výměně tiskárny nebo materiálu ověřte fyzickou kondici malým testovacím tiskem.
+V nabídce vedle **Organizér** nad modelem vyberte patro. Otevřete **Tvar** → **Úleva pořadatele** a zvolte vestavěný vzor nebo SVG. Každé patro může mít vlastní reliéf. Dekorace zůstává na vnějších stěnách, zatímco dosedací okraje, výstupky a drážky zůstávají hladké. Vnitřní rozměry se nemění. STL a 3MF obsahují reliéf i samostatné díly pater. Při změně tiskárny nebo materiálu ověřte spojení malým zkušebním tiskem.
 
 <a id="manage-filament-slots"></a>
 ### Správa slotů filamentu
 
-Pod **Tisk → Nitě z nekonečných vláken**, přidat až 16 sloty a nastavit název a přibližnou barvu náhledu pro každého. Nastavit přesný odstín a jakékoliv barevné míchání ve vašem kráječi; ReplixGrid se nepočítá míchání receptů. Vyberte jakoukoli kartu a klepněte na tlačítko **Odstranit vlákno z otvoru N** Osvobodit toto číslo bez přečíslování ostatních. **+ Slot N** obnovuje nejnižší volné číslo. Barvy modelu zůstávají nezměněny. Před vývozem znovu zkontrolujte přidělení slotu 3MF, zvláště po vymazání vlákna.
+V **Tisk** → **Slicer filaments** nastavte stejná čísla a barvy jako ve sliceru. U Snapmaker U1 odpovídají sloty 1–4 hlavám T0–T3. Lze nastavit až 16 slotů s barvou a názvem materiálu. Barva je přibližná orientační pomůcka, nikoli simulace vytištěného nebo smíchaného odstínu; přesné směsi nastavte ve sliceru. Vyberte kartu a klikněte na **Delete filament from slot N** pro odstranění filamentu. Ostatní čísla se nemění: po odstranění slotu 6 zůstává slot 7 číslem 7. **+ Slot N** znovu použije nejnižší volné číslo; limit zůstává 16. Odstranění nemění barvu modelu. Odstraněné sloty se při exportu nenabízejí ani automaticky nepřiřazují; vyberte jiný nebo jej přiřaďte ve sliceru. Různé barvy umožňují automatické párování. Mají-li dva sloty stejnou barvu, vyberte správný pro každý díl v okně stahování.
 
-Chcete-li porovnat digitální barvu z vašeho kráječe, vložte jeho šestimístný **Kód HEX**, například `#E63522`, vedle barevného výběrčího. Vedení `#` je nepovinné. Platné kódy aktualizují náhled okamžitě; neúplný nebo neplatný text se nepoužije a vrací se do uložené barvy, když opustíte pole. Odpovídající HEX kód nesimuluje vzhled vlákna, osvětlení nebo fyzikální barevnou směs.
+Pro stejnou digitální barvu jako ve sliceru zadejte vedle výběru barvy šestimístný **HEX code**, například `#E63522`. Úvodní `#` je volitelný. Platný kód okamžitě aktualizuje náhled. Neúplný nebo chybný kód se nepoužije; po opuštění pole se vrátí uložená barva. Kód nesimuluje skutečný vzhled filamentu, osvětlení ani fyzické míchání barev.

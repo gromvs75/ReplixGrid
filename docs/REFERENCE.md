@@ -172,7 +172,7 @@ Under **Print**, select your printer and head configuration or choose **Custom s
 
 For a model that exceeds the bed, use the suggested cuts or choose two or three sections when available. Read the proposed seam positions and use **Move the parts apart** to see how the sections meet. Splitting increases wall thickness to at least 5 mm and floor thickness to at least 3 mm. Recheck the inside dimensions. Remove shells and inserts before splitting. Stacked trays, tilted models and the circle, oval and honeycomb bases require single-piece printing. **Return solid model** switches off sectioning. Check thickness again if you want to restore earlier dimensions.
 
-**Joint sample** downloads mating ends to try at the same scale and print settings as the final body. Place them separately with their bases down. After cooling, the nominal Ø 3.2 × 8 mm pins fit into Ø 3.3 mm holes, 4.5 mm deep on each side of the seam. Check alignment, then use pins and glue to assemble the printed sections. Use **Download all parts** for the sectioned organizer itself.
+**↓ Joint sample** downloads mating ends to try at the same scale and print settings as the final body. Place them separately with their bases down. After cooling, the nominal Ø 3.2 × 8 mm pins fit into Ø 3.3 mm holes, 4.5 mm deep on each side of the seam. Check alignment, then use pins and glue to assemble the printed sections. Use **↓ Download all parts** for the sectioned organizer itself.
 
 ## Download and slice
 
@@ -213,7 +213,7 @@ Use the selector beside **+ Variant** to switch between related models, or choos
 
 Use **Separate project → Save a copy** to create an unrelated project. Rename or delete individual models in My projects; deleting the original does not delete its variants.
 
-**Download** exports the selected model for printing. **Save project** downloads that model as editable JSON; **File** on a library card downloads the corresponding model. JSON contains one model, without its related variants or undo history. Save each model separately to transfer or back up the complete set.
+**↓ Download** exports the selected model for printing. **Save project** downloads that model as editable JSON; **File** on a library card downloads the corresponding model. JSON contains one model, without its related variants or undo history. Save each model separately to transfer or back up the complete set.
 
 
 ## Shared styles
@@ -236,7 +236,7 @@ Choose **Drawer** next to **Organizer**, then **Create drawer**. Enter the measu
 
 New drawers start at 180 × 280 mm, with the front edge marked at the bottom. **Rotate view by 90°** changes only the viewing orientation; drawer dimensions, tray coordinates and exported models stay unchanged. Existing drawer arrangements retain their dimensions. Saved drawers open with length horizontal and width vertical; dimension labels follow manual view rotation. The tray rotation button turns only the selected tray.
 
-Use **New organizer** to create a tray directly in the drawer. Set its dimensions, then edit compartments and accessories in the usual organizer editor. **Back to drawer** returns to its placement. **Add saved organizer** adds an independent copy of a saved project or variant; editing it never changes its source.
+Use **New organizer** to create a tray directly in the drawer. Set its dimensions, then edit compartments and accessories in the usual organizer editor. **← Back to drawer** returns to its placement. **Add saved organizer** adds an independent copy of a saved project or variant; editing it never changes its source.
 
 Drag trays in top view or enter X/Y coordinates measured from the top-left corner to the tray’s outer bounds. Rotate by 90 degrees, duplicate or remove trays. Arrow keys move a focused tray by 1 mm (Shift: 10 mm). Arrangement undo/redo restores placements and completed tray edits.
 
@@ -311,7 +311,7 @@ These examples contain filled contours with material bridges. Black areas become
 
 **On a shell:** open **Shell → Pattern → My SVGs**, or choose the **Shell** tab in the studio, then select the same file from the shared library. Shells always use through openings. Use **Repeat** for a band around the shell; **Additional → SVG walls** selects the sides of a wrapped shell. Decorative panels use the selected panel sides. Each surface retains its own placement and thickness settings. Switching studio tabs shows the corresponding part.
 
-If a motif does not fit, reduce its width or offset. On a low shell, try 12–16 mm for the leaf group. Increasing shell thickness can enlarge its automatic border and leave less space for the drawing. Scaling down also narrows the bridges: inspect them in your slicer and print a small sample for your nozzle and material. Repeat spacing cannot widen internal bridges. Wait for the current preview to finish, then use **Download** to check and export the lid or shell.
+If a motif does not fit, reduce its width or offset. On a low shell, try 12–16 mm for the leaf group. Increasing shell thickness can enlarge its automatic border and leave less space for the drawing. Scaling down also narrows the bridges: inspect them in your slicer and print a small sample for your nozzle and material. Repeat spacing cannot widen internal bridges. Wait for the current preview to finish, then use **↓ Download** to check and export the lid or shell.
 
 ### Numeric sliders and valid ranges
 
