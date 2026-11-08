@@ -19,13 +19,13 @@ Klicken Sie oben auf **Neues Projekt**, um mit einer leeren Arbeitsfläche zu be
 
 Beginnen Sie mit einem Drei-Fach-Organisator für Ihren Schreibtisch. Das Beispiel unten ist 180 × 90 mm, mit einer niedrigen Vorderseite für einfachen Zugang und einer größeren Rückseite. Alles, was Sie brauchen, um es zu entwerfen, ist ein Browser. Um die Datei für Ihren Drucker vorzubereiten, öffnen Sie sie in Ihrem üblichen Slicer.
 
-[Sehen Sie sich das Quick Start Video auf Englisch an (1:03 Uhr)](https://grid.replixcast.com/guides/quick-start-en.mp4), um zu sehen, wie Sie ein Fach teilen, die oberen Ränder abschrägen, einen zweifarbigen Deckel hinzufügen und eine 3MF exportieren.
+[Sehen Sie sich das Quick Start Video auf Englisch an (1:03 Min.)](https://grid.replixcast.com/guides/quick-start-en.mp4), um zu sehen, wie Sie ein Fach teilen, die oberen Ränder abschrägen, einen zweifarbigen Deckel hinzufügen und eine 3MF exportieren.
 
 <a id="find-your-controls"></a>
 ## Die Bedienelemente finden
 
 - **Oben links:** Wählen Sie **Form**, **Fächer**, **Hülle** oder **Drucken**. Das linke Menü listet die Abschnitte dieses Tools auf.
-- **Unten in der Vorschau:** Auswählen eines Abschnitts öffnet einen kompakten, schwebenden Einstellungseditor. Die Szene und das Raster setzen sich dahinter fort. Nur der ausgewählte Abschnitt erscheint hier. Verwenden Sie den Chevron, um ihn zusammenzubrechen oder **×**, um ihn zu schließen; wählen Sie einen anderen Abschnitt links, um fortzufahren.
+- **Unten in der Vorschau:** Auswählen eines Abschnitts öffnet einen kompakten, schwebenden Einstellungseditor. Die Szene und das Raster setzen sich dahinter fort. Nur der ausgewählte Abschnitt erscheint hier. Verwenden Sie den Chevron, um ihn einzuklappen oder **×**, um ihn zu schließen; wählen Sie einen anderen Abschnitt links, um fortzufahren.
 - **Über dem Modell, in der Mitte:** **Zusammen**, **Organizer**, **Einsätze**, **Hülle** und **Deckel** steuern Sie, welche Teile Sie sehen. Bei gestapelten Designs verwenden Sie die Dropdown-Stufe neben **Organizer**, um die aktive Ebene auszuwählen, ohne den unteren Einstellungseditor zu schließen. Wählen Sie **Stapel anzeigen** in der gleichen Dropdown-Stufe, um alle Ebenen und Zubehör zusammen zu sehen. Verfügbare Tasten hängen von Ihrem Design ab. Bei schmaleren Fenstern bewegen sie sich in eine separate Zeile unter den Symbolleisten.
 - **Rechts:** klicken Sie auf eine Fächernummer, Wand oder Trennwand, um dieses Element zu bearbeiten.
 
@@ -39,7 +39,7 @@ Das Quick-Start-Video wurde mit dem früheren Panel-Layout aufgenommen. Die Mode
 ## Das Beispiel nachbauen
 
 1. **Öffnen** [grid.replixcast.com](https://grid.replixcast.com/?lang=de). Verwenden Sie das Sprachmenü in der oberen Leiste, um Sprachen zu ändern. Wenn Sie bereits ein Design haben, das Sie behalten möchten, klicken Sie auf **Projekt speichern**, um eine editierbare Kopie herunterzuladen, bevor Sie beginnen.
-2. **Erschaffe den Körper.** Open **Form**, choose **Kapsel** under **Basis** and **Ansteigend** under **Höhenprofil**, then click **Aus Vorlage erstellen**. Die Vorschau sollte zwei Teiler und drei nummerierte Fächer zeigen. Der Rand steigt von 22 auf 70 mm. Das Erstellen einer Schablone ersetzt das aktuelle Design; der gebogene Rückschlagpfeil stellt es wieder her.
+2. **Erstellen Sie den Körper.** Öffnen Sie **Form**, wählen Sie **Kapsel** unter **Basis** und **Ansteigend** unter **Höhenprofil**, und klicken Sie auf **Aus Vorlage erstellen**. Die Vorschau sollte zwei Teiler und drei nummerierte Fächer zeigen. Der Rand steigt von 22 auf 70 mm. Das Erstellen einer Schablone ersetzt das aktuelle Design; der gebogene Rückschlagpfeil stellt es wieder her.
 3. **Passen Sie es an Ihren Raum an.** Unter **Form → Abmessungen** geben Sie die Außenbreite und -tiefe in Millimetern ein. Klicken Sie auf ein nummeriertes Fach, um die Innenmaße zu lesen. Unter **Innenmaße** geben Sie die erforderliche Breite oder Tiefe ein oder klicken Sie auf das blaue Dimensionsetikett auf dem Modell und geben Sie den Wert ein. Klicken Sie nach draußen, um es anzuwenden. Beginnen Sie mit dem Fach 1 und arbeiten Sie in einer einfachen Zeile in der Reihenfolge; das letzte Fach erhält den Rest. Abgerundete Enden können sich von der Messlinie weg verengen, also überprüfen Sie den Objekt-Fußabdruck und lassen Sie die Freigabe.
 4. **Passen Sie das Layout bei Bedarf an.** Wechseln Sie zu **Oben**, wählen Sie ein Fach aus, setzen Sie **Anzahl der Teile** auf **2**, klicken Sie dann auf **Teilung in der Breite** oder **Untergliederung in die Tiefe**. Nur das ausgewählte Fach teilt sich. Klicken Sie auf einen Trenner, um seine Position anzupassen, oder wählen Sie ein Element aus **Alle Wände und Fächer** im rechten Bereich. Bewegen Sie einen ausgewählten Trenner ändert die Fächer auf beiden Seiten, während andere Trennerpositionen fixiert bleiben. Kehren Sie zu **3D** zurück, um das Ergebnis zu überprüfen.
 

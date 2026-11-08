@@ -103,7 +103,7 @@ Verwenden Sie **Verbinden Sie die Höhen benachbarter Wände**, damit eine Auße
 <a id="corners-edges-and-decoration"></a>
 ## Ecken, Kanten und Gestaltung
 
-Open **Form → Ecken und Fasen**. Drei Bedienelemente beeinflussen verschiedene Teile des Drucks.
+Öffnen Sie **Form → Ecken und Fasen**. Drei Bedienelemente beeinflussen verschiedene Teile des Drucks.
 
 | Kontrolle | Wohin zu schauen | Was es verändert |
 | --- | --- | --- |

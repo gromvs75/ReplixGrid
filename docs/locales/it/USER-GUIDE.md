@@ -17,7 +17,7 @@ Premi **Nuovo progetto** nella barra superiore per ripartire da un’area vuota.
 
 [Apri ReplixGrid](https://grid.replixcast.com/?lang=it) ·[Manuale utente](REFERENCE.md)
 
-Inizia con un organizzatore di tre componenti per la tua scrivania. L'esempio qui sotto è di 180 × 90 mm, con un fronte basso per un facile accesso e una parte posteriore più alta. Tutto ciò che devi progettare è un browser. Per preparare il file per la stampante, aprilo nel tuo affettatore solito.
+Inizia con un organizzatore di tre componenti per la tua scrivania. L'esempio qui sotto è di 180 × 90 mm, con un fronte basso per un facile accesso e una parte posteriore più alta. Tutto ciò che devi progettare è un browser. Per preparare il file per la stampante, aprilo nel tuo slicer solito.
 
 [Guarda il video Quick Start in inglese (1:03)](https://grid.replixcast.com/guides/quick-start-en.mp4) per vedere come dividere un vano, smussare i bordi superiori, aggiungere un coperchio bicolore ed esportare un 3MF.
 
@@ -58,7 +58,7 @@ Un coperchio ha bisogno di un bordo di livello. Se si desidera mantenere la caps
 
 ![Due coperchi, da sinistra a destra. La fila superiore mostra ramo d'ulivo, foglie di Ginkgo e rana di Fern. La fila inferiore mostra onde di marea, ciottoli di fiume e anelli di crescita.](../../images/lid-motifs.svg)
 
-Per la stampa, scegliere **3MF** e assegnare la base e il modello alle loro fessure di filamento. Tenere entrambi i colori insieme come un oggetto. Per ramo d'ulivo, foglie di Ginkgo, Fern frond, onde di marea e anelli di crescita, **Motivo traforato** rende il motivo fuori delle aperture in un foglio superiore continuo. Combinalo con **Motivo in rilievo** per esporre il supporto incassato attraverso le aperture. Con **Motivo in rilievo** su, il motivo è di 1,6 mm sopra un solido supporto di 1,6 mm; le aperture non passano attraverso il coperchio. Spegnilo per un intarsio liscio e arrossito. I coperchi inset aumentati esportano il lato posteriore verso il basso. Overlapping coperchi esportare schema-lato giù per ospitare il loro cerchio: controllare i ponti sopra i recessi nel vostro affettatore prima di stampare.
+Per la stampa, scegliere **3MF** e assegnare la base e il modello alle loro fessure di filamento. Tenere entrambi i colori insieme come un oggetto. Per ramo d'ulivo, foglie di Ginkgo, Fern frond, onde di marea e anelli di crescita, **Motivo traforato** rende il motivo fuori delle aperture in un foglio superiore continuo. Combinalo con **Motivo in rilievo** per esporre il supporto incassato attraverso le aperture. Con **Motivo in rilievo** su, il motivo è di 1,6 mm sopra un solido supporto di 1,6 mm; le aperture non passano attraverso il coperchio. Spegnilo per un intarsio liscio e arrossito. I coperchi inset aumentati esportano il lato posteriore verso il basso. Overlapping coperchi esportare schema-lato giù per ospitare il loro cerchio: controllare i ponti sopra i recessi nel vostro slicer prima di stampare.
 
 <a id="download-your-first-print"></a>
 ## Scaricare il primo modello
@@ -67,7 +67,7 @@ Per la stampa, scegliere **3MF** e assegnare la base e il modello alle loro fess
 2. Clicca **↓ Scarica** nella barra superiore. In **Verifica e download**, scegli **Organizer e accessori**. Se hai aggiunto un guscio e lo vuoi anche, scegli l'intero kit.
 3. Scelga **STL** per un corpo monocolore, o **3MF** per mantenere parti separate, colori e assegnazioni di filamento. Attendere i controlli di geometria e dimensione. Se una parte non si adatta, correggere le dimensioni o costruire il volume e riaprire la finestra di dialogo.
 4. Clic **↓ Scarica STL** o **↓ Scarica 3MF** nella parte inferiore della finestra di dialogo. Se diversi file STL arrivano in uno ZIP, estrarli prima.
-5. Aprire il modello nel vostro affettatore. Controllare le sue dimensioni in millimetri, posizionare la base dell'organizzatore sul letto, e organizzare qualsiasi parte separata. Selezionare la stampante e profili di materiale, fettare, e ispezionare il primo strato e i divisori nell'anteprima dello strato prima della stampa.
+5. Aprire il modello nel vostro slicer. Controllare le sue dimensioni in millimetri, posizionare la base dell'organizzatore sul letto, e organizzare qualsiasi parte separata. Selezionare la stampante e profili di materiale, fettare, e ispezionare il primo strato e i divisori nell'anteprima dello strato prima della stampa.
 
 <a id="projects-and-backups"></a>
 ## Progetti e copie di sicurezza
@@ -85,7 +85,7 @@ La libreria viene memorizzata nel tuo browser e legata all'indirizzo del sito. L
 <a id="filaments-and-export-options"></a>
 ## Filamenti e formati di esportazione
 
-Per un 3MF multicolore, configurare le slot disponibili in **Stampa** con gli stessi numeri e colori del vostro affettatore. Su uno Snapmaker U1 i primi quattro corrispondono a T0–T3. Assegnare una slot a ogni parte nella finestra di dialogo download, quindi verificare le assegnazioni in Snapmaker Orca. Le parti non firmate possono utilizzare il primo filamento.
+Per un 3MF multicolore, configurare le slot disponibili in **Stampa** con gli stessi numeri e colori del vostro slicer. Su uno Snapmaker U1 i primi quattro corrispondono a T0–T3. Assegnare una slot a ogni parte nella finestra di dialogo download, quindi verificare le assegnazioni in Snapmaker Orca. Le parti non firmate possono utilizzare il primo filamento.
 
 Per un OBJ colorato, tenere l'OBJ e il suo file MTL nella stessa cartella. Il controllo dell'esportazione consente un margine di 2 mm ai bordi del letto per ogni parte.
 
@@ -101,7 +101,7 @@ Scaricate il campione di giunzione, posizionate le metà separatamente e stampat
 
 I modelli di shell Dense possono richiedere diversi secondi per ricalcolare. Se un guscio non riesce a costruire, l'organizzatore costruito con successo rimane visibile e l'errore rimane disponibile; questo non rende la shell pronta per la stampa. Correggere le impostazioni della shell ed eseguire nuovamente il controllo download. L'esportazione convalida ancora ogni parte richiesta.
 
-Un guscio decorativo di un pezzo è costruito intorno al corpo organizzatore. Quando si aggiunge un modello di shell a un organizzatore impilato con il bordo inferiore, l'applicazione seleziona automaticamente una shell di un pezzo; il trim rimane sul primo livello. Per usare pannelli separati invece, aperto **Rivestimento → Tipo di conchiglia → Pannelli decorativi**. I pannelli conservano lo spessore della parete e le dimensioni del vano. Con pareti da 2,4 mm e un pavimento da 2 mm, lasciare **Cerniera nascosta** fuori e incollare i pannelli in posizione. Chiusure nascoste richiedono pareti di spessore almeno 3.2 mm senza rilievo. I fondali del pannello siedono sopra il trim; **Offset del bordo** inizia nella parte superiore del trim e deve essere di almeno 3 mm su vassoi impilati. Raccordi a scatto legacy e pavimenti più sottili di 1,2 mm non possono essere combinati con coperture portanti. Ispezionare l'anteprima e l'uscita dell'affettatore, e controllare la vestibilità con una piccola stampa prima di stampare un set completo.
+Un guscio decorativo di un pezzo è costruito intorno al corpo organizzatore. Quando si aggiunge un modello di shell a un organizzatore impilato con il bordo inferiore, l'applicazione seleziona automaticamente una shell di un pezzo; il trim rimane sul primo livello. Per usare pannelli separati invece, aperto **Rivestimento → Tipo di conchiglia → Pannelli decorativi**. I pannelli conservano lo spessore della parete e le dimensioni del vano. Con pareti da 2,4 mm e un pavimento da 2 mm, lasciare **Cerniera nascosta** fuori e incollare i pannelli in posizione. Chiusure nascoste richiedono pareti di spessore almeno 3.2 mm senza rilievo. I fondali del pannello siedono sopra il trim; **Offset del bordo** inizia nella parte superiore del trim e deve essere di almeno 3 mm su vassoi impilati. Raccordi a scatto legacy e pavimenti più sottili di 1,2 mm non possono essere combinati con coperture portanti. Ispezionare l'anteprima e l'uscita dell'slicer, e controllare la vestibilità con una piccola stampa prima di stampare un set completo.
 
 
 <a id="match-another-organizer"></a>
@@ -119,7 +119,7 @@ Aprire **Forma → Rilievo dell'organizzatore → My SVGs**, caricare un riempit
 
 In **DRAWER**, scegliere **Print entire drawer**. Impostare la lunghezza del letto della stampante (orizzontale), larghezza (verticale), altezza di stampa e spaziatura tra le parti. Verificare il conteggio della parte, il conteggio del letto calcolato e i layout numerati, quindi scegliere **Download all beds (ZIP)**.
 
-L'archivio contiene uno 3, del regolamento n. per letto, diagrammi del letto, un diagramma di assemblaggio e una copia del progetto del cassetto. Aprire ciascuno 3, del regolamento n. come un lavoro separato nel tuo affettatore. Vedi [Esportare l’intero cassetto](REFERENCE.md#whole-drawer-export) per i dettagli.
+L'archivio contiene uno 3MF per letto, diagrammi del letto, un diagramma di assemblaggio e una copia del progetto del cassetto. Aprire ciascuno 3MF come un lavoro separato nel tuo slicer. Vedi [Esportare l’intero cassetto](REFERENCE.md#whole-drawer-export) per i dettagli.
 
 <a id="ready-made-stencil-examples"></a>
 ### Esempi di stencil pronti all’uso
@@ -143,11 +143,11 @@ Aprire **Forma → Firma e distintivo**, scegli il lato, inserisci il testo e se
 <a id="relief-on-stacked-trays"></a>
 ### Rilievo sui vassoi impilati
 
-Seleziona **Livello 1**, **Livello 2**, o un altro tier dal dropdown accanto **Organizer** sopra il modello, poi aperto **Forma → Rilievo dell'organizzatore** scegliere uno schema integrato o il tuo SVG. Ogni livello può avere un proprio sollievo. La decorazione rimane sulle pareti esterne, chiaro dei collari di accoppiamento liscio, lingue e prese. Le dimensioni del vano interno rimangono invariate. STATO e 3, del regolamento n. le esportazioni includono il rilievo e mantenere parti stampabili separate. Verificare la vestibilità fisica con una piccola stampa di prova quando si cambia stampante o materiale.
+Seleziona **Livello 1**, **Livello 2**, o un altro tier dal dropdown accanto **Organizer** sopra il modello, poi aperto **Forma → Rilievo dell'organizzatore** scegliere uno schema integrato o il tuo SVG. Ogni livello può avere un proprio sollievo. La decorazione rimane sulle pareti esterne, chiaro dei collari di accoppiamento liscio, lingue e prese. Le dimensioni del vano interno rimangono invariate. STATO e 3MF le esportazioni includono il rilievo e mantenere parti stampabili separate. Verificare la vestibilità fisica con una piccola stampa di prova quando si cambia stampante o materiale.
 
 <a id="manage-filament-slots"></a>
 ### Gestire gli slot del filamento
 
-Sottotitolo **Stampa → Filamenti a fessura**, aggiungere fino a 16 slot e impostare un nome e un colore di anteprima approssimativa per ciascuno. Configurare l'ombra esatta e qualsiasi colore mescolando nel vostro affettatore; ReplixGrid non calcola le ricette di miscelazione. Selezionare qualsiasi carta e fare clic **Eliminare il filamento da slot N** liberare quel numero senza rinumerare gli altri. **+ Fessura N** ripristina il numero libero più basso. I colori del modello rimangono invariati. Controllare le assegnazioni slot di nuovo prima di esportare 3, del regolamento n., soprattutto dopo la cancellazione di un filamento.
+In **Stampa → Filamenti dello slicer**, aggiungere fino a 16 slot e impostare un nome e un colore di anteprima approssimativa per ciascuno. Configurare l'ombra esatta e qualsiasi colore mescolando nel vostro slicer; ReplixGrid non calcola le ricette di miscelazione. Selezionare qualsiasi carta e fare clic **Eliminare il filamento da slot N** liberare quel numero senza rinumerare gli altri. **+ Fessura N** ripristina il numero libero più basso. I colori del modello rimangono invariati. Controllare le assegnazioni slot di nuovo prima di esportare 3MF, soprattutto dopo la cancellazione di un filamento.
 
-Per abbinare un colore digitale dal vostro affettatore, incollare il suo sei cifre **Codice HEX**, per esempio `#E63522`, accanto al raccoglitore di colore. Il leader `#` è facoltativo. I codici validi aggiornano immediatamente l'anteprima; il testo incompleto o non valido non viene applicato e ritorna al colore salvato quando si lascia il campo. Un abbinamento HEX il codice non simula l'aspetto del filamento, l'illuminazione o una miscela di colore fisico.
+Per abbinare un colore digitale dal vostro slicer, incollare il suo sei cifre **Codice HEX**, per esempio `#E63522`, accanto al raccoglitore di colore. Il leader `#` è facoltativo. I codici validi aggiornano immediatamente l'anteprima; il testo incompleto o non valido non viene applicato e ritorna al colore salvato quando si lascia il campo. Un abbinamento HEX il codice non simula l'aspetto del filamento, l'illuminazione o una miscela di colore fisico.
