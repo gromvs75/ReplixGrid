@@ -9,7 +9,7 @@ import {splitPlan} from './splitting.js';
 import {hasDecorativeShellSupport,hasShellSupport,hasLegacyShellSupport,shellSupportHeight} from './shellSupport.js';
 
 /** Develop the perimeter into a strip, then fold its perforations back onto each facet. */
-export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold){
+export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,keep:(m:Manifold)=>Manifold,refinement=(!p.footprint&&!p.cornerRadius?.5:1)):Manifold{
  if(p.shell?.svg)return applySvgRelief(wasm,p,body,keep,true);
  const s=p.shell!,border=s.border??Math.max(3,s.thickness*2),offset=shellGap(p)+s.thickness;
  const contour=(!p.footprint&&!p.cornerRadius?[[ -offset,-offset],[p.width+offset,-offset],[p.width+offset,p.depth+offset],[-offset,p.depth+offset]]:footprintContour(p,offset)) as [number,number][];
@@ -106,10 +106,15 @@ export function perforateShell(wasm:ManifoldToplevel,p:Project,body:Manifold,kee
   const shape=new wasm.CrossSection([candidate.slice().reverse()]),clipped=shape.intersect(mask);shape.delete();
   try{if(clipped.area()<.02)continue;
    if(split&&split.cuts.some(cut=>{const axis=split.axis==='x'?0:1;const coords=clipped.toPolygons().flat().map(v=>position(v[0],.5)[axis]);return Math.max(...coords)>cut-5&&Math.min(...coords)<cut+20;}))continue;
-   const prism=keep(clipped.extrude(1)),refined=keep(prism.refineToLength(!p.footprint&&!p.cornerRadius?.5:1));
+   const prism=keep(clipped.extrude(1)),refined=keep(prism.refineToLength(refinement));
    cutters.push(keep(refined.warp(v=>{const z=v[1],xy=position(v[0],1-v[2]);v[0]=xy[0];v[1]=xy[1];v[2]=z;})));
   }finally{clipped.delete();}
  }}finally{mask.delete();}
  // Resolve sub-micron Boolean slivers before serialization into Float32 STL.
- return cutters.length?keep(keep(body.setTolerance(.001)).subtract(keep(keep(wasm.Manifold.union(cutters)).setTolerance(.001)))):body;
+ const result=cutters.length?keep(keep(body.setTolerance(.001)).subtract(keep(keep(wasm.Manifold.union(cutters)).setTolerance(.001)))):body;
+ // A coarse cutter triangle can bridge a tight corner and sever a lattice rib.
+ // Rebuild the developed pattern with finer triangles; never discard detached
+ // material or accept disconnected shells as a successful repair.
+ const components=result.decompose();components.forEach(keep);
+ return components.length>1&&refinement>.2?perforateShell(wasm,p,body,keep,.2):result;
 }

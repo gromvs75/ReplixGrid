@@ -43,3 +43,11 @@ test('small tiers use actual corner and wall clearance, not a fixed 8 mm margin'
  const parts=await buildKit(setLevelCount(p,2));assert.equal(parts.length,2);
  for(const part of parts)assert.ok(inspectSurface(decodeSTL(part.stl)).volume>0);
 });
+
+for(const [width,depth] of [[6.68,5.58],[13.27,9.63],[51.73,47.19]])test(`petal lattice stays connected across corners at ${width} × ${depth}`,async()=>{
+ const {buildShell}=await import('../src/kernel.js');
+ for(const size of [4.37,8.13,15.61,23.87]){
+  const p={...defaultProject(),width,depth,height:18.37,wallThickness:.8,floorThickness:.8,cornerRadius:.5,cutouts:{front:{shape:'smooth' as const,width:.4,depth:4.17,position:.5}},shell:{pattern:'petals' as const,gap:.2,thickness:1.2,size,border:2}};
+  const shell=await buildShell(p);assert.ok(inspectSurface(decodeSTL(shell.stl)).volume>0,`pattern size ${size}`);
+ }
+});

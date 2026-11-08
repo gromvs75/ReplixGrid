@@ -122,7 +122,7 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
       // Close vertices on fine perforations can be distinct: retry with a
       // smaller weld, retaining the same strict closed-surface inspection.
       // Wrapped SVG strips can also meet at Float32-scale seams.
-      if(!(error instanceof Error)||(error.message!=='Open or non-manifold oriented edge'&&!(project.relief?.svg&&error.message==='Degenerate triangle')))throw error;
+      if(!(error instanceof Error)||(error.message!=='Open or non-manifold oriented edge'&&!((part==='shell'||project.relief?.svg)&&error.message==='Degenerate triangle')))throw error;
       // Boolean slivers on rounded/sloped perforated sleeves may leave
       // seams up to 3 microns apart, below the existing 5-micron simplification.
       // Keep this fallback shell-only; every candidate must still pass the
