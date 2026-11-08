@@ -8,9 +8,9 @@ Reopen the helper at any time with **Help → Helper: three steps**. Opening it 
 
 All Help menu labels follow the selected interface language. The linked manuals and video are currently in English.
 
-The helper follows the interface language, including all three steps, hints and the saved-project confirmation. Project names remain as you saved them.
+The helper follows the interface language, including all three steps, hints and the saved-project confirmation. The saved-project row uses the translated label **Previous project**. Actual project names in **My projects** remain as you saved them.
 
-To start again, click **New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. A thumbnail row in the helper confirms what was saved; click it to open the library. The canvas is cleared immediately and stays empty until you choose a new shape. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
+To start again, click **New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. A thumbnail row labelled **Previous project** in the helper confirms what was saved; click it to open the library. The canvas is cleared immediately and stays empty until you choose a new shape. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
 
 
 [Open ReplixGrid in English](https://grid.replixcast.com/?lang=en) · [User Guide — full feature reference](REFERENCE.md)
