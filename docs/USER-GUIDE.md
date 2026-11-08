@@ -1,5 +1,12 @@
 # Your first ReplixGrid organizer
 
+## First visit and a clean start
+
+The first visit opens a blank workshop. Choose a shape, then follow the two optional shortcuts: **2. Set dimensions** and **3. Add compartments**. The helper has only three steps and can be closed with **×**. You can also open a saved project or JSON file.
+
+To start again, click **New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
+
+
 [Open ReplixGrid in English](https://grid.replixcast.com/?lang=en) · [User Guide — full feature reference](REFERENCE.md)
 
 Start with a three-compartment organizer for your desk. The example below is 180 × 90 mm, with a low front for easy access and a taller back. All you need to design it is a browser. To prepare the file for your printer, open it in your usual slicer.

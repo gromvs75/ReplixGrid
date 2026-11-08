@@ -21,6 +21,14 @@ Design an organizer in millimeters, check its fit, and download the parts for yo
 | Download all drawer parts arranged for the printer | [Whole-drawer export](#whole-drawer-export) |
 | Work out why a control or download is unavailable | [Troubleshooting](#troubleshooting) |
 
+## Start a new project
+
+On your first visit, the workshop opens without a model. Choose **Rounded**, **Capsule**, **Circle**, **Oval** or **Honeycomb** to create a simple body. A short helper then offers **2. Set dimensions** and **3. Add compartments**, opening the relevant controls directly. Close it with **×** whenever you prefer. Honeycomb starts with its connected cells; the other bases start without dividers.
+
+Use **New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. Until you choose a shape, there is no model to save or export. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
+
+Choosing **Shape → Base → Create from template** while editing still replaces the construction inside the current project and can be undone. Use **New project** when you want a separate model.
+
 ## Workspace and views
 
 Open a tool in the upper left. **Shape** changes the body and its accessories. **Compartments** changes the layout. **Shell** designs a separate outer cover. **Print** sets the build volume, filament slots and optional section cuts. Click a compartment number, wall or divider on the model to open its settings on the right. If a part is hard to click, expand **All walls and compartments** and select it by name.

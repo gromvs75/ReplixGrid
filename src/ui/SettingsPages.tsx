@@ -1,17 +1,19 @@
 import {Children,createContext,isValidElement,useContext,useEffect,useId,useRef,useState,type ReactNode} from 'react';
 import {createPortal} from 'react-dom';
 import {t} from '../i18n.js';
-const SettingsContext=createContext<{active:string|null;open:(id:string|null)=>void;suspended:boolean}>({active:null,open:()=>{},suspended:false});
-export function SettingsWorkspace({children,scope,suspended,onSelect}:{children:ReactNode;scope:string;suspended:boolean;onSelect:()=>void}){
+const SettingsContext=createContext<{active:string|null;open:(id:string|null)=>void;suspended:boolean;requestedPage?:{title:string;key:number}|null}>({active:null,open:()=>{},suspended:false});
+export function SettingsWorkspace({children,scope,suspended,onSelect,requestedPage}:{children:ReactNode;scope:string;suspended:boolean;onSelect:()=>void;requestedPage?:{title:string;key:number}|null}){
  const [active,setActive]=useState<string|null>(null);
- useEffect(()=>setActive(null),[scope]);
- return <SettingsContext.Provider value={{active,suspended,open:id=>{setActive(id);if(id)onSelect();}}}>{children}</SettingsContext.Provider>;
+ const lastRequest=useRef<number|undefined>(undefined);
+ useEffect(()=>{if(requestedPage?.key!==lastRequest.current){lastRequest.current=requestedPage?.key;return;}setActive(null);},[scope,requestedPage]);
+ return <SettingsContext.Provider value={{active,suspended,requestedPage,open:id=>{setActive(id);if(id)onSelect();}}}>{children}</SettingsContext.Provider>;
 }
 export function SettingsPage({children}:{title:string;children:ReactNode}){return <>{children}</>;}
 /** Navigation stays in the sidebar; only the selected editor appears below the model. */
 export function SettingsPages({children}:{children:ReactNode}){
- const pages=Children.toArray(children).filter(isValidElement<{title:string;children:ReactNode}>),id=useId(),{active,open,suspended}=useContext(SettingsContext);
+ const pages=Children.toArray(children).filter(isValidElement<{title:string;children:ReactNode}>),id=useId(),{active,open,suspended,requestedPage}=useContext(SettingsContext);
  const [host,setHost]=useState<Element|null>(null),[collapsed,setCollapsed]=useState(false),body=useRef<HTMLDivElement>(null),opener=useRef<HTMLButtonElement|null>(null);
+ useEffect(()=>{if(!requestedPage)return;const i=pages.findIndex(p=>p.props.title===requestedPage.title);if(i>=0)open(`${id}-${i}`);},[requestedPage]);
  const index=pages.findIndex((_,i)=>active===`${id}-${i}`),visible=index>=0&&!suspended;
  useEffect(()=>{setHost(document.querySelector('.stage'));},[]);
  useEffect(()=>{setCollapsed(false);},[active]);

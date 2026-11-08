@@ -80,3 +80,5 @@ Object.assign(filamentTranslations.en,{
 });
 
 Object.assign(filamentTranslations.en,{'HEX-код':'HEX code','HEX-код цвета':'Color HEX code','Введите 6 символов: 0–9, A–F. Например, #E63522.':'Enter 6 characters: 0–9, A–F. For example, #E63522.'});
+
+Object.assign(filamentTranslations.en,{'НОВЫЙ ПРОЕКТ':'NEW PROJECT','Новый проект':'New project','Начните с формы':'Start with a shape','Выберите основу. Размеры и отсеки настроите дальше.':'Choose a base. Adjust dimensions and compartments next.','Выберите форму':'Choose a shape','Задайте размеры':'Set dimensions','Добавьте отсеки':'Add compartments','Уже есть проект?':'Already have a project?','Открыть файл':'Open file','Выберите форму для нового проекта':'Choose a shape for your new project','Первые шаги':'First steps','Форма выбрана':'Shape selected','Скрыть помощника':'Hide helper','Здесь появятся ваши сохранённые проекты.':'Your saved projects will appear here.'});
