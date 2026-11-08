@@ -14,6 +14,8 @@ The interface is available in 11 languages. Printer presets set the build volume
 
 [Watch the Quick Start video (1:03, English)](https://grid.replixcast.com/guides/quick-start-en.mp4) · [Quick Start — build your first organizer](docs/USER-GUIDE.md) · [User Guide — full feature reference](docs/REFERENCE.md)
 
+[Instructions in all 11 interface languages](docs/LANGUAGES.md). Help opens the matching language automatically.
+
 ### Option 2: run it locally on your computer
 
 Prefer a local copy? Follow the Windows and macOS setup instructions below. Both options let you design organizers and export files for your slicer.

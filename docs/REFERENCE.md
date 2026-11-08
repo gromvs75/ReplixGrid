@@ -2,7 +2,7 @@
 
 Design an organizer in millimeters, check its fit, and download the parts for your slicer. For a first build, follow the illustrated capsule example. Use this reference when you want to change a particular part of your design.
 
-[Open ReplixGrid in English](https://grid.replixcast.com/?lang=en) · [Quick Start](USER-GUIDE.md) · [Local installation](../README.md#local-installation)
+[Open ReplixGrid](https://grid.replixcast.com/?lang=en) · [Quick Start](USER-GUIDE.md) · [Local installation](../README.md#local-installation)
 
 | I want to… | Go to |
 | --- | --- |
@@ -27,7 +27,7 @@ On your first visit, the workshop opens without a model. Choose **Rounded**, **C
 
 Reopen the helper at any time with **Help → Helper: three steps**. Opening it keeps the current model; choosing another shape replaces the model and can be undone.
 
-All Help menu labels follow the selected interface language. The linked manuals and video are currently in English.
+All Help menu labels follow the selected interface language. Quick Start and User Guide open in that language. The video is in English.
 
 The helper follows the interface language, including all three steps, hints and the saved-project confirmation. The saved-project row uses the translated label **Previous project**. Actual project names in **My projects** remain as you saved them.
 
@@ -43,7 +43,7 @@ The left panel is section navigation. Select a section to open only its settings
 
 Drag the background to rotate, scroll to zoom, and drag with the right mouse button to pan. **Return camera** restores the camera framing. **Top** helps you select a narrow compartment or move a divider. **3D** shows wall heights and the finished assembly. **Grid** toggles the reference grid, with fine lines every 10 mm and major lines every 50 mm. Use the part buttons centered above the model to isolate the organizer, inserts, shell or lid when present. **Assembly** shows the available parts together for the current view. For multiple tiers, choose **View stack** in the dropdown beside **Organizer** to show the entire stack; choose **Tier 1**, **Tier 2**, or another tier to return to that tier. The bottom settings editor stays open. In stack view, **Shell** and **Inserts** include parts from all tiers. On narrower windows these buttons move to their own row below the toolbars. With the lid isolated, choose **Bottom** to inspect its underside. Press **Esc** to close the tool panel. Use the curved arrows above the model to undo or redo a design change.
 
-Use the top bar to choose an interface language or switch between light, dark and system appearance. The English names in this guide match the English interface.
+Use the top bar to choose an interface language or switch between light, dark and system appearance. Control names in this guide follow the selected interface language.
 
 ## Shape and dimensions
 

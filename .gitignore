@@ -19,3 +19,6 @@ docs/*
 !docs/images/
 
 !docs/examples/
+
+!docs/LANGUAGES.md
+!docs/locales/

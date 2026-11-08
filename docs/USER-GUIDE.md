@@ -6,14 +6,14 @@ The first visit opens a blank workshop. Use the panel beside the left menu: **1.
 
 Reopen the helper at any time with **Help → Helper: three steps**. Opening it keeps the current model; choosing another shape replaces the model and can be undone.
 
-All Help menu labels follow the selected interface language. The linked manuals and video are currently in English.
+All Help menu labels follow the selected interface language. Quick Start and User Guide open in that language. The video is in English.
 
 The helper follows the interface language, including all three steps, hints and the saved-project confirmation. The saved-project row uses the translated label **Previous project**. Actual project names in **My projects** remain as you saved them.
 
 To start again, click **New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. A thumbnail row labelled **Previous project** in the helper confirms what was saved; click it to open the library. The canvas is cleared immediately and stays empty until you choose a new shape. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
 
 
-[Open ReplixGrid in English](https://grid.replixcast.com/?lang=en) · [User Guide — full feature reference](REFERENCE.md)
+[Open ReplixGrid](https://grid.replixcast.com/?lang=en) · [User Guide — full feature reference](REFERENCE.md)
 
 Start with a three-compartment organizer for your desk. The example below is 180 × 90 mm, with a low front for easy access and a taller back. All you need to design it is a browser. To prepare the file for your printer, open it in your usual slicer.
 
