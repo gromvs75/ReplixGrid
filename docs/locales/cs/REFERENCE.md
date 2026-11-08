@@ -27,6 +27,8 @@ Design organizátor v milimetrech, zkontrolujte jeho fit, a stáhnout díly pro 
 
 Při prvním spuštění je pracovní plocha prázdná. Průvodce vlevo nabízí tři kroky: **Vyberte tvar → Nastavte rozměry → Přidejte přihrádky**. Vyberte tvar, nastavte rozměry a klikněte na **Dále: přihrádky**. Dokončete tlačítkem **Hotovo** nebo **Ponechat bez přepážek**. Po výběru tvaru lze průvodce zavřít tlačítkem **×**. Můžete také otevřít uložený projekt nebo soubor JSON.
 
+**Na malých obrazovkách:** při šířce okna prohlížeče nejvýše 1400 px se průvodce zobrazí **pod modelem**, aby nezakrýval náhled. Posuňte **stránku dolů**, abyste se dostali k průvodci, dalším krokům a tlačítkům pro přechod k přihrádkám a dokončení. Pro zobrazení modelu posuňte stránku zpět nahoru. V širších oknech zůstává průvodce vedle levé nabídky.
+
 Průvodce znovu otevřete přes **Nápověda → Průvodce: tři kroky**. Samotné otevření model nemění. Výběr jiného tvaru nahradí aktuální model; tuto akci lze vrátit zpět.
 
 Rychlý start, příručka i nabídka nápovědy používají zvolený jazyk rozhraní. Video zůstává v angličtině.

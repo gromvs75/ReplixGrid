@@ -4,6 +4,8 @@
 
 The first visit opens a blank workshop. Use the panel beside the left menu: **1. Choose a shape → 2. Set dimensions → 3. Add compartments**. Each step opens inside the panel while the canvas stays interactive. Use **Next: compartments**, then **Done**; or choose **Keep without dividers**. The helper can be closed with **×** after choosing a shape. You can also open a saved project or JSON file.
 
+**On smaller screens:** when the browser window is 1400 px wide or less, the helper appears **below the model** so it does not cover the preview. Scroll down the **page** to reach the helper, the next steps, and the **Next: compartments** and **Done** buttons. Scroll back up to view the model. On wider screens, the helper stays beside the left menu.
+
 Reopen the helper at any time with **Help → Helper: three steps**. Opening it keeps the current model; choosing another shape replaces the model and can be undone.
 
 All Help menu labels follow the selected interface language. Quick Start and User Guide open in that language. The video is in English.

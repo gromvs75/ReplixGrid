@@ -27,6 +27,8 @@ Concevoir un organisateur en millimètres, vérifier son ajustement et télécha
 
 Au premier lancement, la zone de travail est vide. Le guide à gauche propose trois étapes: **Choisir une forme → Définir les dimensions → Ajouter des compartiments**. Choisissez une forme, réglez ses dimensions, puis cliquez sur **Suivant: compartiments**. Terminez avec **Terminé** ou **Garder sans cloisons**. Après avoir choisi une forme, vous pouvez fermer le guide avec **×**. Vous pouvez aussi ouvrir un projet enregistré ou un fichier JSON.
 
+**Sur les petits écrans :** lorsque la fenêtre du navigateur mesure 1400 px de large ou moins, l’assistant se place **sous le modèle** pour ne pas masquer l’aperçu. Faites défiler la **page vers le bas** pour accéder à l’assistant, aux étapes suivantes et aux boutons permettant de passer aux compartiments et de terminer. Remontez la page pour revoir le modèle. Dans une fenêtre plus large, l’assistant reste à côté du menu de gauche.
+
 Rouvrez le guide via **Aide → Guide: trois étapes**. Son ouverture ne modifie pas le modèle. Choisir une autre forme remplace le modèle actuel; cette action peut être annulée.
 
 Le démarrage rapide, le guide utilisateur et le menu d’aide utilisent la langue de l’interface. La vidéo reste en anglais.

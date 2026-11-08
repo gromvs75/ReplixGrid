@@ -6,6 +6,8 @@
 
 Beim ersten Start ist die Arbeitsfläche leer. Der Assistent links führt durch drei Schritte: **Form auswählen → Maße festlegen → Fächer hinzufügen**. Wählen Sie eine Form, stellen Sie die Maße ein und klicken Sie auf **Weiter: Fächer**. Schließen Sie mit **Fertig** oder **Ohne Trennwände lassen** ab. Nach der Formauswahl können Sie den Assistenten mit **×** schließen. Alternativ öffnen Sie ein gespeichertes Projekt oder eine JSON-Datei.
 
+**Auf kleineren Bildschirmen:** Bei einer Browserfensterbreite von höchstens 1400 px erscheint der Assistent **unter dem Modell**, damit er die Vorschau nicht verdeckt. Scrollen Sie auf der **Seite nach unten**, um den Assistenten, die nächsten Schritte und die Schaltflächen **Weiter: Fächer** und **Fertig** zu erreichen. Scrollen Sie wieder nach oben, um das Modell zu sehen. In breiteren Fenstern bleibt der Assistent neben dem linken Menü.
+
 Öffnen Sie den Assistenten erneut über **Hilfe → Assistent: drei Schritte**. Das Öffnen verändert das Modell nicht. Die Auswahl einer anderen Form ersetzt das aktuelle Modell und lässt sich rückgängig machen.
 
 Schnellstart, Benutzerhandbuch und Hilfemenü verwenden die gewählte Oberflächensprache. Das Video ist weiterhin auf Englisch.

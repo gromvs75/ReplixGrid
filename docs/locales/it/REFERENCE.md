@@ -27,6 +27,8 @@ Progettare un organizzatore in millimetri, controllare la sua forma e scaricare 
 
 Al primo avvio l’area di lavoro è vuota. La guida a sinistra propone tre passaggi: **Scegli una forma → Imposta le dimensioni → Aggiungi scomparti**. Scegli una forma, regola le dimensioni e premi **Avanti: scomparti**. Concludi con **Fine** oppure **Lascia senza divisori**. Dopo aver scelto una forma, puoi chiudere la guida con **×**. Puoi anche aprire un progetto salvato o un file JSON.
 
+**Sugli schermi piccoli:** quando la finestra del browser è larga al massimo 1400 px, la procedura guidata appare **sotto il modello**, senza coprire l’anteprima. Scorri la **pagina verso il basso** per raggiungere la procedura guidata, i passaggi successivi e i pulsanti per passare agli scomparti e terminare. Scorri di nuovo verso l’alto per vedere il modello. Nelle finestre più larghe, la procedura guidata rimane accanto al menu a sinistra.
+
 Riapri la guida da **Aiuto → Guida: tre passaggi**. Aprirla non modifica il modello. Scegliere un’altra forma sostituisce il modello attuale; l’azione può essere annullata.
 
 La guida rapida, il manuale e il menu di aiuto usano la lingua dell’interfaccia. Il video resta in inglese.

@@ -25,6 +25,8 @@ Design an organizer in millimeters, check its fit, and download the parts for yo
 
 On your first visit, the workshop opens without a model. Choose **Rounded**, **Capsule**, **Circle**, **Oval** or **Honeycomb** to create a simple body. A non-modal panel beside the left menu guides you through three steps: **Choose a shape**, **Set dimensions**, and **Add compartments**. Choosing a shape opens dimensions inside this panel; **Next: compartments** opens the final step. The canvas stays visible and interactive. Use **Done** or **Keep without dividers** to finish, or close the helper with **×** after choosing a shape. Honeycomb starts with its connected cells; the other bases start without dividers.
 
+**On smaller screens:** when the browser window is 1400 px wide or less, the helper appears **below the model** so it does not cover the preview. Scroll down the **page** to reach the helper, the next steps, and the **Next: compartments** and **Done** buttons. Scroll back up to view the model. On wider screens, the helper stays beside the left menu.
+
 Reopen the helper at any time with **Help → Helper: three steps**. Opening it keeps the current model; choosing another shape replaces the model and can be undone.
 
 All Help menu labels follow the selected interface language. Quick Start and User Guide open in that language. The video is in English.

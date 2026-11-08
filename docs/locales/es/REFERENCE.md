@@ -27,6 +27,8 @@ Diseñe un organizador en milímetros, compruebe su ajuste y descargue las parte
 
 Al iniciar por primera vez, el área de trabajo está vacía. La guía de la izquierda tiene tres pasos: **Elige una forma → Define las dimensiones → Añade compartimentos**. Elige una forma, ajusta las dimensiones y pulsa **Siguiente: compartimentos**. Termina con **Listo** o **Dejar sin separadores**. Tras elegir una forma, puedes cerrar la guía con **×**. También puedes abrir un proyecto guardado o un archivo JSON.
 
+**En pantallas pequeñas:** si la ventana del navegador tiene un ancho de 1400 px o menos, el asistente aparece **debajo del modelo** para no tapar la vista previa. Desplácese **hacia abajo en la página** para acceder al asistente, a los pasos siguientes y a los botones para pasar a los compartimentos y finalizar. Vuelva a subir para ver el modelo. En ventanas más anchas, el asistente permanece junto al menú izquierdo.
+
 Vuelve a abrir la guía desde **Ayuda → Guía: tres pasos**. Abrirla no modifica el modelo. Elegir otra forma sustituye el modelo actual; puedes deshacer esa acción.
 
 El inicio rápido, la guía del usuario y el menú de ayuda utilizan el idioma de la interfaz. El vídeo sigue en inglés.

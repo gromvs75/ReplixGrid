@@ -27,6 +27,8 @@ Projektowanie organizatora w milimetrach, sprawdzanie jego dopasowania i pobiera
 
 Przy pierwszym uruchomieniu obszar roboczy jest pusty. Przewodnik po lewej prowadzi przez trzy kroki: **Wybierz kształt → Ustaw wymiary → Dodaj przegródki**. Wybierz kształt, ustaw wymiary i kliknij **Dalej: przegródki**. Zakończ przyciskiem **Gotowe** lub **Pozostaw bez przegród**. Po wybraniu kształtu możesz zamknąć przewodnik przyciskiem **×**. Możesz też otworzyć zapisany projekt lub plik JSON.
 
+**Na małych ekranach:** gdy okno przeglądarki ma szerokość do 1400 px włącznie, kreator znajduje się **pod modelem** i nie zasłania podglądu. Przewiń **stronę w dół**, aby dotrzeć do kreatora, kolejnych kroków oraz przycisków przejścia do przegródek i zakończenia. Przewiń stronę z powrotem w górę, aby zobaczyć model. W szerszych oknach kreator pozostaje obok lewego menu.
+
 Otwórz przewodnik ponownie przez **Pomoc → Przewodnik: trzy kroki**. Samo otwarcie nie zmienia modelu. Wybranie innego kształtu zastępuje bieżący model; tę czynność można cofnąć.
 
 Szybki start, podręcznik i menu pomocy używają wybranego języka interfejsu. Film pozostaje w języku angielskim.
