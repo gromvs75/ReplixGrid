@@ -80,7 +80,7 @@ export function SvgControls({target='relief',studio=false}:{target?:'relief'|'li
     </div>
     <div className="studio-material-grid">
      {target==='lid'&&project.lidDesign?.svgMode!=='cutout'?<Field label={t('Высота рельефа')} value={project.lidDesign?.patternDepth??.5} min={.2} max={1} step={.1} onChange={patternDepth=>setLid({patternDepth})}/>:target==='shell'&&project.shell?.mode!=='panels'?<Field label={t('Ширина канта')} value={project.shell?.border??Math.max(3,(project.shell?.thickness??1.6)*2)} min={2} max={12} step={.5} onChange={border=>change(p=>editProject(p,d=>{if(d.shell?.mode!=='panels'&&d.shell)d.shell.border=border;}))}/>:<div className="studio-frame">{t('Рамка')}: {target==='lid'?2:Math.max(4,(project.shell?.thickness??1.6)*2)} {t('мм')}</div>}
-     <label className="field studio-material"><span className="field-top"><span>{t('Толщина материала')}</span></span><span className="number-wrap"><input aria-label={t('Толщина материала')} readOnly value={target==='lid'?lidPlateThickness(project):project.shell?.thickness??1.6}/><small>{t('мм')}</small></span></label>
+     <Field label={t('Толщина материала')} value={target==='lid'?lidPlateThickness(project):project.shell?.thickness??1.6} min={target==='lid'?1.2:1} max={target==='lid'?6:4} step={.1} onChange={thickness=>{if(target==='lid')setLid({svgThickness:thickness});else change(p=>editProject(p,d=>{if(d.shell)d.shell.thickness=thickness;}));}}/>
      {svg.mode==='repeat'&&<Field label={t('Интервал рисунков')} value={svg.gap} min={0} max={50} step={.5} onChange={gap=>set({gap})}/>}
     </div>
     <p className="studio-mode-note"><span aria-hidden="true">ⓘ</span>{t('Сквозной трафарет удаляет материал насквозь и требует перемычки.')}</p>
