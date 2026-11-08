@@ -5,7 +5,7 @@ import {defaultProject,resolveWalls} from '../src/model.js';
 import {defaultShell,topAt} from '../src/shell.js';
 import {buildShell} from '../src/kernel.js';
 import {decodeSTL} from '../src/stl.js';
-for(const shape of ['round','smooth','square'] as const)for(const pattern of ['honeycomb','diamonds','waves','petals'] as const){
+for(const shape of ['round','smooth','square'] as const)for(const pattern of ['honeycomb','diamonds','waves','petals','cubes','triangles','slots','cellular'] as const){
  test(`${shape}/${pattern}: exported cutout has a continuous constant-width rim`,async()=>{
   const p=defaultProject();p.width=100;p.depth=60;p.height=60;
   p.cutouts={front:{shape,width:.7,depth:40,position:.5}};
