@@ -823,5 +823,6 @@
   "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
   "Ярус {0}": "Niveau {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Les panneaux conservent l’épaisseur des parois et les dimensions intérieures. Les fixations cachées nécessitent au moins 3,2 mm ; collez les panneaux sur les parois plus fines. Le retrait inférieur part du haut de la bordure basse.",
-  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "La bordure basse avec coque est indisponible avec les anciens clips ou un fond de moins de 1,2 mm."
+  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "La bordure basse avec coque est indisponible avec les anciens clips ou un fond de moins de 1,2 mm.",
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "La découpe est trop proche d’un angle. Déplacez-la ou réduisez sa largeur."
 }

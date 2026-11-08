@@ -824,5 +824,6 @@
   "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
   "Ярус {0}": "Ebene {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Paneele erhalten Wandstärke und Innenmaße. Verdeckte Befestigungen benötigen mindestens 3,2 mm; an dünnere Wände werden Paneele geklebt. Der untere Abstand beginnt an der Oberkante des unteren Zierbands.",
-  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Unteres Zierband mit Hülle ist mit alten Clips oder Böden unter 1,2 mm nicht verfügbar."
+  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Unteres Zierband mit Hülle ist mit alten Clips oder Böden unter 1,2 mm nicht verfügbar.",
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Der Ausschnitt liegt zu nah an einer Ecke. Verschieben Sie ihn oder verringern Sie seine Breite."
 }

@@ -78,7 +78,7 @@ export function stackRimProblem(p:Project):string {
  for(const wall of walls.slice(0,4))if(wall.cutout){
   if(p.footprint)return 'Ярусы с передним вырезом пока доступны для прямоугольной основы.';
   const span=wall.length*.9,width=span*wall.cutout.width,lo=wall.length*.05+(span-width)*wall.cutout.position;
-  if(Math.min(lo,wall.length-lo-width)<(p.cornerRadius??0)+8)return 'По бокам выреза оставьте опору: угол плюс не менее 8 мм прямой стенки.';
+  if(Math.min(lo,wall.length-lo-width)<(p.cornerRadius??0)+p.wallThickness+.2)return 'Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.';
  }
  return rimProblem(p,walls.map(w=>({...w,cutout:undefined})));
 }

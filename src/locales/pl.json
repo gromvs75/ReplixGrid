@@ -823,5 +823,6 @@
   "Комплект слишком большой. Экспортируйте часть лотков отдельно.": "The set is too large. Export some trays separately.",
   "Ярус {0}": "Poziom {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panele zachowują grubość ścian i wymiary wewnętrzne. Ukryte mocowania wymagają co najmniej 3,2 mm; do cieńszych ścian panele należy przykleić. Dolny odstęp zaczyna się od górnej krawędzi dolnej listwy.",
-  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Dolna listwa z osłoną jest niedostępna ze starymi zatrzaskami lub dnem cieńszym niż 1,2 mm."
+  "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Dolna listwa z osłoną jest niedostępna ze starymi zatrzaskami lub dnem cieńszym niż 1,2 mm.",
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Wycięcie jest zbyt blisko narożnika. Przesuń je lub zmniejsz jego szerokość."
 }
