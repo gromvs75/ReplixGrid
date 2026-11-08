@@ -27,9 +27,11 @@ On your first visit, the workshop opens without a model. Choose **Rounded**, **C
 
 Reopen the helper at any time with **Help → Helper: three steps**. Opening it keeps the current model; choosing another shape replaces the model and can be undone.
 
+All Help menu labels follow the selected interface language. The linked manuals and video are currently in English.
+
 The helper follows the interface language, including all three steps, hints and the saved-project confirmation. Project names remain as you saved them.
 
-Use **New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. The panel shows a thumbnail and name of the previous project with **Saved in My projects**; click that row to reopen your library. Its model remains visible as a reference until you choose the new shape. On a first visit, the canvas is empty. Until you choose a new shape, saving and exporting are disabled. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
+Use **New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. The panel shows a thumbnail and name of the previous project with **Saved in My projects**; click that row to reopen your library. The canvas is cleared immediately and stays empty until you choose a new shape, just as on a first visit. Until you choose a new shape, saving and exporting are disabled. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
 
 Choosing **Shape → Base → Create from template** while editing still replaces the construction inside the current project and can be undone. Use **New project** when you want a separate model.
 

@@ -15,7 +15,7 @@ export function HelpMenu({onStartGuide}:{onStartGuide?:()=>void}={}) {
     return () => document.removeEventListener('pointerdown', closeOutside);
   }, []);
 
-  return <details className="help-picker" ref={disclosure} lang="en"
+  return <details className="help-picker" ref={disclosure} lang={getLocale()}
     onBlur={event => {
       if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false;
     }}
@@ -26,12 +26,12 @@ export function HelpMenu({onStartGuide}:{onStartGuide?:()=>void}={}) {
         event.currentTarget.querySelector('summary')?.focus();
       }
     }}>
-    <summary>Help <span aria-hidden="true">⌄</span></summary>
-    <nav aria-label="Help" className="theme-menu help-links">
+    <summary>{t('Помощь')} <span aria-hidden="true">⌄</span></summary>
+    <nav aria-label={t('Помощь')} className="theme-menu help-links">
       {onStartGuide&&<button lang={getLocale()} onClick={()=>{if(disclosure.current)disclosure.current.open=false;onStartGuide();}}>{t('Помощник: три шага')}</button>}
-      <a href={guideRoot + 'USER-GUIDE.md'} target="_blank" rel="noopener noreferrer">Quick Start ↗</a>
-      <a href={import.meta.env.BASE_URL + 'guides/quick-start-en.mp4'} target="_blank" rel="noopener noreferrer">Watch Quick Start (1:03) ↗</a>
-      <a href={guideRoot + 'REFERENCE.md'} target="_blank" rel="noopener noreferrer">User Guide ↗</a>
+      <a href={guideRoot + 'USER-GUIDE.md'} target="_blank" rel="noopener noreferrer">{t('Быстрый старт')} ↗</a>
+      <a href={import.meta.env.BASE_URL + 'guides/quick-start-en.mp4'} target="_blank" rel="noopener noreferrer">{t('Видео: быстрый старт (1:03)')} ↗</a>
+      <a href={guideRoot + 'REFERENCE.md'} target="_blank" rel="noopener noreferrer">{t('Руководство пользователя')} ↗</a>
     </nav>
   </details>;
 }
