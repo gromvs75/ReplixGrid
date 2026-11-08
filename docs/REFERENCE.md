@@ -23,9 +23,11 @@ Design an organizer in millimeters, check its fit, and download the parts for yo
 
 ## Start a new project
 
-On your first visit, the workshop opens without a model. Choose **Rounded**, **Capsule**, **Circle**, **Oval** or **Honeycomb** to create a simple body. A short helper then offers **2. Set dimensions** and **3. Add compartments**, opening the relevant controls directly. Close it with **×** whenever you prefer. Honeycomb starts with its connected cells; the other bases start without dividers.
+On your first visit, the workshop opens without a model. Choose **Rounded**, **Capsule**, **Circle**, **Oval** or **Honeycomb** to create a simple body. A non-modal panel beside the left menu guides you through three steps: **Choose a shape**, **Set dimensions**, and **Add compartments**. Choosing a shape opens dimensions inside this panel; **Next: compartments** opens the final step. The canvas stays visible and interactive. Use **Done** or **Keep without dividers** to finish, or close the helper with **×** after choosing a shape. Honeycomb starts with its connected cells; the other bases start without dividers.
 
-Use **New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. Until you choose a shape, there is no model to save or export. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
+The helper follows the interface language, including all three steps, hints and the saved-project confirmation. Project names remain as you saved them.
+
+Use **New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. The panel shows a thumbnail and name of the previous project with **Saved in My projects**; click that row to reopen your library. Its model remains visible as a reference until you choose the new shape. On a first visit, the canvas is empty. Until you choose a new shape, saving and exporting are disabled. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
 
 Choosing **Shape → Base → Create from template** while editing still replaces the construction inside the current project and can be undone. Use **New project** when you want a separate model.
 
