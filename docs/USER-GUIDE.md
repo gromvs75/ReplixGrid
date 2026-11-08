@@ -95,6 +95,12 @@ In **Drawer**, choose **Print entire drawer**. Set the printer bed length (horiz
 
 The archive contains one 3MF per bed, bed diagrams, an assembly diagram and a copy of the drawer project. Open each 3MF as a separate job in your slicer. See [Whole-drawer export](REFERENCE.md#whole-drawer-export) for details.
 
+### Ready-made stencil examples
+
+Download [organic leaves](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/organic_leaf_pattern-stencil.svg) or the [double hexagon](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/3d_print_pattern-stencil.svg). Save as `.svg`, then upload through **My SVGs** on the lid or shell. For a lid choose **Through stencil (cut)**; shells already use that mode. Choose **Repeat** for multiple copies, start around 20 mm width and 4 mm spacing, and reduce width if the drawing does not fit. The hexagon file contains one repeatable tile; the leaf file contains five leaves. See [ready-to-use stencil instructions](REFERENCE.md#download-ready-to-use-stencil-svgs) for both surfaces and bridge sizing.
+
+Numeric sliders display their actual **Min / Max** limits and a white value marker on a green permitted interval. The red end caps indicate values beyond the limits. You can also type an exact value.
+
 ### Before uploading an SVG
 
 Use filled vector outlines up to 200 KB. Convert text and strokes to outlines and remove any unwanted background. Images, masks, clipping, filters, gradients, CSS style blocks and element references are not supported. A file that imports successfully is not automatically suitable for every surface.

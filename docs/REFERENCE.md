@@ -279,6 +279,25 @@ On lids and shells, only complete motifs are placed inside the available frame, 
 
 Patterns are included in individual-part exports, complete kits and whole-drawer print jobs. Switching back to **Built-in** removes the custom pattern only from that target. Deleting a library thumbnail does not remove embedded patterns from projects.
 
+### Download ready-to-use stencil SVGs
+
+These examples contain filled contours with material bridges. Black areas become openings in **Through stencil (cut)** mode. Save the links below as `.svg` files; if the browser displays the drawing, use **Save page as** and retain the `.svg` extension.
+
+| Download | Pattern | Suggested starting width |
+| --- | --- | --- |
+| [Organic leaves — download SVG](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/organic_leaf_pattern-stencil.svg) | Five leaves with bridges connecting the inner details | 20 mm; reduce for a low shell |
+| [Double hexagon — download SVG](https://raw.githubusercontent.com/gromvs75/ReplixGrid/refs/heads/main/docs/examples/3d_print_pattern-stencil.svg) | One double-hexagon tile with four bridges and a centre opening | 20–24 mm; use **Repeat** for a grid |
+
+**On a lid:** add a lid under **Shape → Lid**, open **My SVGs**, and upload either file. Choose **Through stencil (cut)**. Start with **Single motif** to inspect it, or select **Repeat** to fill the available area with complete copies. Set width, rotation and X/Y offsets. Repeat spacing is the gap between complete copies, not the width of their internal bridges. Start with 4 mm spacing. The leaf file is already a group of five leaves: width scales the entire group.
+
+**On a shell:** open **Shell → Pattern → My SVGs**, or choose the **Shell** tab in the studio, then select the same file from the shared library. Shells always use through openings. Use **Repeat** for a band around the shell; **Additional → SVG walls** selects the sides of a wrapped shell. Decorative panels use the selected panel sides. Each surface retains its own placement and thickness settings. Switching studio tabs shows the corresponding part.
+
+If a motif does not fit, reduce its width or offset. On a low shell, try 12–16 mm for the leaf group. Increasing shell thickness can enlarge its automatic border and leave less space for the drawing. Scaling down also narrows the bridges: inspect them in your slicer and print a small sample for your nozzle and material. Repeat spacing cannot widen internal bridges. Wait for the current preview to finish, then use **Download** to check and export the lid or shell.
+
+### Numeric sliders and valid ranges
+
+Numeric settings show **Min** and **Max** above a thin green track, with a white marker for the current value. Red end caps mark the outside of the permitted interval; they are not a print-strength rating. Drag the marker, use arrow keys while focused, or type an exact number and press Enter. The numeric field and slider use the same limits. Some limits change with the model; a value inside a slider's range can still conflict with another setting, so follow any geometry warning before exporting.
+
 ## Whole-drawer export
 
 Choose **Drawer → Print entire drawer** to prepare all trays, their accessories and any enabled mounting plate sections. Mounted trays receive sockets for their saved positions; ordinary free-placement trays keep their existing bases. Split-printing projects include their parts and pins. Overlaps, insufficient drawer clearances, unsupported mounting or invalid geometry block the download and identify the affected tray.

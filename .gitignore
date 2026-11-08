@@ -17,3 +17,5 @@ docs/*
 !docs/USER-GUIDE.md
 !docs/REFERENCE.md
 !docs/images/
+
+!docs/examples/

@@ -68,3 +68,5 @@ export function t(source:string,args:readonly unknown[]=[]):string{
 Object.assign(filamentTranslations.en,{'Рельеф (декор)':'Raised relief (decoration)','Сквозной трафарет (рез)':'Through stencil (cut)','Толщина материала':'Material thickness','Сквозной трафарет удаляет материал насквозь и требует перемычки.':'A through stencil removes material all the way through and requires bridges.'});
 
 Object.assign(filamentTranslations.en,{'Для внутренней SVG-крышки нужна глубина не меньше толщины крышки плюс 2 мм.':'An inset SVG lid needs an internal depth of at least the lid thickness plus 2 mm.'});
+
+Object.assign(filamentTranslations.en,{'Мин':'Min','Макс':'Max'});
