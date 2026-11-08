@@ -1,8 +1,9 @@
 import {useEffect, useRef} from 'react';
+import {t,getLocale} from '../i18n.js';
 
 const guideRoot = 'https://github.com/gromvs75/ReplixGrid/blob/main/docs/';
 
-export function HelpMenu() {
+export function HelpMenu({onStartGuide}:{onStartGuide?:()=>void}={}) {
   const disclosure = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
@@ -27,6 +28,7 @@ export function HelpMenu() {
     }}>
     <summary>Help <span aria-hidden="true">⌄</span></summary>
     <nav aria-label="Help" className="theme-menu help-links">
+      {onStartGuide&&<button lang={getLocale()} onClick={()=>{if(disclosure.current)disclosure.current.open=false;onStartGuide();}}>{t('Помощник: три шага')}</button>}
       <a href={guideRoot + 'USER-GUIDE.md'} target="_blank" rel="noopener noreferrer">Quick Start ↗</a>
       <a href={import.meta.env.BASE_URL + 'guides/quick-start-en.mp4'} target="_blank" rel="noopener noreferrer">Watch Quick Start (1:03) ↗</a>
       <a href={guideRoot + 'REFERENCE.md'} target="_blank" rel="noopener noreferrer">User Guide ↗</a>

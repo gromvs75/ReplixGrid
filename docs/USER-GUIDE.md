@@ -4,6 +4,8 @@
 
 The first visit opens a blank workshop. Use the panel beside the left menu: **1. Choose a shape → 2. Set dimensions → 3. Add compartments**. Each step opens inside the panel while the canvas stays interactive. Use **Next: compartments**, then **Done**; or choose **Keep without dividers**. The helper can be closed with **×** after choosing a shape. You can also open a saved project or JSON file.
 
+Reopen the helper at any time with **Help → Helper: three steps**. Opening it keeps the current model; choosing another shape replaces the model and can be undone.
+
 The helper follows the interface language, including all three steps, hints and the saved-project confirmation. Project names remain as you saved them.
 
 To start again, click **New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. A thumbnail row in the helper confirms what was saved; click it to open the library. The previous model stays visible until you choose a new shape. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
