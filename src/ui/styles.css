@@ -749,3 +749,8 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 :root .field-range input[type=range]:focus-visible::-webkit-slider-thumb{width:6px;background:var(--accent);box-shadow:none}
 :root .field-range input[type=range]:focus-visible::-moz-range-thumb{width:6px;background:var(--accent);box-shadow:none}
 @media(forced-colors:active){:root :is(button,input,select,textarea,summary,a,[tabindex]):focus-visible{outline:2px solid Highlight;outline-offset:2px}}
+
+.filament-editor-fields{grid-template-columns:52px minmax(0,1fr)}
+.filament-editor-fields>label:last-child{grid-column:1/-1}
+.filament-hex input{text-transform:uppercase;font-variant-numeric:tabular-nums}
+.filament-hex small{font-size:9px;color:var(--muted);line-height:1.4}

@@ -70,3 +70,13 @@ Object.assign(filamentTranslations.en,{'Рельеф (декор)':'Raised relie
 Object.assign(filamentTranslations.en,{'Для внутренней SVG-крышки нужна глубина не меньше толщины крышки плюс 2 мм.':'An inset SVG lid needs an internal depth of at least the lid thickness plus 2 mm.'});
 
 Object.assign(filamentTranslations.en,{'Мин':'Min','Макс':'Max'});
+
+Object.assign(filamentTranslations.en,{
+ 'Цвет здесь — примерный ориентир. Точный оттенок и смешивание настройте в слайсере. Номера слотов должны совпадать; профили печати не экспортируются.':'Color here is an approximate guide. Set the exact shade and mixing in your slicer. Slot numbers must match; print profiles are not exported.',
+ 'Удаление освобождает слот. Номера остальных филаментов сохраняются.':'Deleting frees the slot. Other filament numbers stay unchanged.',
+ 'Удалить филамент из слота {0}':'Delete filament from slot {0}',
+ 'Добавить слот {0}':'Add slot {0}',
+ 'Для одинаковых цветов выберите слот вручную при экспорте.':'For identical colors, select the slot manually when exporting.'
+});
+
+Object.assign(filamentTranslations.en,{'HEX-код':'HEX code','HEX-код цвета':'Color HEX code','Введите 6 символов: 0–9, A–F. Например, #E63522.':'Enter 6 characters: 0–9, A–F. For example, #E63522.'});

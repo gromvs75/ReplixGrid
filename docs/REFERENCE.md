@@ -160,7 +160,7 @@ For a model that exceeds the bed, use the suggested cuts or choose two or three 
 
 ## Download and slice
 
-1. In **Print**, configure filament slots if you want a multicolor file. Match slot numbers and colors to your slicer. On a Snapmaker U1, slots 1–4 correspond to T0–T3. Add up to 16 slots, set each color and optionally name its material. Distinct colors let the app match part colors to slots automatically. If two slots share a color, choose the intended slot for each part in the download dialog.
+1. In **Print**, configure filament slots if you want a multicolor file. Match slot numbers and colors to your slicer. On a Snapmaker U1, slots 1–4 correspond to T0–T3. Add up to 16 slots, set each color and optionally name its material. Color is an approximate visual guide, not a simulation of a printed or mixed shade. Configure exact colors and mixing in your slicer. Select any filament card and choose **Delete filament from slot N** to remove it. The remaining slot numbers do not change: deleting slot 6 leaves slot 7 as slot 7. **+ Slot N** adds the lowest available number again; the limit stays at 16. Deleting a filament does not change the model color. Removed slots are no longer offered or automatically matched at export; choose another slot explicitly or assign it in the slicer. Distinct colors let the app match part colors to slots automatically. If two slots share a color, choose the intended slot for each part in the download dialog.
 2. Click **↓ Download**. Choose **Organizer and accessories**, **Shell only** or **The whole set**, according to which parts you need. For a sectioned model, export the kit.
 3. Select a format below. For 3MF, assign a filament slot to each part or leave it for assignment in the slicer. Orca can use the first filament for unassigned parts.
 4. Wait for the geometry and size checks. Read the dimensions of each part and any instruction to rotate it 90° on the bed. The check reserves 2 mm at the bed edges. Download with the format button at the bottom of the dialog.
@@ -172,6 +172,9 @@ For a model that exceeds the bed, use the suggested cuts or choose two or three 
 | 3MF | A kit with separate parts, colors and filament assignments | Open it in your slicer and verify the parts and slots. ReplixGrid leaves printer and material profiles to the slicer. |
 | OBJ + MTL | A colored model for a tool that accepts OBJ | Keep the geometry and material file together. The model uses millimeters with Z up. |
 | Project JSON | Continuing to edit compartments, dimensions or accessories | Use **Save project** and reopen it with **Open** in ReplixGrid. |
+
+
+To match a digital color from your slicer, paste its six-digit **HEX code**, for example `#E63522`, beside the color picker. The leading `#` is optional. Valid codes update the preview immediately; incomplete or invalid text is not applied and reverts to the saved color when you leave the field. A matching HEX code does not simulate filament appearance, lighting or a physical color mixture.
 
 ## Troubleshooting
 

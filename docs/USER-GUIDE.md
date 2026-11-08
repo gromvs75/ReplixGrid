@@ -114,3 +114,9 @@ Open **Shape → Label and icon**, choose the side, enter text and select a font
 ### Relief on stacked trays
 
 Select **Tier 1**, **Tier 2**, or another tier from the dropdown beside **Organizer** above the model, then open **Shape → Organizer relief** to choose a built-in pattern or your SVG. Each tier can have its own relief. Decoration stays on the exterior walls, clear of the smooth mating collars, tongues and sockets. Internal compartment dimensions remain unchanged. STL and 3MF exports include the relief and retain separate printable tier parts. Verify physical fit with a small test print when changing printer or material.
+
+### Manage filament slots
+
+Under **Print → Slicer filaments**, add up to 16 slots and set a name and approximate preview color for each. Configure the exact shade and any color mixing in your slicer; ReplixGrid does not calculate mixing recipes. Select any card and click **Delete filament from slot N** to free that number without renumbering the others. **+ Slot N** restores the lowest free number. Model colors remain unchanged. Check the slot assignments again before exporting 3MF, especially after deleting a filament.
+
+To match a digital color from your slicer, paste its six-digit **HEX code**, for example `#E63522`, beside the color picker. The leading `#` is optional. Valid codes update the preview immediately; incomplete or invalid text is not applied and reverts to the saved color when you leave the field. A matching HEX code does not simulate filament appearance, lighting or a physical color mixture.
