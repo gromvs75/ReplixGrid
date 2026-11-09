@@ -6,7 +6,7 @@ type Edge={a:number;b:number;dx:number;dy:number;gx:number;gy:number};
 
 // Cut the perimeter of the joined solid, so buried edges at T-junctions
 // never create a groove. Vertical corners and the floor are left intact.
-export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(v:Manifold)=>Manifold){
+export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(v:Manifold)=>Manifold,cleanupPrecision=.002){
  const r=topEdgeSize(p);if(!r)return solid;
  // Avoid sub-micron cutter faces at tightly tessellated inner fillets.
  const original=keep(solid.asOriginal());
@@ -74,7 +74,11 @@ export function finishTopEdge(w:ManifoldToplevel,p:Project,solid:Manifold,keep:(
  // The finish must never enter the bottom plate, even on very low walls.
  const cutter=keep(keep(w.Manifold.union(cuts)).trimByPlane([0,0,1],p.floorThickness));
  const result=keep(keep(base.subtract(cutter)).asOriginal());
- const cleaned=keep(result.simplify(.002)),components=cleaned.decompose();components.forEach(keep);
+ // Tiny cutter seams usually need cleanup. At a steep notch shoulder that
+ // cleanup can itself fold a narrow face, so the caller may rebuild at finer
+ // precision if the final serialized surface fails validation.
+ const cleaned=cleanupPrecision===0?result:keep(result.simplify(cleanupPrecision));
+ const components=cleaned.decompose();components.forEach(keep);
  const substantial=components.filter(c=>Math.abs(c.volume())>1e-7);
  // Simplifying a long, notched rim can tilt a narrow face enough that its
  // bevel cutter detaches a strip. Rebuild from the original joined surface
