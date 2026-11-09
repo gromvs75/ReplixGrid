@@ -159,10 +159,16 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
       ?keep(keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness/2)).translate([0,0,plateThickness/2]))
       :keep(plate.subtract(accent));
     }else if(design&&design.pattern==='lines'){
-     const mask=keep(wasm.Manifold.extrude([footprintContour(lp,inset?outer-2:-3)],1));
-     const grooves:Manifold[]=[];
-     for(let y=4;y<lp.depth;y+=design.patternSpacing??6)grooves.push(keep(keep(wasm.Manifold.cube([lp.width+2*outer,1.2,(design.patternDepth??.5)+.01])).translate([-outer,y-.6,-.01])));
-     if(grooves.length)plate=keep(plate.subtract(keep(keep(wasm.Manifold.union(grooves)).intersect(mask))));
+     // Offset a valid face rather than constructing a negative-sized footprint.
+     // A tiny lid may have no room inside its border; its plate remains valid.
+     const face=keepSection(new wasm.CrossSection([footprintContour(lp,outer)]));
+     const region=keepSection(face.offset(-(inset?2:outer+3),'Round',2,32));
+     if(!region.isEmpty()){
+      const mask=keep(region.extrude(1));
+      const grooves:Manifold[]=[];
+      for(let y=4;y<lp.depth;y+=design.patternSpacing??6)grooves.push(keep(keep(wasm.Manifold.cube([lp.width+2*outer,1.2,(design.patternDepth??.5)+.01])).translate([-outer,y-.6,-.01])));
+      if(grooves.length)plate=keep(plate.subtract(keep(keep(wasm.Manifold.union(grooves)).intersect(mask))));
+     }
     }else if(design&&design.pattern!=='smooth'&&design.pattern!=='lines'){
      const polygon=footprintContour(lp,outer),spacing=design.patternSpacing??8,depth=design.patternDepth??.5;
      const edgeDistance=(x:number,y:number)=>Math.min(...polygon.map((a,i)=>{const b=polygon[(i+1)%polygon.length],dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy);}));

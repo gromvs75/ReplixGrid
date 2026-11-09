@@ -5,7 +5,7 @@ export function useDrawerBounds(trays:DrawerTray[]){
  const cache=useRef(new Map<string,TrayBounds>()),[results,setResults]=useState<Record<string,{key:string;bounds?:TrayBounds;error?:string}>>({});
  const key=JSON.stringify(trays.map(t=>({id:t.id,project:t.project})));
  useEffect(()=>{
-  const input=JSON.parse(key) as DrawerTray[],worker=new Worker('/kernel/worker-shell-precision-v3.js',{type:'module'});let cancelled=false,timer:ReturnType<typeof setTimeout>;
+  const input=JSON.parse(key) as DrawerTray[],worker=new Worker('/kernel/worker-lid-pattern-v4.js',{type:'module'});let cancelled=false,timer:ReturnType<typeof setTimeout>;
   const run=async()=>{for(const tray of input){if(cancelled)break;const projectKey=JSON.stringify(tray.project),cached=cache.current.get(projectKey);
     let value:{bounds?:TrayBounds;error?:string};
     if(cached)value={bounds:cached};else value=await new Promise(resolve=>{
