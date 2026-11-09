@@ -146,6 +146,14 @@ Con un rivestimento avvolgente, una linguetta all’interno della parete inferio
 
 **Motivo bicolore** è disponibile per entrambi i tipi di coperchio. Scegli ramo d’ulivo, foglie di ginkgo, felce, onde, ciottoli, anelli di crescita o celle di Voronoi, quindi i colori di base e motivo. La piastra di 3,2 mm comprende un fondo pieno di 1,6 mm e uno strato decorato di 1,6 mm. Bordo esterno e maniglia aumentano l’altezza totale. Per il coperchio a incasso servono almeno 5,2 mm di profondità interna. Esporta in 3MF per mantenere insieme le due parti colorate e assegna i filamenti. Per ulivo, ginkgo, felce, onde e anelli, **Motivo traforato** crea aperture nello strato superiore. **Motivo in rilievo** lascia vuote le aperture profonde 1,6 mm, mostrando il fondo; disattivalo per un intarsio liscio. I coperchi a incasso in rilievo si stampano con il fondo verso il basso, quelli esterni con il motivo verso il basso. Controlla i ponti sopra gli incavi nello slicer.
 
+### Colori del coperchio e filamenti
+
+Scegli una maniglia cilindrica o a barra per visualizzare **Colore della maniglia del coperchio**. **Come la base del coperchio** è attivo per impostazione predefinita: la maniglia segue il colore di base del coperchio. Scegli un altro colore per renderla indipendente; riattiva l’opzione per ripristinare il collegamento. La maniglia rimane una parte da stampare separatamente.
+
+Fai clic sul campione accanto a **Colore di base del coperchio**, **Colore del motivo del coperchio** o **Colore della maniglia del coperchio**. La finestra include i **Filamenti dello slicer** della stampante attuale, una tavolozza, un colore personalizzato e un campo HEX a sei caratteri. Configura i colori in **Stampa → Filamenti dello slicer**. Gli slot eliminati non compaiono; gli altri mantengono il proprio numero.
+
+I colori vengono salvati nel progetto ed esportati in 3MF e OBJ; STL non contiene colori. Nell’esportazione 3MF, un colore associato a un solo slot seleziona automaticamente quel filamento. Se più slot hanno lo stesso colore, scegli lo slot manualmente nella finestra di esportazione. Verifica le assegnazioni nello slicer. I colori sullo schermo sono indicativi e non simulano la miscelazione fisica dei filamenti.
+
 ![Sei modelli di coperchio bicolore](../../images/lid-motifs.svg)
 
 <a id="sleeves-and-panels"></a>

@@ -12,7 +12,7 @@ import {levelProject,lidPlateThickness,insertHeight,insertHeightAt} from './acce
 import {footprintContour,honeyCells} from './footprint.js';
 import {clipRectangle,roundedContour,type XY} from './rounding.js';
 import {regions} from './editor.js';
-import {partColor,insertColor} from './appearance.js';
+import {partColor,insertColor,lidBaseColor,lidHandleColor} from './appearance.js';
 import {encodeSTL,decodeSTL,inspectSurface,removeCollapsedFaces,weldNearVertices,type Point,type Triangle} from './stl.js';
 import {reliefValue} from './reliefPatterns.js';
 export interface KitPart {name:string;cellId?:string;kind:'organizer'|'shell'|'lid'|'lid-handle'|'cup';level:number;stl:ArrayBuffer;position:Point;inspection:ReturnType<typeof inspectSurface>;color:string}
@@ -208,9 +208,8 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     const orient=(m:Manifold)=>faceUp?keep(keep(m.rotate([180,0,0])).translate([0,lp.depth,plateThickness])):m;
     const origin:Point=[0,0,lidZ-(faceUp?plateThickness:0)];
     emit(orient(lip?keep(plate.add(lip)):plate),'lid','lid',i,origin,raised);
-    if(design?.svg)parts[parts.length-1].color=design.baseColor??partColor(p,'organizer');
+    parts[parts.length-1].color=lidBaseColor(p);
     if(accent){
-     parts[parts.length-1].color=design?.baseColor??'#f7f3e8';
      emit(orient(accent),'lid-olive','lid',i,origin,raised);
      parts[parts.length-1].color=design?.patternColor??'#687749';
     }
@@ -227,6 +226,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
       handle=keep(wasm.Manifold.hull(points));
      }
      const b=handle.boundingBox();emit(handle,'lid-handle','lid-handle',i,[lp.width/2-(b.max[0]+b.min[0])/2,lp.depth/2-(b.max[1]+b.min[1])/2,lidZ]);
+     parts[parts.length-1].color=lidHandleColor(p);
     }
    }
    if(lp.shell?.mode==='panels')for(const b of await cachedPanels({...lp,cups:undefined}))parts.push({...b,name:count>1?`tier-${i+1}-${b.name}`:b.name,position:[b.position[0],b.position[1],b.position[2]+baseZ],kind:'shell',level:i,color:partColor(lp,'shell')});

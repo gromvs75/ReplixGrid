@@ -58,6 +58,8 @@ Pokrywa wymaga górnej krawędzi o jednakowej wysokości. Aby zachować pochylon
 2. Włącz **Dwukolorowy wzór** i wybrać **Lid pattern**. Aby spróbować liści w kształcie fanki w galerii, wybierz **Liście miłorzębu**.
 3. Ustaw **Kolor podstawy pokrywy** do koloru tła i **Kolor wzoru pokrywy** do koloru rysunku. Dla kombinacji pokazanej poniżej należy wybrać śmietankę dla podstawy i oliwkową zieleń dla wzoru.
 
+Wybierz kolory podstawy, wzoru i uchwytu z **Filamenty slicera** w odpowiednich oknach koloru. Najpierw ustaw sloty w **Druk → Filamenty slicera**. **Jak podstawa pokrywy** łączy kolor uchwytu z podstawą; wybór innego koloru uniezależnia uchwyt. Eksportuj do 3MF i sprawdź przypisania filamentów.
+
 ![Two-tone lids, od lewej do prawej. Górny rząd pokazuje gałąź Olive, liści Ginkgo i Fern rond. Dolny rząd pokazuje fale pływowe, kamyki rzeczne i pierścienie wzrostu.](../../images/lid-motifs.svg)
 
 **Dwukolorowy wzór** jest dostępny dla obu rodzajów pokrywy. Wybierz gałązkę oliwną, liście miłorzębu, paproć, fale, kamyki rzeczne, słoje drewna lub komórki Voronoia oraz kolory podstawy i wzoru. Płyta 3,2 mm składa się z pełnego podłoża 1,6 mm i warstwy wzoru 1,6 mm. Zewnętrzne obrzeże i uchwyt zwiększają wysokość. Pokrywa wpuszczana potrzebuje głębokości wewnętrznej od 5,2 mm. Eksportuj 3MF, aby zachować razem obie kolorowe części, i przypisz filamenty. Dla oliwki, miłorzębu, paproci, fal i słojów **Wzór ażurowy** tworzy otwory w górnej warstwie. **Wypukły wzór** pozostawia je puste na głębokość 1,6 mm, odsłaniając podłoże; wyłącz go dla gładkiej intarsji. Wpuszczane pokrywy z reliefem drukuje się podłożem w dół, a nakładane — wzorem w dół. Sprawdź mosty nad zagłębieniami w slicerze.

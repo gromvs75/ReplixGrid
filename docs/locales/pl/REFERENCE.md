@@ -146,6 +146,14 @@ Przy osłonie obwodowej wypust po wewnętrznej stronie dolnej ścianki wchodzi w
 
 **Dwukolorowy wzór** jest dostępny dla obu rodzajów pokrywy. Wybierz gałązkę oliwną, liście miłorzębu, paproć, fale, kamyki rzeczne, słoje drewna lub komórki Voronoia oraz kolory podstawy i wzoru. Płyta 3,2 mm składa się z pełnego podłoża 1,6 mm i warstwy wzoru 1,6 mm. Zewnętrzne obrzeże i uchwyt zwiększają wysokość. Pokrywa wpuszczana potrzebuje głębokości wewnętrznej od 5,2 mm. Eksportuj 3MF, aby zachować razem obie kolorowe części, i przypisz filamenty. Dla oliwki, miłorzębu, paproci, fal i słojów **Wzór ażurowy** tworzy otwory w górnej warstwie. **Wypukły wzór** pozostawia je puste na głębokość 1,6 mm, odsłaniając podłoże; wyłącz go dla gładkiej intarsji. Wpuszczane pokrywy z reliefem drukuje się podłożem w dół, a nakładane — wzorem w dół. Sprawdź mosty nad zagłębieniami w slicerze.
 
+### Kolory pokrywy i filamenty
+
+Wybierz uchwyt cylindryczny lub listwę, aby wyświetlić **Kolor uchwytu pokrywy**. Domyślnie włączona jest opcja **Jak podstawa pokrywy**: uchwyt przyjmuje kolor podstawy pokrywy. Wybierz inny kolor, aby ustawić uchwyt niezależnie; ponownie włącz opcję, aby przywrócić powiązanie. Uchwyt nadal jest osobnym elementem do druku.
+
+Kliknij próbkę obok **Kolor podstawy pokrywy**, **Kolor wzoru pokrywy** lub **Kolor uchwytu pokrywy**. Okno zawiera **Filamenty slicera** bieżącej drukarki, paletę, własny kolor i pole na sześciocyfrowy kod HEX. Dostępne kolory ustaw w **Druk → Filamenty slicera**. Usunięte sloty nie są wyświetlane; pozostałe zachowują numery.
+
+Kolory są zapisywane w projekcie i eksportowane do 3MF oraz OBJ; STL nie zawiera kolorów. Przy eksporcie 3MF jednoznaczne dopasowanie koloru automatycznie wybiera zapisany slot filamentu. Jeśli kilka slotów ma ten sam kolor, wybierz slot ręcznie w oknie eksportu. Sprawdź przypisania w slicerze. Kolory na ekranie są orientacyjne i nie symulują fizycznego mieszania filamentów.
+
 ![Sześć dwutonowych wzorów pokrywy](../../images/lid-motifs.svg)
 
 <a id="sleeves-and-panels"></a>

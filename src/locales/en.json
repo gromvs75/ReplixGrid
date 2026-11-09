@@ -440,7 +440,7 @@
   "Форма шаблона": "Template form",
   "Формат файла": "File format",
   "Цвет вставки": "Insert color",
-  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Color for preview and export. The filament is selected in the slicer.",
+  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Color for preview and export. Choose the filament in your slicer.",
   "Цвет оболочки": "Shell color",
   "Цвет органайзера": "Organizer color",
   "Части помещаются с защёлками. Возможен поворот на столе на 90°.": "The parts are placed with latches. Can be rotated 90° on the table.",
@@ -834,5 +834,14 @@
   "Ярус {0}": "Tier {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panels preserve wall thickness and compartment dimensions. Hidden fasteners require at least 3.2 mm; glue panels to thinner walls. The lower panel edge is offset from the top of the bottom trim.",
   "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Bottom trim with a shell is unavailable with legacy clips or floors thinner than 1.2 mm.",
-  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "The cutout is too close to a corner. Move it or reduce its width."
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "The cutout is too close to a corner. Move it or reduce its width.",
+  "Цвет ручки крышки": "Lid handle color",
+  "Как основа крышки": "Match lid base",
+  "Добавьте цвета в «Печать → Филаменты слайсера».": "Add colors in “Print → Slicer filaments”.",
+  "Закрыть выбор цвета": "Close color picker",
+  "Филаменты слайсера": "Slicer filaments",
+  "Слот": "Slot",
+  "HEX-код": "HEX code",
+  "HEX-код цвета": "Color HEX code",
+  "Введите 6 символов: 0–9, A–F. Например, #E63522.": "Enter 6 characters: 0–9, A–F. For example, #E63522."
 }

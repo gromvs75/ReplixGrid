@@ -146,6 +146,14 @@ U obvodového pláště zapadá výstupek uvnitř spodní stěny do drážky pod
 
 **Dvoubarevný vzor** je dostupný pro oba typy víka. Vyberte olivovou větvičku, listy jinanu, kapradinu, vlny, říční oblázky, letokruhy nebo Voroného buňky a barvy podkladu i vzoru. Deska 3,2 mm má plný podklad 1,6 mm a vzorovanou vrstvu 1,6 mm. Vnější okraj a úchyt zvětšují celkovou výšku. Zapuštěné víko potřebuje vnitřní hloubku alespoň 5,2 mm. Exportujte 3MF, aby obě barevné části zůstaly spolu, a přiřaďte filamenty. Pro olivu, jinan, kapradinu, vlny a letokruhy vytváří **Prořezávaný vzor** otvory v horní vrstvě. **Vystouplý vzor** je nechává prázdné do hloubky 1,6 mm a odhaluje podklad; vypněte jej pro hladkou vložku. Zapuštěná reliéfní víka se tisknou podkladem dolů, vnější víka vzorem dolů. Ve sliceru zkontrolujte mosty nad prohlubněmi.
 
+### Barvy víka a filamenty
+
+Vyberte válcovou úchytku nebo lištu, aby se zobrazila volba **Barva úchytky víka**. Ve výchozím nastavení je zapnuto **Stejná jako základ víka**: úchytka přebírá základní barvu víka. Výběrem jiné barvy ji nastavíte nezávisle; opětovným zapnutím volby barvy znovu propojíte. Úchytka se stále tiskne jako samostatný díl.
+
+Klikněte na barevný vzorek vedle **Základní barva víka**, **Barva vzoru víka** nebo **Barva úchytky víka**. Okno obsahuje **Filamenty sliceru** pro aktuální tiskárnu, paletu, vlastní barvu a pole pro šestimístný kód HEX. Dostupné barvy nastavte v **Tisk → Filamenty sliceru**. Smazané sloty se nenabízejí; ostatní si zachovávají svá čísla.
+
+Barvy se ukládají do projektu a přenášejí do 3MF a OBJ; STL barvy neobsahuje. Při exportu 3MF jednoznačná shoda barvy automaticky vybere uložený slot filamentu. Pokud má stejnou barvu více slotů, vyberte slot ručně v okně exportu. Přiřazení zkontrolujte ve sliceru. Barvy na obrazovce jsou orientační a nesimulují fyzické míchání filamentů.
+
 ![Šest dvoutónových víček](../../images/lid-motifs.svg)
 
 <a id="sleeves-and-panels"></a>

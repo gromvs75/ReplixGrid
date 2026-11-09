@@ -437,7 +437,7 @@
   "Форма шаблона": "Formulario de plantilla",
   "Формат файла": "Formato de archivo",
   "Цвет вставки": "Insertar color",
-  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Color para vista previa y exportación. El filamento se selecciona en el cortador.",
+  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Color para la vista previa y la exportación. Elige el filamento en tu laminador.",
   "Цвет оболочки": "Color de concha",
   "Цвет органайзера": "Color del organizador",
   "Части помещаются с защёлками. Возможен поворот на столе на 90°.": "Las piezas se colocan con pestillos. Se puede girar 90° sobre la mesa.",
@@ -824,5 +824,14 @@
   "Ярус {0}": "Nivel {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Los paneles conservan el grosor de las paredes y las dimensiones interiores. Las fijaciones ocultas requieren al menos 3,2 mm; pegue los paneles a paredes más finas. El margen inferior comienza en la parte superior del borde inferior.",
   "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "El borde inferior con carcasa no está disponible con clips antiguos ni fondos de menos de 1,2 mm.",
-  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "El recorte está demasiado cerca de una esquina. Muévalo o reduzca su anchura."
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "El recorte está demasiado cerca de una esquina. Muévalo o reduzca su anchura.",
+  "Цвет ручки крышки": "Color del asa de la tapa",
+  "Как основа крышки": "Igual que la base de la tapa",
+  "Добавьте цвета в «Печать → Филаменты слайсера».": "Añade colores en « Impresión → Filamentos del laminador ».",
+  "Закрыть выбор цвета": "Cerrar selector de color",
+  "Филаменты слайсера": "Filamentos del laminador",
+  "Слот": "Ranura",
+  "HEX-код": "Código HEX",
+  "HEX-код цвета": "Código de color HEX",
+  "Введите 6 символов: 0–9, A–F. Например, #E63522.": "Introduce 6 caracteres: 0–9, A–F. Por ejemplo, #E63522."
 }

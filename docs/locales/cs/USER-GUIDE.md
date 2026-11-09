@@ -58,6 +58,8 @@ Víko vyžaduje horní okraj ve stejné výšce. Chcete-li zachovat nakloněnou 
 2. Povolit **Dvoubarevný vzor** a vybrat **Lid pattern**. Chcete-li vyzkoušet větráky v galerii, vyberte **Listy jinanu**.
 3. Nastavit **Základní barva víka** na barvu pozadí a **Barva vzoru víka** na barvu výkresu. Pro níže uvedenou kombinaci zvolte krém pro podklad a olivovou zelenou pro vzor.
 
+Barvy základu, vzoru a úchytky vyberte z **Filamenty sliceru** v příslušném okně barvy. Sloty nejprve nastavte v **Tisk → Filamenty sliceru**. **Stejná jako základ víka** propojí úchytku se základem; výběr jiné barvy ji nastaví nezávisle. Exportujte jako 3MF a zkontrolujte přiřazení filamentů.
+
 ![Two- tone víčka, zleva doprava. Horní řada ukazuje Olive větev, Ginkgo listy a Fern frond. Dolní řada ukazuje přílivové vlny, říční oblázky a růstové kroužky.](../../images/lid-motifs.svg)
 
 **Dvoubarevný vzor** je dostupný pro oba typy víka. Vyberte olivovou větvičku, listy jinanu, kapradinu, vlny, říční oblázky, letokruhy nebo Voroného buňky a barvy podkladu i vzoru. Deska 3,2 mm má plný podklad 1,6 mm a vzorovanou vrstvu 1,6 mm. Vnější okraj a úchyt zvětšují celkovou výšku. Zapuštěné víko potřebuje vnitřní hloubku alespoň 5,2 mm. Exportujte 3MF, aby obě barevné části zůstaly spolu, a přiřaďte filamenty. Pro olivu, jinan, kapradinu, vlny a letokruhy vytváří **Prořezávaný vzor** otvory v horní vrstvě. **Vystouplý vzor** je nechává prázdné do hloubky 1,6 mm a odhaluje podklad; vypněte jej pro hladkou vložku. Zapuštěná reliéfní víka se tisknou podkladem dolů, vnější víka vzorem dolů. Ve sliceru zkontrolujte mosty nad prohlubněmi.

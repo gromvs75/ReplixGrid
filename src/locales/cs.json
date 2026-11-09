@@ -503,7 +503,7 @@
   "Убрать прежние защёлки": "Odstraňte staré západky",
   "Файл слишком большой": "Soubor je příliš velký",
   "Фон — поворот · колесико — масштаб · правая кнопка — сдвиг": "Pozadí - otočení kolečka - tlačítko měřítka vpravo - posun",
-  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Barva pro náhled a export. Vlákno se vybírá v kráječi.",
+  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Barva pro náhled a export. Filament vyberte ve sliceru.",
   "Чёрный": "Černá",
   "Швы:": "Švy:",
   "Язык интерфейса": "Jazyk rozhraní",
@@ -824,5 +824,14 @@
   "Ярус {0}": "Patro {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panely zachovávají tloušťku stěn a vnitřní rozměry. Skryté úchyty vyžadují alespoň 3,2 mm; na tenčí stěny panely přilepte. Spodní odstup začíná na horní hraně spodního lemu.",
   "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Spodní lem s pláštěm není dostupný se starými západkami nebo dnem tenčím než 1,2 mm.",
-  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Výřez je příliš blízko rohu. Posuňte jej nebo zmenšete jeho šířku."
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Výřez je příliš blízko rohu. Posuňte jej nebo zmenšete jeho šířku.",
+  "Цвет ручки крышки": "Barva úchytky víka",
+  "Как основа крышки": "Stejná jako základ víka",
+  "Добавьте цвета в «Печать → Филаменты слайсера».": "Přidejte barvy v nabídce „Tisk → Filamenty sliceru“.",
+  "Закрыть выбор цвета": "Zavřít výběr barvy",
+  "Филаменты слайсера": "Filamenty sliceru",
+  "Слот": "Slot",
+  "HEX-код": "Kód HEX",
+  "HEX-код цвета": "Kód barvy HEX",
+  "Введите 6 символов: 0–9, A–F. Например, #E63522.": "Zadejte 6 znaků: 0–9, A–F. Například #E63522."
 }

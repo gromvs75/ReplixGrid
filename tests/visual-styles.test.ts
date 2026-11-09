@@ -10,7 +10,7 @@ const source=():Project=>({...defaultProject(),colors:{organizer:'#123456',shell
 const preserved=(p:Project)=>{
  const q=structuredClone(p);delete q.colors;delete q.relief;
  if(q.shell){delete (q.shell as Partial<typeof q.shell>).pattern;delete (q.shell as Partial<typeof q.shell>).size;}
- if(q.lidDesign)for(const key of ['pattern','patternSpacing','patternDepth','rimPattern','olive','motif','raised','cutwork','baseColor','patternColor'])delete (q.lidDesign as Record<string,unknown>)[key];
+ if(q.lidDesign)for(const key of ['pattern','patternSpacing','patternDepth','rimPattern','olive','motif','raised','cutwork','baseColor','patternColor','handleColor'])delete (q.lidDesign as Record<string,unknown>)[key];
  return q;
 };
 test('style applies whitelisted appearance while retaining geometry, fit, handle and inserts',()=>{

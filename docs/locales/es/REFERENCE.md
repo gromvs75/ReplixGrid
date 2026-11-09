@@ -146,6 +146,14 @@ Con una carcasa envolvente, una lengüeta en la cara interior de la pared inferi
 
 **Motivo bicolor** está disponible para ambos tipos de tapa. Elija rama de olivo, hojas de ginkgo, helecho, olas, piedras de río, anillos de crecimiento o celdas de Voronoi, y los colores de base y patrón. La placa de 3,2 mm tiene una base sólida de 1,6 mm y una capa de patrón de 1,6 mm. El reborde exterior y el asa aumentan la altura total. La tapa encajada requiere al menos 5,2 mm de profundidad interior. Exporte en 3MF para mantener juntas las dos piezas de color y asigne sus filamentos. Para olivo, ginkgo, helecho, olas y anillos, **Patrón calado** crea aberturas en la capa superior. **Patrón en relieve** deja vacías esas aberturas de 1,6 mm y muestra la base inferior; desactívelo para una incrustación lisa. Las tapas encajadas con relieve se imprimen con la base abajo; las exteriores, con el patrón abajo. Revise los puentes sobre los huecos en el laminador.
 
+### Colores de la tapa y filamentos
+
+Elige un asa cilíndrica o una barra para mostrar **Color del asa de la tapa**. **Igual que la base de la tapa** está activado de forma predeterminada: el asa sigue el color de la base de la tapa. Elegir otro color hace que el asa sea independiente; vuelve a activar la opción para vincularlos. El asa sigue siendo una pieza que se imprime por separado.
+
+Pulsa la muestra junto a **Color base de la tapa**, **Color del patrón de la tapa** o **Color del asa de la tapa**. La ventana incluye los **Filamentos del laminador** de la impresora actual, una paleta, un color personalizado y un campo HEX de seis caracteres. Configura tus colores en **Impresión → Filamentos del laminador**. Las ranuras eliminadas no aparecen; las demás conservan sus números.
+
+Los colores se guardan en el proyecto y se exportan en 3MF y OBJ; STL no incluye colores. Al exportar 3MF, una coincidencia de color única selecciona automáticamente la ranura guardada. Si varias ranuras comparten un color, elige la ranura manualmente en la ventana de exportación. Revisa las asignaciones en el laminador. Los colores de pantalla son aproximados y no simulan la mezcla física de filamentos.
+
 ![Seis patrones de tapa de dos toneladas](../../images/lid-motifs.svg)
 
 <a id="sleeves-and-panels"></a>

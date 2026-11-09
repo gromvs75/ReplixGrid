@@ -53,6 +53,8 @@ A lid needs a level rim. If you want to keep the sloped capsule from the example
 2. Enable **Two-tone pattern** and choose a **Lid pattern**. To try the fan-shaped leaves in the gallery, select **Ginkgo leaves**.
 3. Set **Lid base color** to the background color and **Lid pattern color** to the color of the drawing. For the combination shown below, choose cream for the base and olive green for the pattern.
 
+Choose the lid base, pattern and handle colors from **Slicer filaments** in their color popups. Set up those slots under **Print → Slicer filaments** first. **Match lid base** links the handle to the lid base; choosing a different handle color makes it independent. Export as 3MF to retain colors and check the filament assignments.
+
 ![Two-tone lids, from left to right. Top row shows Olive branch, Ginkgo leaves and Fern frond. Bottom row shows Tidal waves, River pebbles and Growth rings.](images/lid-motifs.svg)
 
 For printing, choose **3MF** and assign the base and pattern to their filament slots. Keep both colors together as one object. For Olive branch, Ginkgo leaves, Fern frond, Tidal waves and Growth rings, **Cutwork pattern** makes the motif out of openings in a continuous top sheet. Combine it with **Raised pattern** to expose the recessed backing through the openings. With **Raised pattern** on, the motif stands 1.6 mm above a solid 1.6 mm backing; the openings do not go through the lid. Turn it off for a smooth, flush inlay. Raised inset lids export backing-side down. Overlapping lids export pattern-side down to accommodate their rim: check the bridges over the recesses in your slicer before printing.

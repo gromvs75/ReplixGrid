@@ -146,6 +146,14 @@ Avec un habillage enveloppant, une languette à l’intérieur de la paroi infé
 
 **Motif bicolore** est disponible pour les deux types de couvercles. Choisissez branche d’olivier, feuilles de ginkgo, fougère, vagues, galets, cernes du bois ou cellules de Voronoï, puis les couleurs du fond et du motif. La plaque de 3,2 mm comprend un fond plein de 1,6 mm et une couche à motif de 1,6 mm. Le rebord extérieur et la poignée augmentent la hauteur totale. Un couvercle encastré exige au moins 5,2 mm de profondeur intérieure. Exportez en 3MF pour conserver les deux pièces colorées ensemble et affectez leurs filaments. Pour l’olivier, le ginkgo, la fougère, les vagues et les cernes, **Motif ajouré** crée des ouvertures dans la couche supérieure. **Motif en relief** laisse ces ouvertures de 1,6 mm vides et révèle le fond ; désactivez-le pour une incrustation lisse. Les couvercles encastrés en relief s’impriment fond vers le bas, les couvercles extérieurs motif vers le bas. Vérifiez les ponts au-dessus des creux dans le slicer.
 
+### Couleurs du couvercle et filaments
+
+Choisissez une poignée cylindrique ou une barre pour afficher **Couleur de la poignée du couvercle**. L’option **Comme la base du couvercle** est activée par défaut : la poignée suit la couleur de base du couvercle. Choisir une autre couleur rend la poignée indépendante ; réactivez l’option pour rétablir le lien. La poignée reste une pièce imprimée séparément.
+
+Cliquez sur l’échantillon à côté de **Couleur de base du couvercle**, **Couleur du motif du couvercle** ou **Couleur de la poignée du couvercle**. La fenêtre propose les **Filaments du slicer** de l’imprimante actuelle, une palette, une couleur personnalisée et un champ HEX à six caractères. Configurez vos couleurs dans **Impression → Filaments du slicer**. Les emplacements supprimés ne sont plus proposés ; les autres conservent leur numéro.
+
+Les couleurs sont enregistrées dans le projet et exportées en 3MF et OBJ ; le STL ne contient pas de couleurs. Lors de l’export 3MF, une couleur correspondant à un seul emplacement sélectionne automatiquement ce filament. Si plusieurs emplacements ont la même couleur, choisissez l’emplacement dans la fenêtre d’export. Vérifiez les affectations dans le slicer. Les couleurs affichées sont approximatives et ne simulent pas le mélange physique des filaments.
+
 ![Six modèles de couvercle à deux tons](../../images/lid-motifs.svg)
 
 <a id="sleeves-and-panels"></a>

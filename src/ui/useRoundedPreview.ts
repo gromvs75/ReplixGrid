@@ -10,16 +10,16 @@ export type PreviewPiece=Omit<PrintPiece,'stl'>&{geometry:BufferGeometry};
 const enabled=(p:Project)=>!!p.topEdge||!!p.baseBand||!!p.label||!!p.stack||!!p.lid||!!p.cups?.length||!!p.innerCornerRadius||!!p.relief||!!Object.keys(p.cutouts??{}).length||!!p.shell||!!p.tilt||!!p.footprint||!!p.printing||(p.cornerRadius??0)>0;
 export function useRoundedPreview(project:Project){
   // Appearance changes must never rebuild the printable mesh.
-  const geometryKey=JSON.stringify({...project,printArea:undefined,colors:undefined,cups:project.cups?.map(c=>({...c,color:undefined}))});
+  const geometryKey=JSON.stringify({...project,printArea:undefined,colors:undefined,lidDesign:project.lidDesign?{...project.lidDesign,baseColor:undefined,patternColor:undefined,handleColor:undefined}:undefined,cups:project.cups?.map(c=>({...c,color:undefined}))});
   const geometryProject=useMemo(()=>JSON.parse(geometryKey) as Project,[geometryKey]);
   const [result,setResult]=useState<{extras:(Omit<KitPart,'stl'>&{geometry:BufferGeometry})[];activeZ:number;organizer:BufferGeometry|null;shell:BufferGeometry|null;pieces:PreviewPiece[];pending:boolean;error:string;sourceProject:Project|null}>({extras:[],activeZ:0,organizer:null,shell:null,pieces:[],pending:false,error:'',sourceProject:null});
   const runtime=useRef<{submit:(p:Project)=>void}|null>(null);
   useEffect(()=>{
-    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-lid-handles-v5.js`,window.location.origin),{type:'module'});
+    let worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-lid-colors-v6.js`,window.location.origin),{type:'module'});
     const queue=new PreviewQueue<Project>(enabled);
     let watchdog:ReturnType<typeof setTimeout>|undefined;
     let active=true,needsRestart=false;
-    const send=()=>{const job=queue.take();if(job){if(needsRestart){worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-lid-handles-v5.js`,window.location.origin),{type:'module'});worker.onmessage=receive;worker.onerror=failed;needsRestart=false;}setResult(old=>({...old,pending:true,error:''}));watchdog=setTimeout(failed,120000);worker.postMessage({...job,purpose:'preview'});}};
+    const send=()=>{const job=queue.take();if(job){if(needsRestart){worker=new Worker(new URL(`${import.meta.env.BASE_URL}kernel/worker-lid-colors-v6.js`,window.location.origin),{type:'module'});worker.onmessage=receive;worker.onerror=failed;needsRestart=false;}setResult(old=>({...old,pending:true,error:''}));watchdog=setTimeout(failed,120000);worker.postMessage({...job,purpose:'preview'});}};
     const receive=(event:MessageEvent)=>{
       const {data}=event;
       if(!active)return;

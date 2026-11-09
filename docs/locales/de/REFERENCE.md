@@ -146,6 +146,14 @@ Bei einer umlaufenden Hülle greift eine Zunge an der Innenseite der unteren Wan
 
 **Zweifarbiges Muster** ist für beide Deckelarten verfügbar. Wählen Sie Olivenzweig, Ginkgoblätter, Farn, Wellen, Flusskiesel, Jahresringe oder Voronoi-Zellen sowie Grund- und Musterfarbe. Die 3,2 mm Platte besteht aus 1,6 mm geschlossener Rückseite und 1,6 mm Musterschicht. Außenrand und Griff erhöhen die Gesamthöhe. Ein innenliegender Deckel benötigt mindestens 5,2 mm Innentiefe. Exportieren Sie als 3MF, damit die beiden Farbteile zusammenbleiben, und weisen Sie ihnen Filamentslots zu. Bei Olivenzweig, Ginkgo, Farn, Wellen und Jahresringen erzeugt **Durchbrochenes Muster** Öffnungen in der oberen Schicht. Mit **Erhabenes Muster** bleiben diese 1,6 mm tiefen Bereiche leer, sodass die Rückseite darunter sichtbar ist; ausgeschaltet entsteht eine glatte Einlage. Innenliegende Reliefdeckel werden mit der Rückseite nach unten gedruckt, äußere Deckel mit der Musterseite nach unten. Prüfen Sie die Brücken über Vertiefungen im Slicer.
 
+### Deckelfarben und Slicer-Filamente
+
+Wählen Sie einen zylindrischen Griff oder einen Steg, um **Farbe des Deckelgriffs** einzublenden. Standardmäßig ist **Wie die Deckelgrundfarbe** aktiviert: Der Griff übernimmt die Grundfarbe des Deckels. Eine andere Farbauswahl macht den Griff unabhängig; aktivieren Sie die Option erneut, um die Farben wieder zu verknüpfen. Der Griff bleibt ein separat gedrucktes Teil.
+
+Klicken Sie auf das Farbfeld neben **Deckelgrundfarbe**, **Deckelmusterfarbe** oder **Farbe des Deckelgriffs**. Das Fenster enthält **Slicer-Filamente** für den aktuellen Drucker, eine Farbpalette, eine freie Farbauswahl und ein Feld für einen sechsstelligen HEX-Code. Hinterlegen Sie Ihre Farben unter **Drucken → Slicer-Filamente**. Gelöschte Steckplätze fehlen; die übrigen Nummern bleiben erhalten.
+
+Farben werden im Projekt gespeichert und in 3MF und OBJ übernommen; STL enthält keine Farben. Beim 3MF-Export wählt eine eindeutige Farbübereinstimmung automatisch den gespeicherten Filamentsteckplatz. Bei mehrfach verwendeten Farben wählen Sie den Steckplatz im Exportfenster manuell. Prüfen Sie die Zuordnung im Slicer. Bildschirmfarben sind Näherungen und bilden keine reale Filamentmischung ab.
+
 ![Sechs zweifarbige Deckelmuster](../../images/lid-motifs.svg)
 
 <a id="sleeves-and-panels"></a>

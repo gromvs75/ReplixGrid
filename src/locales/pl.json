@@ -411,7 +411,7 @@
   "Форма шаблона": "Formularz szablonowy",
   "Формат файла": "Format pliku",
   "Цвет вставки": "Wstaw kolor",
-  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Kolor do podglądu i eksportu. Filament jest wybierany w krajalnicy.",
+  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Kolor do podglądu i eksportu. Wybierz filament w slicerze.",
   "Цвет оболочки": "Kolor skorupy",
   "Части помещаются с защёлками. Возможен поворот на столе на 90°.": "Części pasują za pomocą zatrzasków. Można obracać na stole o 90°.",
   "Четыре разрезных штифта за рамкой: два снизу и два сверху. Нажмите панель к стенке; снимайте аккуратно, оттягивая за нижний край. Крепление экспериментальное — нужна пробная печать.": "Cztery zawleczki za ramą: dwa na dole i dwa na górze. Dociśnij panel do ściany; ostrożnie wyjmij, pociągając za dolną krawędź. Montaż ma charakter eksperymentalny - wymagany jest wydruk próbny.",
@@ -824,5 +824,14 @@
   "Ярус {0}": "Poziom {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Panele zachowują grubość ścian i wymiary wewnętrzne. Ukryte mocowania wymagają co najmniej 3,2 mm; do cieńszych ścian panele należy przykleić. Dolny odstęp zaczyna się od górnej krawędzi dolnej listwy.",
   "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Dolna listwa z osłoną jest niedostępna ze starymi zatrzaskami lub dnem cieńszym niż 1,2 mm.",
-  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Wycięcie jest zbyt blisko narożnika. Przesuń je lub zmniejsz jego szerokość."
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Wycięcie jest zbyt blisko narożnika. Przesuń je lub zmniejsz jego szerokość.",
+  "Цвет ручки крышки": "Kolor uchwytu pokrywy",
+  "Как основа крышки": "Jak podstawa pokrywy",
+  "Добавьте цвета в «Печать → Филаменты слайсера».": "Dodaj kolory w menu „Druk → Filamenty slicera”.",
+  "Закрыть выбор цвета": "Zamknij wybór koloru",
+  "Филаменты слайсера": "Filamenty slicera",
+  "Слот": "Slot",
+  "HEX-код": "Kod HEX",
+  "HEX-код цвета": "Kod koloru HEX",
+  "Введите 6 символов: 0–9, A–F. Например, #E63522.": "Wpisz 6 znaków: 0–9, A–F. Na przykład #E63522."
 }

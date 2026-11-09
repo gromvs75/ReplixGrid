@@ -137,6 +137,14 @@ With a wrapped shell, a tongue inside the lower wall fits a socket below the upp
 
 **Two-tone pattern.** Enable it on either lid fit, then choose Olive branch, Ginkgo leaves, Fern frond, Tidal waves, River pebbles Growth rings or Voronoi cells. Choose a base color and a pattern color. The 3.2 mm plate has a solid 1.6 mm backing and a 1.6 mm patterned face. The outer locating rim and optional handle add to the overall height. For an inset lid, allow at least 5.2 mm inside depth. Export in 3MF to keep both colors together as one lid, and assign the two parts to your filament slots. For Olive branch, Ginkgo leaves, Fern frond, Tidal waves and Growth rings, **Cutwork pattern** makes the motif out of openings in a continuous top sheet. Combine it with **Raised pattern** to expose the recessed backing through the openings. Enable **Raised pattern** to leave the openings in the upper 1.6 mm empty. Disable it for a smooth inlay. Raised inset lids print backing first; overlapping lids print patterned face down. Check bridging over the recesses in the slicer.
 
+### Lid colors and slicer filaments
+
+Select a cylindrical or bar handle to show **Lid handle color**. **Match lid base** is enabled by default: the handle follows the lid base color. Choose another color to make it independent; enable this option again to restore the match. The handle remains a separate printable part.
+
+Click the color swatch beside **Lid base color**, **Lid pattern color** or **Lid handle color**. The popup includes **Slicer filaments** for the current printer, ordinary swatches, a custom color and a six-digit HEX field. Configure your available colors under **Print → Slicer filaments**. Removed slots are absent and the remaining numbers stay unchanged.
+
+Colors are saved with the project and retained in 3MF and OBJ; STL has no colors. In 3MF export, a unique matching color automatically selects its saved filament slot. If several slots share a color, choose the slot manually in the export dialog. Check assignments in your slicer. Displayed colors are approximate and do not simulate physical filament mixing.
+
 ![Six two-tone lid patterns](images/lid-motifs.svg)
 
 ## Sleeves and panels

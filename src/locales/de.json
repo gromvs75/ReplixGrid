@@ -440,7 +440,7 @@
   "Форма шаблона": "Vorlagenformular",
   "Формат файла": "Dateiformat",
   "Цвет вставки": "Farbe einfügen",
-  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Farbe für Vorschau und Export. Das Filament wird im Slicer ausgewählt.",
+  "Цвет для предпросмотра и экспорта. Филамент выбирается в слайсере.": "Farbe für Vorschau und Export. Wählen Sie das Filament im Slicer.",
   "Цвет оболочки": "Schalenfarbe",
   "Цвет органайзера": "Organizerfarbe",
   "Части помещаются с защёлками. Возможен поворот на столе на 90°.": "Die Teile passen einschließlich der Rastverbindungen auf die Druckplatte, gegebenenfalls um 90° gedreht.",
@@ -825,5 +825,14 @@
   "Ярус {0}": "Ebene {0}",
   "Панели сохраняют толщину стенок и внутренние размеры отсеков. Скрытые крепления доступны от 3,2 мм; на более тонких стенках панели приклеиваются. Нижний край панели отступает от верха нижнего канта.": "Paneele erhalten Wandstärke und Innenmaße. Verdeckte Befestigungen benötigen mindestens 3,2 mm; an dünnere Wände werden Paneele geklebt. Der untere Abstand beginnt an der Oberkante des unteren Zierbands.",
   "Нижний кант с оболочкой пока недоступен для прежних защёлок и дна тоньше 1,2 мм.": "Unteres Zierband mit Hülle ist mit alten Clips oder Böden unter 1,2 mm nicht verfügbar.",
-  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Der Ausschnitt liegt zu nah an einer Ecke. Verschieben Sie ihn oder verringern Sie seine Breite."
+  "Вырез слишком близко к углу: сдвиньте его или уменьшите ширину.": "Der Ausschnitt liegt zu nah an einer Ecke. Verschieben Sie ihn oder verringern Sie seine Breite.",
+  "Цвет ручки крышки": "Farbe des Deckelgriffs",
+  "Как основа крышки": "Wie die Deckelgrundfarbe",
+  "Добавьте цвета в «Печать → Филаменты слайсера».": "Farben unter „Drucken → Slicer-Filamente“ hinzufügen.",
+  "Закрыть выбор цвета": "Farbauswahl schließen",
+  "Филаменты слайсера": "Slicer-Filamente",
+  "Слот": "Steckplatz",
+  "HEX-код": "HEX-Code",
+  "HEX-код цвета": "HEX-Farbcode",
+  "Введите 6 символов: 0–9, A–F. Например, #E63522.": "Geben Sie 6 Zeichen ein: 0–9, A–F. Zum Beispiel #E63522."
 }

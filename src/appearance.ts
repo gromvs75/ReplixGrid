@@ -4,3 +4,11 @@ export const partColor=(p:Project,part:'organizer'|'shell')=>p.colors?.[part]??d
 
 export const defaultInsertColor='#c0cdb5';
 export const insertColor=(p:Project,cellId?:string)=>p.cups?.find(c=>c.cellId===cellId)?.color??defaultInsertColor;
+
+/** Unset handle colors follow the lid base; explicit colors stay independent. */
+export function lidBaseColor(p:Project){
+ const d=p.lidDesign;
+ if(!d?.svg&&!d?.olive)return partColor(p,'organizer');
+ return d.baseColor??((d.svg?d.svgMode!=='cutout':d.olive)?'#f7f3e8':partColor(p,'organizer'));
+}
+export const lidHandleColor=(p:Project)=>p.lidDesign?.handleColor??lidBaseColor(p);
