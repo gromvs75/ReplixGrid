@@ -51,12 +51,25 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
   body=keep(keep(body.asOriginal()).simplify(tolerance));
   const mesh=body.getMesh();let triangles:Triangle[]=[];
   for(let i=0;i<mesh.triVerts.length;i+=3)triangles.push([0,1,2].map(j=>{const k=mesh.triVerts[i+j]*mesh.numProp;return [mesh.vertProperties[k],mesh.vertProperties[k+1],mesh.vertProperties[k+2]] as Point;}) as Triangle);
-  const original=triangles;triangles=removeCollapsedFaces(weldNearVertices(original,tolerance*.2));
-  let raw:ReturnType<typeof inspectSurface>;
-  try{raw=inspectSurface(decodeSTL(encodeSTL(triangles)));}catch(error){if(kind!=='lid-handle'||!(error instanceof Error)||!error.message.includes('non-manifold'))throw error;triangles=removeCollapsedFaces(weldNearVertices(original,tolerance*.02));raw=inspectSurface(decodeSTL(encodeSTL(triangles)));}
-  const min:Point=[raw.bounds.min[0],raw.bounds.min[1],sharedZ?0:raw.bounds.min[2]];
-  const stl=encodeSTL(triangles.map(t=>t.map(v=>v.map((n,k)=>n-min[k]) as Point) as Triangle));
-  parts.push({name,kind,level,stl,inspection:inspectSurface(decodeSTL(stl)),position:position.map((n,k)=>n+min[k]) as Point,color:kind==='cup'?'#c0cdb5':partColor(p,kind==='shell'?'shell':'organizer')});
+  // Preserve distinct vertices on shallow chamfers. Each cleanup attempt
+  // must also survive shifting the finished STL onto the print bed: that
+  // second Float32 rounding can collapse seams which were valid beforehand.
+  const original=triangles;let failure:unknown;
+  for(const distance of [0,tolerance*.002,tolerance*.02,tolerance*.2])try{
+   triangles=removeCollapsedFaces(distance?weldNearVertices(original,distance):original);
+   const raw=inspectSurface(decodeSTL(encodeSTL(triangles)));
+   const min:Point=[raw.bounds.min[0],raw.bounds.min[1],sharedZ?0:raw.bounds.min[2]];
+   const stl=encodeSTL(triangles.map(t=>t.map(v=>v.map((n,k)=>n-min[k]) as Point) as Triangle));
+   const inspection=inspectSurface(decodeSTL(stl));
+   if(Math.abs(inspection.volume-body.volume())>Math.max(.001,body.volume()*1e-5))throw new Error('STL volume mismatch');
+   parts.push({name,kind,level,stl,inspection,position:position.map((n,k)=>n+min[k]) as Point,color:kind==='cup'?'#c0cdb5':partColor(p,kind==='shell'?'shell':'organizer')});
+   return;
+  }catch(error){
+   if(!(error instanceof Error)||!/^Open or non-manifold|^Degenerate|^STL volume mismatch/.test(error.message))throw error;
+   failure=error;
+  }
+  throw failure;
+
  };
  const ring=(source:Project,outer:number,inner:number,height:number,z:number)=>keep(keep(wasm.Manifold.extrude([footprintContour(source,outer),footprintContour(source,inner).reverse()],height)).translate([0,0,z]));
  try{
@@ -110,7 +123,9 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    }
    if(base&&incoming){
     body??=keep(solid(built.stl).translate(built.position));
-    const slab=keep(keep(wasm.Manifold.extrude([footprintContour(lp,0)],base)).translate([0,0,-base]));
+    // The cached tray has already passed through Float32 STL. Overlap its
+    // floor slightly so rounding cannot leave coincident internal membranes.
+    const slab=keep(keep(wasm.Manifold.extrude([footprintContour(lp,0)],base+.01)).translate([0,0,-base]));
     body=keep(body.add(slab));
     if(lp.shell&&lp.shell.mode!=='panels')body=keep(body.add(keep(keep(wasm.Manifold.extrude([footprintContour(lp,shellGap(lp)+lp.shell.thickness)],SHELL_SEAM)).translate([0,0,-base]))));
     const socket=ring(lp,incoming.tongueOuter+p.stack!.gap,incoming.tongueInner-p.stack!.gap,incoming.socketDepth+.01,-base-.01);
@@ -121,7 +136,11 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    parts[parts.length-1].color=partColor(lp,'organizer');
    if(i===count-1&&p.lid){
     const offset=lp.shell?shellGap(lp)+lp.shell.thickness:(lp.relief?.depth??0),gap=.5,outer=inset?seatOffset-.35:offset+gap+1.4;
-    let plate=keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness));
+    // A square wrapped sleeve has square outside corners, unlike an offset
+    // rounded tray. Offset that actual sleeve outline for the lid clearance.
+    const squareSleeve=!inset&&lp.shell&&lp.shell.mode!=='panels'&&!lp.footprint&&!(lp.cornerRadius??0);
+    const lidContour=(distance:number)=>squareSleeve?roundedContour(lp.width+2*distance,lp.depth+2*distance,Math.max(0,distance-offset),-distance,-distance):footprintContour(lp,distance);
+    let plate=keep(wasm.Manifold.extrude([lidContour(outer)],plateThickness));
     const design=p.lidDesign,lipHeight=design?.rimHeight??2;
     // Keep the usual four-millimetre margin, but scale it down on small lids.
     // Fit against the actual lid face as inset and curved lids can be narrower.
@@ -132,7 +151,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
      let depth=Math.min(design.handle==='round'?width:Math.min(8,width),lp.depth-2*margin);
      if(design.handle==='round')width=depth=Math.min(width,depth);
      let outline:XY[]=design.handle==='round'?Array.from({length:48},(_,j)=>[width/2*Math.cos(j*Math.PI/24),width/2*Math.sin(j*Math.PI/24)]):roundedContour(width,depth,Math.min(depth/3,2),-width/2,-depth/2);
-     const face=keepSection(new wasm.CrossSection([footprintContour(lp,outer)]));
+     const face=keepSection(new wasm.CrossSection([lidContour(outer)]));
      const bounds=face.bounds(),clearance=Math.min(.5,(bounds.max[0]-bounds.min[0])/10,(bounds.max[1]-bounds.min[1])/10);
      const available=keepSection(face.offset(-clearance,'Round',2,32));
      const profile=keepSection(new wasm.CrossSection([outline]));
@@ -146,17 +165,18 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
      }
      handleProfile={width,depth,outline};
     }
-    let lip=inset?null:ring(lp,outer,offset+gap,lipHeight,plateThickness);
+    const lidRing=(outside:number,inside:number,height:number,z:number)=>keep(keep(wasm.Manifold.extrude([lidContour(outside),lidContour(inside).reverse()],height)).translate([0,0,z]));
+    let lip=inset?null:lidRing(outer,offset+gap,lipHeight,plateThickness);
     if(lip&&design?.rimPattern==='rings'){
      const grooves:Manifold[]=[];
-     for(let z=plateThickness+.65;z<plateThickness+lipHeight-.3;z+=1.2)grooves.push(ring(lp,outer+.1,outer-.35,.4,z));
+     for(let z=plateThickness+.65;z<plateThickness+lipHeight-.3;z+=1.2)grooves.push(lidRing(outer+.1,outer-.35,.4,z));
      if(grooves.length)lip=keep(lip.subtract(keep(wasm.Manifold.union(grooves))));
     }
     // Engraved decoration is on the face printed against the build plate.
     // Clip to an inset so the edge and the existing mating lip remain intact.
     let accent:Manifold|undefined;
     if(design?.svg){
-     const face=keepSection(new wasm.CrossSection([footprintContour(lp,outer)]));
+     const face=keepSection(new wasm.CrossSection([lidContour(outer)]));
      let mask=keepSection(face.offset(-2,'Round',2,32));
      // Reserve an unperforated landing for the separately printed handle.
      if(design.handle!=='none'){
@@ -176,15 +196,15 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
       plate=keep(backing.add(raisedPattern));
      }
     }else if(design?.olive){
-     const motif=oliveFace(wasm,footprintContour(lp,outer),keepSection,design.motif,design.cutwork);
+     const motif=oliveFace(wasm,lidContour(outer),keepSection,design.motif,design.cutwork);
      accent=keep(motif.extrude(plateThickness/2));
      plate=design.raised
-      ?keep(keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness/2)).translate([0,0,plateThickness/2]))
+      ?keep(keep(wasm.Manifold.extrude([lidContour(outer)],plateThickness/2)).translate([0,0,plateThickness/2]))
       :keep(plate.subtract(accent));
     }else if(design&&design.pattern==='lines'){
      // Offset a valid face rather than constructing a negative-sized footprint.
      // A tiny lid may have no room inside its border; its plate remains valid.
-     const face=keepSection(new wasm.CrossSection([footprintContour(lp,outer)]));
+     const face=keepSection(new wasm.CrossSection([lidContour(outer)]));
      const region=keepSection(face.offset(-(inset?2:outer+3),'Round',2,32));
      if(!region.isEmpty()){
       const mask=keep(region.extrude(1));
@@ -193,7 +213,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
       if(grooves.length)plate=keep(plate.subtract(keep(keep(wasm.Manifold.union(grooves)).intersect(mask))));
      }
     }else if(design&&design.pattern!=='smooth'&&design.pattern!=='lines'){
-     const polygon=footprintContour(lp,outer),spacing=design.patternSpacing??8,depth=design.patternDepth??.5;
+     const polygon=lidContour(outer),spacing=design.patternSpacing??8,depth=design.patternDepth??.5;
      const edgeDistance=(x:number,y:number)=>Math.min(...polygon.map((a,i)=>{const b=polygon[(i+1)%polygon.length],dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)));return Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy);}));
      const pattern=design.pattern;
      // Sample narrow peaks and grooves more finely than the visible period.
