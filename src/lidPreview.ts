@@ -11,5 +11,8 @@ export function isolatedLidLayout(parts:Pick<KitPart,'kind'|'position'|'inspecti
   for(let k=0;k<3;k++){min[k]=Math.min(min[k],part.position[k]+lo[k]);max[k]=Math.max(max[k],part.position[k]+hi[k]);}
  }
  if(!min.every(Number.isFinite))return null;
- return {offset:[-(min[0]+max[0])/2,-(min[1]+max[1])/2,-min[2]] as Point,size:Math.max(...max.map((v,k)=>v-min[k]))};
+ const size=Math.max(...max.map((v,k)=>v-min[k]));
+ // The camera looks at Y=0.45 after scaling. Centre tall handles there too.
+ const centerZ=(min[2]+max[2])/2;
+ return {offset:[-(min[0]+max[0])/2,-(min[1]+max[1])/2,-centerZ+.45*Math.max(1,size)/4] as Point,size};
 }

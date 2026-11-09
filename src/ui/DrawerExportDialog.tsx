@@ -13,7 +13,7 @@ export function DrawerExportDialog({layout,onClose,onSettings}:{layout:DrawerLay
  useEffect(()=>{dialog.current?.showModal();return()=>dialog.current?.close();},[]);
  useEffect(()=>{
   const revision=++serial.current;let alive=true;checked.current='';setBusy(true);setError('');setReport(null);setProgress('');setBed(0);
-  const w=new Worker('/kernel/worker-drawer-export-lid-pattern-v4.js',{type:'module'});worker.current=w;
+  const w=new Worker('/kernel/worker-drawer-export-lid-handles-v5.js',{type:'module'});worker.current=w;
   const fail=(text:string)=>{if(!alive||current.current!==key)return;clearTimeout(timer.current);w.terminate();checked.current='';setBusy(false);setError(text);};
   timer.current=setTimeout(()=>fail('Подготовка заняла слишком много времени. Упростите комплект или скачайте лотки отдельно.'),300000);
   w.onerror=()=>fail('Не удалось подготовить комплект. Попробуйте ещё раз.');

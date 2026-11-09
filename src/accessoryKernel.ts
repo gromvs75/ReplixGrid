@@ -123,6 +123,29 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     const offset=lp.shell?shellGap(lp)+lp.shell.thickness:(lp.relief?.depth??0),gap=.5,outer=inset?seatOffset-.35:offset+gap+1.4;
     let plate=keep(wasm.Manifold.extrude([footprintContour(lp,outer)],plateThickness));
     const design=p.lidDesign,lipHeight=design?.rimHeight??2;
+    // Keep the usual four-millimetre margin, but scale it down on small lids.
+    // Fit against the actual lid face as inset and curved lids can be narrower.
+    let handleProfile:{width:number;depth:number;outline:XY[]}|undefined;
+    if(design?.handle&&design.handle!=='none'){
+     const margin=Math.min(4,Math.min(lp.width,lp.depth)/4);
+     let width=Math.min(design.handleWidth??(design.handle==='round'?10:26),lp.width-2*margin);
+     let depth=Math.min(design.handle==='round'?width:Math.min(8,width),lp.depth-2*margin);
+     if(design.handle==='round')width=depth=Math.min(width,depth);
+     let outline:XY[]=design.handle==='round'?Array.from({length:48},(_,j)=>[width/2*Math.cos(j*Math.PI/24),width/2*Math.sin(j*Math.PI/24)]):roundedContour(width,depth,Math.min(depth/3,2),-width/2,-depth/2);
+     const face=keepSection(new wasm.CrossSection([footprintContour(lp,outer)]));
+     const bounds=face.bounds(),clearance=Math.min(.5,(bounds.max[0]-bounds.min[0])/10,(bounds.max[1]-bounds.min[1])/10);
+     const available=keepSection(face.offset(-clearance,'Round',2,32));
+     const profile=keepSection(new wasm.CrossSection([outline]));
+     const fits=(scale:number)=>{
+      const candidate=profile.scale(scale),placed=candidate.translate([lp.width/2,lp.depth/2]),outside=placed.subtract(available);
+      const ok=outside.area()<1e-9;outside.delete();placed.delete();candidate.delete();return ok;
+     };
+     if(!fits(1)){
+      let lo=0,hi=1;for(let j=0;j<32;j++){const mid=(lo+hi)/2;if(fits(mid))lo=mid;else hi=mid;}
+      width*=lo;depth*=lo;outline=outline.map(([x,y])=>[x*lo,y*lo]);
+     }
+     handleProfile={width,depth,outline};
+    }
     let lip=inset?null:ring(lp,outer,offset+gap,lipHeight,plateThickness);
     if(lip&&design?.rimPattern==='rings'){
      const grooves:Manifold[]=[];
@@ -137,7 +160,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
      let mask=keepSection(face.offset(-2,'Round',2,32));
      // Reserve an unperforated landing for the separately printed handle.
      if(design.handle!=='none'){
-      const width=Math.min(design.handleWidth??(design.handle==='round'?10:26),lp.width-8),depth=design.handle==='round'?width:Math.min(8,width);
+      const {width,depth}=handleProfile!;
       const landing=keepSection(new wasm.CrossSection([[[lp.width/2-width/2-1,lp.depth/2-depth/2-1],[lp.width/2+width/2+1,lp.depth/2-depth/2-1],[lp.width/2+width/2+1,lp.depth/2+depth/2+1],[lp.width/2-width/2-1,lp.depth/2+depth/2+1]]]));
       mask=keepSection(mask.subtract(landing));
      }
@@ -192,10 +215,9 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
      parts[parts.length-1].color=design?.patternColor??'#687749';
     }
     if(design?.handle&&design.handle!=='none'){
-     const width=Math.min(design.handleWidth??(design.handle==='round'?10:26),lp.width-8),depth=Math.min(design.handle==='round'?width:Math.min(8,width),lp.depth-8),height=design.handleHeight??5;
-     const radius=design.handle==='round'?Math.min(width,depth)/2:0,edge=Math.min(design.edgeSize??1,height/2,depth/3),edgeMode=design.handleEdge??'none';
-     const outline=design.handle==='round'?Array.from({length:48},(_,j)=>[radius*Math.cos(j*Math.PI/24),radius*Math.sin(j*Math.PI/24)] as XY):roundedContour(width,depth,Math.min(depth/3,2),0,0);
-     const centerX=design.handle==='bar'?width/2:0,centerY=design.handle==='bar'?depth/2:0;
+     const {width,depth,outline}=handleProfile!,height=design.handleHeight??5;
+     const edge=Math.min(design.edgeSize??1,height/2,width/3,depth/3),edgeMode=design.handleEdge??'none';
+     const centerX=0,centerY=0;
      let handle:Manifold;
      if(edgeMode==='none'||edge===0)handle=keep(wasm.Manifold.extrude([outline],height));
      else{
