@@ -101,9 +101,9 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
     // Simplification can collapse distinct edges of a fine lattice. Retry from
     // the original solid at finer precision instead of welding the damaged mesh
     // more aggressively. Every candidate still passes serialized STL validation.
-    const precisions=part==='shell'?[Math.max(tolerance,.005),tolerance,0]:[tolerance];
+    const precisions=part==='shell'?[Math.max(tolerance,.005),tolerance,0]:[tolerance,tolerance/10,0];
     for(const [attempt,precision] of precisions.entries())try{
-    const body=keep(original.simplify(precision));
+    const body=precision===0?original:keep(original.simplify(precision));
     if(body.status()!=='NoError') throw new Error(`Geometry error: ${body.status()}`);
     const components=body.decompose();components.forEach(keep);
     if(components.length!==1) throw new Error(project.shell?.svg&&part==='shell'?SVG_ISLAND_ERROR:'Disconnected solid');
@@ -147,7 +147,13 @@ async function buildPart(project:Project,part:'organizer'|'shell',shellSupport=t
     if(Math.abs(inspection.volume-body.volume())>Math.max(1e-3,body.volume()*1e-5)) throw new Error('STL volume mismatch');
     return {stl,inspection,position:[0,0,0] as Point};
     }catch(error){
-      const numerical=error instanceof Error&&/^(Open or non-manifold oriented edge|Degenerate triangle|Degenerate STL triangle|Shell STL volume mismatch)/.test(error.message);
+      let numerical=error instanceof Error&&/^(Open or non-manifold oriented edge|Degenerate triangle|Degenerate STL triangle|Shell STL volume mismatch)/.test(error.message);
+      if(error instanceof Error&&error.message==='Disconnected solid'){
+        // A simplifier can split a tiny rim fragment off an otherwise connected
+        // solid. Retry with finer precision, but never hide a disconnected source.
+        const sourceComponents=original.decompose();sourceComponents.forEach(keep);
+        numerical=sourceComponents.length===1;
+      }
       if(!numerical||attempt===precisions.length-1)throw error;
     }
     throw new Error('Geometry failed');

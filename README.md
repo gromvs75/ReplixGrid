@@ -78,7 +78,7 @@ Now type the next command and press Enter:
 npm run dev
 ```
 
-Wait until the terminal displays a local address, normally `http://127.0.0.1:5173/`. Open that address in a browser on the **same computer**. You can now use ReplixGrid. Keep the terminal window open while using the app; closing it stops the local server. The `127.0.0.1` address refers to your own computer.
+Wait until the terminal displays `http://127.0.0.1:5173/`. The local server uses port **5173** and stops with an error if it is occupied; it does not switch to a different port. Open that address in a browser on the **same computer**. You can now use ReplixGrid. Keep the terminal window open while using the app; closing it stops the local server. The `127.0.0.1` address refers to your own computer.
 
 ### 5. Stop and reopen later
 
