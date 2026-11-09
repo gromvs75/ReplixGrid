@@ -1,4 +1,12 @@
 import type {Project} from './model.js';
+import {levelProject} from './accessories.js';
+
+/** A retained preview can still contain tiers removed from the current project. */
+export function previewLevelProject(current:Project,source:Project|null,level:number):Project {
+ if(current.stack?.levels[level])return levelProject(current,level);
+ if(source?.stack?.levels[level])return levelProject(source,level);
+ return current;
+}
 export const defaultColors={organizer:'#8cbaa8',shell:'#c58d62'};
 export const partColor=(p:Project,part:'organizer'|'shell')=>p.colors?.[part]??defaultColors[part];
 
