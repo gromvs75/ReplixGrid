@@ -1,4 +1,6 @@
 <a id="replixgrid-user-guide"></a>
+
+Nelle modalità Organizer e Cassetto, le dimensioni seguono l’ordine **Lunghezza × larghezza × altezza**. La lunghezza corrisponde sempre all’asse X e la larghezza all’asse Y. I nomi non cambiano modificando le proporzioni o ruotando la vista. I progetti salvati mantengono dimensioni e orientamento. La profondità del ritaglio o dell’incisione continua a indicare quanto il taglio penetra nel materiale.
 # Manuale utente di ReplixGrid
 
 Progetta un organizer con misure in millimetri, verifica l’accoppiamento dei pezzi e scaricali per lo slicer. Per iniziare, segui l’esempio illustrato della capsula nella guida rapida. Questo manuale descrive le singole impostazioni.
@@ -60,10 +62,10 @@ Sotto **Forma → Base**, scegliere un profilo di base e altezza, quindi fare cl
 | Arrotondato | Un'impronta rettangolare con angoli esterni regolabili. |
 | Capsula | Un lungo corpo con estremità semicircolari. Il modello inclinato porta l'inclinazione attraverso entrambe le estremità curve. |
 | Circolo | Un organizer rotondo dimensionato per diametro. |
-| Ovale | Un profilo curvo allungato con larghezza e profondità regolabili separatamente. |
+| Ovale | Un profilo curvo allungato con lunghezza e larghezza regolabili separatamente. |
 | Mielecombe | Un gruppo di celle esagonali che condividono pareti. Selezionare una cella per regolare la sua altezza. |
 
-Scegli **Liscio** per un cerchio di livello, **Inclinato** per un continuo aumento, o **Gradini** per livelli di altezza distinti. Le dimensioni sotto le scelte descrivono il modello che stai per creare. Una volta creato, modificare il modello sotto **Dimensioni**. La larghezza e la profondità misurano l'impronta esterna. Utilizzare le dimensioni interne dello scomparto selezionato quando dimensionarlo per un oggetto. Su una base curva, controllare anche le estremità di restringimento in **Dall’alto** vista.
+Scegli **Liscio** per un cerchio di livello, **Inclinato** per un continuo aumento, o **Gradini** per livelli di altezza distinti. Le dimensioni sotto le scelte descrivono il modello che stai per creare. Una volta creato, modificare il modello sotto **Dimensioni**. La lunghezza e la larghezza misurano l'impronta esterna. Utilizzare le dimensioni interne dello scomparto selezionato quando dimensionarlo per un oggetto. Su una base curva, controllare anche le estremità di restringimento in **Dall’alto** vista.
 
 ![Capsule Sloped con una fascia bassa per l'accesso, un'estremità alta per oggetti lunghi e due divisori trasversali](../../images/capsule-sloped.jpg)
 
@@ -72,7 +74,7 @@ In **Forma** → **Ulteriori**, regola gli spessori di pareti e fondo. Pareti pi
 <a id="exact-internal-dimensions"></a>
 ## Dimensioni interne precise
 
-Seleziona uno scomparto e apri **Dimensioni interne** a destra, oppure fai clic sulla quota blu nel modello. Scegli larghezza o profondità e inserisci i millimetri. Fai clic fuori dal campo o premi **Enter** per applicare; **Escape** annulla. Nel pannello destro usa **Applica**. I valori non validi non modificano il modello. Ogni modifica confermata si annulla in un solo passaggio.
+Seleziona uno scomparto e apri **Dimensioni interne** a destra, oppure fai clic sulla quota blu nel modello. Scegli lunghezza o larghezza e inserisci i millimetri. Fai clic fuori dal campo o premi **Enter** per applicare; **Escape** annulla. Nel pannello destro usa **Applica**. I valori non validi non modificano il modello. Ogni modifica confermata si annulla in un solo passaggio.
 
 Il divisore arancione è la sua posizione attuale; la linea blu schiacciata prevede la nuova posizione. La chiusura più vicina si muove sull'asse scelto, mantenendo invariata la dimensione del corpo esterno e lo spessore della parete. Il pannello mostra le dimensioni vicine interessate. Se non c'è divisore su quell'asse, regolare le dimensioni generali o dividere il vano prima.
 
@@ -87,7 +89,7 @@ Seleziona una parete o un divisore per modificare la sua altezza direttamente su
 
 Per un layout rapido, utilizzare **Scomparti → + Scomparto** per dividere il più grande scomparto. **- Scomparto** fonde una coppia vicina. In un nido d'ape, questi controlli aggiungono o rimuovono una cella esterna e conservano la dimensione degli altri. Due celle a nido d'ape vicine condividono una parete alta come la cella più alta.
 
-Per un layout esatto, passare a **Dall’alto** e selezionare il compartimento che si desidera dividere. Scegliere **Numero di parti**, poi **Diviso di larghezza** per dividere la larghezza in scomparti più stretti, o **Diviso in modo approfondito** per fare quelli più scamoscianti. È possibile dividere di nuovo uno dei risultati. Per una porta matita accanto a due piccoli vassoi, prima dividere la larghezza in due, poi dividere solo la parte in due.
+Seleziona uno scomparto e imposta il **Numero di parti**. **Dividi in lunghezza** aggiunge divisori paralleli alla lunghezza del vassoio (asse X); **Dividi in larghezza** li aggiunge paralleli alla larghezza (asse Y). Le dimensioni esterne non cambiano. Viene diviso solo lo scomparto selezionato. Puoi suddividere nuovamente uno degli scomparti ottenuti o spostare un divisore. I pulsanti funzionano allo stesso modo quando modifichi un vassoio da **Drawer**.
 
 ![Top-view esempio con una baia completa e due scomparti più piccoli](../../images/compartment-splits.svg)
 
@@ -138,7 +140,7 @@ L'inserto segue il suo scomparto con almeno 0,5 mm di distanza. Le sue pareti e 
 
 Rilievo incorporato e SVG decorano l'esterno di ogni tier mentre i collettori di accoppiamento, le lingue e le prese rimangono lisce. Le rivestimenti e i pannelli decorativi Wrapped possono coprire i singoli livelli. Per i pannelli, tenere **Offset del bordo** almeno 3 mm in modo da sgomberare i collettori di accoppiamento.
 
-Con un rivestimento avvolgente, una linguetta all’interno della parete inferiore entra in una sede sotto il fondo del vassoio superiore. Larghezza, profondità e altezza utile degli scomparti non cambiano; ogni sede aggiunge 2,2 mm all’altezza esterna della pila. I rivestimenti si incontrano su una fascia di appoggio di 0,8 mm. Si infilano dall’alto: separa i livelli prima di rimuoverli. Ogni rivestimento viene esportato separatamente con il numero del livello.
+Con un rivestimento avvolgente, una linguetta all’interno della parete inferiore entra in una sede sotto il fondo del vassoio superiore. Lunghezza, larghezza e altezza utile degli scomparti non cambiano; ogni sede aggiunge 2,2 mm all’altezza esterna della pila. I rivestimenti si incontrano su una fascia di appoggio di 0,8 mm. Si infilano dall’alto: separa i livelli prima di rimuoverli. Ogni rivestimento viene esportato separatamente con il numero del livello.
 
 **Bordo inferiore** è disponibile solo sul primo livello (più basso): scegliere liscio, anelli o passi. Con un rivestimento avvolta compatibile, l'assetto supporta anche il rivestimento. I pannelli separati siedono sopra il bordo con l'offset selezionato. I nuovi livelli superiori non ereditano l'assetto. Se la lingua non può adattarsi allo spessore della parete, ridurre **Gioco di adattamento**; l'applicazione non addensa automaticamente la parete.
 
@@ -188,7 +190,7 @@ Mantenere un backup scaricato prima di cancellare i dati del browser. Ogni indir
 <a id="print-setup-and-sectioning"></a>
 ## Impostazioni di stampa e suddivisione
 
-Sotto **Stampa**, selezionare la stampante e la configurazione della testa o scegliere **Dimensioni personalizzate**. Controllare la larghezza, la profondità e l'altezza della costruzione. Il preset fornisce il volume di stampa. Scegli la stampante, l'ugello, il materiale e i profili di slicing nel vostro slicer.
+Sotto **Stampa**, selezionare la stampante e la configurazione della testa o scegliere **Dimensioni personalizzate**. Controllare la lunghezza, la larghezza e l'altezza della costruzione. Il preset fornisce il volume di stampa. Scegli la stampante, l'ugello, il materiale e i profili di slicing nel vostro slicer.
 
 Se il modello supera il piano di stampa, usa i tagli proposti oppure scegli due o tre sezioni, quando disponibili. Controlla le giunzioni con **Allontanare le parti**. La divisione porta le pareti ad almeno 5 mm e il fondo ad almeno 3 mm: verifica nuovamente le misure interne. Prima rimuovi rivestimenti e inserti. I modelli a più livelli, inclinati, circolari, ovali o a nido d’ape richiedono la stampa in un unico pezzo. **Restituisce il modello solido** disattiva la divisione. Ricontrolla gli spessori se vuoi ripristinare le misure precedenti.
 
@@ -272,7 +274,7 @@ I cassetti salvano localmente in questo browser, separatamente dai progetti dell
 <a id="mounting-plates"></a>
 ### Piastre di montaggio
 
-In **Drawer → Drawer base**, scegliere **Mounting plate**. La lunghezza del cassetto/larghezza e la clearance della parete determinano l'area coperta. Inserire la larghezza e la profondità utilizzabili della **Letto stampante 3D** separatamente: queste dimensioni determinano la dimensione massima della sezione e quindi il numero di sezioni. Il calcolo comprende proiezioni articolari e un margine di stampa di 2 mm su ogni bordo del piano di stampa. Le dimensioni non devono essere multiple della griglia di peg da 20 mm; le sezioni di bordo si adattano allo spazio rimanente.
+In **Drawer → Drawer base**, scegli **Mounting plate**. La lunghezza e la larghezza del cassetto, insieme al gioco lungo le pareti, determinano l’area coperta. Inserisci separatamente la lunghezza e la larghezza utili del piano della stampante 3D: determinano la dimensione massima e il numero delle sezioni. Il calcolo comprende le sporgenze dei giunti e un margine di stampa di 2 mm su ogni bordo. Le dimensioni non devono essere necessariamente multipli del passo di 20 mm dei perni; le sezioni sul bordo si adattano allo spazio rimanente.
 
 **Download sections (ZIP)** crea un 3MF numerato per ogni stampa, una mappa di montaggio SVG e un elenco di coordinate. La mappa conserva l’orientamento originale del cassetto, indipendentemente dalla vista: R indica le righe dall’alto in basso e C le colonne da sinistra a destra. Inserisci dall’alto i giunti a coda di rondine. Stampa prima **Download joint sample**, con due piccole sezioni adiacenti, e verifica l’accoppiamento. La giunzione usa una distanza di 0,05 mm e una tolleranza di profilo di 0,03 mm. Tra le sezioni ancora libere possono rimanere una sottile fessura e un leggero gioco.
 
@@ -353,7 +355,7 @@ Le impostazioni numeriche mostrano **Min** e **Max** sopra una sottile traccia v
 
 Scegli **Drawer → Print entire drawer** per preparare tutti i vassoi, i loro accessori e tutte le sezioni della piastra di montaggio abilitate. I vassoi montati ricevono prese per le loro posizioni salvate; i vassoi normali di freeplacement mantengono le basi esistenti. I progetti di stampaggio a spacco includono le loro parti e i loro perni.
 
-Set **Printer bed length** (orizzontale), **Printer bed width** (verticale), altezza di stampa e spaziatura. Le dimensioni iniziali provengono dalle impostazioni della piastra di montaggio o dall'area di stampa del primo vassoio; le successive impostazioni di esportazione vengono salvate con questo cassetto. Le sezioni della piastra di montaggio vengono rigenerate per il piano di stampa scelto.
+Set **Lunghezza del piano di stampa** (orizzontale), **Larghezza del piano di stampa** (verticale), altezza di stampa e spaziatura. Le dimensioni iniziali provengono dalle impostazioni della piastra di montaggio o dall'area di stampa del primo vassoio; le successive impostazioni di esportazione vengono salvate con questo cassetto. Le sezioni della piastra di montaggio vengono rigenerate per il piano di stampa scelto.
 
 La disposizione usa gli ingombri reali dei pezzi esportati, un margine di 2 mm ai bordi del piano e la distanza scelta. I pezzi possono ruotare di 90°; i componenti di un coperchio multicolore rimangono insieme. Il numero di piani indicato si riferisce a questa disposizione e non garantisce il minimo possibile. Supporti, brim, torri di spurgo, zone escluse della stampante e lavori separati per materiale non sono inclusi. Riserva lo spazio necessario e verifica il risultato nello slicer. Non sono incorporati profili della stampante né assegnazioni dei filamenti.
 

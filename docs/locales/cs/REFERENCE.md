@@ -1,4 +1,6 @@
 <a id="replixgrid-user-guide"></a>
+
+V režimech organizéru a zásuvky se rozměry uvádějí jako **Délka × šířka × výška**. Délka vždy odpovídá ose X a šířka ose Y. Názvy se nemění při změně proporcí ani při otočení pohledu. Uložené projekty si zachovají rozměry a orientaci. Hloubka výřezu a gravírování nadále označuje hloubku zásahu do materiálu.
 # Uživatelská příručka ReplixGrid
 
 Navrhněte organizér s rozměry v milimetrech, ověřte, zda díly pasují, a stáhněte je pro slicer. Pro začátek použijte ilustrovaný příklad kapsle v rychlém startu. Tato příručka popisuje jednotlivá nastavení.
@@ -60,10 +62,10 @@ Pod **Tvar → Warp**, vyberte základní a výškový profil, pak klepněte na 
 | Zaokrouhleno | Obdélníková stopa s nastavitelnými vnějšími rohy. |
 | Tobolka | Dlouhé tělo s půlkruhovými konci. Sklápěcí šablona přenáší sklon přes oba zakřivené konce. |
 | Kruh | Kulatý organizér o průměru. |
-| Oval | Protáhlý zakřivený obrys s nastavitelnou šířkou a hloubkou. |
+| Oval | Protáhlý zakřivený obrys s nastavitelnou délkou a šířkou. |
 | Honeycomb | Shluk šestiúhelníkových buněk, které sdílejí stěny. Vyberte buňku pro nastavení výšky. |
 
-Vyberte **Hladký** pro úrovňový okraj, **Svažující se** pro průběžné zvýšení nebo **Stupně** pro odlišné úrovně výšky. Rozměry pod volbou popisují šablonu, kterou hodláte vytvořit. Po vytvoření, upravit model pod **Rozměry**. Šířka a hloubka měří vnější stopu. Při velikosti objektu použijte vnitřní rozměry vybraného prostoru. Na zakřivené základně, také zkontrolovat zúžení končí v **Shora** Pohled.
+Vyberte **Hladký** pro úrovňový okraj, **Svažující se** pro průběžné zvýšení nebo **Stupně** pro odlišné úrovně výšky. Rozměry pod volbou popisují šablonu, kterou hodláte vytvořit. Po vytvoření, upravit model pod **Rozměry**. Délka a šířka měří vnější stopu. Při velikosti objektu použijte vnitřní rozměry vybraného prostoru. Na zakřivené základně, také zkontrolovat zúžení končí v **Shora** Pohled.
 
 ![Sklápěcí kapsle s nízkým koncem pro přístup, vysoký konec pro dlouhé položky a dva příčné děliče](../../images/capsule-sloped.jpg)
 
@@ -72,7 +74,7 @@ V **Tvar** → **Dodatečné** nastavíte tloušťku stěn a dna. Silnější st
 <a id="exact-internal-dimensions"></a>
 ## Přesné vnitřní rozměry
 
-Vyberte přihrádku a otevřete **Vnitřní rozměry** vpravo nebo klikněte na modrou kótu v modelu. Zvolte šířku či hloubku a zadejte milimetry. Kliknutí mimo pole nebo **Enter** hodnotu potvrdí, **Escape** ji zruší. V pravém panelu použijte **Použít**. Neplatné hodnoty model nezmění. Každou potvrzenou změnu lze vrátit jedním krokem.
+Vyberte přihrádku a otevřete **Vnitřní rozměry** vpravo nebo klikněte na modrou kótu v modelu. Zvolte délku či šířku a zadejte milimetry. Kliknutí mimo pole nebo **Enter** hodnotu potvrdí, **Escape** ji zruší. V pravém panelu použijte **Použít**. Neplatné hodnoty model nezmění. Každou potvrzenou změnu lze vrátit jedním krokem.
 
 Pomerančový dělič je jeho aktuální polohou; ponořená modrá čára předpovídá novou polohu. Nejbližší uzavírací příčka na zvolené ose se pohybuje tak, aby vnější velikost těla a tloušťka stěny zůstala beze změny. Obraz ukazuje zasažené sousední velikosti. Pokud na této ose není žádný dělič, upravte celkové rozměry nebo nejprve rozdělte prostor.
 
@@ -87,9 +89,9 @@ Vyberte stěnu nebo dělič pro úpravu její výšky přímo na modelu. Ploché
 
 Pro rychlé rozložení použijte **Přihrádky → + Přihrádka** k rozdělení největší přihrádky. **- Přihrádka** Spojuje sousední pár. Ve voštinovém plástu tyto ovládací prvky přidávají nebo odstraňují vnější buňku a zachovávají velikost ostatních. Dvě sousední voštinové buňky sdílejí zeď tak vysokou, jako je ta vyšší.
 
-Pro přesné rozložení přepněte na **Shora** a vyberte prostor, který chcete rozdělit. Vyberte **Počet dílů**, pak **Rozdělit na šířku** k rozdělení šířky do užších oddílů, nebo **Rozdělit do hloubky** aby udělali mělčí. Můžete si znovu rozdělit jeden z výsledků. Pro tužkové pole vedle dvou malých podnosů, nejprve rozdělit šířku na dvě, pak rozdělit pouze na straně podnosy do hloubky.
+Vyberte přihrádku a nastavte **Počet dílů**. **Rozdělit podle délky** přidá přepážky rovnoběžné s délkou organizéru (osa X); **Rozdělit podle šířky** přidá přepážky rovnoběžné s jeho šířkou (osa Y). Vnější rozměry se nemění. Rozdělí se pouze vybraná přihrádka. Vzniklou přihrádku můžete rozdělit znovu nebo posunout přepážku. Stejně fungují tlačítka při úpravě organizéru z režimu **Drawer**.
 
-![Top- view příklad s jedním plným hloubkovým zálivem a dvěma menšími oddíly](../../images/compartment-splits.svg)
+![Top- view příklad s jedním plným šířkovým zálivem a dvěma menšími oddíly](../../images/compartment-splits.svg)
 
 Vyberte dělič přetáhnout, nebo upravit **První přihrádka** v rámci **Pozice oddílu**. Pouze zvolený dělič se pohybuje; ostatní dělicí pozice zůstávají pevné. Přilehlé přihrádky mění velikost. Pohyby, které zanechávají příliš málo místa, jsou zamítnuty. Zkontrolujte nové vnitřní rozměry na každé straně. **Odebrat oddíl** kombinuje přihrádky a může také odstranit děliče vnořené uvnitř tohoto rozdělení. Prohlédněte si zvýrazněný výběr a potvrzení před jeho odstraněním.
 
@@ -138,7 +140,7 @@ Vložka následuje po své přihrádce s clearance nejméně 0,5 mm. Jeho stěny
 
 Built- in a SVG reliéf zdobí exteriér každé úrovně, zatímco pářící obojky, jazyky a zásuvky zůstávají hladké. Obalené pláště a dekorativní panely mohou pokrývat jednotlivé úrovně. Pro panely, ponechejte **Odsazení okraje** alespoň 3 mm, aby vyčistili pářící obojky.
 
-U obvodového pláště zapadá výstupek uvnitř spodní stěny do drážky pod dnem horního patra. Využitelná šířka, hloubka a výška přihrádek se nemění; každá drážka přidává 2,2 mm k vnější výšce sestavy. Pláště se stýkají na opěrném pásku širokém 0,8 mm. Nasouvají se shora, proto před sejmutím oddělte patra. Každý plášť se exportuje zvlášť s číslem patra.
+U obvodového pláště zapadá výstupek uvnitř spodní stěny do drážky pod dnem horního patra. Využitelná délka, šířka a výška přihrádek se nemění; každá drážka přidává 2,2 mm k vnější výšce sestavy. Pláště se stýkají na opěrném pásku širokém 0,8 mm. Nasouvají se shora, proto před sejmutím oddělte patra. Každý plášť se exportuje zvlášť s číslem patra.
 
 **Spodní lem** je k dispozici pouze na první (nejnižší) úrovni: zvolte hladké, kroužky nebo kroky. S kompatibilní obalené pláště, lemování také podporuje skořápku. Samostatné panely sedí nad lemem s zvoleným offsetem hrany. Nové horní úrovně nezdědí střih. Pokud se jazyk nemůže vejít do tloušťky stěny, snížit **Montážní vůle**; aplikace automaticky nezhoustne stěnu. U obou rohů musí zůstat dostatek materiálu, aby podpíral tác nad ním.
 
@@ -188,7 +190,7 @@ Před čištěním dat prohlížeče si uchovejte staženou zálohu. Každý pro
 <a id="print-setup-and-sectioning"></a>
 ## Nastavení tisku a rozdělení na části
 
-Pod **Tisk**, vyberte si tiskárnu a konfiguraci hlavy nebo vyberte **Vlastní rozměry**. Zkontrolujte šířku, hloubku a výšku konstrukce. Preset dodá objem výroby. Vyberte si tiskárnu, trysku, materiál a řezné profily ve vašem sliceru.
+Pod **Tisk**, vyberte si tiskárnu a konfiguraci hlavy nebo vyberte **Vlastní rozměry**. Zkontrolujte délku, šířku a výšku konstrukce. Preset dodá objem výroby. Vyberte si tiskárnu, trysku, materiál a řezné profily ve vašem sliceru.
 
 Pokud model přesahuje tiskovou podložku, použijte navržené řezy nebo zvolte dvě či tři části, jsou-li dostupné. Spoje zkontrolujte pomocí **Odsuňte díly od sebe**. Rozdělení zvětší tloušťku stěn alespoň na 5 mm a dna na 3 mm; znovu ověřte vnitřní rozměry. Před rozdělením odstraňte pláště a vložky. Patrové, nakloněné, kruhové, oválné a voštinové modely je nutné tisknout vcelku. **Vraťte celý model** rozdělení vypne. Chcete-li obnovit původní rozměry, znovu zkontrolujte tloušťky.
 
@@ -272,7 +274,7 @@ Kresliče ukládají v tomto prohlížeči místně, odděleně od organizátor�
 <a id="mounting-plates"></a>
 ### Montážní desky
 
-V **Drawer → Drawer base**, vybrat **Mounting plate**. Délka odsávače / šířka a světlost stěny určují pokrytou plochu. Zadejte použitelnou šířku a hloubku **3D tiskárna postel** samostatně: tyto rozměry určují maximální velikost průřezu, a tedy počet úseků. Výpočet zahrnuje kloubové výčnělky a 2 mm tiskařský okraj na každé tiskové podložce hrany. Rozměry nemusí být násobky větrací mřížky o průměru 20 mm; úseky hran vyhovují zbývajícímu prostoru.
+V **Drawer → Drawer base** zvolte **Mounting plate**. Délka a šířka zásuvky spolu s vůlí u stěn určují pokrytou plochu. Samostatně zadejte využitelnou délku a šířku tiskové podložky: určují maximální velikost a počet dílů desky. Výpočet zahrnuje přesahující spoje a tiskovou rezervu 2 mm u každého okraje podložky. Rozměry nemusejí být násobky rozteče kolíků 20 mm; okrajové díly se přizpůsobí zbývajícímu prostoru.
 
 **Download sections (ZIP)** vytvoří číslovaný 3MF pro každý tisk, montážní plán SVG a seznam souřadnic. Plán zachovává původní orientaci zásuvky bez ohledu na pohled: R jsou řádky shora dolů, C sloupce zleva doprava. Rybinové spoje zasuňte shora. Nejprve vytiskněte **Download joint sample** se dvěma sousedními sekcemi a ověřte spojení. Spára je 0,05 mm a přídavek profilu 0,03 mm. Mezi samotnými sekcemi může zůstat jemná spára a malá vůle.
 
@@ -353,7 +355,7 @@ Zobrazovat číselné nastavení **Min** a **Max** nad tenkou zelenou tratí, s 
 
 Vyberte **Drawer → Print entire drawer** pro přípravu všech podnosů, jejich příslušenství a libovolných částí montážních desek. Montované podnosy dostávají zásuvky pro jejich uložené pozice; běžné volnočasové podnosy si ponechávají své stávající základny. Projekty rozstřikování zahrnují jejich části a špendlíky. Překrývání, nedostatečná čidla zásuvky, nepodporovaná montáž nebo neplatná geometrie blokují stahování a identifikují postižený podnos.
 
-Nastavit **Printer bed length** (horizontální), **Printer bed width** (vertikální), výška a rozteč tisku. Počáteční rozměry pocházejí z nastavení montážní desky nebo z tiskového prostoru prvního zásobníku. Následné nastavení exportu je uloženo v tomto šuplíku. Pro zvolené lůžko se regenerují montážní desky. To nepovoluje podnosy ani nemodifikuje uložené zdrojové projekty.
+Nastavit **Délka tiskové podložky** (horizontální), **Šířka tiskové podložky** (vertikální), výška a rozteč tisku. Počáteční rozměry pocházejí z nastavení montážní desky nebo z tiskového prostoru prvního zásobníku. Následné nastavení exportu je uloženo v tomto šuplíku. Pro zvolené lůžko se regenerují montážní desky. To nepovoluje podnosy ani nemodifikuje uložené zdrojové projekty.
 
 Rozložení vychází ze skutečných vnějších rozměrů exportovaných dílů, okraje 2 mm na tiskové podložce a zvolených rozestupů. Díly se mohou otočit o 90°; barevné části víka zůstávají pohromadě. Zobrazený počet podložek platí pro toto rozložení a nezaručuje minimum. Podpěry, brim, čisticí věže, zakázané oblasti tiskárny a samostatné úlohy pro různé materiály nejsou zahrnuty. Ponechte pro ně místo a výsledek ověřte ve sliceru. Soubor neobsahuje profil tiskárny ani přiřazení filamentů.
 

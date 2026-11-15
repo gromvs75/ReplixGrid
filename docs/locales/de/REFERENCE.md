@@ -1,4 +1,6 @@
 <a id="replixgrid-user-guide"></a>
+
+In den Modi Organizer und Schublade werden Maße als **Länge × Breite × Höhe** angegeben. Die Länge gehört fest zur X-Achse, die Breite zur Y-Achse. Die Bezeichnungen wechseln weder bei anderen Proportionen noch beim Drehen der Ansicht. Gespeicherte Projekte behalten ihre Maße und Ausrichtung. Aussparungs- und Gravurtiefe bezeichnen weiterhin die Tiefe des Eingriffs in das Material.
 # ReplixGrid-Benutzerhandbuch
 
 Entwerfen Sie einen Organizer mit Maßen in Millimetern, prüfen Sie die Passform und laden Sie die Teile für Ihren Slicer herunter. Für den Einstieg eignet sich das bebilderte Kapselbeispiel im Schnellstart. Dieses Handbuch erklärt die einzelnen Einstellungen.
@@ -60,10 +62,10 @@ Wählen Sie unter **Form → Basis** ein Basis- und Höhenprofil, klicken Sie da
 | abgerundet | Eine rechteckige Grundfläche mit verstellbaren Außenecken. |
 | Kapsel | Ein langer Körper mit halbkreisförmigen Enden Die geneigte Schablone trägt die Steigung durch beide gekrümmten Enden. |
 | Kreis | Ein runder Organizer, der nach Durchmesser bemessen ist. |
-| Oval | Ein länglicher gekrümmter Umriss mit separat einstellbarer Breite und Tiefe. |
+| Oval | Ein länglicher gekrümmter Umriss mit separat einstellbarer Länge und Breite. |
 | Wabenkörper | Eine Gruppe von hexagonalen Zellen, die Wände teilen. Wählen Sie eine Zelle, um ihre Höhe anzupassen. |
 
-Wählen Sie **Glatt** für einen ebenen Rand, **Ansteigend** für einen kontinuierlichen Anstieg oder **Stufen** für unterschiedliche Höhenniveaus. Die Abmessungen unterhalb der Auswahlmöglichkeiten beschreiben die Vorlage, die Sie erstellen möchten. Einmal erstellt, bearbeiten Sie das Modell unter **Abmessungen**. Breite und Tiefe messen den Außenabdruck. Verwenden Sie die Innenabmessungen des ausgewählten Fachs, wenn Sie es für ein Objekt dimensionieren. Überprüfen Sie auf einer gekrümmten Basis auch die sich verengenden Enden in **Oben** Ansicht.
+Wählen Sie **Glatt** für einen ebenen Rand, **Ansteigend** für einen kontinuierlichen Anstieg oder **Stufen** für unterschiedliche Höhenniveaus. Die Abmessungen unterhalb der Auswahlmöglichkeiten beschreiben die Vorlage, die Sie erstellen möchten. Einmal erstellt, bearbeiten Sie das Modell unter **Abmessungen**. Länge und Breite messen den Außenabdruck. Verwenden Sie die Innenabmessungen des ausgewählten Fachs, wenn Sie es für ein Objekt dimensionieren. Überprüfen Sie auf einer gekrümmten Basis auch die sich verengenden Enden in **Oben** Ansicht.
 
 ![Schräge Kapsel mit einem unteren Ende für den Zugang, einem hohen Ende für lange Gegenstände und zwei Querteilern](../../images/capsule-sloped.jpg)
 
@@ -72,7 +74,7 @@ Unter **Form** → **Zusätzlich** stellen Sie Wand- und Bodenstärke ein. Dicke
 <a id="exact-internal-dimensions"></a>
 ## Exakte Innenmaße
 
-Wählen Sie ein Fach und öffnen Sie **Innenmaße** rechts, oder klicken Sie direkt auf seine blaue Maßangabe. Wählen Sie Breite oder Tiefe und geben Sie Millimeter ein. Ein Klick außerhalb des Felds oder **Enter** übernimmt den Wert; **Escape** verwirft ihn. Rechts verwenden Sie **Anwenden**. Ungültige Werte ändern das Modell nicht. Jede bestätigte Änderung lässt sich einzeln rückgängig machen.
+Wählen Sie ein Fach und öffnen Sie **Innenmaße** rechts, oder klicken Sie direkt auf seine blaue Maßangabe. Wählen Sie Länge oder Breite und geben Sie Millimeter ein. Ein Klick außerhalb des Felds oder **Enter** übernimmt den Wert; **Escape** verwirft ihn. Rechts verwenden Sie **Anwenden**. Ungültige Werte ändern das Modell nicht. Jede bestätigte Änderung lässt sich einzeln rückgängig machen.
 
 Der orangefarbene Trenner ist seine aktuelle Position; die gestrichelte blaue Linie zeigt die neue Position an. Der nächstliegende umschließende Trenner auf der gewählten Achse bewegt sich, wobei die äußere Körpergröße und Wandstärke unverändert bleiben. Das Panel zeigt die betroffenen Nachbargrößen. Wenn es keinen Trenner auf dieser Achse gibt, passen Sie die Gesamtabmessungen an oder teilen Sie das Fach zuerst.
 
@@ -87,9 +89,9 @@ Wähle eine Wand oder einen Trenner, um seine Höhe direkt am Modell zu bearbeit
 
 Für ein schnelles Layout verwenden Sie **Fächer → + Fach**, um das größte Kompartiment zu teilen. **− Fach** verschmilzt ein benachbartes Paar. In einer Wabe fügen diese Steuerelemente eine Außenzelle hinzu oder entfernen sie und bewahren die Größe der anderen. Zwei benachbarte Wabenzellen teilen sich eine Wand, die so hoch ist wie die größere Zelle.
 
-Für ein genaues Layout wechseln Sie zu **Oben** und wählen das Fach, das Sie teilen möchten. Wählen Sie **Anzahl der Teile**, dann **Geteilt in der Breite**, um die Breite in schmalere Fächer zu teilen, oder **Geteilt im Detail**, um flachere Fächer zu machen. Sie können eines der Ergebnisse erneut aufteilen. Für einen Bleistiftschacht neben zwei kleinen Schalen teilen Sie zuerst die Breite in zwei, dann teilen Sie nur die Schalenseite in der Tiefe.
+Wählen Sie ein Fach und legen Sie die **Anzahl der Teile** fest. **Teilen nach Länge** fügt Trennwände parallel zur Länge des Einsatzes (X-Achse) ein; **Teilen nach Breite** parallel zur Breite (Y-Achse). Die Außenmaße bleiben gleich. Nur das ausgewählte Fach wird geteilt. Sie können ein entstandenes Fach erneut teilen oder eine Trennwand verschieben. Beim Bearbeiten eines Einsatzes aus **Drawer** funktionieren die Schaltflächen genauso.
 
-![Beispiel in Draufsicht mit einem Tiefenschacht und zwei kleineren Fächern](../../images/compartment-splits.svg)
+![Beispiel in Draufsicht mit einem Breitenschacht und zwei kleineren Fächern](../../images/compartment-splits.svg)
 
 Wählen Sie den Teiler, um ihn zu ziehen, oder stellen Sie **Erstes Fach** unter **Partitionsposition** ein. Nur der ausgewählte Teiler bewegt sich; andere Teilerpositionen bleiben fixiert. Die benachbarten Fächer ändern sich in ihrer Größe. Bewegungen, die zu wenig Platz lassen, werden abgelehnt. Überprüfen Sie die neuen Innenabmessungen auf jeder Seite. **Partition entfernen** kombiniert die Fächer und kann auch Teiler entfernen, die sich in dieser Teilung befinden. Überprüfen Sie die hervorgehobene Auswahl und die Bestätigung, bevor Sie sie entfernen.
 
@@ -138,7 +140,7 @@ Der Einsatz folgt seinem Fach mit mindestens 0,5 mm Abstand. Seine Wände und se
 
 Eingebautes und SVG-Relief schmücken das Äußere jeder Ebene, während die passenden Kragen, Zungen und Aufnahmen glatt bleiben. Umhüllte Schalen und dekorative Paneele können einzelne Ebenen abdecken. Bei Paneelen halten Sie den **Kantenversatz** mindestens 3 mm, damit sie die passenden Kragen freigeben.
 
-Bei einer umlaufenden Hülle greift eine Zunge an der Innenseite der unteren Wand in eine Aufnahme unter dem oberen Boden. Nutzbare Fachbreite, Tiefe und Höhe bleiben gleich; jede Aufnahme erhöht den Stapel außen um 2,2 mm. Passende Hüllen treffen an einem 0,8 mm schmalen Auflagerand aufeinander. Hüllen werden von oben aufgeschoben; trennen Sie die Ebenen vor dem Abnehmen. Jede Hülle wird einzeln mit Ebenennummer exportiert.
+Bei einer umlaufenden Hülle greift eine Zunge an der Innenseite der unteren Wand in eine Aufnahme unter dem oberen Boden. Nutzbare Fachlänge, Breite und Höhe bleiben gleich; jede Aufnahme erhöht den Stapel außen um 2,2 mm. Passende Hüllen treffen an einem 0,8 mm schmalen Auflagerand aufeinander. Hüllen werden von oben aufgeschoben; trennen Sie die Ebenen vor dem Abnehmen. Jede Hülle wird einzeln mit Ebenennummer exportiert.
 
 **Unterer Zierrand** ist nur auf der ersten (untersten) Ebene verfügbar: wählen Sie glatt, Ringe oder Stufen. Mit einer kompatiblen gewickelten Schale unterstützt die Verkleidung auch die Schale. Separate Paneele sitzen über der Verkleidung mit dem ausgewählten Kantenversatz. Neue obere Ebenen erben die Verkleidung nicht. Wenn die Zunge nicht in die Wandstärke passt, verringern Sie den **Passspiel**; die Anwendung verdickt die Wand nicht automatisch. Ein Wandausschnitt muss in der Nähe beider Ecken genug Material hinterlassen, um das Tablett darüber zu stützen.
 
@@ -188,7 +190,7 @@ Bewahren Sie ein heruntergeladenes Backup auf, bevor Sie Browserdaten löschen. 
 <a id="print-setup-and-sectioning"></a>
 ## Druckeinstellungen und Aufteilung
 
-Unter **Drucken** wählen Sie Ihre Drucker- und Kopfkonfiguration oder wählen Sie **Eigene Größe**. Überprüfen Sie die Buildbreite, Tiefe und Höhe. Die Voreinstellung liefert das Buildvolumen. Wählen Sie den Drucker, die Düse, das Material und die Schnittprofile in Ihrem Slicer.
+Unter **Drucken** wählen Sie Ihre Drucker- und Kopfkonfiguration oder wählen Sie **Eigene Größe**. Überprüfen Sie die Länge, Breite und Höhe des Druckbereichs. Die Voreinstellung liefert das Buildvolumen. Wählen Sie den Drucker, die Düse, das Material und die Schnittprofile in Ihrem Slicer.
 
 Passt das Modell nicht auf das Druckbett, verwenden Sie die vorgeschlagenen Trennstellen oder wählen Sie zwei beziehungsweise drei Teile, sofern verfügbar. Prüfen Sie die Verbindungen mit **Teile auseinanderziehen**. Dabei werden die Wände auf mindestens 5 mm und der Boden auf mindestens 3 mm verstärkt; kontrollieren Sie danach die Innenmaße. Entfernen Sie zuvor Hüllen und Einsätze. Gestapelte Ebenen, geneigte Modelle sowie Kreis-, Oval- und Wabenformen müssen am Stück gedruckt werden. **Als Ganzes drucken** hebt die Aufteilung auf. Prüfen Sie die Dicken erneut, wenn Sie die ursprünglichen Maße wiederherstellen möchten.
 
@@ -272,7 +274,7 @@ Schubladen speichern lokal in diesem Browser, getrennt von Organizer-Projekten. 
 <a id="mounting-plates"></a>
 ### Montageplatten
 
-In **Drawer → Drawer base** wählen Sie **Mounting plate**. Die Länge/Breite der Schublade und der Wandabstand bestimmen den abgedeckten Bereich. Geben Sie die nutzbare Breite und Tiefe des **3D-Druckerbett** separat ein: Diese Abmessungen bestimmen die maximale Abschnittsgröße und damit die Anzahl der Abschnitte. Die Berechnung umfasst gemeinsame Vorsprünge und einen Druckrand von 2 mm an jeder Bettkante. Die Abmessungen müssen nicht Vielfache des 20-mm-Stiftrasters sein; Randabschnitte passen zum verbleibenden Raum.
+Unter **Drawer → Drawer base** wählen Sie **Mounting plate**. Schubladenlänge, Schubladenbreite und Wandabstand bestimmen die abgedeckte Fläche. Geben Sie Länge und Breite der nutzbaren Druckbettfläche separat ein. Diese Maße bestimmen die maximale Größe und Anzahl der Plattenabschnitte. Die Berechnung berücksichtigt die hervorstehenden Verbindungen und 2 mm Druckrand an jeder Bettkante. Die Maße müssen keine Vielfachen des 20-mm-Stiftrasters sein; Randabschnitte passen in die verbleibende Fläche.
 
 **Download sections (ZIP)** erstellt eine nummerierte 3MF pro Druckauftrag, einen SVG-Montageplan und eine Koordinatenliste. Der Plan behält unabhängig von der Ansicht die ursprüngliche Schubladenausrichtung: R bezeichnet Reihen von oben nach unten, C Spalten von links nach rechts. Setzen Sie die Schwalbenschwanzverbindungen von oben zusammen. Drucken Sie zuerst **Download joint sample** mit zwei kleinen benachbarten Abschnitten und prüfen Sie die Passform. Die Fuge beträgt 0,05 mm, die Profilzugabe 0,03 mm. Zwischen den noch unbestückten Abschnitten können eine feine Fuge und leichtes Spiel bleiben.
 
@@ -353,7 +355,7 @@ Numerische Einstellungen zeigen **Min** und **Max** über einer dünnen grünen 
 
 Wählen Sie **Drawer → Print entire drawer**, um alle Tabletts, ihr Zubehör und alle aktivierten Montageplattenabschnitte vorzubereiten. Montierte Tabletts erhalten Aufnahmen für ihre gespeicherten Positionen; gewöhnliche Freiplatz-Trays behalten ihre vorhandenen Basen. Split-Druckprojekte umfassen ihre Teile und Pins. Überlappungen, unzureichende Schubladenfreigaben, nicht unterstützte Montage oder ungültige Geometrie blockieren den Download und identifizieren das betroffene Tablett.
 
-Set **Printer bed length** (horizontal), **Printer bed width** (vertikal), Druckhöhe und -abstand. Die Anfangsmaße stammen von den Montageplatteneinstellungen oder dem Druckbereich des ersten Tablars; nachfolgende Exporteinstellungen werden mit dieser Schublade gespeichert. Montageplattenabschnitte werden für das gewählte Bett regeneriert.
+Set **Druckbettlänge** (horizontal), **Druckbettbreite** (vertikal), Druckhöhe und -abstand. Die Anfangsmaße stammen von den Montageplatteneinstellungen oder dem Druckbereich des ersten Tablars; nachfolgende Exporteinstellungen werden mit dieser Schublade gespeichert. Montageplattenabschnitte werden für das gewählte Bett regeneriert.
 
 Die Anordnung berücksichtigt die tatsächlichen Außenmaße der exportierten Teile, 2 mm Randabstand und den gewählten Teileabstand. Teile dürfen um 90° gedreht werden; die farbigen Komponenten eines Deckels bleiben zusammen. Die angezeigte Anzahl an Druckbetten gilt für diese Anordnung und ist kein garantiertes Minimum. Stützstrukturen, Brim, Reinigungstürme, gesperrte Druckerbereiche und getrennte Materialaufträge werden nicht berücksichtigt. Planen Sie dafür Platz ein und prüfen Sie alles im Slicer. Druckerprofile und Filamentzuordnungen sind nicht enthalten.
 

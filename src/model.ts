@@ -142,7 +142,7 @@ export function resolveWalls(p: Project): Wall[] {
     if(![2,3].includes(p.printing.parts))throw new Error('Выберите 2 или 3 части.');
   }
   if(p.footprint&&!['circle','oval','honeycomb'].includes(p.footprint))throw new Error('Unknown footprint');
-  if(p.footprint==='circle'&&p.width!==p.depth)throw new Error('У круга одинаковые ширина и глубина');
+  if(p.footprint==='circle'&&p.width!==p.depth)throw new Error('У круга одинаковые длина и ширина');
   if(p.steppedWalls!==undefined&&typeof p.steppedWalls!=='boolean')throw new Error('Invalid stepped walls');
   if(p.steppedWalls&&p.footprint==='honeycomb')throw new Error('Для сот используйте высоту ячеек.');
   const t = p.wallThickness;

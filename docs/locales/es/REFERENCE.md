@@ -1,4 +1,6 @@
 <a id="replixgrid-user-guide"></a>
+
+En los modos Organizador y Cajón, las dimensiones se indican como **Largo × ancho × alto**. El largo siempre corresponde al eje X y el ancho al eje Y. Los nombres no cambian al modificar las proporciones ni al girar la vista. Los proyectos guardados conservan sus dimensiones y orientación. La profundidad de recorte o de grabado sigue indicando cuánto penetra el corte en el material.
 # Guía del usuario de ReplixGrid
 
 Diseñe un organizador con medidas en milímetros, compruebe el encaje de las piezas y descárguelas para su laminador (slicer). Para empezar, siga el ejemplo ilustrado de la cápsula en la guía rápida. Este manual explica cada ajuste.
@@ -60,10 +62,10 @@ Bajo **Forma → Base**, elegir un perfil de base y altura, luego haga clic en *
 | Redonda | Una huella rectangular con esquinas exteriores ajustables. |
 | Cápsula | Un cuerpo largo con extremos semicirculares. La plantilla inclinada lleva la inclinación a través de ambos extremos curvados. |
 | Circle | Un organizador redondo tamaño por diámetro. |
-| Oval | Esbozo curvado alargado con ancho y profundidad ajustables por separado. |
+| Oval | Esbozo curvado alargado con largo y ancho ajustables por separado. |
 | Honeycomb | Un racimo de células hexagonales que comparten paredes. Seleccione una célula para ajustar su altura. |
 
-Elija **Suave** para un borde de nivel, **En pendiente** para un ascenso continuo, o **Escalones** para niveles de altura distintos. Las dimensiones debajo de las opciones describen la plantilla que está a punto de crear. Una vez creado, edite el modelo bajo **Dimensiones**. La anchura y la profundidad miden la huella exterior. Utilice las dimensiones internas del compartimento seleccionado al dimensionarlo para un objeto. En una base curvada, también comprobar los extremos de estrechamiento en **Superior** vista.
+Elija **Suave** para un borde de nivel, **En pendiente** para un ascenso continuo, o **Escalones** para niveles de altura distintos. Las dimensiones debajo de las opciones describen la plantilla que está a punto de crear. Una vez creado, edite el modelo bajo **Dimensiones**. El largo y el ancho miden la huella exterior. Utilice las dimensiones internas del compartimento seleccionado al dimensionarlo para un objeto. En una base curvada, también comprobar los extremos de estrechamiento en **Superior** vista.
 
 ![cápsula inclinada con un extremo bajo para el acceso, un extremo alto para artículos largos y dos divisores transversales](../../images/capsule-sloped.jpg)
 
@@ -72,7 +74,7 @@ En **Forma** → **Adicional**, ajuste el grosor de paredes y fondo. Las paredes
 <a id="exact-internal-dimensions"></a>
 ## Dimensiones interiores exactas
 
-Seleccione un compartimento y abra **Dimensiones interiores** a la derecha, o pulse su cota azul en el modelo. Elija anchura o profundidad e introduzca milímetros. Pulse fuera del campo o **Enter** para aplicar; **Escape** cancela. En el panel derecho use **Aplicar**. Los valores incorrectos no cambian el modelo. Cada cambio confirmado puede deshacerse en un paso.
+Seleccione un compartimento y abra **Dimensiones interiores** a la derecha, o pulse su cota azul en el modelo. Elija largo o ancho e introduzca milímetros. Pulse fuera del campo o **Enter** para aplicar; **Escape** cancela. En el panel derecho use **Aplicar**. Los valores incorrectos no cambian el modelo. Cada cambio confirmado puede deshacerse en un paso.
 
 El divisor naranja es su posición actual; la línea azul desgarrada preve la nueva posición. El cierre más cercano se divide en el eje elegido se mueve, manteniendo el tamaño exterior del cuerpo y el espesor de la pared sin cambios. El panel muestra los tamaños vecinos afectados. Si no hay divisor en ese eje, ajustar las dimensiones generales o dividir el compartimento primero.
 
@@ -87,9 +89,9 @@ Seleccione una pared o un divisor para editar su altura directamente en el model
 
 Para una distribución rápida, utilice **Compartimentos → + Compartimento** para dividir el compartimento más grande. **− Compartimento** fusiona un par vecino. En un panal de miel, estos controles agregan o eliminan una célula externa y preservan el tamaño de los demás. Dos células vecinas de panal de la familia comparten una pared tan alta como la célula más alta.
 
-Para una distribución exacta, cambie a **Superior** y seleccione el compartimento que desea dividir. Elija **Número de piezas**, luego **Dividir de ancho** para dividir el ancho en compartimentos más estrechos, o **Dividir en profundidad** para hacer más suaves. Puede dividir uno de los resultados de nuevo. Para una bahía de lápiz junto a dos pequeñas bandejas, primero dividir el ancho en dos, entonces dividir sólo el lado de bandeja en profundidad.
+Seleccione un compartimento y ajuste el **Número de piezas**. **Dividir a lo largo** añade separadores paralelos al largo de la bandeja (eje X); **Dividir a lo ancho** los añade paralelos al ancho (eje Y). Las dimensiones exteriores no cambian. Solo se divide el compartimento seleccionado. Puede volver a dividir uno de los compartimentos resultantes o mover un separador. Los botones funcionan igual al editar una bandeja desde **Drawer**.
 
-![Ejemplo de vista superior con una bahía de profundidad completa y dos compartimentos más pequeños](../../images/compartment-splits.svg)
+![Ejemplo de vista superior con una bahía de anchura completa y dos compartimentos más pequeños](../../images/compartment-splits.svg)
 
 Seleccione el separador para arrastrarlo, o ajustar **Primer compartimento** bajo **Posición de partición**. Sólo el separador seleccionado se mueve; otras posiciones de divider permanecen fijas. Los compartimentos adyacentes cambian de tamaño. Los movimientos que dejan demasiado poco espacio son rechazados. Compruebe las nuevas dimensiones internas de cada lado. **Eliminar partición** combina los compartimentos y también puede eliminar los separadores anidad dentro de esa división.
 
@@ -138,7 +140,7 @@ El inserto sigue su compartimento con por lo menos 0,5 mm. Sus paredes y fondo s
 
 El relieve integrado y SVG decoran el exterior de cada tier mientras que los collares de apareamiento, las lenguas y las tomas se mantienen suaves. Las carcasas rotas y los paneles decorativos pueden cubrir los revestimientos individuales. Para los paneles, mantenga **Desplazamiento de borde** al menos 3 mm por lo que limpian los collares de apareamiento.
 
-Con una carcasa envolvente, una lengüeta en la cara interior de la pared inferior encaja en un alojamiento bajo el fondo de la bandeja superior. La anchura, profundidad y altura útil de los compartimentos no cambian; cada alojamiento añade 2,2 mm a la altura exterior de la pila. Las carcasas se apoyan entre sí en una banda de 0,8 mm. Se deslizan desde arriba: separe los niveles antes de retirarlas. Cada carcasa se exporta por separado con su número de nivel.
+Con una carcasa envolvente, una lengüeta en la cara interior de la pared inferior encaja en un alojamiento bajo el fondo de la bandeja superior. El largo, ancho y altura útil de los compartimentos no cambian; cada alojamiento añade 2,2 mm a la altura exterior de la pila. Las carcasas se apoyan entre sí en una banda de 0,8 mm. Se deslizan desde arriba: separe los niveles antes de retirarlas. Cada carcasa se exporta por separado con su número de nivel.
 
 **Borde inferior** está disponible en el primer nivel (oeste) sólo: elegir liso, anillos o pasos. Con una carcasa envuelta compatible, el borde también soporta la carcasa. Los paneles separados se sientan por encima del borde seleccionado con el offset. Nuevos niveles superiores no heredan el borde. Si la lengua no puede caber en el espesor de la pared, reducir **Holgura de ajuste**; la aplicación no engrosa la pared automáticamente.
 
@@ -188,7 +190,7 @@ Mantenga una copia de seguridad descargada antes de limpiar los datos del navega
 <a id="print-setup-and-sectioning"></a>
 ## Configuración de impresión y división en partes
 
-Bajo **Impresión**, seleccione la configuración de la impresora y la cabeza o elija **Tamaño personalizado**. Compruebe la anchura, la profundidad y la altura de la construcción. El preset proporciona el volumen de impresión. Elija la impresora, la boquilla, el material y los perfiles de corte en su laminador.
+Bajo **Impresión**, seleccione la configuración de la impresora y la cabeza o elija **Tamaño personalizado**. Compruebe el largo, el ancho y la altura de la construcción. El preset proporciona el volumen de impresión. Elija la impresora, la boquilla, el material y los perfiles de corte en su laminador.
 
 Si el modelo no cabe en la base de impresión, use los cortes propuestos o elija dos o tres secciones cuando estén disponibles. Compruebe las uniones con **Separar las piezas**. La división aumenta el grosor de las paredes a un mínimo de 5 mm y el del fondo a 3 mm; vuelva a comprobar las medidas interiores. Retire antes las carcasas y los insertos. Los modelos apilados, inclinados, circulares, ovalados o de panal deben imprimirse de una sola pieza. **Devolver modelo sólido** desactiva la división. Revise de nuevo los grosores si quiere recuperar las medidas anteriores.
 
@@ -257,7 +259,7 @@ Los estilos guardados pertenecen a este navegador y dirección del sitio. Un pro
 <a id="drawer-arrangements"></a>
 ## Distribución de organizadores en cajones
 
-Elija **Drawer** junto a **Organizador**, luego **Create drawer**. Introduzca la longitud, la anchura, la altura útil y la limpieza. La limpieza se aplica tanto en las paredes del cajón como entre las bandejas.
+Elija **Drawer** junto a **Organizador**, luego **Create drawer**. Introduzca el largo, el ancho, la altura útil y la limpieza. La limpieza se aplica tanto en las paredes del cajón como entre las bandejas.
 
 Los nuevos cajones comienzan en 180 × 280 mm, con el borde delantero marcado en la parte inferior. **Vista giratoria de 90°** cambia solamente la orientación de visualización; las dimensiones del cajón, las coordenadas de bandeja y los modelos exportados permanecen inalterables. Los arreglos de cajones existentes conservan sus dimensiones. Los cajones guardados se abren con longitud horizontal y ancho vertical; las etiquetas de dimensión siguen la rotación de la vista manual.
 
@@ -272,7 +274,7 @@ Los cajones guardan localmente en este navegador, por separado de los proyectos 
 <a id="mounting-plates"></a>
 ### Placas de montaje
 
-In **Drawer → Drawer base**, elegir **Mounting plate**. Longitud del drenaje / ancho y la limpieza de la pared determinan el área cubierta. Introduzca el ancho y la profundidad utilizables del **cama de impresora 3D** por separado: estas dimensiones determinan el tamaño máximo de la sección y por lo tanto el número de secciones. El cálculo incluye proyecciones conjuntas y un margen de impresión de 2 mm en cada borde de la base de impresión. Las dimensiones no necesitan ser múltiples de la rejilla de 20 mm; las secciones del borde encajan en el espacio restante.
+En **Drawer → Drawer base**, elija **Mounting plate**. El largo y el ancho del cajón, junto con la holgura junto a las paredes, determinan la superficie cubierta. Introduzca por separado el largo y el ancho útiles de la cama de la impresora 3D: determinan el tamaño máximo y el número de secciones. El cálculo incluye los salientes de las uniones y un margen de impresión de 2 mm en cada borde de la cama. Las dimensiones no tienen que ser múltiplos de la cuadrícula de pasadores de 20 mm; las secciones del borde se ajustan al espacio restante.
 
 **Download sections (ZIP)** crea un 3MF numerado por impresión, un plano de montaje SVG y una lista de coordenadas. El plano conserva la orientación original del cajón, independientemente de la vista: R indica filas de arriba abajo y C columnas de izquierda a derecha. Encaje las uniones de cola de milano desde arriba. Imprima primero **Download joint sample**, con dos pequeñas secciones contiguas, y compruebe el ajuste. Las uniones usan una separación de 0,05 mm y una tolerancia de perfil de 0,03 mm. Entre las secciones sin montar los organizadores puede quedar una junta fina y un pequeño juego.
 
@@ -353,7 +355,7 @@ Los ajustes numéricos muestran **Min** y **Max** por encima de una fina pista v
 
 Elija **Drawer → Print entire drawer** para preparar todas las bandejas, sus accesorios y cualquier sección de placas de montaje habilitadas. Bandejas montadas reciben tomas para sus posiciones guardadas; bandejas de colocación libre ordinarias mantienen sus bases existentes. Los proyectos de impresión dividida incluyen sus piezas y pasadores. Superposiciones, limpiezas insuficientes de cajones, montaje sin soporte o geometría inválida bloquean la descarga e identifican la bandeja afectada.
 
-Set **Printer bed length** (horizontal), **Printer bed width** (vertical), altura de impresión y espaciamiento. Las dimensiones iniciales proceden de la configuración de la placa de montaje o del área de impresión de la primera bandeja; se guardan los ajustes de exportación subsiguientes con este cajón. Las secciones de la placa de montaje se regeneran para la base de impresión elegida.
+Set **Largo de la cama de impresión** (horizontal), **Ancho de la cama de impresión** (vertical), altura de impresión y espaciamiento. Las dimensiones iniciales proceden de la configuración de la placa de montaje o del área de impresión de la primera bandeja; se guardan los ajustes de exportación subsiguientes con este cajón. Las secciones de la placa de montaje se regeneran para la base de impresión elegida.
 
 La distribución usa las dimensiones exteriores reales de las piezas exportadas, un margen de 2 mm en los bordes de la base y la separación elegida. Las piezas pueden girar 90°; los componentes de una tapa multicolor permanecen juntos. El número de bases mostrado corresponde a esta distribución y no garantiza el mínimo posible. No se incluyen soportes, bordes de adhesión (brim), torres de purga, zonas excluidas de la impresora ni trabajos separados por material. Reserve espacio para ellos y compruebe el resultado en el laminador. No se incorporan perfiles de impresora ni asignaciones de filamentos.
 

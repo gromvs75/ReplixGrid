@@ -1,5 +1,7 @@
 # ReplixGrid User Guide
 
+Dimensions use **Length × Width × Height** in both Organizer and Drawer. Length is the fixed X axis and width is the fixed Y axis; the names do not swap when one side becomes longer or you rotate the view. Existing projects keep their dimensions and orientation. Cutout depth and engraving depth still describe how far a cut goes into the material.
+
 Design an organizer in millimeters, check its fit, and download the parts for your slicer. For a first build, follow the illustrated capsule example. Use this reference when you want to change a particular part of your design.
 
 [Open ReplixGrid](https://grid.replixcast.com/?lang=en) · [Quick Start](USER-GUIDE.md) · [Local installation](../README.md#local-installation)
@@ -56,10 +58,10 @@ Under **Shape → Base**, choose a base and height profile, then click **Create 
 | Rounded | A rectangular footprint with adjustable outside corners. |
 | Capsule | A long body with semicircular ends. The sloped template carries the incline through both curved ends. |
 | Circle | A round organizer sized by diameter. |
-| Oval | An elongated curved outline with separately adjustable width and depth. |
+| Oval | An elongated curved outline with separately adjustable length and width. |
 | Honeycomb | A cluster of hexagonal cells that share walls. Select a cell to adjust its height. |
 
-Choose **Flat** for a level rim, **Sloped** for a continuous rise, or **Steps** for distinct height levels. The dimensions below the choices describe the template you are about to create. Once created, edit the model under **Dimensions**. Width and depth measure the outside footprint. Use the selected compartment's inside dimensions when sizing it for an object. On a curved base, also check the narrowing ends in **Top** view.
+Choose **Flat** for a level rim, **Sloped** for a continuous rise, or **Steps** for distinct height levels. The dimensions below the choices describe the template you are about to create. Once created, edit the model under **Dimensions**. Length and width measure the outside footprint. Use the selected compartment's inside dimensions when sizing it for an object. On a curved base, also check the narrowing ends in **Top** view.
 
 ![Sloped capsule with a low end for access, a tall end for long items and two transverse dividers](images/capsule-sloped.jpg)
 
@@ -67,7 +69,7 @@ Choose **Flat** for a level rim, **Sloped** for a continuous rise, or **Steps** 
 
 ## Exact internal dimensions
 
-Select a compartment and use **Internal dimensions** in the right panel, or click its blue dimension label directly on the model. Choose width or depth, enter millimeters and click outside the inline field to apply. Enter also applies; Escape cancels. The right panel retains its Apply button. Invalid values cannot change the model. Each committed edit can be undone in one step.
+Select a compartment and use **Internal dimensions** in the right panel, or click its blue dimension label directly on the model. Choose length or width, enter millimeters and click outside the inline field to apply. Enter also applies; Escape cancels. The right panel retains its Apply button. Invalid values cannot change the model. Each committed edit can be undone in one step.
 
 The orange divider is its current position; the dashed blue line previews the new position. The closest enclosing split on the chosen axis moves, keeping the outside body size and wall thickness unchanged. The panel shows affected neighboring sizes. If there is no divider on that axis, adjust the overall dimensions or split the compartment first.
 
@@ -81,9 +83,9 @@ Select a wall or divider to edit its height directly on the model. Flat walls sh
 
 For a quick layout, use **Compartments → + Compartment** to split the largest compartment. **− Compartment** merges a neighboring pair. In a honeycomb, these controls add or remove an outside cell and preserve the size of the others. Two neighboring honeycomb cells share a wall as high as the taller cell.
 
-For an exact layout, switch to **Top** and select the compartment you want to divide. Choose **Number of parts**, then **Split in width** to divide the width into narrower compartments, or **Split in depth** to make shallower ones. You can split one of the results again. For a pencil bay beside two small trays, first split the width in two, then split only the tray side in depth.
+Select a compartment and set **Number of parts**. **Split along length** adds dividers parallel to the tray’s length (X axis); **Split along width** adds dividers parallel to its width (Y axis). The outside dimensions stay the same. Only the selected compartment is divided; you can split a resulting compartment again or move a divider. The same controls work when editing a tray from **Drawer**.
 
-![Top-view example with one full-depth bay and two smaller compartments](images/compartment-splits.svg)
+![Top-view example with one full-width bay and two smaller compartments](images/compartment-splits.svg)
 
 Select the divider to drag it, or adjust **First compartment** under **Partition position**. Only the selected divider moves; other divider positions remain fixed. The adjacent compartments change size. Moves that leave too little space are rejected. Check the new inside dimensions on each side. **Remove partition** combines the compartments and can also remove dividers nested inside that split. Review the highlighted selection and the confirmation before removing it.
 
@@ -129,7 +131,7 @@ The insert follows its compartment with at least 0.5 mm clearance. Its walls and
 
 Built-in and SVG relief decorate each tier's exterior while mating collars, tongues and sockets stay smooth. Wrapped shells and decorative panels can cover individual tiers. For panels, keep **Edge offset** at least 3 mm so they clear the mating collars.
 
-With a wrapped shell, a tongue inside the lower wall fits a socket below the upper tray's floor. Compartment widths, depths and usable heights remain unchanged; each socket adds 2.2 mm to the assembled stack's outside height. Matching shells meet at a narrow 0.8 mm support band. Shells slide on from above; separate the tiers before removing them. Each shell exports as a separate tier-numbered part.
+With a wrapped shell, a tongue inside the lower wall fits a socket below the upper tray's floor. Compartment lengths, widths and usable heights remain unchanged; each socket adds 2.2 mm to the assembled stack's outside height. Matching shells meet at a narrow 0.8 mm support band. Shells slide on from above; separate the tiers before removing them. Each shell exports as a separate tier-numbered part.
 
 **Bottom trim** is available on the first (lowest) tier only: choose smooth, rings or steps. With a compatible wrapped shell, the trim also supports the shell. Separate panels sit above the trim with the selected edge offset. New upper tiers do not inherit the trim. If the tongue cannot fit within the wall thickness, reduce **Fit clearance**; the application does not thicken the wall automatically. A wall cutout must leave enough material near both corners to support the tray above it.
 
@@ -176,7 +178,7 @@ Keep a downloaded backup before clearing browser data. Each browser and site add
 
 ## Print setup and sectioning
 
-Under **Print**, select your printer and head configuration or choose **Custom size**. Check build width, depth and height. The preset supplies the build volume. Choose the printer, nozzle, material and slicing profiles in your slicer.
+Under **Print**, select your printer and head configuration or choose **Custom size**. Check build length, width and height. The preset supplies the build volume. Choose the printer, nozzle, material and slicing profiles in your slicer.
 
 For a model that exceeds the bed, use the suggested cuts or choose two or three sections when available. Read the proposed seam positions and use **Move the parts apart** to see how the sections meet. Splitting increases wall thickness to at least 5 mm and floor thickness to at least 3 mm. Recheck the inside dimensions. Remove shells and inserts before splitting. Stacked trays, tilted models and the circle, oval and honeycomb bases require single-piece printing. **Return solid model** switches off sectioning. Check thickness again if you want to restore earlier dimensions.
 
@@ -254,7 +256,7 @@ Drawers save locally in this browser, separately from organizer projects. Downlo
 
 ### Mounting plates
 
-In **Drawer → Drawer base**, choose **Mounting plate**. Drawer length/width and the wall clearance determine the covered area. Enter the usable width and depth of the **3D printer bed** separately: these dimensions determine the maximum section size and therefore the number of sections. The calculation includes joint projections and a 2 mm printing margin at each bed edge. Dimensions need not be multiples of the 20 mm peg grid; edge sections fit the remaining space.
+In **Drawer → Drawer base**, choose **Mounting plate**. Drawer length/width and the wall clearance determine the covered area. Enter the usable length and width of the **3D printer bed** separately: these dimensions determine the maximum section size and therefore the number of sections. The calculation includes joint projections and a 2 mm printing margin at each bed edge. Dimensions need not be multiples of the 20 mm peg grid; edge sections fit the remaining space.
 
 **Download sections (ZIP)** creates one numbered 3MF per print job, an SVG assembly map and a coordinate list. The map uses the original drawer orientation, independent of view rotation. R indicates rows from top to bottom, C columns from left to right. Lower adjoining dovetails into place from above. First print **Download joint sample**, containing two small adjoining sections; check assembly with your printer before printing the full set. The joints use a 0.05 mm seam and a 0.03 mm profile allowance. A faint seam and slight play can remain between bare sections.
 

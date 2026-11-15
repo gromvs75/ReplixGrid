@@ -1,4 +1,6 @@
 <a id="replixgrid-user-guide"></a>
+
+Dans les modes Organiseur et Tiroir, les dimensions suivent l’ordre **Longueur × largeur × hauteur**. La longueur correspond toujours à l’axe X et la largeur à l’axe Y. Ces noms ne changent pas si les proportions changent ou si vous faites pivoter la vue. Les projets enregistrés conservent leurs dimensions et leur orientation. La profondeur de découpe ou de gravure désigne toujours la profondeur de l’opération dans le matériau.
 # Guide utilisateur ReplixGrid
 
 Créez un organiseur aux dimensions en millimètres, vérifiez l’ajustement des pièces et téléchargez-les pour votre logiciel de découpe (slicer). Pour débuter, suivez l’exemple illustré de la capsule dans le guide de démarrage. Ce manuel détaille chaque réglage.
@@ -60,10 +62,10 @@ Sous **Forme → Socle**, choisissez un profil de base et de hauteur, puis cliqu
 | arrondi | Une empreinte rectangulaire avec des coins extérieurs réglables. |
 | Capsule | Un long corps avec des extrémités semi-circulaires. Le gabarit incliné porte l'inclinaison à travers les deux extrémités courbes. |
 | Cercle | Un organiseur rond dimensionné par le diamètre. |
-| Ovale | Un contour courbé allongé avec largeur et profondeur réglables séparément. |
+| Ovale | Un contour courbé allongé avec longueur et largeur réglables séparément. |
 | Honeycomb | Un groupe de cellules hexagonales qui partagent des murs. Sélectionnez une cellule pour ajuster sa hauteur. |
 
-Choisissez **Lisse** pour une bord de niveau, **En pente** pour une montée continue, ou **Gradins** pour des niveaux de hauteur distincts. Les dimensions inférieures aux choix décrivent le modèle que vous êtes sur le point de créer. Une fois créé, modifiez le modèle sous **Dimensions**. Largeur et profondeur mesurent l'empreinte extérieure. Utilisez les dimensions intérieures du compartiment sélectionné pour le dimensionner pour un objet. Sur une base incurvée, vérifiez également les extrémités de rétrécissement dans la vue **Dessus**.
+Choisissez **Lisse** pour une bord de niveau, **En pente** pour une montée continue, ou **Gradins** pour des niveaux de hauteur distincts. Les dimensions inférieures aux choix décrivent le modèle que vous êtes sur le point de créer. Une fois créé, modifiez le modèle sous **Dimensions**. Longueur et largeur mesurent l'empreinte extérieure. Utilisez les dimensions intérieures du compartiment sélectionné pour le dimensionner pour un objet. Sur une base incurvée, vérifiez également les extrémités de rétrécissement dans la vue **Dessus**.
 
 ![Capsule inclinée avec une extrémité basse pour l'accès, une extrémité haute pour les objets longs et deux cloisons transversaux](../../images/capsule-sloped.jpg)
 
@@ -72,7 +74,7 @@ Dans **Forme** → **Supplémentaire**, réglez l’épaisseur des parois et du 
 <a id="exact-internal-dimensions"></a>
 ## Dimensions intérieures précises
 
-Sélectionnez un compartiment et ouvrez **Dimensions intérieures** à droite, ou cliquez sur sa cote bleue dans le modèle. Choisissez largeur ou profondeur et saisissez des millimètres. Cliquez hors du champ ou appuyez sur **Enter** pour valider ; **Escape** annule. Dans le panneau droit, utilisez **Appliquer**. Une valeur incorrecte ne modifie pas le modèle. Chaque modification validée peut être annulée en une étape.
+Sélectionnez un compartiment et ouvrez **Dimensions intérieures** à droite, ou cliquez sur sa cote bleue dans le modèle. Choisissez longueur ou largeur et saisissez des millimètres. Cliquez hors du champ ou appuyez sur **Enter** pour valider ; **Escape** annule. Dans le panneau droit, utilisez **Appliquer**. Une valeur incorrecte ne modifie pas le modèle. Chaque modification validée peut être annulée en une étape.
 
 Le cloison orange est sa position actuelle; la ligne bleue en tirets prévisualise la nouvelle position. La séparation la plus proche sur l'axe choisi se déplace, gardant la taille extérieure du corps et l'épaisseur de la paroi inchangée. Le panneau montre les tailles voisines affectées. S'il n'y a pas de cloison sur cet axe, ajuster les dimensions globales ou diviser le compartiment en premier.
 
@@ -87,9 +89,9 @@ Sélectionnez un mur ou un cloison pour modifier sa hauteur directement sur le m
 
 Pour une mise en page rapide, utilisez **Compartiments → + Compartiment** pour diviser le plus grand compartiment. **− Compartiment** fusionne une paire voisine. Dans un nid d'abeilles, ces commandes ajoutent ou retirent une cellule extérieure et préservent la taille des autres. Deux cellules voisines partagent un mur aussi haut que la cellule plus haute.
 
-Pour une mise en page exacte, passez à **Dessus** et sélectionnez le compartiment que vous voulez diviser. Choisissez **Nombre de pièces**, puis **Diviser en largeur** pour diviser la largeur en compartiments plus étroits, ou **Diviser en profondeur** pour en faire des moins profonds. Vous pouvez diviser à nouveau l'un des résultats.
+Sélectionnez un compartiment et réglez le **Nombre de pièces**. **Diviser sur la longueur** ajoute des cloisons parallèles à la longueur du bac (axe X) ; **Diviser sur la largeur** ajoute des cloisons parallèles à sa largeur (axe Y). Les dimensions extérieures restent inchangées. Seul le compartiment sélectionné est divisé. Vous pouvez subdiviser un compartiment obtenu ou déplacer une cloison. Ces boutons fonctionnent de la même manière pour un bac ouvert depuis **Drawer**.
 
-![Exemple de vue supérieure avec une baie pleine profondeur et deux compartiments plus petits](../../images/compartment-splits.svg)
+![Exemple de vue supérieure avec une baie pleine largeur et deux compartiments plus petits](../../images/compartment-splits.svg)
 
 Sélectionnez le cloison pour le faire glisser, ou ajustez **Premier compartiment** sous **Position des partitions**. Seul le cloison sélectionné se déplace; d'autres positions de cloison restent fixes. Les compartiments adjacents changent de taille. Les déplacements qui laissent trop peu d'espace sont rejetés. Vérifiez les nouvelles dimensions intérieures de chaque côté. **Supprimer la partition** combine les compartiments et peut également enlever les cloisons nichés à l'intérieur de cette division.
 
@@ -138,7 +140,7 @@ L'insert suit son compartiment avec un dégagement d'au moins 0,5 mm. Ses parois
 
 Le relief intégré et SVG décorent l'extérieur de chaque niveau tout en accouplement les cols, les languettes et les logements restent lisses. Les coquillages et les panneaux décoratifs peuvent couvrir les différents niveaux. Pour les panneaux, garder **Décalage de bord** au moins 3 mm afin qu'ils nettoient les cols accouplement.
 
-Avec un habillage enveloppant, une languette à l’intérieur de la paroi inférieure entre dans un logement sous le fond du plateau supérieur. Largeur, profondeur et hauteur utiles des compartiments restent identiques ; chaque logement ajoute 2,2 mm à la hauteur extérieure de la pile. Les habillages se rejoignent sur une bande d’appui de 0,8 mm. Ils s’enfilent par le dessus : séparez les étages avant de les retirer. Chaque habillage est exporté séparément avec son numéro d’étage.
+Avec un habillage enveloppant, une languette à l’intérieur de la paroi inférieure entre dans un logement sous le fond du plateau supérieur. Longueur, largeur et hauteur utiles des compartiments restent identiques ; chaque logement ajoute 2,2 mm à la hauteur extérieure de la pile. Les habillages se rejoignent sur une bande d’appui de 0,8 mm. Ils s’enfilent par le dessus : séparez les étages avant de les retirer. Chaque habillage est exporté séparément avec son numéro d’étage.
 
 **Bordure inférieure** n'est disponible que sur le premier niveau (le plus bas): choisissez lisses, anneaux ou marches. Avec une enveloppe compatible, la garniture supporte également la habillage. Des panneaux séparés s'assoient au-dessus de la garniture avec l'offset du bord sélectionné. Les nouveaux niveaux supérieurs n'héritent pas de la garniture. Si la languette ne peut pas s'insérer dans l'épaisseur du mur, réduisez **Jeu d'ajustement**; l'application ne épaissit pas automatiquement le mur.
 
@@ -188,7 +190,7 @@ Gardez une sauvegarde téléchargée avant d'effacer les données du navigateur.
 <a id="print-setup-and-sectioning"></a>
 ## Réglages d’impression et division en parties
 
-Sous **Impression**, sélectionnez la configuration de votre imprimante et de votre tête ou choisissez **Dimensions personnalisées**. Vérifiez la largeur, la profondeur et la hauteur de construction. Le préréglage fournit le volume d’impression. Choisissez l'imprimante, la buse, le matériau et les profils de coupe dans votre slicer.
+Sous **Impression**, sélectionnez la configuration de votre imprimante et de votre tête ou choisissez **Dimensions personnalisées**. Vérifiez la longueur, la largeur et la hauteur de construction. Le préréglage fournit le volume d’impression. Choisissez l'imprimante, la buse, le matériau et les profils de coupe dans votre slicer.
 
 Si le modèle dépasse le plateau, utilisez les découpes proposées ou choisissez deux ou trois sections lorsque cette option est disponible. Vérifiez les raccords avec **Écarter les pièces**. La division porte l’épaisseur des parois à au moins 5 mm et celle du fond à au moins 3 mm : contrôlez de nouveau les dimensions intérieures. Retirez d’abord les habillages et les inserts. Les modèles à étages, inclinés, circulaires, ovales ou en nid d’abeille doivent être imprimés d’un seul tenant. **Retourner le modèle solide** annule la division. Revérifiez les épaisseurs si vous souhaitez retrouver les dimensions initiales.
 
@@ -272,7 +274,7 @@ Les tiroirs économisent localement dans ce navigateur, séparément des projets
 <a id="mounting-plates"></a>
 ### Plaques de montage
 
-Dans **Drawer → Drawer base**, choisissez **Mounting plate**. La longueur/la largeur du tiroir et le dégagement du mur déterminent la zone couverte. Entrez la largeur et la profondeur utilisables du plateau d'imprimante **Lit imprimante 3D** séparément: ces dimensions déterminent la taille maximale de la section et donc le nombre de sections. Le calcul inclut des projections de joint et une marge d'impression de 2 mm à chaque bord du plateau. Les dimensions ne doivent pas être multiples de la grille de 20 mm; les sections de bord correspondent à l'espace restant.
+Dans **Drawer → Drawer base**, choisissez **Mounting plate**. La longueur et la largeur du tiroir, ainsi que le jeu près des parois, déterminent la surface couverte. Saisissez séparément la longueur et la largeur utiles du plateau de l’imprimante 3D : elles déterminent la taille maximale et le nombre des sections. Le calcul tient compte des raccords qui dépassent et d’une marge de 2 mm sur chaque bord du plateau. Les dimensions ne doivent pas forcément être des multiples du pas de 20 mm des ergots ; les sections de bord s’adaptent à l’espace restant.
 
 **Download sections (ZIP)** crée un fichier 3MF numéroté par impression, un plan d’assemblage SVG et une liste de coordonnées. Le plan conserve l’orientation initiale du tiroir, indépendamment de la vue : R désigne les rangées de haut en bas, C les colonnes de gauche à droite. Emboîtez les queues d’aronde par le dessus. Imprimez d’abord **Download joint sample**, composé de deux petites sections voisines, pour vérifier l’ajustement. Le joint prévoit un écart de 0,05 mm et une tolérance de profil de 0,03 mm. Un joint fin et un léger jeu peuvent subsister entre les sections seules.
 
@@ -353,7 +355,7 @@ Les réglages numériques montrent **Min** et **Max** au-dessus d'une piste vert
 
 Choisissez **Drawer → Print entire drawer** pour préparer tous les plateaux, leurs accessoires et toutes les sections de plaques de montage activées. Les plateaux montés reçoivent des logements pour leurs positions sauvegardées; les plateaux libres ordinaires gardent leurs bases existantes. Les projets d'impression fractionnée comprennent leurs pièces et leurs broches.
 
-Ensemble **Printer bed length** (horizontale), **Printer bed width** (verticale), hauteur d'impression et espacement. Les dimensions initiales proviennent des réglages des plaques de montage ou de la zone d'impression du premier plateau; les paramètres d'exportation ultérieurs sont enregistrés avec ce tiroir. Les sections des plaques de montage sont régénérées pour le plateau choisi.
+Ensemble **Longueur du plateau d’impression** (horizontale), **Largeur du plateau d’impression** (verticale), hauteur d'impression et espacement. Les dimensions initiales proviennent des réglages des plaques de montage ou de la zone d'impression du premier plateau; les paramètres d'exportation ultérieurs sont enregistrés avec ce tiroir. Les sections des plaques de montage sont régénérées pour le plateau choisi.
 
 La disposition tient compte des dimensions extérieures réelles des pièces exportées, d’une marge de 2 mm au bord du plateau et de l’espacement choisi. Les pièces peuvent tourner de 90° ; les composants colorés d’un couvercle restent ensemble. Le nombre de plateaux affiché correspond à cette disposition, sans garantie de minimum. Les supports, bordures d’adhérence (brim), tours de purge, zones interdites de l’imprimante et travaux séparés par matériau ne sont pas pris en compte. Réservez l’espace nécessaire et vérifiez le résultat dans le slicer. Aucun profil d’imprimante ni aucune affectation de filament n’est intégré.
 

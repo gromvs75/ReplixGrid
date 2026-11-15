@@ -1,4 +1,6 @@
 <a id="replixgrid-user-guide"></a>
+
+W trybach organizera i szuflady wymiary są podawane jako **Długość × szerokość × wysokość**. Długość zawsze odpowiada osi X, a szerokość osi Y. Nazwy nie zmieniają się po zmianie proporcji ani obróceniu widoku. Zapisane projekty zachowują wymiary i orientację. Głębokość wycięcia i grawerowania nadal oznacza głębokość obróbki materiału.
 # Podręcznik użytkownika ReplixGrid
 
 Zaprojektuj organizer z wymiarami w milimetrach, sprawdź dopasowanie części i pobierz je do slicera. Na początek skorzystaj z ilustrowanego przykładu kapsuły w szybkim starcie. Ten podręcznik opisuje poszczególne ustawienia.
@@ -60,10 +62,10 @@ Pod **Kształt → Baza**, wybierz profil bazowy i wysokość, a następnie klik
 | Zaokrąglone | Prostokątny ślad z regulowanymi narożnikami zewnętrznymi. |
 | kapsułki | Długie ciało z półkolistymi końcami. Pochylony szablon przenosi nachylenie przez obie zakrzywione końce. |
 | Koło | Okrągły organizator wielkości średnicy. |
-| Owalny | Podłużny kontur z oddzielnie regulowaną szerokością i głębokością. |
+| Owalny | Podłużny kontur z oddzielnie regulowaną długością i szerokością. |
 | Honeycomb | Klaster sześciokątnych komórek dzielących ściany. Wybierz komórkę, aby dostosować jej wysokość. |
 
-Wybierz **Gładkie** dla obręczy poziomej, **Pochyły** dla ciągłego wzrostu, lub **Stopnie** dla różnych poziomów wzrostu. Wymiary poniżej wyborów opisują szablon, który masz zamiar stworzyć. Po utworzeniu, edytuj model pod **Wymiary**. Szerokość i głębokość mierzy zewnętrzny ślad. Wymiary wewnętrzne wybranego przedziału należy mierzyć dla danego obiektu. Na zakrzywionej podstawie, również sprawdzić zwężenie końców w **Z góry** Widok.
+Wybierz **Gładkie** dla obręczy poziomej, **Pochyły** dla ciągłego wzrostu, lub **Stopnie** dla różnych poziomów wzrostu. Wymiary poniżej wyborów opisują szablon, który masz zamiar stworzyć. Po utworzeniu, edytuj model pod **Wymiary**. Długość i szerokość mierzy zewnętrzny ślad. Wymiary wewnętrzne wybranego przedziału należy mierzyć dla danego obiektu. Na zakrzywionej podstawie, również sprawdzić zwężenie końców w **Z góry** Widok.
 
 ![Kapsułka z niskim końcem dla dostępu, wysoki koniec dla długich przedmiotów i dwa przegrody poprzeczne](../../images/capsule-sloped.jpg)
 
@@ -72,7 +74,7 @@ W **Kształt** → **Dodatkowe** ustaw grubość ścianek i dna. Grubsze ściank
 <a id="exact-internal-dimensions"></a>
 ## Dokładne wymiary wewnętrzne
 
-Wybierz komorę i otwórz **Wymiary wewnętrzne** po prawej albo kliknij niebieski wymiar na modelu. Wybierz szerokość lub głębokość i wpisz milimetry. Kliknięcie poza polem lub **Enter** zatwierdza, a **Escape** anuluje. W prawym panelu użyj **Zastosuj**. Nieprawidłowe wartości nie zmieniają modelu. Każdą zatwierdzoną zmianę można cofnąć jednym krokiem.
+Wybierz komorę i otwórz **Wymiary wewnętrzne** po prawej albo kliknij niebieski wymiar na modelu. Wybierz długość lub szerokość i wpisz milimetry. Kliknięcie poza polem lub **Enter** zatwierdza, a **Escape** anuluje. W prawym panelu użyj **Zastosuj**. Nieprawidłowe wartości nie zmieniają modelu. Każdą zatwierdzoną zmianę można cofnąć jednym krokiem.
 
 Pomarańczowy dzielnik jest jego bieżącą pozycją; przekreślona niebieska linia przedstawia nową pozycję. Najbliższy otwór na wybranej osi przesuwa się, utrzymując zewnętrzny rozmiar ciała i grubość ścianki bez zmian. Panel pokazuje dotknięte sąsiadujące rozmiary. Jeżeli na tej osi nie ma rozdzielacza, dostosuj wymiary całkowite lub najpierw podziel przedział.
 
@@ -87,9 +89,9 @@ Wybierz ścianę lub rozdzielacz, aby edytować jej wysokość bezpośrednio na 
 
 Dla szybkiego układu, użyj **Przegródki → + Przedział** do podziału największego przedziału. **− Przedział** Łączy sąsiadującą parę. W plastrze miodu, te urządzenia sterujące dodają lub usuwają zewnętrzną komórkę i zachowują wielkość pozostałych. Dwie sąsiadujące komórki plastra miodu dzielą ścianę tak wysoką jak ta wyższa.
 
-Aby uzyskać dokładny układ, przełącz na **Z góry** i wybierz przedział, który chcesz podzielić. Wybierz **Liczba części** Więc... **Podział szerokości** podział szerokości na mniejsze przedziały, lub **Podział dogłębnie** do robienia płytszych. Możesz znowu podzielić jeden z wyników. Na ołówek obok dwóch małych tac, najpierw podzielić szerokość na dwa, a następnie podzielić tylko stronę tacki w głębokości.
+Wybierz komorę i ustaw **Liczba części**. **Podziel według długości** dodaje przegrody równoległe do długości pojemnika (oś X), a **Podziel według szerokości** — równoległe do jego szerokości (oś Y). Wymiary zewnętrzne nie zmieniają się. Dzielona jest tylko wybrana komora. Możesz ponownie podzielić powstałą komorę lub przesunąć przegrodę. Przy edycji pojemnika z trybu **Drawer** przyciski działają tak samo.
 
-![Przykład widoku z jedną zatoką głębokości pełnej i dwoma mniejszymi przegródkami](../../images/compartment-splits.svg)
+![Przykład widoku z jedną zatoką szerokości pełnej i dwoma mniejszymi przegródkami](../../images/compartment-splits.svg)
 
 Wybierz dzielnik, aby go przeciągnąć lub dostosować **Pierwsza komora** poniżej **Położenie przegrody**. Tylko wybrane ruchy dzielnika; pozostałe pozycje dzielnika pozostają stałe. Przyległe przedziały zmieniają rozmiar. Ruchy, które pozostawiają zbyt mało miejsca są odrzucane. Sprawdzić nowe wymiary wewnętrzne z każdej strony. **Usuń partycję** łączy przedziały i może również usunąć dzielniki zagnieżdżone wewnątrz tego podziału. Przejrzyj zaznaczony wybór i potwierdzenie przed jego usunięciem.
 
@@ -138,7 +140,7 @@ Wkładka podąża za przegrodą z prześwitem co najmniej 0,5 mm. Jego ściany i
 
 Wbudowane i SVG Relief udekorować na zewnątrz każdego poziomu, podczas gdy godowe obroże, języki i gniazda pozostają gładkie. Owinięte powłoki i panele dekoracyjne mogą pokrywać poszczególne poziomy. Do paneli, przechowywać **Przesunięcie krawędzi** co najmniej 3 mm, aby oczyścić obroże godowe.
 
-Przy osłonie obwodowej wypust po wewnętrznej stronie dolnej ścianki wchodzi w gniazdo pod dnem górnego pojemnika. Użyteczna szerokość, głębokość i wysokość komór pozostają bez zmian; każde gniazdo dodaje 2,2 mm do zewnętrznej wysokości stosu. Osłony stykają się na pasku podparcia o szerokości 0,8 mm. Nasuwają się od góry, więc przed zdjęciem rozdziel poziomy. Każda osłona eksportuje się osobno z numerem poziomu.
+Przy osłonie obwodowej wypust po wewnętrznej stronie dolnej ścianki wchodzi w gniazdo pod dnem górnego pojemnika. Użyteczna długość, szerokość i wysokość komór pozostają bez zmian; każde gniazdo dodaje 2,2 mm do zewnętrznej wysokości stosu. Osłony stykają się na pasku podparcia o szerokości 0,8 mm. Nasuwają się od góry, więc przed zdjęciem rozdziel poziomy. Każda osłona eksportuje się osobno z numerem poziomu.
 
 **Dolna listwa** jest dostępny tylko na pierwszym (najniższym) poziomie: wybrać gładkie, pierścienie lub kroki. Dzięki kompatybilnej obudowanej powłoce, wykończenie wspiera również powłokę. Oddzielne panele siedzą nad wykończeniem z wybranym przesunięciem krawędzi. Nowe górne poziomy nie dziedziczą wykończenia. Jeśli język nie może zmieścić się w grubości ściany, zmniejszyć **Luz pasujący**; aplikacja nie zagęszcza ściany automatycznie. Wycinanie ścian musi pozostawiać wystarczającą ilość materiału w pobliżu obu narożników, aby podtrzymać tacę nad nim.
 
@@ -188,7 +190,7 @@ Zachowaj pobraną kopię zapasową przed wyczyszczeniem danych przeglądarki. Ka
 <a id="print-setup-and-sectioning"></a>
 ## Ustawienia druku i podział na części
 
-Pod **Druk**, wybrać konfigurację drukarki i głowy lub wybrać **Własny rozmiar**. Sprawdzić szerokość, głębokość i wysokość budowy. Zaprogramowany system dostarcza obszar roboczy. Wybrać profile drukarki, dyszy, materiału i krojenia w slicerze.
+Pod **Druk**, wybrać konfigurację drukarki i głowy lub wybrać **Własny rozmiar**. Sprawdzić długość, szerokość i wysokość budowy. Zaprogramowany system dostarcza obszar roboczy. Wybrać profile drukarki, dyszy, materiału i krojenia w slicerze.
 
 Jeśli model nie mieści się na stole drukarki, użyj proponowanych podziałów lub wybierz dwie albo trzy części, gdy są dostępne. Sprawdź połączenia przyciskiem **Rozsuń części**. Podział zwiększa grubość ścianek do co najmniej 5 mm, a dna do 3 mm; ponownie sprawdź wymiary wewnętrzne. Najpierw usuń osłony i wkłady. Modele piętrowe, pochylone, okrągłe, owalne i o strukturze plastra miodu wymagają druku w jednym kawałku. **Zwróć model bryłowy** wyłącza podział. Jeśli chcesz przywrócić poprzednie wymiary, ponownie sprawdź grubości.
 
@@ -272,7 +274,7 @@ Drawers zapisać lokalnie w tej przeglądarce, oddzielnie od projektów organiza
 <a id="mounting-plates"></a>
 ### Płyty montażowe
 
-W **Drawer → Drawer base**, wybierz **Mounting plate**. Długość / szerokość kredensu i prześwit ściany określają obszar pokryty. Podaj użyteczną szerokość i głębokość **Łóżko drukarki 3D** osobno: wymiary te określają maksymalny rozmiar sekcji, a tym samym liczbę sekcji. Obliczenie obejmuje wspólne projekcje i marżę drukowania 2 mm na każdej krawędzi łoża. Wymiary nie muszą być wielokrotnością siatki 20 mm; sekcje krawędzi pasują do pozostałej przestrzeni.
+W **Drawer → Drawer base** wybierz **Mounting plate**. Długość i szerokość szuflady oraz luz przy ściankach określają pokrywaną powierzchnię. Osobno podaj użyteczną długość i szerokość stołu drukarki 3D: określają maksymalny rozmiar i liczbę sekcji. Obliczenia uwzględniają wystające połączenia oraz margines druku 2 mm przy każdej krawędzi stołu. Wymiary nie muszą być wielokrotnością rozstawu kołków 20 mm; sekcje brzegowe dopasują się do pozostałego miejsca.
 
 **Download sections (ZIP)** tworzy numerowany 3MF dla każdego wydruku, plan montażu SVG i listę współrzędnych. Plan zachowuje pierwotną orientację szuflady niezależnie od widoku: R oznacza rzędy od góry, C kolumny od lewej. Złącza na jaskółczy ogon wkładaj od góry. Najpierw wydrukuj **Download joint sample** z dwiema sąsiadującymi sekcjami i sprawdź dopasowanie. Szczelina wynosi 0,05 mm, a tolerancja profilu 0,03 mm. Między sekcjami bez zamontowanych pojemników mogą pozostać cienka szczelina i niewielki luz.
 
@@ -353,7 +355,7 @@ Pokaż ustawienia numeryczne **Min** oraz **Max** powyżej cienkiej zielonej śc
 
 Wybierz **Drawer → Print entire drawer** przygotowanie wszystkich tac, ich akcesoriów i wszelkich włączonych sekcji płyt montażowych. Oprawione tace otrzymują gniazda do swoich zapisanych pozycji; zwykłe tace do wolnych miejsc zachowują swoje istniejące bazy. Projekty drukowania fragmentarycznego obejmują ich części i pinezki. Overlaps, niewystarczające przepustki szuflady, nieobsługiwane montaż lub nieprawidłowa geometria zablokować pobieranie i zidentyfikować dotkniętą tacę.
 
-Ustaw **Printer bed length** (poziomo), **Printer bed width** (pionowe), wysokość druku i odstępy. Początkowe wymiary pochodzą z ustawień płyty montażowej lub obszaru wydruku pierwszej tacki; kolejne ustawienia eksportowe są zapisywane w tej szufladzie. Części płyt montażowych są regenerowane dla wybranego stołu drukarki. Nie przenosi to tac ani nie modyfikuje zapisanych projektów źródłowych.
+Ustaw **Długość stołu drukarki** (poziomo), **Szerokość stołu drukarki** (pionowe), wysokość druku i odstępy. Początkowe wymiary pochodzą z ustawień płyty montażowej lub obszaru wydruku pierwszej tacki; kolejne ustawienia eksportowe są zapisywane w tej szufladzie. Części płyt montażowych są regenerowane dla wybranego stołu drukarki. Nie przenosi to tac ani nie modyfikuje zapisanych projektów źródłowych.
 
 Układ uwzględnia rzeczywiste wymiary zewnętrzne eksportowanych części, margines 2 mm przy krawędziach stołu oraz wybrany odstęp. Części mogą być obracane o 90°; kolorowe elementy pokrywy pozostają razem. Wyświetlana liczba stołów dotyczy tego układu i nie gwarantuje minimum. Podpory, brim, wieże czyszczące, wyłączone obszary drukarki i osobne zadania dla różnych materiałów nie są uwzględniane. Zostaw na nie miejsce i sprawdź wynik w slicerze. Plik nie zawiera profilu drukarki ani przypisań filamentów.
 
