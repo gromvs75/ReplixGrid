@@ -1,3 +1,4 @@
+import {defaultModelColor} from './appearance.js';
 import type {ReliefBounds} from './relief.js';
 import {svgSurface,SVG_ISLAND_ERROR} from './svgSurface.js';
 import {stackFit,SHELL_SEAM} from './stackFit.js';
@@ -62,7 +63,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
    const stl=encodeSTL(triangles.map(t=>t.map(v=>v.map((n,k)=>n-min[k]) as Point) as Triangle));
    const inspection=inspectSurface(decodeSTL(stl));
    if(Math.abs(inspection.volume-body.volume())>Math.max(.001,body.volume()*1e-5))throw new Error('STL volume mismatch');
-   parts.push({name,kind,level,stl,inspection,position:position.map((n,k)=>n+min[k]) as Point,color:kind==='cup'?'#c0cdb5':partColor(p,kind==='shell'?'shell':'organizer')});
+   parts.push({name,kind,level,stl,inspection,position:position.map((n,k)=>n+min[k]) as Point,color:kind==='cup'?defaultModelColor:partColor(p,kind==='shell'?'shell':'organizer')});
    return;
   }catch(error){
    if(!(error instanceof Error)||!/^Open or non-manifold|^Degenerate|^STL volume mismatch/.test(error.message))throw error;
@@ -231,7 +232,7 @@ async function buildKitUncached(p:Project):Promise<KitPart[]> {
     parts[parts.length-1].color=lidBaseColor(p);
     if(accent){
      emit(orient(accent),'lid-olive','lid',i,origin,raised);
-     parts[parts.length-1].color=design?.patternColor??'#687749';
+     parts[parts.length-1].color=design?.patternColor??defaultModelColor;
     }
     if(design?.handle&&design.handle!=='none'){
      const {width,depth,outline}=handleProfile!,height=design.handleHeight??5;

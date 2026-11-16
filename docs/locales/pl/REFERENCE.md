@@ -369,3 +369,9 @@ Zmiany w ustawieniach układu lub eksportu unieważniają poprzednią kalkulacj�
 Wybierz **Raised relief (decoration)** dla reliefu albo **Through stencil (cut)** dla otworów przelotowych. Osłony obsługują tylko otwory. Wysokość jest widoczna tylko dla reliefu, odstęp tylko przy powtarzaniu. **Material thickness** zmienia podgląd i eksport: 1,2–6 mm dla pokrywy SVG, 1–4 mm dla osłony. Domyślna grubość wynosi 3,2 mm dla reliefu i 2 mm dla szablonu; wybrana grubość pozostaje po zmianie trybu. Wysokość reliefu wlicza się w grubość. Wpuszczana pokrywa SVG wymaga głębokości wewnętrznej co najmniej równej grubości płyty plus 2 mm. **Dodatkowe** zawiera kolor pokrywy lub wybór ścianek osłony. **Which SVG files work?** wyjaśnia wymagania i przygotowanie plików.
 
 Otwórz **Kształt** → **Pokrywka** → **My SVGs** albo **Osłona** → **Pattern** → **My SVGs**. Karty **Pokrywka** i **Osłona** mają wspólną bibliotekę, ale osobne ustawienia. Zmiana karty pokazuje odpowiednią część; jeśli jeszcze jej nie dodano, pozostaje widoczny cały model. Widok całości można wybrać nad modelem. Szerokość, obrót, odstęp i X/Y określają położenie wzoru; przycisk centrowania resetuje położenie i obrót. Pokrywa obsługuje relief i otwory, osłona tylko otwory. Ramki i miejsca mocowania pozostają zachowane. **×** lub **Escape** zamyka aktywne studio, zachowując zmiany. Strzałki klawiatury zmieniają wybraną kartę.
+
+## Gridfinity i przesuwanie
+
+W Gridfinity można dodać wiele płyt i niezależne pojemniki. Po wybraniu pojemnika ustawienia przegródek pojawiają się od razu po prawej. Przeciągnij znacznik T/P lub zewnętrzną ściankę: zielona ramka oznacza prawidłowe miejsce, czerwona — nieprawidłowe. Escape anuluje przesunięcie; każde przesunięcie można cofnąć jednym krokiem. W Szufladzie obowiązuje ta sama zasada, bez siatki 42 mm. Kolory i sloty filamentu korzystają ze wspólnych ustawień drukarki.
+
+[Instrukcja Gridfinity (angielski/rosyjski)](../../GRIDFINITY.md)

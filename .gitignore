@@ -22,3 +22,5 @@ docs/*
 
 !docs/LANGUAGES.md
 !docs/locales/
+
+!docs/GRIDFINITY.md

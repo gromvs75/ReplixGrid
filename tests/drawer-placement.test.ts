@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {newDrawer,newTray,drawerViewPoint} from '../src/drawer.js';
+import {drawerDrop} from '../src/drawerPlacement.js';
+const setup=()=>{const d=newDrawer();d.trays=[newTray('A',30,20,20),newTray('B',30,20,20)];d.trays[0].x=2;d.trays[0].y=2;d.trays[1].x=70;d.trays[1].y=2;return {d,bounds:Object.fromEntries(d.trays.map(t=>[t.id,{width:30,depth:20,height:20}]))};};
+test('drop rounds only the released position and preserves the original and neighbors',()=>{const {d,bounds}=setup(),before=structuredClone(d),next=drawerDrop(d,d.trays[0].id,12.345,30.678,bounds)!;assert.equal(next.trays[0].x,12.3);assert.equal(next.trays[0].y,30.7);assert.deepEqual(d,before);assert.deepEqual(next.trays[1],d.trays[1]);});
+test('invalid placement includes gap, outer dimensions, height and pending geometry',()=>{const {d,bounds}=setup(),id=d.trays[0].id;for(const [x,y] of [[1,2],[40,2],[151,2],[2,259]])assert.equal(drawerDrop(d,id,x,y,bounds),null);assert.ok(drawerDrop(d,id,38,2,bounds));assert.equal(drawerDrop(d,id,2,30,{}),null);bounds[id].height=81;assert.equal(drawerDrop(d,id,2,30,bounds),null);});
+test('rotated trays and rotated views keep model coordinates and exact bounds',()=>{const {d,bounds}=setup(),id=d.trays[0].id;d.trays[0].rotation=90;d.viewRotation=90;const p=drawerViewPoint(230,12,d);const next=drawerDrop(d,id,p.x,p.y,bounds)!;assert.deepEqual([next.trays[0].x,next.trays[0].y],[12,50]);assert.equal(next.trays[0].rotation,90);assert.equal(drawerDrop(d,id,2,249,bounds),null);});

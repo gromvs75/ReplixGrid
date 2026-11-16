@@ -5,6 +5,16 @@ import sources from '../src/locales/ru.json' with {type:'json'};
 import {t,languages,setLocale,getLocale,subscribeLocale} from '../src/i18n.js';
 const dictionaries=catalogs as Record<string,Record<string,string>>;
 const slots=(s:string)=>s.match(/\{\d+\}/g)?.sort()??[];
+test('Gridfinity editor uses translated runtime messages in every language',()=>{
+ const keys=['Совместимость с Gridfinity','← Обычный режим','Базовая плита','Отсеков по длине','Отсеков по ширине','Толщина стенки','Зазор плиты на сторону','Полная высота с опорами: {0} мм. Глубина внутри: {1} мм. Шаг изменения — 7 мм.','Длина и ширина привязаны к сетке 42 мм. Между лотками остаётся зазор 0,5 мм.','Больше зазор — свободнее посадка. Меняются только гнёзда плиты; размеры опор лотка остаются прежними.','ZIP содержит модель, инструкцию и лицензию MIT.'];
+ for(const [lang] of languages){setLocale(lang);for(const key of keys){
+   assert.ok(sources.includes(key),key);
+   const expected=lang==='ru'?key:dictionaries[lang][key];assert.ok(expected,`${lang}: ${key}`);
+   assert.equal(t(key,[70,63]),expected.replace('{0}','70').replace('{1}','63'));
+   if(!['ru','uk'].includes(lang))assert.doesNotMatch(t(key,[70,63]),/[А-Яа-яЁё]/,`${lang}: ${key}`);
+ }}
+ setLocale('ru');
+});
 test('trim and pattern controls have translations in every locale',()=>{
  const keys=['Грани','Шеврон','Без канта','Ступени','Высота канта','Ширина канта','Кант выступает наружу. С совместимой оболочкой он также служит нижней опорой.','Узоры · прокрутите каталог, чтобы увидеть все.'];
  for(const [lang] of languages){
@@ -39,4 +49,9 @@ test('invalid language cannot change selection and subscribers can unsubscribe',
 });
 test('printer names and user lettering remain data, not translated project fields',async()=>{
  const {defaultProject}=await import('../src/model.js');const p=defaultProject();p.label={text:'Мой текст',icon:'',mode:'raised'};const before=JSON.stringify(p);setLocale('zh-CN');assert.equal(JSON.stringify(p),before);assert.equal(t('Принтер'),'打印机');setLocale('ru');
+});
+test('assembly controls and placement errors are translated in every locale',()=>{
+ const keys=['Состав комплекта','+ Плита','+ Лоток','Плита {0}','Лоток {0}','Плита для лотка','Положение на сетке','Редактировать деталь','Плита и её лотки','Выбранный лоток','Плиты пересекаются.','На плите нет места. Увеличьте её или добавьте плиту.','Сначала перенесите или удалите лотки этой плиты.'];
+ for(const [lang] of languages){setLocale(lang);for(const key of keys){assert.ok(sources.includes(key));if(lang!=='ru')assert.ok(dictionaries[lang][key],lang+': '+key);assert.equal(slots(lang==='ru'?key:dictionaries[lang][key]).join(),slots(key).join());}}
+ setLocale('ru');
 });

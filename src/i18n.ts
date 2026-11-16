@@ -10,6 +10,7 @@ export function setLocale(value:string){
  if(!languages.some(([id])=>id===value))return;
  locale=value as Locale;
  if(typeof document!=='undefined'){document.documentElement.lang=locale;document.title='ReplixGrid';}
+ try{const url=new URL(window.location.href);if(url.searchParams.has('lang')){url.searchParams.set('lang',locale);window.history.replaceState(window.history.state,'',url);}}catch{/* Non-browser or restricted history environment. */}
  try{localStorage.setItem(key,locale);}catch{/* Private browsing may disable storage. */}
  listeners.forEach(f=>f());
 }

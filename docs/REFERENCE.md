@@ -344,3 +344,14 @@ Changes to the layout or export settings invalidate the previous calculation. Cl
 Choose **Raised relief (decoration)** or **Through stencil (cut)** at the top of the right-hand settings. Shells support the stencil mode only. The settings show relief height only for relief, and spacing only for repeat placement. **Material thickness** is editable: 1.2–6 mm for an SVG lid and 1–4 mm for a shell. It changes preview and export together. Existing lid defaults remain 3.2 mm for relief and 2 mm for stencil; a chosen thickness is preserved when switching modes. Relief height is included in the lid thickness. An inset SVG lid requires internal depth of at least the plate thickness plus 2 mm. **Additional** contains lid color or shell wall selection. Open **Which SVG files work?** for import limits and preparation advice.
 
 Open **Shape → Lid → My SVGs** or **Shell → Pattern → My SVGs** to edit accessory patterns in the bottom drawer. **Lid** and **Shell** tabs keep independent settings while sharing the SVG library. Switching tabs automatically isolates that part in the preview. If it is not added yet, the assembly stays visible until the part is created. You can still choose Assembly manually above the model. Use the width, rotation, interval and X/Y controls to position motifs; the center button resets position and rotation. The lid supports raised relief or through openings. Shell openings keep the frame and mounting areas. Close with × or Escape while focused in the studio; edits remain saved. Arrow keys switch the focused surface tab.
+
+
+## Gridfinity
+
+The separate Gridfinity workspace generates trays and baseplates on a 42 mm grid. It preserves ordinary organizer projects and uses its own project files. See the [Gridfinity guide](GRIDFINITY.md) for dimensions, export, licensing and the required physical fit test.
+
+## Gridfinity sets
+
+Use the separate Gridfinity workspace for multiple plates and independently sized, colored trays. Selecting a tray opens compartment controls immediately. See the [Gridfinity guide](GRIDFINITY.md) for placement, rotation, fit clearance, shared printer settings and print-bed exports.
+
+Drawer dragging follows the pointer continuously. Green marks a valid drop; red marks an invalid one. Release on an invalid target or press Escape to restore the original position. A completed move is one undo step. Coordinates can also be entered directly; undo and redo cover these edits and view rotations.

@@ -7,16 +7,17 @@ export function previewLevelProject(current:Project,source:Project|null,level:nu
  if(source?.stack?.levels[level])return levelProject(source,level);
  return current;
 }
-export const defaultColors={organizer:'#8cbaa8',shell:'#c58d62'};
+export const defaultModelColor='#95B9C6';
+export const defaultColors={organizer:defaultModelColor,shell:defaultModelColor};
 export const partColor=(p:Project,part:'organizer'|'shell')=>p.colors?.[part]??defaultColors[part];
 
-export const defaultInsertColor='#c0cdb5';
+export const defaultInsertColor=defaultModelColor;
 export const insertColor=(p:Project,cellId?:string)=>p.cups?.find(c=>c.cellId===cellId)?.color??defaultInsertColor;
 
 /** Unset handle colors follow the lid base; explicit colors stay independent. */
 export function lidBaseColor(p:Project){
  const d=p.lidDesign;
  if(!d?.svg&&!d?.olive)return partColor(p,'organizer');
- return d.baseColor??((d.svg?d.svgMode!=='cutout':d.olive)?'#f7f3e8':partColor(p,'organizer'));
+ return d.baseColor??partColor(p,'organizer');
 }
 export const lidHandleColor=(p:Project)=>p.lidDesign?.handleColor??lidBaseColor(p);

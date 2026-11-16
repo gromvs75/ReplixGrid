@@ -1,3 +1,4 @@
+import {defaultModelColor} from './appearance.js';
 import {defaultProject,resolveWalls,type Project,type Relief,type ShellSettings} from './model.js';
 import {partColor,lidBaseColor} from './appearance.js';
 import {shellLayout} from './shell.js';
@@ -19,7 +20,7 @@ export function captureStyle(p:Project):VisualStyle {
  const d=p.lidDesign;
  return {version:1,organizerColor:partColor(p,'organizer'),relief:p.relief?structuredClone(p.relief):null,
   ...(p.shell?{shell:{color:partColor(p,'shell'),pattern:p.shell.pattern,size:p.shell.size,...(p.shell.svg?{svg:structuredClone(p.shell.svg)}:{})}}:{}),
-  ...(p.lid?{lid:{baseColor:lidBaseColor(p),...(d?.handleColor!==undefined?{handleColor:d.handleColor}:{}),patternColor:(d?.svg&&d.svgMode!=='cutout'||d?.olive)?(d.patternColor??'#687749'):partColor(p,'organizer'),surface:{pattern:d?.pattern??'smooth',patternSpacing:d?.patternSpacing??(d?.pattern==='lines'?6:8),patternDepth:d?.patternDepth??.5,rimPattern:d?.rimPattern??'smooth',olive:d?.olive??false,motif:d?.motif??'olive',raised:d?.raised??false,cutwork:d?.cutwork??false,...(d?.svg?{svg:structuredClone(d.svg),svgMode:d.svgMode??'raised'}:{})}}}:{})};
+  ...(p.lid?{lid:{baseColor:lidBaseColor(p),...(d?.handleColor!==undefined?{handleColor:d.handleColor}:{}),patternColor:(d?.svg&&d.svgMode!=='cutout'||d?.olive)?(d.patternColor??defaultModelColor):partColor(p,'organizer'),surface:{pattern:d?.pattern??'smooth',patternSpacing:d?.patternSpacing??(d?.pattern==='lines'?6:8),patternDepth:d?.patternDepth??.5,rimPattern:d?.rimPattern??'smooth',olive:d?.olive??false,motif:d?.motif??'olive',raised:d?.raised??false,cutwork:d?.cutwork??false,...(d?.svg?{svg:structuredClone(d.svg),svgMode:d.svgMode??'raised'}:{})}}}:{})};
 }
 function validate(p:Project){resolveWalls(p);if(p.shell)shellLayout(p);if(p.printing)splitPlan(p);}
 /** Validate stored presets and strip every field outside the visual-style contract. */

@@ -23,7 +23,7 @@ test('unset handle follows lid base, explicit color survives organizer/base edit
 });
 test('plain and two-tone lid defaults match actual base colors',()=>{
  const p=project();delete p.lidDesign!.baseColor;
- assert.equal(lidBaseColor(p),'#f7f3e8');assert.equal(lidHandleColor(p),lidBaseColor(p));
+ assert.equal(lidBaseColor(p),'#171a1b');assert.equal(lidHandleColor(p),lidBaseColor(p));
  p.lidDesign!.olive=false;assert.equal(lidHandleColor(p),'#171a1b');
 });
 for(const handle of ['round','bar'] as const)test(`${handle} handle keeps independent color in tiered geometry, 3MF filament mapping and OBJ materials`,async()=>{

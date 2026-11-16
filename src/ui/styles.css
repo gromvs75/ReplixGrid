@@ -785,9 +785,9 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 
 /* On compact screens the guide occupies its own row, never the model viewport. */
 @media(max-width:1400px){
- .app>header{height:auto;min-height:64px;flex-wrap:wrap;padding:10px 16px;gap:10px}
- .app>header .header-actions{flex-wrap:wrap;justify-content:flex-end;min-width:0;margin-left:auto}
- .app>header .variant-switcher{flex-shrink:0}
+ .workspace-header{height:auto;min-height:64px;flex-wrap:wrap;padding:10px 16px;gap:10px}
+ .workspace-header .header-actions{flex-wrap:wrap;justify-content:flex-end;min-width:0;margin-left:auto}
+ .workspace-header .variant-switcher{flex-shrink:0}
  .app>.workspace:has(.has-start-guide){height:auto;grid-template-columns:minmax(0,1fr)}
  .stage.has-start-guide{height:auto;min-height:0;display:flex;flex-direction:column;overflow:visible;padding:16px;gap:12px}
  .has-start-guide>.stage-top{position:relative;inset:auto;order:0;flex-wrap:wrap;gap:10px}
@@ -803,9 +803,9 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
  .app>.workspace:has(.has-start-guide)>.right-panel{grid-column:1;margin:0 16px 16px;max-height:none;overflow:visible}
 }
 @media(max-width:600px){
- .app>header{padding:10px;gap:8px}
- .app>header .header-actions{width:100%;justify-content:flex-start}
- .app>header .variant-switcher{margin-left:0;max-width:100%}
+ .workspace-header{padding:10px;gap:8px}
+ .workspace-header .header-actions{width:100%;justify-content:flex-start}
+ .workspace-header .variant-switcher{margin-left:0;max-width:100%}
  .stage.has-start-guide{padding:10px}
  .has-start-guide>.stage-top>*{max-width:100%;flex-wrap:wrap}
  .has-start-guide .viewport-actions{margin-left:0;flex-wrap:wrap}
@@ -819,3 +819,21 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
  .stage-top .tool-tabs button{min-width:0;min-height:40px;justify-content:center}
  .app .help-links{position:fixed;top:auto;bottom:auto;left:10px;right:10px;width:auto;max-width:calc(100vw - 20px);min-width:0;white-space:normal;z-index:100}
 }
+
+/* Shared segmented controls: a single sliding selection, measured across locales. */
+.sliding-segments{position:relative;isolation:isolate;align-items:stretch}
+.sliding-segments>.segment-highlight{position:absolute;left:0;top:0;width:var(--segment-width,0px);height:var(--segment-height,0px);transform:translate(var(--segment-x,0px),var(--segment-y,0px));border-radius:9px;background:var(--selected);pointer-events:none;z-index:0}
+.sliding-segments.segments-ready>.segment-highlight{transition:transform 220ms cubic-bezier(.22,.7,.2,1),width 220ms cubic-bezier(.22,.7,.2,1),height 220ms ease}
+.sliding-segments>button{position:relative;z-index:1;transform:none}
+.sliding-segments>button[aria-pressed=true],.sliding-segments>button.active,.sliding-segments>button:hover{background:transparent;box-shadow:none}
+.sliding-segments>button:hover{color:var(--ink)}
+.sliding-segments.segments-equal>button{flex:1 1 0;min-width:0;text-align:center;white-space:normal}
+.compartment-dimensions .sliding-segments>.segment-highlight{background:var(--surface)}
+@media(prefers-reduced-motion:reduce){.sliding-segments.segments-ready>.segment-highlight{transition:none}}
+
+.workspace-header{display:flex;align-items:center;gap:14px;flex-shrink:0;background:var(--surface);border-bottom:1px solid var(--line)}
+.local-project-list{display:grid;gap:10px}
+
+.drawer-tray .drawer-tray-label{paint-order:stroke;stroke:var(--surface);stroke-width:1.3px;stroke-linejoin:round;fill:var(--ink)}
+
+.drawer-board svg{touch-action:none}.drawer-tray.dragging{cursor:grabbing}.drawer-board:has(.drawer-tray.dragging){cursor:grabbing}

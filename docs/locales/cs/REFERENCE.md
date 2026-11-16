@@ -369,3 +369,9 @@ Změny rozložení nebo nastavení exportu neruší předchozí výpočet. Zavř
 Zvolte **Raised relief (decoration)** pro reliéf nebo **Through stencil (cut)** pro průchozí otvory. Pláště podporují pouze otvory. Výška se zobrazuje jen u reliéfu, rozestup jen u opakování. **Material thickness** mění náhled i export: 1,2–6 mm pro SVG víko, 1–4 mm pro plášť. Výchozí tloušťka je 3,2 mm pro reliéf a 2 mm pro šablonu; zvolená hodnota zůstává při změně režimu. Výška reliéfu je součástí tloušťky. Zapuštěné SVG víko vyžaduje vnitřní hloubku alespoň tloušťka desky plus 2 mm. **Dodatečné** obsahuje barvu víka nebo výběr stěn pláště. **Which SVG files work?** vysvětluje požadavky a přípravu souborů.
 
 Otevřete **Tvar** → **Víko** → **My SVGs** nebo **Plášť** → **Pattern** → **My SVGs**. Karty **Víko** a **Plášť** sdílejí knihovnu, ale mají nezávislá nastavení. Přepnutí zobrazí příslušný díl; pokud ještě neexistuje, zůstává viditelná sestava. Pohled na celek lze zvolit nad modelem. Šířka, otočení, rozestup a X/Y určují polohu motivu; centrovací tlačítko resetuje polohu a otočení. Víko podporuje reliéf i otvory, plášť jen otvory. Rámy a místa uchycení zůstávají zachovány. **×** nebo **Escape** zavře aktivní studio a ponechá změny. Šipky klávesnice přepínají vybranou kartu.
+
+## Gridfinity a přesouvání
+
+V Gridfinity lze přidat několik desek a samostatné zásobníky. Po výběru zásobníku se vpravo ihned zobrazí nastavení přihrádek. Táhněte značku T/P nebo vnější stěnu: zelený rámeček označuje platnou polohu, červený neplatnou. Escape přesun zruší; každý přesun je jeden krok zpět. V Zásuvce platí stejný princip bez mřížky 42 mm. Barvy a sloty filamentu používají společná nastavení tiskárny.
+
+[Průvodce Gridfinity (anglicky/rusky)](../../GRIDFINITY.md)

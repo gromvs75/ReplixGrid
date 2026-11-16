@@ -91,6 +91,12 @@ If you see `EADDRINUSE` or a message that port `5173` is in use, an earlier inst
 See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and printing.
 
 
+## Gridfinity compatibility mode
+
+Use the separate **Gridfinity** workspace for trays and baseplates on a 42 mm grid, with compartment controls and STL/3MF export. Ordinary organizers and the existing 20 mm mounting system remain independent. This first version implements the lower mating interface; it does not include a stacking lip, magnets or screw holes. Physical fit with third-party parts still requires a test print.
+
+[Gridfinity guide (English / Русский)](docs/GRIDFINITY.md) · [Third-party notices](THIRD-PARTY-NOTICES.md)
+
 ## Before printing
 
 - Download project JSON files for backup. Browser storage is local to the browser and site address; clearing it can remove projects. Filament slots are stored separately and must be configured again on another device.
@@ -99,4 +105,4 @@ See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and print
 
 ## License
 
-ReplixGrid is available under the [MIT License](LICENSE). Third-party components have their own licenses; the Droid font outline notice is retained in [src/fonts/NOTICE](src/fonts/NOTICE).
+ReplixGrid is available under the [MIT License](LICENSE). Gridfinity references retain both upstream MIT notices in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Third-party components have their own licenses; the Droid font outline notice is retained in [src/fonts/NOTICE](src/fonts/NOTICE).

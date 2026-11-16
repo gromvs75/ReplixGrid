@@ -34,3 +34,13 @@ test('rounded mounted tray at an offset exports without collapsed seam triangles
  const d=newDrawer();d.width=500;d.depth=300;d.height=80;d.plate={enabled:true,bedWidth:270,bedDepth:270};const t=newTray('Tools',180,90,30);t.x=110;t.y=2;d.trays=[t];
  const p=await prepareDrawer(d,{length:270,width:270,height:270,gap:5});assert.ok(p.report.items.find(v=>v.name.endsWith('mounted')));assert.equal(p.report.beds.flat().length,p.units.length);
 });
+test('drawer 3MF keeps per-part slots when packing reorders units and groups lids',async()=>{
+ const d=newDrawer();d.width=150;d.depth=100;d.height=90;
+ const t=newTray('Colors',60,50,25);t.x=5;t.y=5;t.project.lid=true;t.project.lidDesign={fit:'inset',olive:true,pattern:'smooth',handle:'none',rimHeight:2,baseColor:'#ffffff',patternColor:'#557722'};d.trays=[t];
+ const p=await prepareDrawer(d,settings),slots=p.units.flatMap(u=>u.parts).map((_,i)=>i+2);
+ for(const bed of p.report.beds){
+  const out=files(bed3mf(p.units,bed,slots)),config=out['Metadata/model_settings.config'];
+  for(const placement of bed){const offset=p.units.slice(0,placement.item).reduce((n,u)=>n+u.parts.length,0);p.units[placement.item].parts.forEach((_,i)=>assert.match(config,new RegExp(`key="extruder" value="${slots[offset+i]}"`)));}
+ }
+ const stl=files(drawerArchive(p,'stl')),obj=files(drawerArchive(p,'obj'));assert.ok(stl['models.zip']);assert.ok(obj['unit-1-obj.zip']);assert.ok(!stl['bed-01.3mf']);assert.ok(!obj['bed-01.3mf']);
+});

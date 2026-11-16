@@ -1,3 +1,4 @@
+import {defaultModelColor} from '../appearance.js';
 import {lidMotifs,type LidMotif} from '../lidMotifs.js';
 import {t} from '../i18n.js';
 import {ColorPicker} from './ColorPalette.js';
@@ -42,7 +43,7 @@ export function LidControls({onPatterns}:{onPatterns:()=>void}){
  {design.svg?<button className="studio-launch" onClick={onPatterns}><span>{design.svg.asset.name}</span><span>↗ {t('Настроить рисунок')}</span></button>:<>
  <label className="count-label">{t('Двухцветный узор')}<input type="checkbox" checked={!!design.olive} onChange={e=>set({olive:e.target.checked,raised:design.raised??true})}/></label>
  {design.olive?<><label className="count-label">{t('Узор на крышке')}<select value={design.motif??'olive'} onChange={e=>set({motif:e.target.value as LidMotif})}>{Object.entries(lidMotifs).map(([id,label])=><option key={id} value={id}>{t(label)}</option>)}</select></label>{design.motif!=='cellular'&&design.motif!=='pebbles'&&<label className="count-label">{t('Узор прорезями')}<input type="checkbox" checked={!!design.cutwork} onChange={e=>set({cutwork:e.target.checked})}/></label>}<label className="count-label">{t('Рельефный узор')}<input type="checkbox" checked={!!design.raised} onChange={e=>set({raised:e.target.checked})}/></label><ColorPicker popup label={t('Цвет основы крышки')} color={lidBaseColor(p)} onChange={baseColor=>set({baseColor})}/>
- <ColorPicker popup label={t('Цвет узора крышки')} color={design.patternColor??'#687749'} onChange={patternColor=>set({patternColor})}/></>:<LidPatternPicker value={design.pattern} onChange={pattern=>set({pattern})}/>}
+ <ColorPicker popup label={t('Цвет узора крышки')} color={design.patternColor??defaultModelColor} onChange={patternColor=>set({patternColor})}/></>:<LidPatternPicker value={design.pattern} onChange={pattern=>set({pattern})}/>}
  {!design.olive&&design.pattern!=='smooth'&&<><Field commitOnRelease label={t('Размер узора')} min={4} max={16} step={1} value={p.lidDesign?.patternSpacing??8} onChange={patternSpacing=>set({patternSpacing})}/><Field commitOnRelease label={t('Глубина узора крышки')} min={.2} max={1} step={.1} value={p.lidDesign?.patternDepth??.5} onChange={patternDepth=>set({patternDepth})}/></>}
  </>}
  </section><section className="editor-group lid-handle"><label className="count-label">{t('Ручка крышки')}<select value={design.handle} onChange={e=>set({handle:e.target.value as typeof design.handle})}><option value="none">{t('Без ручки')}</option><option value="round">{t('Цилиндрическая')}</option><option value="bar">{t('Планка')}</option></select></label>

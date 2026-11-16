@@ -1,3 +1,4 @@
+import {defaultModelColor} from '../appearance.js';
 import {useEffect,useId,useRef,useState} from 'react';
 import {getLocale,t} from '../i18n.js';
 import {footprintContour,honeyCells} from '../footprint.js';
@@ -8,7 +9,7 @@ function Thumbnail({project:p}:{project:Project}){
  const clip=useId(),outline=footprintContour(p).map(v=>v.join(',')).join(' ');
  return <svg className="project-thumbnail" viewBox={`-8 -8 ${p.width+16} ${p.depth+16}`} role="img" aria-label={t('Схема отсеков сверху')}>
   <defs><clipPath id={clip}><polygon points={outline}/></clipPath></defs>
-  <polygon points={outline} fill={p.colors?.organizer??'#a5c7b9'} stroke="#42685b" strokeWidth={p.wallThickness}/>
+  <polygon points={outline} fill={p.colors?.organizer??defaultModelColor} stroke="#42685b" strokeWidth={p.wallThickness}/>
   <g clipPath={`url(#${clip})`} fill="none" stroke="#42685b" strokeWidth={p.wallThickness}>
    {p.footprint==='honeycomb'?honeyCells(p).map((c,i)=><polygon key={i} points={c.map(v=>v.join(',')).join(' ')}/>):resolveWalls(p).filter(w=>!['front','back','left','right'].includes(w.id)).map(w=><path key={w.id} d={`M${w.x} ${w.y} ${w.axis==='x'?'h':'v'}${w.length}`}/>)}
   </g>

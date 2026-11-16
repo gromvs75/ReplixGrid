@@ -139,3 +139,14 @@ Select **Tier 1**, **Tier 2**, or another tier from the dropdown beside **Organi
 Under **Print → Slicer filaments**, add up to 16 slots and set a name and approximate preview color for each. Configure the exact shade and any color mixing in your slicer; ReplixGrid does not calculate mixing recipes. Select any card and click **Delete filament from slot N** to free that number without renumbering the others. **+ Slot N** restores the lowest free number. Model colors remain unchanged. Check the slot assignments again before exporting 3MF, especially after deleting a filament.
 
 To match a digital color from your slicer, paste its six-digit **HEX code**, for example `#E63522`, beside the color picker. The leading `#` is optional. Valid codes update the preview immediately; incomplete or invalid text is not applied and reverts to the saved color when you leave the field. A matching HEX code does not simulate filament appearance, lighting or a physical color mixture.
+
+
+## Gridfinity
+
+The separate Gridfinity workspace generates trays and baseplates on a 42 mm grid. It preserves ordinary organizer projects and uses its own project files. See the [Gridfinity guide](GRIDFINITY.md) for dimensions, export, licensing and the required physical fit test.
+
+### Preview contrast
+
+Organizer and shell previews use subtle contrasting edges and darker side walls. Drawer layouts show the tray shape and compartment outlines inside each clearance envelope; the diagram rotates with the tray and the drawer view. T1, T2 identify trays. These display aids do not change exported geometry, colors, filament assignments or collision clearances.
+
+Drawer dragging follows the pointer continuously. A green outline indicates a valid drop and a red dashed outline indicates insufficient clearance or an invalid position. Drop coordinates are rounded to 0.1 mm. Invalid drops, Escape, pointer cancellation and loss of focus preserve the starting layout. Only a valid completed move is saved and added as one undo step. Wait for all assembled tray bounds to finish checking before dropping.
