@@ -36,6 +36,18 @@ While you move a slider, the model updates as each calculation finishes. Complex
 
 The Quick Start video was recorded with the earlier panel layout. The modeling steps still apply; use the locations above to find the current controls.
 
+## Current interface examples
+
+These screenshots show the current ReplixGrid interface in English.
+
+| Organizer and compartment settings | Selected divider and wall settings |
+| --- | --- |
+| ![Four-compartment organizer in the English interface](../public/guides/expanded-organizer.png) | ![Selected divider with height and position controls](../public/guides/wall-selection.png) |
+
+| Shape and height templates | Honeycomb organizer |
+| --- | --- |
+| ![Base template controls in English](../public/guides/templates.png) | ![Seven-cell honeycomb organizer in English](../public/guides/honeycomb-template.png) |
+
 ## Build the example
 
 1. **Open** [grid.replixcast.com](https://grid.replixcast.com/?lang=en). Use the language menu in the top bar to change languages. If you already have a design you want to keep, click **Save project** to download an editable copy before starting.
