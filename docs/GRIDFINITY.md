@@ -1,8 +1,15 @@
 # Gridfinity: plates and independent trays
 
-Open **Gridfinity** beside Organizer and Drawer. This workspace uses a 42 mm
-Gridfinity grid and remains independent of the ordinary organizer and its
+Open **Gridfinity** beside Organizer and Drawer. Standard projects use a 42 mm Gridfinity grid and are independent of the ordinary organizer and its
 20 mm mounting system.
+
+## Fit to drawer
+
+Choose **Gridfinity → Fit to drawer** and enter the measured inside width and depth. Clearance per side reduces each dimension by twice the entered value. The suggested rows and columns fill this area with equal cells. Adjust either count to choose a different pitch (36–84 mm on each axis).
+
+The plates split along cell boundaries to fit the configured print bed with a 2 mm edge margin. Lay the plates edge to edge. A tray can span a seam whenever every foot has a free socket. Each tray uses the pitch of this project. For third-party trays with a standard 42 mm pitch, choose the standard Gridfinity project mode.
+
+For example, on a 270 × 270 mm print bed at zero installation clearance, a 255 × 572 mm drawer gives 6 × 14 cells of 42.5 × 40.857 mm (rounded) across three plates. A 280 × 480 mm drawer gives 7 × 12 cells of 40 × 40 mm across four plates. Use **Drawer dimensions** to adjust an existing set.
 
 ## Build a set
 
@@ -18,8 +25,7 @@ Gridfinity grid and remains independent of the ordinary organizer and its
    when its entire footprint fits in free cells. **Tray baseplate** also moves
    a tray to a chosen plate, finding a free position if its old position is busy.
 4. **Grid position** accepts X/Y offsets in millimetres, snapped to 42 mm.
-   Plate offsets are relative to the assembly origin; tray offsets are relative
-   to its plate. **Rotate 90°** swaps its occupied grid dimensions while keeping
+   In standard projects, tray offsets start at the selected baseplate. In drawer-fit projects, they start at the drawer grid origin. **Rotate 90°** swaps its occupied grid dimensions while keeping
    its own compartment layout and dimensions.
 5. **Duplicate** creates an independent copy. Duplicating a plate also copies its
    trays. A duplicated tray needs free space on its current plate. Renaming a
@@ -37,12 +43,10 @@ Release on red, press Escape or leave the window to restore the starting positio
 A move is one undo step. Plates carry their attached trays.
 
 Rotation keeps the current position when possible. If a neighbor or plate edge
-blocks it, the tray moves to the nearest free position on the same plate. Other
+blocks it, the tray moves to the nearest free position on the grid. Other
 parts stay in place. If there is no space, the assembly stays unchanged.
 
-The dimensions below the settings belong to the selected named part. Tray
-position is measured from its plate origin; plate position is measured from the
-assembly origin. Position changes placement, not the size of the model.
+The dimensions below the settings belong to the selected named part. Plate offsets are measured from the assembly origin. Position changes placement, not the size of the model.
 
 New parts use `#95B9C6`. Saved colors are preserved. Compartment edges remain
 visible on unselected trays; these preview outlines do not affect exported colors.
@@ -64,11 +68,25 @@ Save project downloads the complete assembly JSON. Open accepts both old
 single-pair files and new assembly files. Keep a downloaded backup: browser
 storage is local to that browser.
 
+## Plate type
+
+Select a plate, then open **Plate type** and choose **Solid bottom** or **Open grid**.
+Each plate has its own setting. New and older projects use a solid bottom unless
+you change it. Open grid removes material through the centre of each cell while
+retaining a support ledge beneath the tray feet. Both types keep the same 5.95 mm
+height, socket profile and clearance. On a 42 mm grid the openings are 31.6 mm wide; the bearing
+ledge beneath each foot is 2 mm wide along the straight sides. The choice is saved
+with the project and used by the preview and all export formats.
+
+Compare material and print time in your slicer with identical settings; the saving
+depends on the print settings. Test a small open-grid plate before printing a full
+set. This version has not yet been physically test-printed.
+
 ## Geometry, color and fit
 
-Tray footprint: grid cells × 42 − 0.5 mm. Plate footprint: grid cells × 42 mm.
-Tray height includes the feet and changes in 7 mm increments (14–140 mm).
-The inside floor is at Z = 7 mm, so usable depth is total height minus 7 mm.
+Standard tray footprint: grid cells × 42 − 0.5 mm. Plate footprint: grid cells × 42 mm.
+Tray height includes the feet and can be set directly in millimeters (14–140 mm).
+The inside floor is at Z = 7 mm, so usable depth below the stacking plane is the nominal tray height minus 7 mm.
 Plate height is 5.95 mm, including a 1.2 mm bottom. Tray wall thickness is
 1.2–3 mm. Outer corner radius is 0–3.75 mm; inner vertical corner radius is
 0–20 mm, limited by the available compartment size and preserved wall thickness.
@@ -87,6 +105,18 @@ changes plate sockets only, not tray feet. This result is specific to that print
 test a small 1 × 1 pair with your material at 100% scale. Third-party physical
 compatibility has not been independently established.
 
+## Easy access
+
+Under Easy access, set the bottom fillet radius from 0 to 12 mm to roll small parts up the sides of each compartment. The radius adapts to shallow or narrow compartments. For the front finger notch, choose a smooth, half-round or rectangular profile and set its width and depth in millimetres. Depth is measured from the top edge. The notch lowers the centre of the front edge, including the stacking lip if fitted. Paired wall cutouts open the selected pair of opposite tray walls. Set the width and depth or choose Down to the tray floor. The openings rotate with the tray. Internal side grips add two ledges for lifting the tray from above. Each option can be used independently.
+
+## Tray labels
+
+Select a tray and open Tray label. On a lidded tray, the engraving or removable plate sits face up near the front edge of the lid. Slide the plate towards the front to secure it, or back and then up to remove it. On an open tray, choose an inclined (25°) or horizontal label shelf inside the rear wall. Both are readable from above. Use Letter height to set the size in millimetres. Replaceable label plate adds a recessed holder and a separate 30 × 5.4 × 1.2 mm plate. Press Enter to apply the text. On the shelf, lay the plate face up and slide it towards the lower edge under both tabs. Slide it uphill and lift to remove it. Choose Replaceable label plate in the download dialog to print a new inscription for the same holder. Whole-set downloads include the tray and plate separately.
+
+## Tray lids
+
+Select a tray and open Lid. Choose Plain for a flat cover or With stacking lip to support a second tray of the same footprint. Under Flush finger grip, choose through openings or a closed bottom. Both leave a centre bar level with the lid. The closed version has 5 mm finger pockets and adds 4.2 mm to the lid height. Print the lid face up with the grip, label pocket and stacking lip facing away from the bed. Print the removable tag beside it. For a tray with a stacking lip, the lid seats on the same shelf as an upper tray. For a plain tray, the locating pads enter the compartments and taper out above the rim. The download uses this orientation. Switch off Show lids to edit the compartments. The whole-set and plate-kit downloads include lids as individual print parts. Select Lid in the download dialog to print just the selected tray’s cover.
+
 ## Download
 
 The common **Check and download** dialog offers the entire assembly, the selected
@@ -100,14 +130,11 @@ Each part is checked for closed geometry and printer dimensions.
 The outer ZIP includes the model files, both MIT notices, a README, the complete
 assembly project and `assembly-layout.svg`. Model names such as
 `plate-2-tray-3` match the numbered assembly layout. A partial export still
-includes the full project and layout for reference. The shared download dialog shows the number of beds and their layouts. Each bed has a numbered 3MF and SVG; print-plan.json records placements. Packing uses the configured printer dimensions, a 2 mm edge margin and 5 mm spacing. Keep positions when importing each 3MF. Verify supports, brim and filament assignments in the slicer; printer profiles are not included. No individual part is cut to
-fit a printer; choose plate and tray dimensions that fit your printer.
+includes the full project and layout for reference. The shared download dialog shows the number of beds and their layouts. Each bed has a numbered 3MF and SVG; print-plan.json records placements. Packing uses the configured printer dimensions, a 2 mm edge margin and 5 mm spacing. Keep positions when importing each 3MF. Verify supports, brim and filament assignments in the slicer; printer profiles are not included. Drawer-fit mode divides the base into printable plates. Each tray prints in one piece.
 
 ## Compatibility and attribution
 
-Only the lower mating interface is implemented. There is no stacking lip,
-magnet/screw holes, lids, shells or tier connectors in Gridfinity mode. Ordinary
-organizer features and its separate 20 mm system remain unchanged.
+Select the lower tray and enable **Stacking → Stacking lip**. Place a tray with the same footprint on top. Only trays supporting another tray need the lip. It adds 3.8 mm to the printed height. Two 4-unit trays, with the lip enabled only on the lower one, stack to 56 mm. The option starts off for new and existing trays.
 
 Gridfinity was created by Zack Freedman / Voidstar Lab LLC. Reference mating
 dimensions are adapted from Kenneth Hodson's Gridfinity Rebuilt OpenSCAD under
@@ -118,6 +145,14 @@ independent and is not endorsed or certified by Gridfinity's creator.
 ---
 
 # По-русски
+
+## Под размер ящика
+
+Выберите **Gridfinity → Под размер ящика** и введите внутренние ширину и глубину. Монтажный зазор задаётся на сторону. Например, при зазоре 0,5 мм общая ширина и глубина комплекта уменьшаются на 1 мм. Программа предлагает число рядов и столбцов. Их можно менять вручную в пределах шага ячейки 36–84 мм по каждой оси.
+
+Плиты делятся по границам ячеек с учётом размеров печатного стола и отступа 2 мм от краёв. Уложите их встык. Лоток можно поставить поперёк стыка, если под каждой опорой есть свободное гнездо. Опоры и гнёзда используют шаг этого комплекта. Для сторонних лотков с шагом 42 мм выбирайте стандартный режим Gridfinity.
+
+Например, для ящика 255 × 572 мм, стола 270 × 270 мм и нулевого монтажного зазора предлагаются 6 × 14 ячеек размером примерно 42,5 × 40,857 мм и три плиты. Для ящика 280 × 480 мм получаются 7 × 12 ячеек размером 40 × 40 мм и четыре плиты. Кнопка **Размеры ящика** открывает параметры уже созданного комплекта.
 
 ## Несколько плит и разных лотков
 
@@ -130,8 +165,7 @@ independent and is not endorsed or certified by Gridfinity's creator.
 Выберите деталь и перетащите её по сетке с шагом 42 мм. Плита перемещается вместе
 со своими лотками. Лоток можно перенести на другую плиту мышью или через поле
 **Плита для лотка**. Если прежнее место занято, список плит подбирает свободное.
-**Положение на сетке** задаёт X/Y в миллиметрах: для плиты — от начала сборки,
-для лотка — от начала его плиты. **Повернуть 90°** меняет размещение лотка,
+**Положение на сетке** задаёт X/Y в миллиметрах. В стандартном режиме положение лотка отсчитывается от его плиты, в режиме под размер ящика — от начала общей сетки. **Повернуть 90°** меняет размещение лотка,
 сохраняя его внутреннюю разметку.
 
 **Дублировать** создаёт независимую копию; плита копируется вместе с лотками.
@@ -141,7 +175,7 @@ independent and is not endorsed or certified by Gridfinity's creator.
 задаются в общем блоке длины/ширины с кнопкой **Применить**. **Весь комплект**
 возвращает к размещению деталей.
 
-Пересечения и выход лотка за границы плиты запрещены. Уменьшение плиты,
+Все ячейки под лотком должны быть свободны и покрыты плитами. Уменьшение плиты,
 на которой лотки перестают помещаться, отклоняется с сообщением: сначала
 перенесите лотки. Занятую плиту нельзя удалить вместе с лотками незаметно.
 В комплекте остаётся хотя бы одна плита. Изменения и удаление отменяются;
@@ -153,6 +187,28 @@ independent and is not endorsed or certified by Gridfinity's creator.
 с одним лотком, сохраняя геометрию, цвет и зазор. Сохраняйте резервную копию
 через **Сохранить проект**. **Открыть** принимает и прежний формат пары,
 и новый файл всего комплекта. Автосохранение действует в текущем браузере.
+
+## Тип плиты
+
+Выберите плиту и откройте **Тип плиты**: **Сплошное дно** или **Решётчатая**.
+Настройка независима для каждой плиты. Новые и старые проекты сохраняют сплошное
+дно, пока вы сами не переключите вариант. В решётчатой плите сквозные отверстия
+по центру ячеек уменьшают количество материала. Под опорами лотков остаётся
+бортик: 2 мм вдоль прямых сторон, ширина отверстия — 31,6 мм. Высота 5,95 мм,
+профиль гнёзд и посадочный зазор одинаковы для обоих вариантов. Выбор сохраняется
+в проекте и применяется в предпросмотре и во всех форматах экспорта.
+
+Расход пластика и время сравнивайте в слайсере с одинаковыми настройками.
+Решётчатый вариант ещё не проверен физической печатью: сначала напечатайте
+небольшой образец.
+
+## Подписи лотков
+
+Выберите лоток и откройте «Подпись лотка». При выбранной крышке гравировка или сменная табличка располагается сверху у её переднего края. Сдвиньте табличку к переднему краю под упоры. Для снятия сдвиньте назад и поднимите. У открытого лотка подпись находится на наклонной площадке внутри у задней стенки и видна сверху. Размер текста в миллиметрах задаётся в поле «Высота букв». Введите текст и нажмите Enter. Табличка размером 30 × 5,4 × 1,2 мм подходит ко всем лоткам с таким держателем. На площадке положите табличку надписью вверх и сдвиньте вниз по наклону под два упора. Чтобы снять, сдвиньте её вверх по наклону и поднимите. Для замены текста выберите «Сменная табличка» в окне скачивания. При скачивании всего комплекта лоток и табличка раскладываются по столам отдельно.
+
+## Крышки лотков
+
+Выберите лоток и откройте раздел «Крышка». «Обычная» даёт плоский верх. Вариант «С бортиком» удерживает сверху лоток такой же длины и ширины. В меню «Ручка заподлицо» можно выбрать сквозную ручку или ручку с закрытым дном. В обоих случаях перемычка находится вровень с крышкой. Версия с закрытым дном имеет углубления 5 мм и добавляет 4,2 мм к высоте крышки. Печатайте крышку посадочной стороной на столе. Ручка, держатель таблички и бортик смотрят вверх. Сменная табличка печатается рядом. На лотке с бортиком крышка опирается на ту же площадку, что и верхний лоток. У лотка с обычным краем выступы крышки входят в отсеки и расширяются выше края. Эта ориентация уже задана в файле. Отключите «Показать крышки», чтобы редактировать отсеки. При скачивании комплекта крышки раскладываются по печатным столам как отдельные детали. Чтобы напечатать одну крышку, выберите лоток и укажите «Крышка» в окне скачивания.
 
 ## Посадка и цветная печать
 
@@ -170,16 +226,17 @@ independent and is not endorsed or certified by Gridfinity's creator.
 цвет; OBJ включает MTL. В ZIP также входят лицензии, файл всего проекта
 и схема `assembly-layout.svg`, даже при экспорте части комплекта.
 
-Gridfinity использует ту же раскладку по печатным столам, что и «Ящик», с размерами из существующих настроек принтера. Отступ от краёв — 2 мм, промежуток между деталями — 5 мм. В окне скачивания показываются число столов и схемы. Каждый стол сохраняется отдельным bed-NN.3mf и SVG; print-plan.json содержит координаты. При открытии 3MF сохраняйте расположение деталей. Схема сборки показывает конечное расположение плит и лотков. Крупные детали автоматически не разрезаются.
+Gridfinity использует ту же раскладку по печатным столам, что и «Ящик», с размерами из существующих настроек принтера. Отступ от краёв — 2 мм, промежуток между деталями — 5 мм. В окне скачивания показываются число столов и схемы. Каждый стол сохраняется отдельным bed-NN.3mf и SVG; print-plan.json содержит координаты. При открытии 3MF сохраняйте расположение деталей. Схема сборки показывает конечное расположение плит и лотков. В режиме «Под размер ящика» основание делится на печатные плиты. Лотки печатаются целиком.
 Профили принтера не передаются. Размеры, филаменты и расположение на столах
 проверьте в слайсере.
 
-Шаг основания — 42 мм, высоты — 7 мм. Высота включает опоры; внутренняя глубина
-на 7 мм меньше. Толщина стенки 1,2–3 мм, внешний радиус 0–3,75 мм,
+Шаг основания — 42 мм. Высота лотка задаётся в миллиметрах от 14 до 140. Номинальная высота включает опоры. Глубина до плоскости укладки
+на 7 мм меньше номинальной высоты. Толщина стенки 1,2–3 мм, внешний радиус 0–3,75 мм,
 внутренний — до 20 мм с ограничением по размеру отсека. Радиусы вертикальных
 углов не скругляют стык стенки с дном. Плита имеет высоту 5,95 мм.
-Реализована только нижняя посадка: бортика штабелирования, магнитов, винтов,
-крышек и оболочек в этом режиме нет. Обычный органайзер остаётся отдельным.
+В разделе «Извлечение деталей» задайте радиус скругления дна от 0 до 12 мм. Скругление помогает подхватывать мелкие детали у стенки каждого отсека. В низких и узких отсеках радиус уменьшается автоматически. Для передней выемки выберите плавный, полукруглый или прямоугольный профиль и задайте ширину и глубину в миллиметрах. Глубина отсчитывается от верхнего края. Выемка понижает середину передней стенки вместе с бортиком для штабелирования, если он включён. Парные вырезы располагаются по центру двух выбранных противоположных стенок. Задайте ширину и глубину или включите До внутреннего дна. Вырезы поворачиваются вместе с лотком. Два внутренних боковых захвата позволяют поднять лоток сверху. Каждая настройка включается отдельно.
+
+Выберите нижний лоток и включите **Штабелирование → Бортик для штабелирования**. Сверху установите лоток с такими же длиной и шириной. Бортик нужен каждому лотку, на который ставят следующий. Он добавляет 3,8 мм к высоте при печати. Два лотка по 4 единицы с бортиком только на нижнем занимают в стопке 56 мм. По умолчанию бортик выключен.
 
 Автор Gridfinity — Zack Freedman / Voidstar Lab LLC. Размеры сопряжения взяты
 из MIT-проекта Gridfinity Rebuilt Kenneth Hodson; оба уведомления входят
@@ -195,7 +252,7 @@ Gridfinity использует ту же раскладку по печатны
 
 В предпросмотре контуры отсеков видны у всех лотков, включая невыбранные. Стенки слегка затемнены; цвет контура адаптируется к цвету лотка. Метки T1, T2 обозначают лотки, P1 — плиту, числа внутри выбранного лотка — его отсеки. Эти визуальные подсказки не изменяют геометрию, цвета экспорта или назначение филаментов.
 
-Поворот лотка на 90° сохраняет его положение, если хватает места. Если мешает сосед или край плиты, выбирается ближайшее свободное положение на той же плите. Остальные детали не перемещаются; поворот и сдвиг отменяются одним действием. Если места нет, комплект остаётся без изменений.
+Поворот лотка на 90° сохраняет его положение, если хватает места. Если мешает сосед или край плиты, выбирается ближайшее свободное положение на сетке. Остальные детали не перемещаются; поворот и сдвиг отменяются одним действием. Если места нет, комплект остаётся без изменений.
 
 ### Плавное перемещение
 

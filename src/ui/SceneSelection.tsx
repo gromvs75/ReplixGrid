@@ -14,9 +14,9 @@ export function CellBadge({number,selected,position,onClick,size=7,onDragStart}:
   useEffect(()=>()=>texture.dispose(),[texture]);
   return <sprite renderOrder={30} position={position} scale={[size,size,1]} onPointerDown={e=>{e.stopPropagation();onDragStart?.(e);}} onClick={e=>{e.stopPropagation();onClick();}}><spriteMaterial map={texture} depthTest={false} depthWrite={false}/></sprite>;
 }
-export function CellFloor({points,z,selected,onSelect,color}:{color:string;points:[number,number][];z:number;selected:boolean;onSelect:()=>void}){
+export function CellFloor({points,z,selected,onSelect,color,overlay=false}:{overlay?:boolean;color:string;points:[number,number][];z:number;selected:boolean;onSelect:()=>void}){
   const shape=useMemo(()=>{const s=new Shape();points.forEach(([x,y],i)=>i?s.lineTo(x,y):s.moveTo(x,y));s.closePath();return s;},[points]);
-  return <mesh position={[0,0,z]} onPointerDown={e=>{e.stopPropagation();onSelect();}} onClick={e=>e.stopPropagation()}><shapeGeometry args={[shape]}/><meshStandardMaterial color={selected?'#dcebd3':color} roughness={1}/></mesh>;
+  return <mesh position={[0,0,z]} onPointerDown={e=>{e.stopPropagation();onSelect();}} onClick={e=>e.stopPropagation()}><shapeGeometry args={[shape]}/><meshStandardMaterial color={selected?'#dcebd3':color} roughness={1} polygonOffset={overlay} polygonOffsetFactor={-1} polygonOffsetUnits={-1}/></mesh>;
 }
 
 export function DividerSurface({selected,hovered,color,invisible=false,overlay=false}:{selected:boolean;hovered:boolean;color:string;invisible?:boolean;overlay?:boolean}){

@@ -44,7 +44,7 @@ Elegir **Forma → Base → Crear desde plantilla Las celdas alveolares son dema
 <a id="workspace-and-views"></a>
 ## Área de trabajo y vistas
 
-Abra una herramienta en la parte superior izquierda. **Forma** cambia el cuerpo y sus accesorios. **Compartimentos** cambia el diseño. **Carcasa** diseña una cubierta exterior separada. **Impresión** establece el volumen de impresión, ranuras de filamento y cortes de sección opcionales. Haga clic en un número de compartimento, pared o divisor en el modelo para abrir su configuración a la derecha. Si una parte es difícil de hacer clic, ampliar **Todas las paredes y compartimentos** y seleccionarlo por nombre.
+Abra una herramienta en la parte superior izquierda. **Forma** cambia el cuerpo y sus accesorios. **Compartimentos** cambia el diseño. **Carcasa** diseña una cubierta exterior separada. Configura la impresora, el volumen de impresión y los filamentos en **Impresora**, en la barra superior. Utiliza **Impresión** para dividir el modelo. Haga clic en un número de compartimento, pared o divisor en el modelo para abrir su configuración a la derecha. Si una parte es difícil de hacer clic, ampliar **Todas las paredes y compartimentos** y seleccionarlo por nombre.
 
 Seleccione una sección en el menú izquierdo. Sus ajustes se abren en un panel flotante en la parte inferior de la vista previa; la escena y la cuadrícula siguen visibles detrás. El panel complementa el menú izquierdo. La flecha lo contrae y **×** lo cierra. Seleccione otra sección para cambiar de ajustes. El panel derecho conserva las opciones de la pared o del compartimento seleccionado.
 
@@ -152,7 +152,7 @@ Con una carcasa envolvente, una lengüeta en la cara interior de la pared inferi
 
 Elige un asa cilíndrica o una barra para mostrar **Color del asa de la tapa**. **Igual que la base de la tapa** está activado de forma predeterminada: el asa sigue el color de la base de la tapa. Elegir otro color hace que el asa sea independiente; vuelve a activar la opción para vincularlos. El asa sigue siendo una pieza que se imprime por separado.
 
-Pulsa la muestra junto a **Color base de la tapa**, **Color del patrón de la tapa** o **Color del asa de la tapa**. La ventana incluye los **Filamentos del laminador** de la impresora actual, una paleta, un color personalizado y un campo HEX de seis caracteres. Configura tus colores en **Impresión → Filamentos del laminador**. Las ranuras eliminadas no aparecen; las demás conservan sus números.
+Pulsa la muestra junto a **Color base de la tapa**, **Color del patrón de la tapa** o **Color del asa de la tapa**. La ventana incluye los **Filamentos del laminador** de la impresora actual, una paleta, un color personalizado y un campo HEX de seis caracteres. Configura tus colores en **Impresora → Filamentos del laminador**. Las ranuras eliminadas no aparecen; las demás conservan sus números.
 
 Los colores se guardan en el proyecto y se exportan en 3MF y OBJ; STL no incluye colores. Al exportar 3MF, una coincidencia de color única selecciona automáticamente la ranura guardada. Si varias ranuras comparten un color, elige la ranura manualmente en la ventana de exportación. Revisa las asignaciones en el laminador. Los colores de pantalla son aproximados y no simulan la mezcla física de filamentos.
 
@@ -190,7 +190,7 @@ Mantenga una copia de seguridad descargada antes de limpiar los datos del navega
 <a id="print-setup-and-sectioning"></a>
 ## Configuración de impresión y división en partes
 
-Bajo **Impresión**, seleccione la configuración de la impresora y la cabeza o elija **Tamaño personalizado**. Compruebe el largo, el ancho y la altura de la construcción. El preset proporciona el volumen de impresión. Elija la impresora, la boquilla, el material y los perfiles de corte en su laminador.
+Bajo **Impresora**, seleccione la configuración de la impresora y la cabeza o elija **Tamaño personalizado**. Compruebe el largo, el ancho y la altura de la construcción. El preset proporciona el volumen de impresión. Elija la impresora, la boquilla, el material y los perfiles de corte en su laminador.
 
 Si el modelo no cabe en la base de impresión, use los cortes propuestos o elija dos o tres secciones cuando estén disponibles. Compruebe las uniones con **Separar las piezas**. La división aumenta el grosor de las paredes a un mínimo de 5 mm y el del fondo a 3 mm; vuelva a comprobar las medidas interiores. Retire antes las carcasas y los insertos. Los modelos apilados, inclinados, circulares, ovalados o de panal deben imprimirse de una sola pieza. **Devolver modelo sólido** desactiva la división. Revise de nuevo los grosores si quiere recuperar las medidas anteriores.
 
@@ -199,7 +199,7 @@ Si el modelo no cabe en la base de impresión, use los cortes propuestos o elija
 <a id="download-and-slice"></a>
 ## Descarga y preparación en el laminador
 
-1. En **Impresión** → **Slicer filaments**, use los mismos números y colores que en el laminador. En Snapmaker U1, los slots 1–4 corresponden a los cabezales T0–T3. Puede configurar hasta 16 slots, cada uno con color y nombre de material. El color es una referencia aproximada, no una simulación del tono impreso o mezclado; configure las mezclas exactas en el laminador. Seleccione una tarjeta y pulse **Delete filament from slot N** para borrar el filamento. Los demás números no cambian: al borrar el slot 6, el 7 sigue siendo el 7. **+ Slot N** reutiliza el número libre más bajo; el límite sigue siendo 16. Borrar un filamento no cambia el color del modelo. Los slots eliminados dejan de ofrecerse o asignarse automáticamente al exportar; elija otro o asígnelo en el laminador. Los colores distintos permiten la asignación automática. Si dos slots comparten color, seleccione el adecuado para cada pieza en la ventana de descarga.
+1. En **Impresora** → **Slicer filaments**, use los mismos números y colores que en el laminador. En Snapmaker U1, los slots 1–4 corresponden a los cabezales T0–T3. Puede configurar hasta 16 slots, cada uno con color y nombre de material. El color es una referencia aproximada, no una simulación del tono impreso o mezclado; configure las mezclas exactas en el laminador. Seleccione una tarjeta y pulse **Delete filament from slot N** para borrar el filamento. Los demás números no cambian: al borrar el slot 6, el 7 sigue siendo el 7. **+ Slot N** reutiliza el número libre más bajo; el límite sigue siendo 16. Borrar un filamento no cambia el color del modelo. Los slots eliminados dejan de ofrecerse o asignarse automáticamente al exportar; elija otro o asígnelo en el laminador. Los colores distintos permiten la asignación automática. Si dos slots comparten color, seleccione el adecuado para cada pieza en la ventana de descarga.
 2. Click **↓ Descargar**. Elija **Organizador y accesorios**, **Sólo carcasa** or **Todo el conjunto**, según qué partes necesita. Para un modelo de sección, exporte el kit.
 3. Seleccione un formato a continuación. Para 3MF, asigne una ranura de filamento a cada parte o déjelo para la asignación en el laminador. Orca puede utilizar el primer filamento para piezas sin asignar.
 4. Espere por la geometría y los controles de tamaño. Lea las dimensiones de cada parte y cualquier instrucción para girarla 90° en la base de impresión. El cheque se reserva 2 mm en los bordes de la base de impresión. Descargue con el botón de formato en la parte inferior del diálogo.
@@ -226,7 +226,7 @@ Para usar el mismo color digital que en el laminador, introduzca el **HEX code**
 | Una parte supera la base de impresión, aunque la huella parecía lo suficientemente pequeña | Lea las dimensiones terminadas en el cuadro de diálogo de descarga. Tilt, relieve, trim y shells pueden extenderse más allá de la base. Compruebe la configuración y rotación de la impresora seleccionada. |
 | Los sujetadores de panel ocultos no están disponibles | Usar paredes por lo menos 3,2 mm de espesor sin relieve, o dejar sujetadores y pegar los paneles. Cambiar a los paneles no espesa las paredes. |
 | Los paneles superponen el borde inferior o del tier en un diseño antiguo | Establece una compensación de bordes de al menos 3 mm para los niveles. La compensación inferior se mide desde la parte superior del borde inferior. Regenerar y descargar las piezas después de cambiar la configuración. |
-| Una impresión descargada tiene los colores equivocados | Use 3MF, coincida con los números de ranura en **Impresión**, luego inspeccione las asignaciones por parte en el laminador. STL sólo lleva geometría. |
+| Una impresión descargada tiene los colores equivocados | Use 3MF, coincida con los números de ranura en **Impresora**, luego inspeccione las asignaciones por parte en el laminador. STL sólo lleva geometría. |
 | Falta un diseño guardado en otro dispositivo | Transferir su proyecto JSON y utilizar **Abrir**. Las bibliotecas del navegador son locales a cada dispositivo y dirección del sitio. |
 
 <a id="project-variants"></a>
@@ -369,6 +369,11 @@ Los cambios en la configuración de distribución o exportación invalidan el c�
 Elija **Raised relief (decoration)** para relieve o **Through stencil (cut)** para aberturas pasantes. Las carcasas solo admiten aberturas. La altura se muestra solo en relieve y la separación solo en repetición. **Material thickness** cambia la vista previa y la exportación: 1,2–6 mm para una tapa SVG y 1–4 mm para una carcasa. Los valores predeterminados son 3,2 mm para relieve y 2 mm para plantilla; el grosor elegido se conserva al cambiar de modo. La altura del relieve está incluida en el grosor. Una tapa SVG encajada requiere una profundidad interior mínima igual al grosor de la placa más 2 mm. **Adicional** contiene el color de la tapa o las caras de la carcasa. **Which SVG files work?** explica los requisitos y la preparación.
 
 Abra **Forma** → **Tapa** → **My SVGs** o **Carcasa** → **Pattern** → **My SVGs**. Las pestañas **Tapa** y **Carcasa** comparten biblioteca, pero guardan ajustes independientes. Cambiar de pestaña muestra esa pieza por separado; si aún no existe, permanece visible el conjunto. Puede volver a la vista conjunta sobre el modelo. Anchura, giro, separación y X/Y colocan el motivo; el botón de centrado restablece posición y giro. La tapa admite relieve y aberturas; la carcasa, solo aberturas. Se conservan marcos y zonas de fijación. **×** o **Escape** cierra el estudio activo sin perder los cambios. Las flechas del teclado cambian la pestaña enfocada.
+
+## Gridfinity
+
+Elige la cuadrícula estándar de 42 mm o introduce las medidas interiores del cajón. Las placas se dividen según la cama de impresión. Una bandeja puede ocupar celdas a ambos lados de una unión. Configura la impresora y los filamentos en **Impresora**, en la barra superior. [Guía Gridfinity](../../GRIDFINITY.md)
+
 
 ## Gridfinity y desplazamiento
 

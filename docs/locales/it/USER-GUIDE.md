@@ -33,11 +33,22 @@ Inizia con un organizer di tre componenti per la tua scrivania. L'esempio qui so
 - **Sopra il modello:** scegli **Insieme**, **Organizer**, **Inserti**, **Rivestimento** o **Coperchio**. Il menu accanto a **Organizer** permette di modificare un livello o vedere la pila completa con **Visualizza pila**, senza chiudere l’editor inferiore. Sono disponibili solo i pezzi presenti. Nelle finestre strette i pulsanti passano su una riga separata.
 - **Sulla destra:** cliccare su un numero di scompartimento, parete o divisore per modificare quell'elemento.
 
-In **Forma**, inizio con **Base**, poi usare **Dimensioni**. In **Rivestimento**, scegliere il modello, tipo di rivestimento, colore, spessore/rim e adattarsi nelle loro sezioni separate. In **Stampa**, scegliere una stampante, configurare le scanalature o aprire i controlli di stampa delle sezioni.
+In **Forma**, inizio con **Base**, poi usare **Dimensioni**. In **Rivestimento**, scegliere il modello, tipo di rivestimento, colore, spessore/rim e adattarsi nelle loro sezioni separate. Configura stampante, volume di stampa e filamenti in **Stampante** nella barra superiore. Usa **Stampa** per dividere il modello in sezioni.
 
 Spostando un cursore, il modello si aggiorna al termine di ogni calcolo. I modelli complessi possono richiedere più tempo; il valore finale viene sempre calcolato con la massima precisione. Attendi il completamento dell’anteprima prima di controllare o esportare. Gli avvisi scompaiono dopo 10 secondi oppure si chiudono con **×**.
 
 Il video Quick Start è stato registrato con il layout del pannello precedente. I passaggi di modellazione si applicano ancora; utilizzare le posizioni sopra per trovare i controlli attuali.
+
+<a id="current-interface-examples"></a>
+## Esempi dell’interfaccia in inglese
+
+| Organizer e scomparti | Divisorio |
+| --- | --- |
+| ![Organizer e scomparti](../../../public/guides/expanded-organizer.png) | ![Divisorio](../../../public/guides/wall-selection.png) |
+
+| Modelli | Nido d’ape |
+| --- | --- |
+| ![Modelli](../../../public/guides/templates.png) | ![Nido d’ape](../../../public/guides/honeycomb-template.png) |
 
 <a id="build-the-example"></a>
 ## Realizzare l’esempio
@@ -60,7 +71,7 @@ Il coperchio richiede un bordo superiore di altezza uniforme. Per conservare la 
 2. Abilitare **Motivo bicolore** e scegliere un **Lid pattern**. Per provare le foglie a forma di ventola nella galleria, selezionare **Foglie di ginkgo**.
 3. Set **Colore di base del coperchio** al colore di sfondo e **Colore del motivo del coperchio** al colore del disegno. Per la combinazione indicata di seguito, scegliere la crema per la base e verde oliva per il modello.
 
-Scegli i colori di base, motivo e maniglia tramite **Filamenti dello slicer** nelle rispettive finestre colore. Configura prima gli slot in **Stampa → Filamenti dello slicer**. **Come la base del coperchio** collega la maniglia alla base; scegliere un altro colore la rende indipendente. Esporta in 3MF e verifica le assegnazioni dei filamenti.
+Scegli i colori di base, motivo e maniglia tramite **Filamenti dello slicer** nelle rispettive finestre colore. Configura prima gli slot in **Stampante → Filamenti dello slicer**. **Come la base del coperchio** collega la maniglia alla base; scegliere un altro colore la rende indipendente. Esporta in 3MF e verifica le assegnazioni dei filamenti.
 
 ![Due coperchi, da sinistra a destra. La fila superiore mostra ramo d'ulivo, foglie di Ginkgo e rana di Fern. La fila inferiore mostra onde di marea, ciottoli di fiume e anelli di crescita.](../../images/lid-motifs.svg)
 
@@ -69,7 +80,7 @@ Scegli i colori di base, motivo e maniglia tramite **Filamenti dello slicer** ne
 <a id="download-your-first-print"></a>
 ## Scaricare il primo modello
 
-1. Apri **Stampa** e scegli la configurazione della stampante o inserisci il suo volume di build.
+1. Apri **Stampante** e scegli la configurazione della stampante o inserisci il suo volume di build.
 2. Clicca **↓ Scarica** nella barra superiore. In **Verifica e download**, scegli **Organizer e accessori**. Se hai aggiunto un rivestimento e lo vuoi anche, scegli l'intero kit.
 3. Scelga **STL** per un corpo monocolore, o **3MF** per mantenere parti separate, colori e assegnazioni di filamento. Attendere i controlli di geometria e dimensione. Se una parte non si adatta, correggere le dimensioni o costruire il volume e riaprire la finestra di dialogo.
 4. Clic **↓ Scarica STL** o **↓ Scarica 3MF** nella parte inferiore della finestra di dialogo. Se diversi file STL arrivano in uno ZIP, estrarli prima.
@@ -91,14 +102,14 @@ La libreria viene memorizzata nel tuo browser e legata all'indirizzo del sito. L
 <a id="filaments-and-export-options"></a>
 ## Filamenti e formati di esportazione
 
-Per un 3MF multicolore, configura gli slot in **Stampa** con gli stessi numeri e colori dello slicer. Su Snapmaker U1, i primi quattro corrispondono a T0–T3. Assegna uno slot a ogni pezzo nella finestra di download e controlla le assegnazioni in Snapmaker Orca. I pezzi senza assegnazione possono usare il primo filamento. I profili della stampante e del materiale si impostano nello slicer.
+Per un 3MF multicolore, configura gli slot in **Stampante** con gli stessi numeri e colori dello slicer. Su Snapmaker U1, i primi quattro corrispondono a T0–T3. Assegna uno slot a ogni pezzo nella finestra di download e controlla le assegnazioni in Snapmaker Orca. I pezzi senza assegnazione possono usare il primo filamento. I profili della stampante e del materiale si impostano nello slicer.
 
 Per un OBJ colorato, tenere l'OBJ e il suo file MTL nella stessa cartella. Il controllo dell'esportazione consente un margine di 2 mm ai bordi del piano di stampa per ogni parte.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Stampare un organizer grande in più parti
 
-In **Stampa**, imposta il volume di stampa e scegli due o tre sezioni oppure i tagli proposti. La divisione porta le pareti ad almeno 5 mm e il fondo ad almeno 3 mm, modificando le misure interne. L’app chiede di rimuovere rivestimenti e inserti prima di dividere. Alcune forme e impostazioni non consentono la divisione.
+Configura stampante, volume di stampa e filamenti in **Stampante** nella barra superiore. Usa **Stampa** per dividere il modello in sezioni. La divisione porta le pareti ad almeno 5 mm e il fondo ad almeno 3 mm, modificando le misure interne. L’app chiede di rimuovere rivestimenti e inserti prima di dividere. Alcune forme e impostazioni non consentono la divisione.
 
 Scaricate il campione di giunzione, posizionate le metà separatamente e stampate al 100%. Una volta raffreddate, controllate la vestibilità dei perni. Quindi scaricate il kit, ispezionate tutte le parti nella fettuccia, stampateli e assemblateli dopo aver raffreddato i perni e la colla. Le dimensioni del perno nominale sono Ø 3.2 × 8 mm; ogni foro è Ø 3.3 mm e 4,5 mm di profondità.
 
@@ -154,6 +165,15 @@ Scegli il livello nel menu accanto a **Organizer**, sopra il modello. Apri **For
 <a id="manage-filament-slots"></a>
 ### Gestire gli slot del filamento
 
-In **Stampa** → **Slicer filaments**, usa gli stessi numeri e colori dello slicer. Su Snapmaker U1, gli slot 1–4 corrispondono alle testine T0–T3. Puoi configurare fino a 16 slot, ciascuno con colore e nome del materiale. Il colore è un riferimento approssimativo, non una simulazione della tonalità stampata o miscelata; imposta le miscele esatte nello slicer. Seleziona una scheda e premi **Delete filament from slot N** per eliminare il filamento. Gli altri numeri non cambiano: eliminando lo slot 6, il 7 resta il 7. **+ Slot N** riutilizza il numero libero più basso; il limite resta 16. L’eliminazione non cambia il colore del modello. Gli slot rimossi non vengono proposti né associati automaticamente all’esportazione; scegline un altro o assegnalo nello slicer. Colori diversi consentono l’abbinamento automatico. Se due slot hanno lo stesso colore, scegli quello voluto per ogni pezzo nella finestra di download.
+In **Stampante** → **Slicer filaments**, usa gli stessi numeri e colori dello slicer. Su Snapmaker U1, gli slot 1–4 corrispondono alle testine T0–T3. Puoi configurare fino a 16 slot, ciascuno con colore e nome del materiale. Il colore è un riferimento approssimativo, non una simulazione della tonalità stampata o miscelata; imposta le miscele esatte nello slicer. Seleziona una scheda e premi **Delete filament from slot N** per eliminare il filamento. Gli altri numeri non cambiano: eliminando lo slot 6, il 7 resta il 7. **+ Slot N** riutilizza il numero libero più basso; il limite resta 16. L’eliminazione non cambia il colore del modello. Gli slot rimossi non vengono proposti né associati automaticamente all’esportazione; scegline un altro o assegnalo nello slicer. Colori diversi consentono l’abbinamento automatico. Se due slot hanno lo stesso colore, scegli quello voluto per ogni pezzo nella finestra di download.
 
 Per usare lo stesso colore digitale dello slicer, inserisci il **HEX code** di sei caratteri, per esempio `#E63522`, accanto al selettore del colore. Il `#` iniziale è facoltativo. Un codice valido aggiorna subito l’anteprima. Un valore incompleto o errato non viene applicato; uscendo dal campo torna il colore salvato. Il codice non simula l’aspetto reale del filamento, l’illuminazione o la miscelazione fisica dei colori.
+
+## Gridfinity
+
+Scegli la griglia standard da 42 mm oppure inserisci le misure interne del cassetto. Le piastre vengono suddivise in base al piano di stampa. Una vaschetta può appoggiare su due piastre adiacenti. Configura stampante e filamenti dal menu **Stampante** nella barra superiore. [Guida Gridfinity](../../GRIDFINITY.md)
+
+<a id="preview-contrast"></a>
+### Contrasto nell’anteprima
+
+I contorni distinguono gli scomparti dello stesso colore. Durante il trascinamento il verde indica una posizione valida. Esc riporta la vaschetta alla posizione iniziale.

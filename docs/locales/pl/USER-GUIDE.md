@@ -33,11 +33,22 @@ Zacznij od organizera trzech przedziałów dla Twojego biurka. Przykładem poni�
 - **Nad modelem:** wybierz **Razem**, **Organizer**, **Wkłady**, **Osłona** lub **Pokrywka**. Menu obok **Organizer** otwiera poziom do edycji albo całą wieżę przez **Wyświetl stos**, bez zamykania dolnego edytora. Dostępne są tylko istniejące części. W wąskim oknie przyciski przechodzą do osobnego wiersza.
 - **Po prawej:** kliknij numer komory, ściankę lub przegrodę, aby otworzyć jej ustawienia.
 
-W **Kształt**, zacząć od **Baza**, a następnie użyć **Wymiary**. W **Osłona**, wybrać wzór, typ powłoki, kolor, grubość / obręcz i dopasować w ich oddzielnych sekcjach. W **Druk**, wybrać drukarkę, skonfigurować szczeliny filamentu, lub otworzyć sterowniki drukowania sekcyjnego.
+W **Kształt**, zacząć od **Baza**, a następnie użyć **Wymiary**. W **Osłona**, wybrać wzór, typ powłoki, kolor, grubość / obręcz i dopasować w ich oddzielnych sekcjach. Drukarkę, obszar roboczy i filamenty ustawisz w górnym menu **Drukarka**. W sekcji **Druk** wybierz miejsca podziału.
 
 Podczas przesuwania suwaka model aktualizuje się po każdym obliczeniu. Złożone modele mogą wymagać więcej czasu; końcowa wartość zawsze jest obliczana z pełną dokładnością. Przed sprawdzeniem lub eksportem poczekaj na gotowy podgląd. Powiadomienia znikają po 10 sekundach albo można je zamknąć przyciskiem **×**.
 
 Filmik Quick Start został nagrany z wcześniejszym układem panelu. Etapy modelowania nadal obowiązują; użyj powyższych lokalizacji, aby znaleźć bieżące sterowanie.
+
+<a id="current-interface-examples"></a>
+## Przykłady angielskiego interfejsu
+
+| Organizer i przegródki | Przegroda |
+| --- | --- |
+| ![Organizer i przegródki](../../../public/guides/expanded-organizer.png) | ![Przegroda](../../../public/guides/wall-selection.png) |
+
+| Szablony | Plaster miodu |
+| --- | --- |
+| ![Szablony](../../../public/guides/templates.png) | ![Plaster miodu](../../../public/guides/honeycomb-template.png) |
 
 <a id="build-the-example"></a>
 ## Wykonanie przykładu
@@ -60,7 +71,7 @@ Pokrywa wymaga górnej krawędzi o jednakowej wysokości. Aby zachować pochylon
 2. Włącz **Dwukolorowy wzór** i wybrać **Lid pattern**. Aby spróbować liści w kształcie fanki w galerii, wybierz **Liście miłorzębu**.
 3. Ustaw **Kolor podstawy pokrywy** do koloru tła i **Kolor wzoru pokrywy** do koloru rysunku. Dla kombinacji pokazanej poniżej należy wybrać śmietankę dla podstawy i oliwkową zieleń dla wzoru.
 
-Wybierz kolory podstawy, wzoru i uchwytu z **Filamenty slicera** w odpowiednich oknach koloru. Najpierw ustaw sloty w **Druk → Filamenty slicera**. **Jak podstawa pokrywy** łączy kolor uchwytu z podstawą; wybór innego koloru uniezależnia uchwyt. Eksportuj do 3MF i sprawdź przypisania filamentów.
+Wybierz kolory podstawy, wzoru i uchwytu z **Filamenty slicera** w odpowiednich oknach koloru. Najpierw ustaw sloty w **Drukarka → Filamenty slicera**. **Jak podstawa pokrywy** łączy kolor uchwytu z podstawą; wybór innego koloru uniezależnia uchwyt. Eksportuj do 3MF i sprawdź przypisania filamentów.
 
 ![Two-tone lids, od lewej do prawej. Górny rząd pokazuje gałąź Olive, liści Ginkgo i Fern rond. Dolny rząd pokazuje fale pływowe, kamyki rzeczne i pierścienie wzrostu.](../../images/lid-motifs.svg)
 
@@ -69,7 +80,7 @@ Wybierz kolory podstawy, wzoru i uchwytu z **Filamenty slicera** w odpowiednich 
 <a id="download-your-first-print"></a>
 ## Pobierz pierwszy model do druku
 
-1. Otwórz **Druk** i wybrać konfigurację drukarki lub wprowadzić jej wolumin build.
+1. Otwórz **Drukarka** i wybrać konfigurację drukarki lub wprowadzić jej wolumin build.
 2. Kliknij **↓ Pobierz** w górnym barze. W **Weryfikacja i pobranie**, wybierz **Organizator i akcesoria**. Jeśli dodasz muszlę i chcesz ją też, wybierz cały zestaw.
 3. Wybierz **STL** dla jednokolorowego ciała, lub **3MF** zachować oddzielne części, kolory i przydziały filamentu. Poczekajcie na geometrię i sprawdzenie rozmiaru. Jeśli część nie pasuje, należy poprawić wymiary lub zbudować głośność i ponownie otworzyć okno dialogowe.
 4. Kliknij **↓ Pobierz STL** lub **↓ Pobierz 3MF** na dole okna dialogowego. Jeśli kilka STL pliki przybywają w ZIP Najpierw je wyciągnij.
@@ -91,14 +102,14 @@ Biblioteka jest przechowywana w przeglądarce i powiązana z adresem strony. Wyc
 <a id="filaments-and-export-options"></a>
 ## Filamenty i formaty eksportu
 
-Dla wielokolorowego 3MF skonfiguruj sloty w **Druk** z takimi samymi numerami i kolorami jak w slicerze. W Snapmaker U1 pierwsze cztery odpowiadają T0–T3. Przypisz slot do każdej części w oknie pobierania i sprawdź przypisania w Snapmaker Orca. Części bez przypisania mogą użyć pierwszego filamentu. Profile drukarki i materiału ustawia się w slicerze.
+Dla wielokolorowego 3MF skonfiguruj sloty w **Drukarka** z takimi samymi numerami i kolorami jak w slicerze. W Snapmaker U1 pierwsze cztery odpowiadają T0–T3. Przypisz slot do każdej części w oknie pobierania i sprawdź przypisania w Snapmaker Orca. Części bez przypisania mogą użyć pierwszego filamentu. Profile drukarki i materiału ustawia się w slicerze.
 
 Dla kolorowego OBJ, przechowywać OBJ i jego plik MTL w tym samym folderze. Kontrola eksportu pozwala na marżę 2 mm na krawędziach stołu drukarki dla każdej części.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Drukowanie dużego organizera w częściach
 
-W **Druk** ustaw obszar roboczy i wybierz dwie lub trzy części albo proponowane cięcia. Podział zwiększa grubość ścianek do co najmniej 5 mm, a dna do 3 mm, zmieniając wymiary komór. Aplikacja poprosi o usunięcie osłon i wkładów przed podziałem. Niektóre kształty i ustawienia nie pozwalają na podział.
+Drukarkę, obszar roboczy i filamenty ustawisz w górnym menu **Drukarka**. W sekcji **Druk** wybierz miejsca podziału. Podział zwiększa grubość ścianek do co najmniej 5 mm, a dna do 3 mm, zmieniając wymiary komór. Aplikacja poprosi o usunięcie osłon i wkładów przed podziałem. Niektóre kształty i ustawienia nie pozwalają na podział.
 
 Pobieranie próbki łącznika, umieszczenie jej połówek oddzielnie i drukowanie w 100% skali. Po schłodzeniu sprawdzić dopasowanie szpilki. Następnie pobrać zestaw, sprawdzić wszystkie części w slicerze, wydrukować je i zebrać je po ochłodzeniu za pomocą pinezek i kleju. Nominalne wymiary sworzni są Ø 3.2 × 8 mm; każdy otwór jest Ø 3.3 mm i 4,5 mm głębokości. Wytrzymałość i wytrzymałość zależy od ustawień druku, materiału i jakości kleju.
 
@@ -154,6 +165,15 @@ Wybierz poziom w menu obok **Organizer** nad modelem. Otwórz **Kształt** → *
 <a id="manage-filament-slots"></a>
 ### Zarządzanie slotami filamentu
 
-W **Druk** → **Slicer filaments** ustaw te same numery i kolory co w slicerze. W Snapmaker U1 sloty 1–4 odpowiadają głowicom T0–T3. Dostępnych jest do 16 slotów z kolorem i nazwą materiału. Kolor jest przybliżonym punktem odniesienia, nie symulacją wydruku lub mieszanki; dokładne mieszanie ustaw w slicerze. Wybierz kartę i kliknij **Delete filament from slot N**, aby usunąć filament. Pozostałe numery się nie zmieniają: po usunięciu slotu 6 slot 7 nadal ma numer 7. **+ Slot N** ponownie zajmuje najniższy wolny numer; limit pozostaje 16. Usunięcie filamentu nie zmienia koloru modelu. Usunięte sloty nie są proponowane ani dopasowywane automatycznie przy eksporcie; wybierz inny lub przypisz go w slicerze. Różne kolory pozwalają na automatyczne dopasowanie. Jeśli dwa sloty mają taki sam kolor, wybierz właściwy dla każdej części w oknie pobierania.
+W **Drukarka** → **Slicer filaments** ustaw te same numery i kolory co w slicerze. W Snapmaker U1 sloty 1–4 odpowiadają głowicom T0–T3. Dostępnych jest do 16 slotów z kolorem i nazwą materiału. Kolor jest przybliżonym punktem odniesienia, nie symulacją wydruku lub mieszanki; dokładne mieszanie ustaw w slicerze. Wybierz kartę i kliknij **Delete filament from slot N**, aby usunąć filament. Pozostałe numery się nie zmieniają: po usunięciu slotu 6 slot 7 nadal ma numer 7. **+ Slot N** ponownie zajmuje najniższy wolny numer; limit pozostaje 16. Usunięcie filamentu nie zmienia koloru modelu. Usunięte sloty nie są proponowane ani dopasowywane automatycznie przy eksporcie; wybierz inny lub przypisz go w slicerze. Różne kolory pozwalają na automatyczne dopasowanie. Jeśli dwa sloty mają taki sam kolor, wybierz właściwy dla każdej części w oknie pobierania.
 
 Aby uzyskać ten sam kolor cyfrowy co w slicerze, wpisz sześciocyfrowy **HEX code**, np. `#E63522`, obok wyboru koloru. Początkowy `#` jest opcjonalny. Poprawny kod od razu aktualizuje podgląd. Niepełny lub nieprawidłowy kod nie jest stosowany; po opuszczeniu pola wraca zapisany kolor. Kod nie symuluje rzeczywistego wyglądu filamentu, oświetlenia ani fizycznego mieszania kolorów.
+
+## Gridfinity
+
+Wybierz standardową siatkę 42 mm lub podaj wewnętrzne wymiary szuflady. Płyty są dzielone według wymiarów stołu drukarki. Pojemnik może stać na styku dwóch płyt. Drukarkę i filamenty ustawisz w górnym menu drukarki. [Instrukcja Gridfinity](../../GRIDFINITY.md)
+
+<a id="preview-contrast"></a>
+### Kontrast podglądu
+
+Obrysy pozwalają rozróżnić przegródki tego samego koloru. Podczas przeciągania zielona ramka wskazuje prawidłowe położenie. Esc przywraca pojemnik na poprzednie miejsce.

@@ -44,7 +44,7 @@ Výběr **Tvar → Warp → Vytvořit ze šablony** při úpravě stále nahrazu
 <a id="workspace-and-views"></a>
 ## Pracovní plocha a pohledy
 
-Otevřete nástroj v levé horní části. **Tvar** mění tělo a jeho příslušenství. **Přihrádky** změní rozložení. **Plášť** navrhuje samostatný vnější kryt. **Tisk** nastavuje tiskový prostor, drážky vlákna a volitelné řezné řezy. Kliknutím na políčko číslo, zeď nebo dělič na modelu otevřete jeho nastavení vpravo. Pokud se část je těžké kliknout, expandovat **Všechny stěny a přihrádky** a vyberte ho podle jména.
+Otevřete nástroj v levé horní části. **Tvar** mění tělo a jeho příslušenství. **Přihrádky** změní rozložení. **Plášť** navrhuje samostatný vnější kryt. Tiskárnu, tiskový prostor a filamenty nastavte v horní nabídce **Tiskárna**. V části **Tisk** vyberte řezy. Kliknutím na políčko číslo, zeď nebo dělič na modelu otevřete jeho nastavení vpravo. Pokud se část je těžké kliknout, expandovat **Všechny stěny a přihrádky** a vyberte ho podle jména.
 
 Vyberte sekci v levé nabídce. Její nastavení se otevře v plovoucím panelu ve spodní části náhledu; model a mřížka zůstávají viditelné za ním. Panel doplňuje levou nabídku. Šipka jej sbalí a **×** zavře. Jinou skupinu nastavení otevřete výběrem další sekce. Pravý panel dál zobrazuje nastavení vybrané stěny nebo přihrádky.
 
@@ -152,7 +152,7 @@ U obvodového pláště zapadá výstupek uvnitř spodní stěny do drážky pod
 
 Vyberte válcovou úchytku nebo lištu, aby se zobrazila volba **Barva úchytky víka**. Ve výchozím nastavení je zapnuto **Stejná jako základ víka**: úchytka přebírá základní barvu víka. Výběrem jiné barvy ji nastavíte nezávisle; opětovným zapnutím volby barvy znovu propojíte. Úchytka se stále tiskne jako samostatný díl.
 
-Klikněte na barevný vzorek vedle **Základní barva víka**, **Barva vzoru víka** nebo **Barva úchytky víka**. Okno obsahuje **Filamenty sliceru** pro aktuální tiskárnu, paletu, vlastní barvu a pole pro šestimístný kód HEX. Dostupné barvy nastavte v **Tisk → Filamenty sliceru**. Smazané sloty se nenabízejí; ostatní si zachovávají svá čísla.
+Klikněte na barevný vzorek vedle **Základní barva víka**, **Barva vzoru víka** nebo **Barva úchytky víka**. Okno obsahuje **Filamenty sliceru** pro aktuální tiskárnu, paletu, vlastní barvu a pole pro šestimístný kód HEX. Dostupné barvy nastavte v **Tiskárna → Filamenty sliceru**. Smazané sloty se nenabízejí; ostatní si zachovávají svá čísla.
 
 Barvy se ukládají do projektu a přenášejí do 3MF a OBJ; STL barvy neobsahuje. Při exportu 3MF jednoznačná shoda barvy automaticky vybere uložený slot filamentu. Pokud má stejnou barvu více slotů, vyberte slot ručně v okně exportu. Přiřazení zkontrolujte ve sliceru. Barvy na obrazovce jsou orientační a nesimulují fyzické míchání filamentů.
 
@@ -190,7 +190,7 @@ Před čištěním dat prohlížeče si uchovejte staženou zálohu. Každý pro
 <a id="print-setup-and-sectioning"></a>
 ## Nastavení tisku a rozdělení na části
 
-Pod **Tisk**, vyberte si tiskárnu a konfiguraci hlavy nebo vyberte **Vlastní rozměry**. Zkontrolujte délku, šířku a výšku konstrukce. Preset dodá objem výroby. Vyberte si tiskárnu, trysku, materiál a řezné profily ve vašem sliceru.
+Pod **Tiskárna**, vyberte si tiskárnu a konfiguraci hlavy nebo vyberte **Vlastní rozměry**. Zkontrolujte délku, šířku a výšku konstrukce. Preset dodá objem výroby. Vyberte si tiskárnu, trysku, materiál a řezné profily ve vašem sliceru.
 
 Pokud model přesahuje tiskovou podložku, použijte navržené řezy nebo zvolte dvě či tři části, jsou-li dostupné. Spoje zkontrolujte pomocí **Odsuňte díly od sebe**. Rozdělení zvětší tloušťku stěn alespoň na 5 mm a dna na 3 mm; znovu ověřte vnitřní rozměry. Před rozdělením odstraňte pláště a vložky. Patrové, nakloněné, kruhové, oválné a voštinové modely je nutné tisknout vcelku. **Vraťte celý model** rozdělení vypne. Chcete-li obnovit původní rozměry, znovu zkontrolujte tloušťky.
 
@@ -199,7 +199,7 @@ Pokud model přesahuje tiskovou podložku, použijte navržené řezy nebo zvolt
 <a id="download-and-slice"></a>
 ## Stažení a příprava ve sliceru
 
-1. V **Tisk** → **Slicer filaments** nastavte stejná čísla a barvy jako ve sliceru. U Snapmaker U1 odpovídají sloty 1–4 hlavám T0–T3. Lze nastavit až 16 slotů s barvou a názvem materiálu. Barva je přibližná orientační pomůcka, nikoli simulace vytištěného nebo smíchaného odstínu; přesné směsi nastavte ve sliceru. Vyberte kartu a klikněte na **Delete filament from slot N** pro odstranění filamentu. Ostatní čísla se nemění: po odstranění slotu 6 zůstává slot 7 číslem 7. **+ Slot N** znovu použije nejnižší volné číslo; limit zůstává 16. Odstranění nemění barvu modelu. Odstraněné sloty se při exportu nenabízejí ani automaticky nepřiřazují; vyberte jiný nebo jej přiřaďte ve sliceru. Různé barvy umožňují automatické párování. Mají-li dva sloty stejnou barvu, vyberte správný pro každý díl v okně stahování.
+1. V **Tiskárna** → **Slicer filaments** nastavte stejná čísla a barvy jako ve sliceru. U Snapmaker U1 odpovídají sloty 1–4 hlavám T0–T3. Lze nastavit až 16 slotů s barvou a názvem materiálu. Barva je přibližná orientační pomůcka, nikoli simulace vytištěného nebo smíchaného odstínu; přesné směsi nastavte ve sliceru. Vyberte kartu a klikněte na **Delete filament from slot N** pro odstranění filamentu. Ostatní čísla se nemění: po odstranění slotu 6 zůstává slot 7 číslem 7. **+ Slot N** znovu použije nejnižší volné číslo; limit zůstává 16. Odstranění nemění barvu modelu. Odstraněné sloty se při exportu nenabízejí ani automaticky nepřiřazují; vyberte jiný nebo jej přiřaďte ve sliceru. Různé barvy umožňují automatické párování. Mají-li dva sloty stejnou barvu, vyberte správný pro každý díl v okně stahování.
 2. Kliknout **↓ Stáhnout**. Vyberte **Organizér a příslušenství**, **Pouze plášť** nebo **Celá sada** Podle toho, které části potřebujete. Pro rozdělený model, exportujte soupravu.
 3. Vyberte níže uvedený formát. Pro 3MF, přiřaďte vlákno slot na každou část nebo jej nechte pro přiřazení v sliceru. Orca může použít první vlákno pro nepřidělené části.
 4. Čekat na geometrii a velikost kontroly. Přečtěte si rozměry každé části a jakékoli instrukce otočit 90 ° na tiskové podložce. Kontrola si vyhrazuje 2 mm na tiskové podložce hrany. Stáhnout s formátem tlačítko v dolní části dialogu.
@@ -226,7 +226,7 @@ Pro stejnou digitální barvu jako ve sliceru zadejte vedle výběru barvy šest
 | Část je větší než tiskovou podložku, i když stopa se zdála dost malá | V dialogovém okně ke stažení si přečtěte dokončené rozměry. Sklopení, reliéf, lemování a skořepiny mohou přesahovat základnu. Zkontrolujte zvolenou konfiguraci tiskárny a rotaci. |
 | Skryté spojovací prostředky nejsou k dispozici | Používejte stěny o tloušťce nejméně 3,2 mm bez reliéfu, nebo zanechte spojovací prostředky a přilepte panely. Přechod na panely stěny nezhušťuje. |
 | Panely překrývají spodní obrubník nebo ráfek ve starém provedení | Nastavte hranu nejméně 3 mm pro úrovně. Dolní část je měřena od horní části spodního lemu. Obnovte a stáhněte části po změně nastavení. |
-| Stáhnutý tisk má špatné barvy | Použití 3MF, zápas čísla slot v **Tisk**, pak zkontrolovat per- část úkoly v sliceru. STL přenáší pouze geometrii. |
+| Stáhnutý tisk má špatné barvy | Použití 3MF, zápas čísla slot v **Tiskárna**, pak zkontrolovat per- část úkoly v sliceru. STL přenáší pouze geometrii. |
 | Chybí návrh uložený na jiném zařízení | Převod projektu JSON a použití **Otevřít**. Knihovny prohlížečů jsou místní pro každé zařízení a adresu webu. |
 
 <a id="project-variants"></a>
@@ -369,6 +369,11 @@ Změny rozložení nebo nastavení exportu neruší předchozí výpočet. Zavř
 Zvolte **Raised relief (decoration)** pro reliéf nebo **Through stencil (cut)** pro průchozí otvory. Pláště podporují pouze otvory. Výška se zobrazuje jen u reliéfu, rozestup jen u opakování. **Material thickness** mění náhled i export: 1,2–6 mm pro SVG víko, 1–4 mm pro plášť. Výchozí tloušťka je 3,2 mm pro reliéf a 2 mm pro šablonu; zvolená hodnota zůstává při změně režimu. Výška reliéfu je součástí tloušťky. Zapuštěné SVG víko vyžaduje vnitřní hloubku alespoň tloušťka desky plus 2 mm. **Dodatečné** obsahuje barvu víka nebo výběr stěn pláště. **Which SVG files work?** vysvětluje požadavky a přípravu souborů.
 
 Otevřete **Tvar** → **Víko** → **My SVGs** nebo **Plášť** → **Pattern** → **My SVGs**. Karty **Víko** a **Plášť** sdílejí knihovnu, ale mají nezávislá nastavení. Přepnutí zobrazí příslušný díl; pokud ještě neexistuje, zůstává viditelná sestava. Pohled na celek lze zvolit nad modelem. Šířka, otočení, rozestup a X/Y určují polohu motivu; centrovací tlačítko resetuje polohu a otočení. Víko podporuje reliéf i otvory, plášť jen otvory. Rámy a místa uchycení zůstávají zachovány. **×** nebo **Escape** zavře aktivní studio a ponechá změny. Šipky klávesnice přepínají vybranou kartu.
+
+## Gridfinity
+
+Vyberte standardní mřížku 42 mm nebo zadejte vnitřní rozměry zásuvky. Desky se rozdělí podle velikosti tiskové podložky. Vanička může stát přes spoj dvou desek. Tiskárnu a filamenty nastavíte v horní nabídce tiskárny. [Návod Gridfinity](../../GRIDFINITY.md)
+
 
 ## Gridfinity a přesouvání
 

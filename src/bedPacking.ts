@@ -5,7 +5,7 @@ export interface BedPlan {settings:BedSettings;beds:Placement[][]}
 /** Deterministic largest-first rectangular packing. Counts this arrangement, not a mathematical minimum. */
 export function packBeds(items:PackItem[],settings:BedSettings):BedPlan{
  const {length,width,height,gap}=settings;
- if(![length,width,height,gap].every(Number.isFinite)||length<60||width<60||length>1000||width>1000||height<5||height>1000||gap<0||gap>30)throw Error('Проверьте размеры стола и промежуток между деталями.');
+ if(![length,width,height,gap].every(Number.isFinite)||length<40||width<40||length>1000||width>1000||height<5||height>1000||gap<0||gap>30)throw Error('Проверьте размеры стола и промежуток между деталями.');
  const beds:Placement[][]=[];
  const order=items.map((v,item)=>({v,item})).sort((a,b)=>b.v.size[0]*b.v.size[1]-a.v.size[0]*a.v.size[1]||a.item-b.item);
  for(const {v,item} of order){

@@ -1,7 +1,7 @@
+import {useConfiguredPrinter} from './useConfiguredPrinter.js';
 import {useState} from 'react';
 import {t} from '../i18n.js';
 import {filamentPrinterKey,useFilaments,slotNumber,removeFilament,nextFilamentSlot,type FilamentSlot} from '../filaments.js';
-import {useEditor} from '../store.js';
 
 const colors=['#ffffff','#171a1b','#e63522','#008ac8','#f8c52c','#2c9b62','#ff7928','#725ab4','#52c9c0','#c5c6c5','#f24f8d','#745033','#084582','#a5bd38','#c58d62','#d6d0e9'];
 function textColor(color:string){
@@ -14,7 +14,7 @@ function HexColorField({color,onChange}:{color:string;onChange:(color:string)=>v
  return <label className="filament-hex">{t('HEX-код')}<input type="text" aria-label={t('HEX-код цвета')} aria-invalid={!valid} value={value} placeholder="#E63522" spellCheck={false} maxLength={7} onFocus={()=>setDraft(color.toUpperCase())} onChange={e=>{const text=e.target.value;setDraft(text);if(/^#?[0-9a-f]{6}$/i.test(text.trim()))onChange('#'+text.trim().replace(/^#/,''));}} onBlur={()=>setDraft(null)} onKeyDown={e=>{if(e.key==='Enter'||e.key==='Escape')e.currentTarget.blur();}}/>{!valid&&<small>{t('Введите 6 символов: 0–9, A–F. Например, #E63522.')}</small>}</label>;
 }
 export function FilamentSlots({expanded=false}:{expanded?:boolean}){
- const p=useEditor(s=>s.project),id=filamentPrinterKey(p),palettes=useFilaments(s=>s.palettes),save=useFilaments(s=>s.save),slots=palettes[id]??[];
+ const p=useConfiguredPrinter(),id=filamentPrinterKey(p),palettes=useFilaments(s=>s.palettes),save=useFilaments(s=>s.save),slots=palettes[id]??[];
  const [selection,setSelection]=useState<{printer:string;index:number}|null>(null);
  const index=selection?.printer===id?Math.min(selection.index,slots.length-1):0;
  const selected=slots[index];

@@ -33,11 +33,22 @@ Comience con un organizador de tres componentes para su escritorio. El ejemplo a
 - **Sobre el modelo:** elija **Conjunto**, **Organizador**, **Insertos**, **Carcasa** o **Tapa**. El menú junto a **Organizador** permite editar un nivel o ver la pila completa con **Ver pila**, sin cerrar el editor inferior. Solo están disponibles las piezas existentes. En ventanas estrechas, los botones pasan a otra fila.
 - **A la derecha:** haga clic en un número de compartimento, pared o divisor para editar ese elemento.
 
-En **Forma**, empezar con **Base**, luego utilizar **Dimensiones**. En **Carcasa**, elegir el patrón, tipo de shell, color, grosor/rim y cabe en sus secciones separadas. En **Impresión**, elegir una impresora, configurar ranuras de filamento, o abrir los controles de impresión de sección.
+En **Forma**, empezar con **Base**, luego utilizar **Dimensiones**. En **Carcasa**, elegir el patrón, tipo de shell, color, grosor/rim y cabe en sus secciones separadas. Configura la impresora, el volumen de impresión y los filamentos en **Impresora**, en la barra superior. Utiliza **Impresión** para dividir el modelo.
 
 Al mover un deslizador, el modelo se actualiza tras cada cálculo. Los modelos complejos pueden tardar más; el valor final siempre se calcula con toda la precisión. Espere a que termine la vista previa antes de comprobar o exportar el resultado. Los avisos desaparecen a los 10 segundos o se cierran con **×**.
 
 El video Quick Start se grabó con el diseño del panel anterior. Los pasos de modelado todavía se aplican; utilizar los lugares arriba para encontrar los controles actuales.
+
+<a id="current-interface-examples"></a>
+## Ejemplos de la interfaz en inglés
+
+| Organizador y compartimentos | Separador |
+| --- | --- |
+| ![Organizador y compartimentos](../../../public/guides/expanded-organizer.png) | ![Separador](../../../public/guides/wall-selection.png) |
+
+| Plantillas | Panal |
+| --- | --- |
+| ![Plantillas](../../../public/guides/templates.png) | ![Panal](../../../public/guides/honeycomb-template.png) |
 
 <a id="build-the-example"></a>
 ## Construir el ejemplo
@@ -60,7 +71,7 @@ La tapa necesita un borde superior de altura uniforme. Para conservar la cápsul
 2. Habilitar **Motivo bicolor** y elegir un patrón **Lid pattern**. Para probar las hojas en forma de abanico en la galería, seleccione **Hojas de ginkgo**.
 3. Set **Color base de la tapa** al color de fondo y **Color del patrón de la tapa** al color del dibujo. Para la combinación mostrada a continuación, elija la crema para la base y el verde de oliva para el patrón.
 
-Elige los colores de la base, el patrón y el asa desde **Filamentos del laminador** en sus ventanas de color. Configura primero las ranuras en **Impresión → Filamentos del laminador**. **Igual que la base de la tapa** vincula el asa con la base; elegir otro color la hace independiente. Exporta en 3MF y revisa las asignaciones de filamentos.
+Elige los colores de la base, el patrón y el asa desde **Filamentos del laminador** en sus ventanas de color. Configura primero las ranuras en **Impresora → Filamentos del laminador**. **Igual que la base de la tapa** vincula el asa con la base; elegir otro color la hace independiente. Exporta en 3MF y revisa las asignaciones de filamentos.
 
 ![Lamas de dos tonos, de izquierda a derecha. La fila superior muestra la rama de oliva, las hojas de Ginkgo y la rana de Fern. La fila inferior muestra las olas de marea, las rocallas de río y los anillos de crecimiento.](../../images/lid-motifs.svg)
 
@@ -69,7 +80,7 @@ Elige los colores de la base, el patrón y el asa desde **Filamentos del laminad
 <a id="download-your-first-print"></a>
 ## Descargar el primer modelo
 
-1. Abrir **Impresión** y elegir la configuración de la impresora o introducir su volumen de impresión.
+1. Abrir **Impresora** y elegir la configuración de la impresora o introducir su volumen de impresión.
 2. Haga clic en **↓ Descargar** en la barra superior. En **Verificación y descarga**, seleccione **Organizador y accesorios**. Si usted agregó una carcasa y lo quiere también, elija todo el kit.
 3. Elija **STL** para un cuerpo de un solo color, o **3MF** para mantener partes separadas, colores y tareas de filamento. Esperar las comprobaciones de geometría y tamaño. Si una parte no encaja, corregir las dimensiones o construir volumen y reabrir el diálogo.
 4. Haga clic en **↓ Descargar STL** o **↓ Descargar 3MF** en la parte inferior del diálogo. Si varios archivos STL llegan a un ZIP, extraiga primero.
@@ -91,14 +102,14 @@ La biblioteca se almacena en su navegador y está atada a la dirección del siti
 <a id="filaments-and-export-options"></a>
 ## Filamentos y formatos de exportación
 
-Para un 3MF multicolor, configure los slots en **Impresión** con los mismos números y colores que en el laminador. En Snapmaker U1, los cuatro primeros corresponden a T0–T3. Asigne un slot a cada pieza en la ventana de descarga y compruebe las asignaciones en Snapmaker Orca. Las piezas sin asignación pueden usar el primer filamento. Los perfiles de impresora y material se seleccionan en el laminador.
+Para un 3MF multicolor, configure los slots en **Impresora** con los mismos números y colores que en el laminador. En Snapmaker U1, los cuatro primeros corresponden a T0–T3. Asigne un slot a cada pieza en la ventana de descarga y compruebe las asignaciones en Snapmaker Orca. Las piezas sin asignación pueden usar el primer filamento. Los perfiles de impresora y material se seleccionan en el laminador.
 
 Para un OBJ coloreado, mantenga el OBJ y su archivo MTL en la misma carpeta. El cheque de exportación permite un margen de 2 mm en los bordes de la base de impresión para cada parte. Arregla todo el kit y compruebe overhangs y detalles finos en el laminador.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Imprimir un organizador grande por partes
 
-En **Impresión**, configure el volumen de impresión y elija dos o tres secciones, o los cortes propuestos. La división aumenta las paredes a un mínimo de 5 mm y el fondo a 3 mm, por lo que cambian las medidas interiores. La aplicación pide retirar carcasas e insertos antes de dividir. Algunas formas y ajustes impiden la división.
+Configura la impresora, el volumen de impresión y los filamentos en **Impresora**, en la barra superior. Utiliza **Impresión** para dividir el modelo. La división aumenta las paredes a un mínimo de 5 mm y el fondo a 3 mm, por lo que cambian las medidas interiores. La aplicación pide retirar carcasas e insertos antes de dividir. Algunas formas y ajustes impiden la división.
 
 Descargue la muestra de articulación, coloque sus mitades por separado, e imprima a escala 100%. Una vez enfriado, compruebe el ajuste de los pines. A continuación, descargue el kit, inspeccione todas las piezas en el laminador, imprima y ensambla después del enfriamiento con pins y cola. Las dimensiones nominales son Ø 3.2 × 8 mm; cada agujero es Ø 3.3 mm y 4.5 mm de profundidad.
 
@@ -154,6 +165,15 @@ Seleccione el nivel en el menú junto a **Organizador**, encima del modelo. Abra
 <a id="manage-filament-slots"></a>
 ### Gestionar las ranuras de filamento
 
-En **Impresión** → **Slicer filaments**, use los mismos números y colores que en el laminador. En Snapmaker U1, los slots 1–4 corresponden a los cabezales T0–T3. Puede configurar hasta 16 slots, cada uno con color y nombre de material. El color es una referencia aproximada, no una simulación del tono impreso o mezclado; configure las mezclas exactas en el laminador. Seleccione una tarjeta y pulse **Delete filament from slot N** para borrar el filamento. Los demás números no cambian: al borrar el slot 6, el 7 sigue siendo el 7. **+ Slot N** reutiliza el número libre más bajo; el límite sigue siendo 16. Borrar un filamento no cambia el color del modelo. Los slots eliminados dejan de ofrecerse o asignarse automáticamente al exportar; elija otro o asígnelo en el laminador. Los colores distintos permiten la asignación automática. Si dos slots comparten color, seleccione el adecuado para cada pieza en la ventana de descarga.
+En **Impresora** → **Slicer filaments**, use los mismos números y colores que en el laminador. En Snapmaker U1, los slots 1–4 corresponden a los cabezales T0–T3. Puede configurar hasta 16 slots, cada uno con color y nombre de material. El color es una referencia aproximada, no una simulación del tono impreso o mezclado; configure las mezclas exactas en el laminador. Seleccione una tarjeta y pulse **Delete filament from slot N** para borrar el filamento. Los demás números no cambian: al borrar el slot 6, el 7 sigue siendo el 7. **+ Slot N** reutiliza el número libre más bajo; el límite sigue siendo 16. Borrar un filamento no cambia el color del modelo. Los slots eliminados dejan de ofrecerse o asignarse automáticamente al exportar; elija otro o asígnelo en el laminador. Los colores distintos permiten la asignación automática. Si dos slots comparten color, seleccione el adecuado para cada pieza en la ventana de descarga.
 
 Para usar el mismo color digital que en el laminador, introduzca el **HEX code** de seis caracteres, por ejemplo `#E63522`, junto al selector de color. El `#` inicial es opcional. Un código válido actualiza la vista previa al instante. El texto incompleto o incorrecto no se aplica; al salir del campo vuelve el color guardado. El código no simula el aspecto real del filamento, la iluminación ni una mezcla física de colores.
+
+## Gridfinity
+
+Elige la cuadrícula estándar de 42 mm o introduce las medidas interiores del cajón. Las placas se dividen según la cama de impresión. Una bandeja puede ocupar celdas a ambos lados de una unión. Configura la impresora y los filamentos en **Impresora**, en la barra superior. [Guía Gridfinity](../../GRIDFINITY.md)
+
+<a id="preview-contrast"></a>
+### Contraste de la vista previa
+
+Los contornos distinguen compartimentos del mismo color. Al arrastrar, el verde indica una posición válida. Esc devuelve la bandeja a su posición inicial.

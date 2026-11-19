@@ -33,11 +33,22 @@ Commencez par un organiseur à trois compartiments pour votre bureau. L'exemple 
 - **Au-dessus du modèle :** choisissez **Assemblage**, **Organiseur**, **Inserts**, **Habillage** ou **Couvercle**. Le menu à côté de **Organiseur** permet de choisir un étage ou **Afficher la pile** pour la pile complète, sans fermer l’éditeur inférieur. Seules les pièces présentes sont disponibles. Dans une fenêtre étroite, les boutons passent sur une ligne séparée.
 - **Sur la droite:** cliquez sur un numéro de compartiment, un mur ou un cloison pour modifier cet élément.
 
-Dans **Forme**, commencer par **Socle**, puis utiliser **Dimensions**. Dans **Habillage**, choisir le motif, le type de habillage, la couleur, l'épaisseur/rim et s'adapter dans leurs sections distinctes. Dans **Impression**, choisir une imprimante, configurer les emplacements de filament, ou ouvrir les commandes d'impression de section.
+Dans **Forme**, commencer par **Socle**, puis utiliser **Dimensions**. Dans **Habillage**, choisir le motif, le type de habillage, la couleur, l'épaisseur/rim et s'adapter dans leurs sections distinctes. Choisissez l’imprimante, le volume d’impression et les filaments dans **Imprimante** en haut. Utilisez **Impression** pour découper le modèle en sections.
 
 Pendant que vous déplacez un curseur, le modèle se met à jour à la fin de chaque calcul. Les modèles complexes peuvent prendre plus de temps; la valeur finale est toujours calculée à pleine précision. Attendez l'aperçu terminé avant de vérifier ou d'exporter le résultat. Les notifications de l'éditeur disparaissent après 10 secondes, ou vous pouvez les fermer avec **×**.
 
 La vidéo de démarrage rapide a été enregistrée avec la mise en page du panneau précédent. Les étapes de modélisation s'appliquent toujours; utilisez les emplacements ci-dessus pour trouver les contrôles actuels.
+
+<a id="current-interface-examples"></a>
+## Exemples de l’interface en anglais
+
+| Organiseur et compartiments | Cloison |
+| --- | --- |
+| ![Organiseur et compartiments](../../../public/guides/expanded-organizer.png) | ![Cloison](../../../public/guides/wall-selection.png) |
+
+| Modèles | Nid d’abeilles |
+| --- | --- |
+| ![Modèles](../../../public/guides/templates.png) | ![Nid d’abeilles](../../../public/guides/honeycomb-template.png) |
 
 <a id="build-the-example"></a>
 ## Réaliser l’exemple
@@ -60,7 +71,7 @@ Un couvercle nécessite un bord supérieur de hauteur uniforme. Pour conserver l
 2. Activez **Motif bicolore** et choisissez un **Lid pattern**. Pour essayer les feuilles en forme de ventilateur dans la galerie, sélectionnez **Feuilles de ginkgo**.
 3. Jeu **Couleur de base du couvercle** à la couleur d'arrière-plan et **Couleur du motif du couvercle** à la couleur du dessin. Pour la combinaison ci-dessous, choisissez la crème pour la base et le vert olive pour le motif.
 
-Choisissez les couleurs de la base, du motif et de la poignée dans **Filaments du slicer**, depuis leur fenêtre de couleur. Configurez d’abord les emplacements dans **Impression → Filaments du slicer**. **Comme la base du couvercle** lie la poignée à la base ; choisir une autre couleur la rend indépendante. Exportez en 3MF et vérifiez les affectations des filaments.
+Choisissez les couleurs de la base, du motif et de la poignée dans **Filaments du slicer**, depuis leur fenêtre de couleur. Configurez d’abord les emplacements dans **Imprimante → Filaments du slicer**. **Comme la base du couvercle** lie la poignée à la base ; choisir une autre couleur la rend indépendante. Exportez en 3MF et vérifiez les affectations des filaments.
 
 ![Couvercles bicolores, de gauche à droite. La rangée supérieure montre la branche d'olive, les feuilles de Ginkgo et la fronde de Fern. La rangée inférieure montre les vagues de marée, les cailloux de rivière et les anneaux de croissance.](../../images/lid-motifs.svg)
 
@@ -69,7 +80,7 @@ Choisissez les couleurs de la base, du motif et de la poignée dans **Filaments 
 <a id="download-your-first-print"></a>
 ## Télécharger votre premier modèle
 
-1. Ouvrez **Impression** et choisissez la configuration de votre imprimante ou entrez son volume d’impression.
+1. Ouvrez **Imprimante** et choisissez la configuration de votre imprimante ou entrez son volume d’impression.
 2. Cliquez sur **↓ Télécharger** dans la barre supérieure. Dans **Vérification et téléchargement**, choisissez **Organisateur et accessoires**. Si vous avez ajouté un shell et que vous le voulez aussi, choisissez l'ensemble du kit.
 3. Choisissez **STL** pour un corps monocolore, ou **3MF** pour garder des parties, des couleurs et des attributions de filaments séparés. Attendez les vérifications de la géométrie et de la taille. Si une partie ne correspond pas, corrigez les dimensions ou construisez le volume et rouvrez la boîte de dialogue.
 4. Cliquez sur **↓ Télécharger STL** ou **↓ Télécharger 3MF** en bas de la boîte de dialogue. Si plusieurs fichiers STL arrivent dans un ZIP, les extraire d'abord.
@@ -91,14 +102,14 @@ La bibliothèque est stockée dans votre navigateur et liée à l'adresse du sit
 <a id="filaments-and-export-options"></a>
 ## Filaments et formats d’exportation
 
-Pour un fichier 3MF multicolore, configurez les emplacements dans **Impression** avec les mêmes numéros et couleurs que dans le slicer. Sur le Snapmaker U1, les quatre premiers correspondent à T0–T3. Affectez un emplacement à chaque pièce dans la fenêtre de téléchargement, puis vérifiez les affectations dans Snapmaker Orca. Une pièce sans affectation peut utiliser le premier filament. Les profils d’imprimante et de matériau se règlent dans le slicer.
+Pour un fichier 3MF multicolore, configurez les emplacements dans **Imprimante** avec les mêmes numéros et couleurs que dans le slicer. Sur le Snapmaker U1, les quatre premiers correspondent à T0–T3. Affectez un emplacement à chaque pièce dans la fenêtre de téléchargement, puis vérifiez les affectations dans Snapmaker Orca. Une pièce sans affectation peut utiliser le premier filament. Les profils d’imprimante et de matériau se règlent dans le slicer.
 
 Pour un OBJ coloré, gardez le fichier OBJ et son fichier MTL dans le même dossier. Le contrôle d'exportation permet une marge de 2 mm aux bords du plateau pour chaque partie.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Imprimer un grand organiseur en plusieurs parties
 
-Dans **Impression**, réglez le volume d’impression et choisissez deux ou trois sections, ou les découpes proposées. Les parois passent à au moins 5 mm et le fond à au moins 3 mm, ce qui modifie les dimensions des compartiments. L’application demande de retirer les habillages et les inserts avant la division. Certaines formes et certains réglages ne permettent pas cette division.
+Choisissez l’imprimante, le volume d’impression et les filaments dans **Imprimante** en haut. Utilisez **Impression** pour découper le modèle en sections. Les parois passent à au moins 5 mm et le fond à au moins 3 mm, ce qui modifie les dimensions des compartiments. L’application demande de retirer les habillages et les inserts avant la division. Certaines formes et certains réglages ne permettent pas cette division.
 
 Téléchargez l'échantillon de joint, placez ses moitiés séparément et imprimez à 100%. Une fois refroidis, vérifiez l'ajustement des goupilles. Ensuite, téléchargez le kit, inspectez toutes les pièces de la trancheuse, imprimez-les et assemblez-les après refroidissement avec des goupilles et de la colle. Les dimensions nominales des goupilles sont Ø 3.2 × 8 mm; chaque trou est Ø 3.3 mm et 4.5 mm de profondeur.
 
@@ -154,6 +165,15 @@ Dans le menu à côté de **Organiseur**, au-dessus du modèle, choisissez l’�
 <a id="manage-filament-slots"></a>
 ### Gérer les emplacements de filament
 
-Dans **Impression** → **Slicer filaments**, utilisez les mêmes numéros et couleurs que dans le slicer. Sur Snapmaker U1, les emplacements 1–4 correspondent aux têtes T0–T3. Vous pouvez configurer jusqu’à 16 emplacements, avec couleur et nom de matériau. La couleur sert de repère approximatif ; elle ne simule pas la teinte imprimée ou mélangée. Réglez les mélanges exacts dans le slicer. Sélectionnez une carte puis **Delete filament from slot N** pour supprimer le filament. Les autres numéros restent inchangés : supprimer l’emplacement 6 laisse le 7 au numéro 7. **+ Slot N** réutilise le plus petit numéro libre ; la limite reste 16. La suppression ne change pas la couleur du modèle. Les emplacements supprimés ne sont plus proposés ni associés automatiquement à l’export ; choisissez-en un autre ou affectez-le dans le slicer. Des couleurs distinctes permettent l’association automatique. Si deux emplacements ont la même couleur, choisissez celui voulu pour chaque pièce dans la fenêtre de téléchargement.
+Dans **Imprimante** → **Slicer filaments**, utilisez les mêmes numéros et couleurs que dans le slicer. Sur Snapmaker U1, les emplacements 1–4 correspondent aux têtes T0–T3. Vous pouvez configurer jusqu’à 16 emplacements, avec couleur et nom de matériau. La couleur sert de repère approximatif ; elle ne simule pas la teinte imprimée ou mélangée. Réglez les mélanges exacts dans le slicer. Sélectionnez une carte puis **Delete filament from slot N** pour supprimer le filament. Les autres numéros restent inchangés : supprimer l’emplacement 6 laisse le 7 au numéro 7. **+ Slot N** réutilise le plus petit numéro libre ; la limite reste 16. La suppression ne change pas la couleur du modèle. Les emplacements supprimés ne sont plus proposés ni associés automatiquement à l’export ; choisissez-en un autre ou affectez-le dans le slicer. Des couleurs distinctes permettent l’association automatique. Si deux emplacements ont la même couleur, choisissez celui voulu pour chaque pièce dans la fenêtre de téléchargement.
 
 Pour reprendre une couleur numérique du slicer, saisissez le **HEX code** à six caractères, par exemple `#E63522`, près du sélecteur de couleur. Le `#` initial est facultatif. Un code valide actualise immédiatement l’aperçu. Une saisie incomplète ou incorrecte n’est pas appliquée ; la couleur enregistrée revient en quittant le champ. Ce code ne simule ni l’aspect réel du filament, ni l’éclairage, ni le mélange physique des couleurs.
+
+## Gridfinity
+
+Choisissez la grille standard de 42 mm ou saisissez les dimensions intérieures du tiroir. Les plaques sont divisées selon le plateau d’impression. Un bac peut chevaucher deux plaques. Réglez l’imprimante et les filaments dans le menu **Imprimante** en haut. [Guide Gridfinity](../../GRIDFINITY.md)
+
+<a id="preview-contrast"></a>
+### Contraste de l’aperçu
+
+Les contours distinguent les compartiments de même couleur. Pendant le déplacement, le vert indique une position valide. Échap remet le bac à sa position initiale.

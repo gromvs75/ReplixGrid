@@ -35,13 +35,13 @@ All Help menu labels follow the selected interface language. Quick Start and Use
 
 The helper follows the interface language, including all three steps, hints and the saved-project confirmation. The saved-project row uses the translated label **Previous project**. Actual project names in **My projects** remain as you saved them.
 
-Use **New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. The panel shows a thumbnail labelled **Previous project** with **Saved in My projects**; click that row to reopen your library. The canvas is cleared immediately and stays empty until you choose a new shape, just as on a first visit. Until you choose a new shape, saving and exporting are disabled. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
+Use **Projects → New project** in the top bar to return to this clean start. Your current work is saved first; an unnamed draft is retained in **My projects**. Existing projects, variants, filament slots and printer configuration are not deleted. The panel shows a thumbnail labelled **Previous project** with **Saved in My projects**; click that row to reopen your library. The canvas is cleared immediately and stays empty until you choose a new shape, just as on a first visit. Until you choose a new shape, saving and exporting are disabled. You can instead open a project from **My projects** or import its JSON file. Refreshing this empty-start tab keeps the start screen; reopening an existing project restores the model. Ordinary return visits resume saved work.
 
 Choosing **Shape → Base → Create from template** while editing still replaces the construction inside the current project and can be undone. Use **New project** when you want a separate model.
 
 ## Workspace and views
 
-Open a tool in the upper left. **Shape** changes the body and its accessories. **Compartments** changes the layout. **Shell** designs a separate outer cover. **Print** sets the build volume, filament slots and optional section cuts. Click a compartment number, wall or divider on the model to open its settings on the right. If a part is hard to click, expand **All walls and compartments** and select it by name.
+Open a tool in the upper left. **Shape** changes the body and its accessories. **Compartments** changes the layout. **Shell** designs a separate outer cover. Choose the printer, bed size and filament slots under **Printer** in the top bar. Use **Print** to choose section cuts. Click a compartment number, wall or divider on the model to open its settings on the right. If a part is hard to click, expand **All walls and compartments** and select it by name.
 
 The left panel is section navigation. Select a section to open only its settings in the centered, floating editor at the bottom of the preview. The scene and grid continue behind the editor; opening it does not cut off the preview. The editor uses compact groups; it does not replace the left menu. Its chevron collapses the editor and **×** closes it. Choose another section on the left to switch settings. The right panel remains dedicated to the selected wall or compartment.
 
@@ -143,7 +143,7 @@ With a wrapped shell, a tongue inside the lower wall fits a socket below the upp
 
 Select a cylindrical or bar handle to show **Lid handle color**. **Match lid base** is enabled by default: the handle follows the lid base color. Choose another color to make it independent; enable this option again to restore the match. The handle remains a separate printable part.
 
-Click the color swatch beside **Lid base color**, **Lid pattern color** or **Lid handle color**. The popup includes **Slicer filaments** for the current printer, ordinary swatches, a custom color and a six-digit HEX field. Configure your available colors under **Print → Slicer filaments**. Removed slots are absent and the remaining numbers stay unchanged.
+Click the color swatch beside **Lid base color**, **Lid pattern color** or **Lid handle color**. The popup includes **Slicer filaments** for the current printer, ordinary swatches, a custom color and a six-digit HEX field. Configure your available colors under **Printer → Slicer filaments**. Removed slots are absent and the remaining numbers stay unchanged.
 
 Colors are saved with the project and retained in 3MF and OBJ; STL has no colors. In 3MF export, a unique matching color automatically selects its saved filament slot. If several slots share a color, choose the slot manually in the export dialog. Check assignments in your slicer. Displayed colors are approximate and do not simulate physical filament mixing.
 
@@ -178,7 +178,7 @@ Keep a downloaded backup before clearing browser data. Each browser and site add
 
 ## Print setup and sectioning
 
-Under **Print**, select your printer and head configuration or choose **Custom size**. Check build length, width and height. The preset supplies the build volume. Choose the printer, nozzle, material and slicing profiles in your slicer.
+Under **Printer** in the top bar, select your printer and head configuration or choose **Custom size**. Check build length, width and height. The preset supplies the build volume. Choose the printer, nozzle, material and slicing profiles in your slicer.
 
 For a model that exceeds the bed, use the suggested cuts or choose two or three sections when available. Read the proposed seam positions and use **Move the parts apart** to see how the sections meet. Splitting increases wall thickness to at least 5 mm and floor thickness to at least 3 mm. Recheck the inside dimensions. Remove shells and inserts before splitting. Stacked trays, tilted models and the circle, oval and honeycomb bases require single-piece printing. **Return solid model** switches off sectioning. Check thickness again if you want to restore earlier dimensions.
 
@@ -186,7 +186,7 @@ For a model that exceeds the bed, use the suggested cuts or choose two or three 
 
 ## Download and slice
 
-1. In **Print**, configure filament slots if you want a multicolor file. Match slot numbers and colors to your slicer. On a Snapmaker U1, slots 1–4 correspond to T0–T3. Add up to 16 slots, set each color and optionally name its material. Color is an approximate visual guide, not a simulation of a printed or mixed shade. Configure exact colors and mixing in your slicer. Select any filament card and choose **Delete filament from slot N** to remove it. The remaining slot numbers do not change: deleting slot 6 leaves slot 7 as slot 7. **+ Slot N** adds the lowest available number again; the limit stays at 16. Deleting a filament does not change the model color. Removed slots are no longer offered or automatically matched at export; choose another slot explicitly or assign it in the slicer. Distinct colors let the app match part colors to slots automatically. If two slots share a color, choose the intended slot for each part in the download dialog.
+1. In **Printer**, configure filament slots if you want a multicolor file. Match slot numbers and colors to your slicer. On a Snapmaker U1, slots 1–4 correspond to T0–T3. Add up to 16 slots, set each color and optionally name its material. Color is an approximate visual guide, not a simulation of a printed or mixed shade. Configure exact colors and mixing in your slicer. Select any filament card and choose **Delete filament from slot N** to remove it. The remaining slot numbers do not change: deleting slot 6 leaves slot 7 as slot 7. **+ Slot N** adds the lowest available number again; the limit stays at 16. Deleting a filament does not change the model color. Removed slots are no longer offered or automatically matched at export; choose another slot explicitly or assign it in the slicer. Distinct colors let the app match part colors to slots automatically. If two slots share a color, choose the intended slot for each part in the download dialog.
 2. Click **↓ Download**. Choose **Organizer and accessories**, **Shell only** or **The whole set**, according to which parts you need. For a sectioned model, export the kit.
 3. Select a format below. For 3MF, assign a filament slot to each part or leave it for assignment in the slicer. Orca can use the first filament for unassigned parts.
 4. Wait for the geometry and size checks. Read the dimensions of each part and any instruction to rotate it 90° on the bed. The check reserves 2 mm at the bed edges. Download with the format button at the bottom of the dialog.
@@ -212,7 +212,7 @@ To match a digital color from your slicer, paste its six-digit **HEX code**, for
 | A part exceeds the bed although the footprint seemed small enough | Read the finished dimensions in the download dialog. Tilt, relief, trim and shells can extend beyond the base. Check the selected printer configuration and rotation. |
 | Hidden panel fasteners are unavailable | Use walls at least 3.2 mm thick without relief, or leave fasteners off and glue the panels. Changing to panels does not thicken the walls. |
 | Panels overlap the bottom trim or tier rim in an old design | Set an edge offset of at least 3 mm for tiers. The lower offset is measured from the top of the bottom trim. Regenerate and download the parts after changing the settings. |
-| A downloaded print has the wrong colors | Use 3MF, match the slot numbers in **Print**, then inspect the per-part assignments in the slicer. STL carries geometry only. |
+| A downloaded print has the wrong colors | Use 3MF, match the slot numbers in **Printer**, then inspect the per-part assignments in the slicer. STL carries geometry only. |
 | A design saved on another device is missing | Transfer its project JSON and use **Open**. Browser libraries are local to each device and site address. |
 
 ## Project variants
@@ -348,7 +348,7 @@ Open **Shape → Lid → My SVGs** or **Shell → Pattern → My SVGs** to edit 
 
 ## Gridfinity
 
-The separate Gridfinity workspace generates trays and baseplates on a 42 mm grid. It preserves ordinary organizer projects and uses its own project files. See the [Gridfinity guide](GRIDFINITY.md) for dimensions, export, licensing and the required physical fit test.
+Choose a standard 42 mm grid or enter the inside dimensions of a drawer. Drawer-fit mode divides plates to fit the print bed and lets a tray span a seam. See the [Gridfinity guide](GRIDFINITY.md) for stacking, lids, labels, cutouts and export.
 
 ## Gridfinity sets
 

@@ -44,7 +44,7 @@ Scelta **Forma → Base → Crea da modello** mentre la modifica sostituisce anc
 <a id="workspace-and-views"></a>
 ## Area di lavoro e viste
 
-Aprire uno strumento in alto a sinistra. **Forma** cambia il corpo e i suoi accessori. **Scomparti** cambia il layout. **Rivestimento** progetta una copertura esterna separata. **Stampa** imposta il volume di stampa, fessure di filamento e tagli di sezione facoltativi. Fare clic su un numero di scompartimento, parete o divisore sul modello per aprire le sue impostazioni a destra. Se una parte è difficile da cliccare, espandere **Tutte le pareti e i compartimenti** e selezionarlo per nome.
+Aprire uno strumento in alto a sinistra. **Forma** cambia il corpo e i suoi accessori. **Scomparti** cambia il layout. **Rivestimento** progetta una copertura esterna separata. Configura stampante, volume di stampa e filamenti in **Stampante** nella barra superiore. Usa **Stampa** per dividere il modello in sezioni. Fare clic su un numero di scompartimento, parete o divisore sul modello per aprire le sue impostazioni a destra. Se una parte è difficile da cliccare, espandere **Tutte le pareti e i compartimenti** e selezionarlo per nome.
 
 Seleziona una sezione nel menu a sinistra. Le impostazioni si aprono in un pannello mobile nella parte inferiore dell’anteprima; scena e griglia restano visibili dietro il pannello. Il menu a sinistra rimane disponibile. La freccia riduce il pannello e **×** lo chiude. Seleziona un’altra sezione per cambiarne le impostazioni. Il pannello a destra resta dedicato alla parete o allo scomparto selezionato.
 
@@ -152,7 +152,7 @@ Con un rivestimento avvolgente, una linguetta all’interno della parete inferio
 
 Scegli una maniglia cilindrica o a barra per visualizzare **Colore della maniglia del coperchio**. **Come la base del coperchio** è attivo per impostazione predefinita: la maniglia segue il colore di base del coperchio. Scegli un altro colore per renderla indipendente; riattiva l’opzione per ripristinare il collegamento. La maniglia rimane una parte da stampare separatamente.
 
-Fai clic sul campione accanto a **Colore di base del coperchio**, **Colore del motivo del coperchio** o **Colore della maniglia del coperchio**. La finestra include i **Filamenti dello slicer** della stampante attuale, una tavolozza, un colore personalizzato e un campo HEX a sei caratteri. Configura i colori in **Stampa → Filamenti dello slicer**. Gli slot eliminati non compaiono; gli altri mantengono il proprio numero.
+Fai clic sul campione accanto a **Colore di base del coperchio**, **Colore del motivo del coperchio** o **Colore della maniglia del coperchio**. La finestra include i **Filamenti dello slicer** della stampante attuale, una tavolozza, un colore personalizzato e un campo HEX a sei caratteri. Configura i colori in **Stampante → Filamenti dello slicer**. Gli slot eliminati non compaiono; gli altri mantengono il proprio numero.
 
 I colori vengono salvati nel progetto ed esportati in 3MF e OBJ; STL non contiene colori. Nell’esportazione 3MF, un colore associato a un solo slot seleziona automaticamente quel filamento. Se più slot hanno lo stesso colore, scegli lo slot manualmente nella finestra di esportazione. Verifica le assegnazioni nello slicer. I colori sullo schermo sono indicativi e non simulano la miscelazione fisica dei filamenti.
 
@@ -190,7 +190,7 @@ Mantenere un backup scaricato prima di cancellare i dati del browser. Ogni indir
 <a id="print-setup-and-sectioning"></a>
 ## Impostazioni di stampa e suddivisione
 
-Sotto **Stampa**, selezionare la stampante e la configurazione della testa o scegliere **Dimensioni personalizzate**. Controllare la lunghezza, la larghezza e l'altezza della costruzione. Il preset fornisce il volume di stampa. Scegli la stampante, l'ugello, il materiale e i profili di slicing nel vostro slicer.
+Sotto **Stampante**, selezionare la stampante e la configurazione della testa o scegliere **Dimensioni personalizzate**. Controllare la lunghezza, la larghezza e l'altezza della costruzione. Il preset fornisce il volume di stampa. Scegli la stampante, l'ugello, il materiale e i profili di slicing nel vostro slicer.
 
 Se il modello supera il piano di stampa, usa i tagli proposti oppure scegli due o tre sezioni, quando disponibili. Controlla le giunzioni con **Allontanare le parti**. La divisione porta le pareti ad almeno 5 mm e il fondo ad almeno 3 mm: verifica nuovamente le misure interne. Prima rimuovi rivestimenti e inserti. I modelli a più livelli, inclinati, circolari, ovali o a nido d’ape richiedono la stampa in un unico pezzo. **Restituisce il modello solido** disattiva la divisione. Ricontrolla gli spessori se vuoi ripristinare le misure precedenti.
 
@@ -199,7 +199,7 @@ Se il modello supera il piano di stampa, usa i tagli proposti oppure scegli due 
 <a id="download-and-slice"></a>
 ## Download e preparazione nello slicer
 
-1. In **Stampa** → **Slicer filaments**, usa gli stessi numeri e colori dello slicer. Su Snapmaker U1, gli slot 1–4 corrispondono alle testine T0–T3. Puoi configurare fino a 16 slot, ciascuno con colore e nome del materiale. Il colore è un riferimento approssimativo, non una simulazione della tonalità stampata o miscelata; imposta le miscele esatte nello slicer. Seleziona una scheda e premi **Delete filament from slot N** per eliminare il filamento. Gli altri numeri non cambiano: eliminando lo slot 6, il 7 resta il 7. **+ Slot N** riutilizza il numero libero più basso; il limite resta 16. L’eliminazione non cambia il colore del modello. Gli slot rimossi non vengono proposti né associati automaticamente all’esportazione; scegline un altro o assegnalo nello slicer. Colori diversi consentono l’abbinamento automatico. Se due slot hanno lo stesso colore, scegli quello voluto per ogni pezzo nella finestra di download.
+1. In **Stampante** → **Slicer filaments**, usa gli stessi numeri e colori dello slicer. Su Snapmaker U1, gli slot 1–4 corrispondono alle testine T0–T3. Puoi configurare fino a 16 slot, ciascuno con colore e nome del materiale. Il colore è un riferimento approssimativo, non una simulazione della tonalità stampata o miscelata; imposta le miscele esatte nello slicer. Seleziona una scheda e premi **Delete filament from slot N** per eliminare il filamento. Gli altri numeri non cambiano: eliminando lo slot 6, il 7 resta il 7. **+ Slot N** riutilizza il numero libero più basso; il limite resta 16. L’eliminazione non cambia il colore del modello. Gli slot rimossi non vengono proposti né associati automaticamente all’esportazione; scegline un altro o assegnalo nello slicer. Colori diversi consentono l’abbinamento automatico. Se due slot hanno lo stesso colore, scegli quello voluto per ogni pezzo nella finestra di download.
 2. Clicca su **↓ Scarica**. Scegli **Organizer e accessori**, **Solo guscio** o **L'intero set**, in base a quali parti hai bisogno. Per un modello a sezione, esporta il kit.
 3. Per 3MF, assegnare una fessura di filamento ad ogni parte o lasciarlo per l'assegnazione nella fessura. Orca può utilizzare il primo filamento per parti senza assegnazione.
 4. Leggi le dimensioni di ogni parte e le istruzioni per ruotarlo a 90° sul piano di stampa. Il controllo si riserva 2 mm ai bordi del piano di stampa. Scarica con il formato pulsante nella parte inferiore del dialogo.
@@ -226,7 +226,7 @@ Per usare lo stesso colore digitale dello slicer, inserisci il **HEX code** di s
 | Una parte supera il piano di stampa, anche se l'impronta sembrava abbastanza piccola | Tilt, rilievo, assetto e rivestimenti possono estendersi oltre la base. Controllare la configurazione e la rotazione della stampante selezionata. |
 | I dispositivi di fissaggio nascosti del pannello non sono disponibili | Utilizzare pareti di almeno 3.2 mm di spessore senza rilievo, o lasciare elementi di fissaggio fuori e incollare i pannelli. |
 | I pannelli si sovrappongono al bordo inferiore o al cerchio in un vecchio design | Impostare un bordo di offset di almeno 3 mm per piastre. L'offset inferiore viene misurato dalla parte superiore del bordo inferiore. Rigenerare e scaricare le parti dopo aver modificato le impostazioni. |
-| Una stampa scaricata ha i colori sbagliati | Utilizzare 3MF, abbinare i numeri di slot in **Stampa**, quindi ispezionare le assegnazioni per parte nella fessura. STL trasporta solo la geometria. |
+| Una stampa scaricata ha i colori sbagliati | Utilizzare 3MF, abbinare i numeri di slot in **Stampante**, quindi ispezionare le assegnazioni per parte nella fessura. STL trasporta solo la geometria. |
 | Manca un disegno salvato su un altro dispositivo | Trasferire il suo progetto JSON e utilizzare **Apri**. Le librerie del browser sono locali per ogni dispositivo e indirizzo del sito. |
 
 <a id="project-variants"></a>
@@ -369,6 +369,11 @@ Le modifiche al layout o alle impostazioni di esportazione invalidano il calcolo
 Scegli **Raised relief (decoration)** per il rilievo o **Through stencil (cut)** per le aperture passanti. I rivestimenti supportano solo le aperture. L’altezza appare solo in modalità rilievo e la distanza solo con le ripetizioni. **Material thickness** modifica anteprima ed esportazione: 1,2–6 mm per un coperchio SVG, 1–4 mm per un rivestimento. I valori predefiniti sono 3,2 mm per il rilievo e 2 mm per lo stencil; lo spessore scelto resta al cambio di modalità. L’altezza del rilievo è inclusa nello spessore. Un coperchio SVG a incasso richiede una profondità interna almeno pari allo spessore della piastra più 2 mm. **Ulteriori** contiene il colore del coperchio o i lati del rivestimento. **Which SVG files work?** spiega requisiti e preparazione.
 
 Apri **Forma** → **Coperchio** → **My SVGs** oppure **Rivestimento** → **Pattern** → **My SVGs**. Le schede **Coperchio** e **Rivestimento** condividono la libreria ma mantengono impostazioni indipendenti. Cambiando scheda viene mostrato il pezzo corrispondente; se non esiste ancora, resta visibile l’insieme. Puoi tornare alla vista completa sopra il modello. Larghezza, rotazione, distanza e X/Y posizionano il motivo; il pulsante centrale ripristina posizione e rotazione. Il coperchio supporta rilievo e aperture; il rivestimento solo aperture. Cornici e zone di fissaggio restano intatte. **×** o **Escape** chiude lo studio attivo conservando le modifiche. Le frecce cambiano la scheda selezionata.
+
+## Gridfinity
+
+Scegli la griglia standard da 42 mm oppure inserisci le misure interne del cassetto. Le piastre vengono suddivise in base al piano di stampa. Una vaschetta può appoggiare su due piastre adiacenti. Configura stampante e filamenti dal menu **Stampante** nella barra superiore. [Guida Gridfinity](../../GRIDFINITY.md)
+
 
 ## Gridfinity e spostamento
 

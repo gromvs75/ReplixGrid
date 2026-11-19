@@ -44,7 +44,7 @@ Auswahl **Form → Basis → Aus Vorlage erstellen** Während der Bearbeitung er
 <a id="workspace-and-views"></a>
 ## Arbeitsbereich und Ansichten
 
-Öffnen Sie ein Werkzeug oben links. **Form** verändert den Körper und sein Zubehör. **Fächer** ändert das Layout. **Hülle** entwirft eine separate äußere Abdeckung. **Drucken** stellt das Bauvolumen, die Filamentplätze und optionale Schnitte ein. Klicken Sie auf eine Fachnummer, Wand oder Trennwand am Modell, um die Einstellungen rechts zu öffnen. Wenn ein Teil schwer zu klicken ist, erweitern Sie **Alle Wände und Fächer** und wählen Sie es nach Namen aus.
+Öffnen Sie ein Werkzeug oben links. **Form** verändert den Körper und sein Zubehör. **Fächer** ändert das Layout. **Hülle** entwirft eine separate äußere Abdeckung. Drucker, Bauraum und Filamentplätze stellen Sie oben unter **Drucker** ein. Unter **Drucken** wählen Sie die Trennstellen. Klicken Sie auf eine Fachnummer, Wand oder Trennwand am Modell, um die Einstellungen rechts zu öffnen. Wenn ein Teil schwer zu klicken ist, erweitern Sie **Alle Wände und Fächer** und wählen Sie es nach Namen aus.
 
 Wählen Sie links einen Abschnitt. Seine Einstellungen erscheinen in einem schwebenden Editor unten in der Vorschau; Modell und Raster bleiben dahinter sichtbar. Der Editor ergänzt das linke Menü. Mit dem Pfeil klappen Sie ihn ein, mit **×** schließen Sie ihn. Ein anderer Abschnitt links öffnet die zugehörigen Einstellungen. Rechts bleiben die Einstellungen der ausgewählten Wand oder des Fachs sichtbar.
 
@@ -152,7 +152,7 @@ Bei einer umlaufenden Hülle greift eine Zunge an der Innenseite der unteren Wan
 
 Wählen Sie einen zylindrischen Griff oder einen Steg, um **Farbe des Deckelgriffs** einzublenden. Standardmäßig ist **Wie die Deckelgrundfarbe** aktiviert: Der Griff übernimmt die Grundfarbe des Deckels. Eine andere Farbauswahl macht den Griff unabhängig; aktivieren Sie die Option erneut, um die Farben wieder zu verknüpfen. Der Griff bleibt ein separat gedrucktes Teil.
 
-Klicken Sie auf das Farbfeld neben **Deckelgrundfarbe**, **Deckelmusterfarbe** oder **Farbe des Deckelgriffs**. Das Fenster enthält **Slicer-Filamente** für den aktuellen Drucker, eine Farbpalette, eine freie Farbauswahl und ein Feld für einen sechsstelligen HEX-Code. Hinterlegen Sie Ihre Farben unter **Drucken → Slicer-Filamente**. Gelöschte Steckplätze fehlen; die übrigen Nummern bleiben erhalten.
+Klicken Sie auf das Farbfeld neben **Deckelgrundfarbe**, **Deckelmusterfarbe** oder **Farbe des Deckelgriffs**. Das Fenster enthält **Slicer-Filamente** für den aktuellen Drucker, eine Farbpalette, eine freie Farbauswahl und ein Feld für einen sechsstelligen HEX-Code. Hinterlegen Sie Ihre Farben unter **Drucker → Slicer-Filamente**. Gelöschte Steckplätze fehlen; die übrigen Nummern bleiben erhalten.
 
 Farben werden im Projekt gespeichert und in 3MF und OBJ übernommen; STL enthält keine Farben. Beim 3MF-Export wählt eine eindeutige Farbübereinstimmung automatisch den gespeicherten Filamentsteckplatz. Bei mehrfach verwendeten Farben wählen Sie den Steckplatz im Exportfenster manuell. Prüfen Sie die Zuordnung im Slicer. Bildschirmfarben sind Näherungen und bilden keine reale Filamentmischung ab.
 
@@ -190,7 +190,7 @@ Bewahren Sie ein heruntergeladenes Backup auf, bevor Sie Browserdaten löschen. 
 <a id="print-setup-and-sectioning"></a>
 ## Druckeinstellungen und Aufteilung
 
-Unter **Drucken** wählen Sie Ihre Drucker- und Kopfkonfiguration oder wählen Sie **Eigene Größe**. Überprüfen Sie die Länge, Breite und Höhe des Druckbereichs. Die Voreinstellung liefert das Buildvolumen. Wählen Sie den Drucker, die Düse, das Material und die Schnittprofile in Ihrem Slicer.
+Unter **Drucker** wählen Sie Ihre Drucker- und Kopfkonfiguration oder wählen Sie **Eigene Größe**. Überprüfen Sie die Länge, Breite und Höhe des Druckbereichs. Die Voreinstellung liefert das Buildvolumen. Wählen Sie den Drucker, die Düse, das Material und die Schnittprofile in Ihrem Slicer.
 
 Passt das Modell nicht auf das Druckbett, verwenden Sie die vorgeschlagenen Trennstellen oder wählen Sie zwei beziehungsweise drei Teile, sofern verfügbar. Prüfen Sie die Verbindungen mit **Teile auseinanderziehen**. Dabei werden die Wände auf mindestens 5 mm und der Boden auf mindestens 3 mm verstärkt; kontrollieren Sie danach die Innenmaße. Entfernen Sie zuvor Hüllen und Einsätze. Gestapelte Ebenen, geneigte Modelle sowie Kreis-, Oval- und Wabenformen müssen am Stück gedruckt werden. **Als Ganzes drucken** hebt die Aufteilung auf. Prüfen Sie die Dicken erneut, wenn Sie die ursprünglichen Maße wiederherstellen möchten.
 
@@ -199,7 +199,7 @@ Passt das Modell nicht auf das Druckbett, verwenden Sie die vorgeschlagenen Tren
 <a id="download-and-slice"></a>
 ## Herunterladen und im Slicer vorbereiten
 
-1. Richten Sie unter **Drucken** → **Slicer-Filamente** dieselben Slotnummern und Farben wie im Slicer ein. Beim Snapmaker U1 entsprechen die Slots 1–4 den Köpfen T0–T3. Es gibt bis zu 16 Slots; Farbe und Materialname sind einstellbar. Die Farbe dient nur zur Orientierung, nicht zur Simulation gedruckter oder gemischter Farbtöne. Exakte Farbmischungen legen Sie im Slicer fest. Wählen Sie eine Karte und **Delete filament from slot N**, um das Filament zu entfernen. Andere Nummern bleiben unverändert: Nach dem Löschen von Slot 6 bleibt Slot 7 die Nummer 7. **+ Slot N** belegt wieder die niedrigste freie Nummer; die Grenze bleibt 16. Das Löschen ändert keine Modellfarbe. Entfernte Slots werden beim Export weder angeboten noch automatisch zugeordnet; wählen Sie einen anderen Slot oder weisen Sie ihn im Slicer zu. Unterschiedliche Farben erlauben eine automatische Zuordnung. Haben zwei Slots dieselbe Farbe, wählen Sie im Downloadfenster den gewünschten Slot für jedes Teil.
+1. Richten Sie unter **Drucker** → **Slicer-Filamente** dieselben Slotnummern und Farben wie im Slicer ein. Beim Snapmaker U1 entsprechen die Slots 1–4 den Köpfen T0–T3. Es gibt bis zu 16 Slots; Farbe und Materialname sind einstellbar. Die Farbe dient nur zur Orientierung, nicht zur Simulation gedruckter oder gemischter Farbtöne. Exakte Farbmischungen legen Sie im Slicer fest. Wählen Sie eine Karte und **Delete filament from slot N**, um das Filament zu entfernen. Andere Nummern bleiben unverändert: Nach dem Löschen von Slot 6 bleibt Slot 7 die Nummer 7. **+ Slot N** belegt wieder die niedrigste freie Nummer; die Grenze bleibt 16. Das Löschen ändert keine Modellfarbe. Entfernte Slots werden beim Export weder angeboten noch automatisch zugeordnet; wählen Sie einen anderen Slot oder weisen Sie ihn im Slicer zu. Unterschiedliche Farben erlauben eine automatische Zuordnung. Haben zwei Slots dieselbe Farbe, wählen Sie im Downloadfenster den gewünschten Slot für jedes Teil.
 2. Klicken Sie auf **↓ Herunterladen**. Wählen Sie **Organizer und Zubehör**, **Nur Shell** oder **Das ganze Set**, je nachdem, welche Teile Sie benötigen. Exportieren Sie das Kit für ein geschnittenes Modell.
 3. Legen Sie für 3MF jedem Teil einen Filamentplatz zu oder lassen Sie ihn im Slicer zur Zuordnung. Orca kann den ersten Filament für nicht zugewiesene Teile verwenden.
 4. Warten Sie auf die Geometrie- und Größenprüfungen. Lesen Sie die Abmessungen jedes Teils und jede Anweisung, es um 90° auf dem Bett zu drehen. Die Überprüfung reserviert 2 mm an den Druckbetträndern. Laden Sie es mit der Formatschaltfläche am unteren Rand des Dialogs herunter.
@@ -226,7 +226,7 @@ Für dieselbe digitale Farbe wie im Slicer geben Sie neben der Farbauswahl den s
 | Ein Teil übertrifft das Bett, obwohl der Fußabdruck klein genug schien | Lesen Sie die fertigen Abmessungen im Download-Dialog. Kippen, Relief, Verkleidung und Schalen können sich über die Basis hinaus erstrecken. Überprüfen Sie die gewählte Druckerkonfiguration und -rotation. |
 | Versteckte Plattenbefestigungen sind nicht verfügbar | Verwenden Sie Wände mit einer Dicke von mindestens 3,2 mm ohne Relief oder lassen Sie Befestigungselemente aus und verkleben Sie die Paneele; das Ändern von Paneelen verdickt die Wände nicht. |
 | Paneele überlappen die Bodenverkleidung oder die Etagenfelge in einem alten Design | Bei Etagen ist ein Kantenversatz von mindestens 3 mm festzulegen. Der untere Versatz wird von der Oberseite der unteren Verkleidung aus gemessen. Die Teile werden nach Änderung der Einstellungen regeneriert und heruntergeladen. |
-| Ein heruntergeladener Druck hat die falschen Farben | Verwenden Sie 3MF, passen Sie die Slotnummern in **Drucken** an und prüfen Sie dann die Einzelteilzuweisungen im Slicer. STL trägt nur Geometrie. |
+| Ein heruntergeladener Druck hat die falschen Farben | Verwenden Sie 3MF, passen Sie die Slotnummern in **Drucker** an und prüfen Sie dann die Einzelteilzuweisungen im Slicer. STL trägt nur Geometrie. |
 | Ein auf einem anderen Gerät gespeichertes Design fehlt | Übertragen Sie das Projekt JSON und verwenden Sie **Öffnen**. Browserbibliotheken sind lokal für jedes Gerät und jede Site-Adresse. |
 
 <a id="project-variants"></a>
@@ -369,6 +369,11 @@ Der ZIP enthält **bed-NN.3mf** für jedes Bett, übereinstimmende **bed-NN.svg*
 Wählen Sie **Raised relief (decoration)** für Relief oder **Through stencil (cut)** für Durchbrüche. Hüllen unterstützen nur Durchbrüche. Die Reliefhöhe erscheint nur im Reliefmodus, der Abstand nur bei Wiederholungen. **Material thickness** ändert Vorschau und Export: 1,2–6 mm für SVG-Deckel, 1–4 mm für Hüllen. Die Standarddicke beträgt 3,2 mm für Relief und 2 mm für Schablonen; eine selbst gewählte Dicke bleibt beim Moduswechsel erhalten. Die Reliefhöhe ist in der Deckeldicke enthalten. Ein innenliegender SVG-Deckel braucht mindestens seine Plattendicke plus 2 mm Innentiefe. Unter **Zusätzlich** finden Sie Deckelfarbe oder Hüllenseiten. **Which SVG files work?** erklärt Dateianforderungen und Vorbereitung.
 
 Öffnen Sie **Form** → **Deckel** → **My SVGs** oder **Hülle** → **Pattern** → **My SVGs**. Die Registerkarten **Deckel** und **Hülle** teilen eine Bibliothek, behalten aber eigene Einstellungen. Beim Wechsel wird das entsprechende Teil einzeln angezeigt; fehlt es noch, bleibt die Baugruppe sichtbar. Sie können die gemeinsame Ansicht weiterhin über dem Modell wählen. Breite, Drehung, Abstand und X/Y positionieren das Motiv; die Zentriertaste setzt Position und Drehung zurück. Deckel erlauben Relief oder Durchbrüche, Hüllen nur Durchbrüche. Rahmen und Befestigungsbereiche bleiben erhalten. **×** oder **Escape** schließt das aktive Studio und behält die Änderungen. Die Pfeiltasten wechseln die fokussierte Registerkarte.
+
+## Gridfinity
+
+Wählen Sie das 42-mm-Raster für Standardbehälter oder geben Sie die Innenmaße Ihrer Schublade ein. Die Platten werden passend zum Druckbett geteilt. Behälter können über eine Plattenfuge reichen. Drucker und Filamente stellen Sie oben unter **Drucker** ein. [Anleitung Gridfinity](../../GRIDFINITY.md)
+
 
 ## Gridfinity und Verschieben
 

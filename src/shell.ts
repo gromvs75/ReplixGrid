@@ -11,6 +11,12 @@ export const defaultShell=(pattern:ShellSettings['pattern']):ShellSettings=>({pa
 // Smoothstep makes a gentle S: horizontal tangents, no height overshoot.
 function curveSteps(w:Wall){return Math.max(32,Math.ceil(Math.sqrt(Math.abs(w.endHeight-w.startHeight)*.75/.01)));}
 function smooth(t:number){return t*t*(3-2*t);}
+export function cutoutDepthFraction(shape:NonNullable<Wall['cutout']>['shape'],u:number){
+  if(shape==='round')return Math.sqrt(Math.max(0,1-(2*u-1)**2));
+  const edge=Math.min(u,1-u);
+  if(shape==='smooth')return edge>=.3?1:smooth(edge/.3);
+  return edge>=.12?1:Math.sqrt(Math.max(0,1-(1-edge/.12)**2));
+}
 export function topAt(w:Wall,x:number){
   const t=Math.max(0,Math.min(1,(x-w.cap)/(w.length-2*w.cap)));
   let f=t;
@@ -31,11 +37,7 @@ export function topAt(w:Wall,x:number){
   if(!cut)return base;
   const span=w.length*.9,width=span*cut.width,lo=w.length*.05+(span-width)*cut.position;
   const u=(x-lo)/width;if(u<=0||u>=1)return base;
-  let shape:number;
-  if(cut.shape==='round')shape=Math.sqrt(Math.max(0,1-(2*u-1)**2));
-  else if(cut.shape==='smooth'){const edge=Math.min(u,1-u);shape=edge>=.3?1:smooth(edge/.3);}
-  else {const edge=Math.min(u,1-u),r=.12;shape=edge>=r?1:Math.sqrt(Math.max(0,1-(1-edge/r)**2));}
-  return Math.max(w.minTop??.8,base-cut.depth*shape);
+  return Math.max(w.minTop??.8,base-cut.depth*cutoutDepthFraction(cut.shape,u));
 }
 export function wallOutline(w:Wall):P2[]{
   const {length:l,startHeight:a,endHeight:b,cap}=w;

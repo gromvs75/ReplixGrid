@@ -33,11 +33,22 @@ Začněte s tříkompartmentovým organizátorem pro Váš stůl. Příklad ní�
 - **Nad modelem:** zvolte **Sestava**, **Organizér**, **Vložky**, **Plášť** nebo **Víko**. Nabídka vedle **Organizér** otevře patro k úpravě nebo celou sestavu pomocí **Zobrazit zásobník**, aniž zavře dolní editor. Dostupné jsou jen existující díly. V úzkém okně se tlačítka přesunou do samostatného řádku.
 - **Vpravo:** kliknutím na číslo přihrádky, stěnu nebo přepážku otevřete její nastavení.
 
-V **Tvar**, začít s **Warp**, pak použít **Rozměry**. V **Plášť**, Vyberte vzor, typ pláště, barva, tloušťka / ráfek a zapadnout do jejich samostatných sekcí. V **Tisk**, zvolte tiskárnu, konfigurujte sloty vlákna, nebo otevřete ovládání sekčního tisku.
+V **Tvar**, začít s **Warp**, pak použít **Rozměry**. V **Plášť**, Vyberte vzor, typ pláště, barva, tloušťka / ráfek a zapadnout do jejich samostatných sekcí. Tiskárnu, tiskový prostor a filamenty nastavte v horní nabídce **Tiskárna**. V části **Tisk** vyberte řezy.
 
 Při pohybu posuvníku se model aktualizuje po každém výpočtu. Složité modely mohou vyžadovat více času; konečná hodnota se vždy počítá s plnou přesností. Před kontrolou nebo exportem počkejte na dokončení náhledu. Oznámení zmizí po 10 sekundách nebo je zavřete tlačítkem **×**.
 
 Video Quick Start bylo nahráno s dřívějším rozvržením obrazu. Modelovací kroky stále platí; pro nalezení aktuálních ovladačů použijte výše uvedená místa.
+
+<a id="current-interface-examples"></a>
+## Ukázky anglického rozhraní
+
+| Organizér a přihrádky | Přepážka |
+| --- | --- |
+| ![Organizér a přihrádky](../../../public/guides/expanded-organizer.png) | ![Přepážka](../../../public/guides/wall-selection.png) |
+
+| Šablony | Voština |
+| --- | --- |
+| ![Šablony](../../../public/guides/templates.png) | ![Voština](../../../public/guides/honeycomb-template.png) |
 
 <a id="build-the-example"></a>
 ## Vytvoření ukázkového modelu
@@ -60,7 +71,7 @@ Víko vyžaduje horní okraj ve stejné výšce. Chcete-li zachovat nakloněnou 
 2. Povolit **Dvoubarevný vzor** a vybrat **Lid pattern**. Chcete-li vyzkoušet větráky v galerii, vyberte **Listy jinanu**.
 3. Nastavit **Základní barva víka** na barvu pozadí a **Barva vzoru víka** na barvu výkresu. Pro níže uvedenou kombinaci zvolte krém pro podklad a olivovou zelenou pro vzor.
 
-Barvy základu, vzoru a úchytky vyberte z **Filamenty sliceru** v příslušném okně barvy. Sloty nejprve nastavte v **Tisk → Filamenty sliceru**. **Stejná jako základ víka** propojí úchytku se základem; výběr jiné barvy ji nastaví nezávisle. Exportujte jako 3MF a zkontrolujte přiřazení filamentů.
+Barvy základu, vzoru a úchytky vyberte z **Filamenty sliceru** v příslušném okně barvy. Sloty nejprve nastavte v **Tiskárna → Filamenty sliceru**. **Stejná jako základ víka** propojí úchytku se základem; výběr jiné barvy ji nastaví nezávisle. Exportujte jako 3MF a zkontrolujte přiřazení filamentů.
 
 ![Two- tone víčka, zleva doprava. Horní řada ukazuje Olive větev, Ginkgo listy a Fern frond. Dolní řada ukazuje přílivové vlny, říční oblázky a růstové kroužky.](../../images/lid-motifs.svg)
 
@@ -69,7 +80,7 @@ Barvy základu, vzoru a úchytky vyberte z **Filamenty sliceru** v příslušné
 <a id="download-your-first-print"></a>
 ## Stažení prvního modelu k tisku
 
-1. Otevřít **Tisk** a vyberte konfiguraci tiskárny nebo zadejte její objem.
+1. Otevřít **Tiskárna** a vyberte konfiguraci tiskárny nebo zadejte její objem.
 2. Kliknout **↓ Stáhnout** v horním baru. V **Ověření a stažení**, vybrat **Organizér a příslušenství**. Pokud jste přidali skořápku a chcete ji také, vyberte celou sadu.
 3. Vyberte **STL** pro jednobarevné tělo, nebo **3MF** k uchování oddělených částí, barev a úloh vlákna. Počkejte na kontrolu geometrie a velikosti. Pokud se část nehodí, opravte rozměry nebo sestavte objem a znovu otevřete dialog.
 4. Kliknout **↓ Stáhnout STL** nebo **↓ Stáhnout 3MF** v dolní části dialogu. Pokud několik STL soubory dorazí v ZIP Nejdřív je vyndej.
@@ -91,14 +102,14 @@ Knihovna je uložena ve vašem prohlížeči a vázaná na adresu webu. Čiště
 <a id="filaments-and-export-options"></a>
 ## Filamenty a formáty exportu
 
-Pro vícebarevný 3MF nastavte sloty v **Tisk** se stejnými čísly a barvami jako ve sliceru. U Snapmaker U1 odpovídají první čtyři sloty T0–T3. V okně stahování přiřaďte slot každému dílu a ověřte přiřazení v Snapmaker Orca. Nepřiřazené díly mohou použít první filament. Profily tiskárny a materiálu nastavte ve sliceru.
+Pro vícebarevný 3MF nastavte sloty v **Tiskárna** se stejnými čísly a barvami jako ve sliceru. U Snapmaker U1 odpovídají první čtyři sloty T0–T3. V okně stahování přiřaďte slot každému dílu a ověřte přiřazení v Snapmaker Orca. Nepřiřazené díly mohou použít první filament. Profily tiskárny a materiálu nastavte ve sliceru.
 
 Pro barevný OBJ, udržet OBJ a jeho MTL soubor ve stejné složce. Kontrola exportu umožňuje 2 mm rozpětí na tiskové podložce hrany pro každou část. Uspořádat celou sadu a zkontrolovat převisy a jemné detaily v sliceru.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Tisk velkého organizéru po částech
 
-V **Tisk** nastavte tiskový prostor a vyberte dvě či tři části nebo navržené řezy. Stěny se zesílí alespoň na 5 mm a dno na 3 mm, takže se změní vnitřní rozměry. Aplikace vás před rozdělením vyzve k odstranění plášťů a vložek. Některé tvary a nastavení rozdělení neumožňují.
+Tiskárnu, tiskový prostor a filamenty nastavte v horní nabídce **Tiskárna**. V části **Tisk** vyberte řezy. Stěny se zesílí alespoň na 5 mm a dno na 3 mm, takže se změní vnitřní rozměry. Aplikace vás před rozdělením vyzve k odstranění plášťů a vložek. Některé tvary a nastavení rozdělení neumožňují.
 
 Stáhnout společný vzorek, umístit jeho poloviny odděleně, a tisknout na 100% stupnice. Po chladu, zkontrolujte uložení kolíky. Poté stáhnout sadu, zkontrolovat všechny díly v sliceru, vytisknout, a sestavit je po chlazení pomocí kolíky a lepidlem. Nominální rozměry kolíku jsou Ø 3,2 × 8 mm; každý otvor je Ø 3,3 mm a 4,5 mm hluboké. Pevnost a pevnost závisí na nastavení tisku, materiál a kvalita lepidla.
 
@@ -154,6 +165,15 @@ V nabídce vedle **Organizér** nad modelem vyberte patro. Otevřete **Tvar** �
 <a id="manage-filament-slots"></a>
 ### Správa slotů filamentu
 
-V **Tisk** → **Slicer filaments** nastavte stejná čísla a barvy jako ve sliceru. U Snapmaker U1 odpovídají sloty 1–4 hlavám T0–T3. Lze nastavit až 16 slotů s barvou a názvem materiálu. Barva je přibližná orientační pomůcka, nikoli simulace vytištěného nebo smíchaného odstínu; přesné směsi nastavte ve sliceru. Vyberte kartu a klikněte na **Delete filament from slot N** pro odstranění filamentu. Ostatní čísla se nemění: po odstranění slotu 6 zůstává slot 7 číslem 7. **+ Slot N** znovu použije nejnižší volné číslo; limit zůstává 16. Odstranění nemění barvu modelu. Odstraněné sloty se při exportu nenabízejí ani automaticky nepřiřazují; vyberte jiný nebo jej přiřaďte ve sliceru. Různé barvy umožňují automatické párování. Mají-li dva sloty stejnou barvu, vyberte správný pro každý díl v okně stahování.
+V **Tiskárna** → **Slicer filaments** nastavte stejná čísla a barvy jako ve sliceru. U Snapmaker U1 odpovídají sloty 1–4 hlavám T0–T3. Lze nastavit až 16 slotů s barvou a názvem materiálu. Barva je přibližná orientační pomůcka, nikoli simulace vytištěného nebo smíchaného odstínu; přesné směsi nastavte ve sliceru. Vyberte kartu a klikněte na **Delete filament from slot N** pro odstranění filamentu. Ostatní čísla se nemění: po odstranění slotu 6 zůstává slot 7 číslem 7. **+ Slot N** znovu použije nejnižší volné číslo; limit zůstává 16. Odstranění nemění barvu modelu. Odstraněné sloty se při exportu nenabízejí ani automaticky nepřiřazují; vyberte jiný nebo jej přiřaďte ve sliceru. Různé barvy umožňují automatické párování. Mají-li dva sloty stejnou barvu, vyberte správný pro každý díl v okně stahování.
 
 Pro stejnou digitální barvu jako ve sliceru zadejte vedle výběru barvy šestimístný **HEX code**, například `#E63522`. Úvodní `#` je volitelný. Platný kód okamžitě aktualizuje náhled. Neúplný nebo chybný kód se nepoužije; po opuštění pole se vrátí uložená barva. Kód nesimuluje skutečný vzhled filamentu, osvětlení ani fyzické míchání barev.
+
+## Gridfinity
+
+Vyberte standardní mřížku 42 mm nebo zadejte vnitřní rozměry zásuvky. Desky se rozdělí podle velikosti tiskové podložky. Vanička může stát přes spoj dvou desek. Tiskárnu a filamenty nastavíte v horní nabídce tiskárny. [Návod Gridfinity](../../GRIDFINITY.md)
+
+<a id="preview-contrast"></a>
+### Kontrast v náhledu
+
+Obrysy rozlišují přihrádky stejné barvy. Při přetahování označuje zelená platnou polohu. Klávesa Esc vrátí vaničku na původní místo.

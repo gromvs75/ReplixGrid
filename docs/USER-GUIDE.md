@@ -14,7 +14,7 @@ All Help menu labels follow the selected interface language. Quick Start and Use
 
 The helper follows the interface language, including all three steps, hints and the saved-project confirmation. The saved-project row uses the translated label **Previous project**. Actual project names in **My projects** remain as you saved them.
 
-To start again, click **New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. A thumbnail row labelled **Previous project** in the helper confirms what was saved; click it to open the library. The canvas is cleared immediately and stays empty until you choose a new shape. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
+To start again, click **Projects → New project** in the top bar. Your previous work is saved in **My projects**, including an unnamed draft. A thumbnail row labelled **Previous project** in the helper confirms what was saved; click it to open the library. The canvas is cleared immediately and stays empty until you choose a new shape. The new model starts without dividers or accessories (Honeycomb retains its connected cells). Returning to an existing project restores its saved work. Choosing a template inside **Shape → Base** changes the current model; **New project** creates a separate one.
 
 
 [Open ReplixGrid](https://grid.replixcast.com/?lang=en) · [User Guide — full feature reference](REFERENCE.md)
@@ -30,7 +30,7 @@ Start with a three-compartment organizer for your desk. The example below is 180
 - **Above the model, in the center:** **Assembly**, **Organizer**, **Inserts**, **Shell** and **Lid** control which parts you see. For stacked designs, use the tier dropdown beside **Organizer** to select the active tier without closing the bottom settings editor. Choose **View stack** in the same dropdown to see all tiers and accessories together. Available buttons depend on your design. On narrower windows, they move onto a separate row below the toolbars.
 - **On the right:** click a compartment number, wall or divider to edit that element.
 
-In **Shape**, start with **Base**, then use **Dimensions**. In **Shell**, choose the pattern, shell type, color, thickness/rim and fit in their separate sections. In **Print**, choose a printer, configure filament slots, or open the section-printing controls.
+In **Shape**, start with **Base**, then use **Dimensions**. In **Shell**, choose the pattern, shell type, color, thickness/rim and fit in their separate sections. Use **Printer** in the top bar to choose the shared printer and configure filament slots. Open **Print** to split the organizer.
 
 While you move a slider, the model updates as each calculation finishes. Complex models may take longer; the final value is always calculated at full precision. Wait for the finished preview before checking or exporting the result. Editor notifications disappear after 10 seconds, or you can close them with **×**.
 
@@ -67,7 +67,7 @@ A lid needs a level rim. If you want to keep the sloped capsule from the example
 2. Enable **Two-tone pattern** and choose a **Lid pattern**. To try the fan-shaped leaves in the gallery, select **Ginkgo leaves**.
 3. Set **Lid base color** to the background color and **Lid pattern color** to the color of the drawing. For the combination shown below, choose cream for the base and olive green for the pattern.
 
-Choose the lid base, pattern and handle colors from **Slicer filaments** in their color popups. Set up those slots under **Print → Slicer filaments** first. **Match lid base** links the handle to the lid base; choosing a different handle color makes it independent. Export as 3MF to retain colors and check the filament assignments.
+Choose the lid base, pattern and handle colors from **Slicer filaments** in their color popups. Set up those slots under **Printer → Slicer filaments** first. **Match lid base** links the handle to the lid base; choosing a different handle color makes it independent. Export as 3MF to retain colors and check the filament assignments.
 
 ![Two-tone lids, from left to right. Top row shows Olive branch, Ginkgo leaves and Fern frond. Bottom row shows Tidal waves, River pebbles and Growth rings.](images/lid-motifs.svg)
 
@@ -75,7 +75,7 @@ For printing, choose **3MF** and assign the base and pattern to their filament s
 
 ## Download your first print
 
-1. Open **Print** and choose your printer configuration or enter its build volume.
+1. Open **Printer** in the top bar and choose your printer configuration or enter its build volume.
 2. Click **↓ Download** in the top bar. In **Check and download**, choose **Organizer and accessories**. If you added a shell and want it too, choose the whole kit.
 3. Choose **STL** for a single-color body, or **3MF** to keep separate parts, colors and filament assignments. Wait for the geometry and size checks. If a part does not fit, correct the dimensions or build volume and reopen the dialog.
 4. Click **↓ Download STL** or **↓ Download 3MF** at the bottom of the dialog. If several STL files arrive in a ZIP, extract them first.
@@ -95,13 +95,13 @@ The library is stored in your browser and tied to the site address. Clearing sit
 
 ## Filaments and export options
 
-For a multicolor 3MF, configure the available slots in **Print** with the same numbers and colors as your slicer. On a Snapmaker U1 the first four correspond to T0–T3. Assign a slot to each part in the download dialog, then verify the assignments in Snapmaker Orca. Unassigned parts may use the first filament. Your printer and material profiles come from your slicer.
+For a multicolor 3MF, configure the available slots in **Printer** with the same numbers and colors as your slicer. On a Snapmaker U1 the first four correspond to T0–T3. Assign a slot to each part in the download dialog, then verify the assignments in Snapmaker Orca. Unassigned parts may use the first filament. Your printer and material profiles come from your slicer.
 
 For a colored OBJ, keep the OBJ and its MTL file in the same folder. The export check allows a 2 mm margin at the bed edges for each part. Arrange the whole kit and check overhangs and fine details in the slicer.
 
 ## Print a large organizer in sections
 
-In **Print**, set the build volume and choose two or three sections, or use the suggested cuts. The app raises wall thickness to at least 5 mm and floor thickness to at least 3 mm, changing compartment sizes. Shells and inserts are unavailable when splitting; the app prompts you to remove them. Some shapes and settings also restrict splitting.
+Choose the printer, bed size and filament slots under **Printer** in the top bar. Use **Print** to choose section cuts. The app raises wall thickness to at least 5 mm and floor thickness to at least 3 mm, changing compartment sizes. Shells and inserts are unavailable when splitting; the app prompts you to remove them. Some shapes and settings also restrict splitting.
 
 Download the joint sample, place its halves separately, and print at 100% scale. Once cool, check the fit of the pins. Then download the kit, inspect all parts in the slicer, print them, and assemble them after cooling using pins and glue. Nominal pin dimensions are Ø 3.2 × 8 mm; each hole is Ø 3.3 mm and 4.5 mm deep. Fit and strength depend on print settings, material, and glue quality.
 
@@ -148,14 +148,14 @@ Select **Tier 1**, **Tier 2**, or another tier from the dropdown beside **Organi
 
 ### Manage filament slots
 
-Under **Print → Slicer filaments**, add up to 16 slots and set a name and approximate preview color for each. Configure the exact shade and any color mixing in your slicer; ReplixGrid does not calculate mixing recipes. Select any card and click **Delete filament from slot N** to free that number without renumbering the others. **+ Slot N** restores the lowest free number. Model colors remain unchanged. Check the slot assignments again before exporting 3MF, especially after deleting a filament.
+Under **Printer → Slicer filaments**, add up to 16 slots and set a name and approximate preview color for each. Configure the exact shade and any color mixing in your slicer; ReplixGrid does not calculate mixing recipes. Select any card and click **Delete filament from slot N** to free that number without renumbering the others. **+ Slot N** restores the lowest free number. Model colors remain unchanged. Check the slot assignments again before exporting 3MF, especially after deleting a filament.
 
 To match a digital color from your slicer, paste its six-digit **HEX code**, for example `#E63522`, beside the color picker. The leading `#` is optional. Valid codes update the preview immediately; incomplete or invalid text is not applied and reverts to the saved color when you leave the field. A matching HEX code does not simulate filament appearance, lighting or a physical color mixture.
 
 
 ## Gridfinity
 
-The separate Gridfinity workspace generates trays and baseplates on a 42 mm grid. It preserves ordinary organizer projects and uses its own project files. See the [Gridfinity guide](GRIDFINITY.md) for dimensions, export, licensing and the required physical fit test.
+Choose a standard 42 mm grid or enter the inside dimensions of a drawer. Drawer-fit mode divides plates to fit the print bed and lets a tray span a seam. See the [Gridfinity guide](GRIDFINITY.md) for stacking, lids, labels, cutouts and export.
 
 ### Preview contrast
 

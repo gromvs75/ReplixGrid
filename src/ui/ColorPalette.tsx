@@ -1,3 +1,4 @@
+import {useConfiguredPrinter} from './useConfiguredPrinter.js';
 import {useId,useLayoutEffect,useRef,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {t} from '../i18n.js';
@@ -17,10 +18,10 @@ function swatchText(color:string){
  return .2126*rgb[0]+.7152*rgb[1]+.0722*rgb[2]>.179?'#121820':'#fff';
 }
 function ColorChoices({label,color,onChange:set,popup,includeFilaments=true,printerKey}:ColorPickerProps){
- const p=useEditor(s=>s.project),palettes=useFilaments(s=>s.palettes),slots=palettes[printerKey??filamentPrinterKey(p)]??[];
+ const p=useConfiguredPrinter(),palettes=useFilaments(s=>s.palettes),slots=palettes[printerKey??filamentPrinterKey(p)]??[];
  const [draft,setDraft]=useState<string|null>(null),hex=draft??color.toUpperCase(),valid=/^#?[0-9a-f]{6}$/i.test(hex.trim());
  return <>
-  {includeFilaments&&(popup||slots.length>0)&&<section className="color-filaments"><h4>{t('Филаменты слайсера')}</h4>{slots.length>0?<div className="color-swatches" role="group" aria-label={t('Филаменты слайсера')}>{slots.map((slot,i)=>{const number=slotNumber(slot,i);return <button key={number} type="button" title={`${t('Слот')} ${number} · ${slot.name||slot.color.toUpperCase()}`} aria-label={`${t('Слот')} ${number} · ${slot.name||slot.color.toUpperCase()}`} aria-pressed={color.toLowerCase()===slot.color.toLowerCase()} style={{background:slot.color,color:swatchText(slot.color)}} onClick={()=>{setDraft(null);set(slot.color);}}>{number}</button>;})}</div>:<p className="hint">{t('Добавьте цвета в «Печать → Филаменты слайсера».')}</p>}</section>}
+  {includeFilaments&&(popup||slots.length>0)&&<section className="color-filaments"><h4>{t('Филаменты слайсера')}</h4>{slots.length>0?<div className="color-swatches" role="group" aria-label={t('Филаменты слайсера')}>{slots.map((slot,i)=>{const number=slotNumber(slot,i);return <button key={number} type="button" title={`${t('Слот')} ${number} · ${slot.name||slot.color.toUpperCase()}`} aria-label={`${t('Слот')} ${number} · ${slot.name||slot.color.toUpperCase()}`} aria-pressed={color.toLowerCase()===slot.color.toLowerCase()} style={{background:slot.color,color:swatchText(slot.color)}} onClick={()=>{setDraft(null);set(slot.color);}}>{number}</button>;})}</div>:<p className="hint">{t('Принтер')} → {t('Филаменты слайсера')}</p>}</section>}
   <div className="color-swatches" role="group" aria-label={label}>{palette.map(([name,hex])=><button key={hex} type="button" title={t(name)} aria-label={`${label}: ${t(name)}`} aria-pressed={color.toLowerCase()===hex} style={{background:hex,color:swatchText(hex)}} onClick={()=>{setDraft(null);set(hex);}}>{color.toLowerCase()===hex&&'✓'}</button>)}</div>
   <label className="custom-color">{t('Свой цвет')}<input aria-label={t('{0}: свой цвет',[label])} type="color" value={color} onChange={e=>{setDraft(null);set(e.target.value);}}/>{!popup&&<span>{color.toUpperCase()}</span>}</label>
   {popup&&<label className="picker-hex">{t('HEX-код')}<input aria-label={t('HEX-код цвета')} type="text" value={hex} aria-invalid={!valid} spellCheck={false} maxLength={7} placeholder="#E63522" onChange={e=>{const value=e.target.value;setDraft(value);if(/^#?[0-9a-f]{6}$/i.test(value.trim()))set('#'+value.trim().replace(/^#/,''));}} onBlur={()=>setDraft(null)} onKeyDown={e=>{if(e.key==='Enter')e.currentTarget.blur();}}/>{!valid&&<small>{t('Введите 6 символов: 0–9, A–F. Например, #E63522.')}</small>}</label>}

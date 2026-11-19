@@ -16,7 +16,7 @@ export function parseDrawer(raw:string):DrawerLayout{
  if(!d||d.kind!=='replixgrid-drawer'||d.schemaVersion!==1||typeof d.id!=='string'||typeof d.name!=='string'||d.name.length>80||!Array.isArray(d.trays)||d.trays.length>24)throw new Error('Некорректный файл ящика.');
  for(const [v,min,max] of [[d.width,20,2000],[d.depth,20,2000],[d.height,5,1000],[d.gap,0,20]])if(!Number.isFinite(v)||v<min||v>max)throw new Error('Проверьте размеры ящика и зазоры.');
  if(d.printBed)packBeds([],d.printBed);
- if(d.plate&&(![true,false].includes(d.plate.enabled)||![d.plate.bedWidth,d.plate.bedDepth].every(v=>Number.isFinite(v)&&v>=60&&v<=1000)))throw new Error('Некорректные размеры стола для пластины.');
+ if(d.plate&&(![true,false].includes(d.plate.enabled)||![d.plate.bedWidth,d.plate.bedDepth].every(v=>Number.isFinite(v)&&v>=40&&v<=1000)))throw new Error('Некорректные размеры стола для пластины.');
  if(d.viewRotation!==undefined&&![0,90].includes(d.viewRotation))throw new Error('Некорректный файл ящика.');
  if(new Set(d.trays.map(t=>t.id)).size!==d.trays.length)throw new Error('Некорректный файл ящика.');
  return {...d,viewRotation:d.viewRotation??0,trays:d.trays.map(t=>{

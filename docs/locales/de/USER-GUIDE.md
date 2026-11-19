@@ -33,11 +33,22 @@ Beginnen Sie mit einem Drei-Fach-Organizer für Ihren Schreibtisch. Das Beispiel
 - **Über dem Modell:** Wählen Sie **Zusammen**, **Organizer**, **Einsätze**, **Hülle** oder **Deckel**. Im Menü neben **Organizer** wählen Sie eine Ebene zum Bearbeiten oder **Stapel anzeigen** für die gesamte Stapelansicht; der untere Editor bleibt geöffnet. Nur vorhandene Teile sind auswählbar. In schmalen Fenstern stehen die Tasten in einer eigenen Zeile.
 - **Rechts:** klicken Sie auf eine Fächernummer, Wand oder Trennwand, um dieses Element zu bearbeiten.
 
-In **Form** beginnen Sie mit **Basis**, verwenden Sie dann **Abmessungen**. In **Hülle** wählen Sie das Muster, den Shell-Typ, die Farbe, die Dicke/den Rand und passen in ihre separaten Abschnitte. In **Drucken** wählen Sie einen Drucker aus, konfigurieren Sie Filamentplätze oder öffnen Sie die Abschnittsdrucksteuerelemente.
+In **Form** beginnen Sie mit **Basis**, verwenden Sie dann **Abmessungen**. In **Hülle** wählen Sie das Muster, den Shell-Typ, die Farbe, die Dicke/den Rand und passen in ihre separaten Abschnitte. Drucker, Bauraum und Filamentplätze stellen Sie oben unter **Drucker** ein. Unter **Drucken** wählen Sie die Trennstellen.
 
 Während Sie einen Schieberegler verschieben, wird das Modell aktualisiert, wenn jede Berechnung abgeschlossen ist. Komplexe Modelle können länger dauern; der endgültige Wert wird immer mit voller Genauigkeit berechnet. Warten Sie auf die fertige Vorschau, bevor Sie das Ergebnis überprüfen oder exportieren. Editorbenachrichtigungen verschwinden nach 10 Sekunden oder Sie können sie mit **×** schließen.
 
 Das Quick-Start-Video wurde mit dem früheren Panel-Layout aufgenommen. Die Modellierungsschritte gelten weiterhin; verwenden Sie die oben genannten Stellen, um die aktuellen Bedienelemente zu finden.
+
+<a id="current-interface-examples"></a>
+## Beispiele aus der englischen Oberfläche
+
+| Organizer und Fächer | Trennwand |
+| --- | --- |
+| ![Organizer und Fächer](../../../public/guides/expanded-organizer.png) | ![Trennwand](../../../public/guides/wall-selection.png) |
+
+| Vorlagen | Waben |
+| --- | --- |
+| ![Vorlagen](../../../public/guides/templates.png) | ![Waben](../../../public/guides/honeycomb-template.png) |
 
 <a id="build-the-example"></a>
 ## Das Beispiel nachbauen
@@ -60,7 +71,7 @@ Ein Deckel benötigt einen gleichmäßig hohen oberen Rand. Um die geneigte Kaps
 2. Ermöglicht **Zweifarbiges Muster** und wählen Sie eine **Lid pattern**. Um die fächerförmigen Blätter in der Galerie zu probieren, wählen Sie **Ginkgoblätter**.
 3. Stellen Sie **Deckelgrundfarbe** auf die Hintergrundfarbe und **Deckelmusterfarbe** auf die Farbe der Zeichnung. Wählen Sie für die unten gezeigte Kombination Creme für die Basis und Olivgrün für das Muster.
 
-Wählen Sie die Farben für Deckelgrundfläche, Muster und Griff über **Slicer-Filamente** im jeweiligen Farbfenster. Richten Sie die Steckplätze zuerst unter **Drucken → Slicer-Filamente** ein. **Wie die Deckelgrundfarbe** verknüpft den Griff mit der Deckelgrundfarbe; eine andere Farbe macht ihn unabhängig. Exportieren Sie als 3MF und prüfen Sie die Filamentzuordnung.
+Wählen Sie die Farben für Deckelgrundfläche, Muster und Griff über **Slicer-Filamente** im jeweiligen Farbfenster. Richten Sie die Steckplätze zuerst unter **Drucker → Slicer-Filamente** ein. **Wie die Deckelgrundfarbe** verknüpft den Griff mit der Deckelgrundfarbe; eine andere Farbe macht ihn unabhängig. Exportieren Sie als 3MF und prüfen Sie die Filamentzuordnung.
 
 ![Zweifarbige Deckel, von links nach rechts. obere Reihe zeigt Olivenzweig, Ginkgo-Blätter und Fernwedel. untere Reihe zeigt Gezeitenwellen, Flusssteine und Wachstumsringe.](../../images/lid-motifs.svg)
 
@@ -69,7 +80,7 @@ Wählen Sie die Farben für Deckelgrundfläche, Muster und Griff über **Slicer-
 <a id="download-your-first-print"></a>
 ## Das erste Druckmodell herunterladen
 
-1. Öffnen Sie **Drucken** und wählen Sie Ihre Druckerkonfiguration aus oder geben Sie das Modellaufbau-Volume ein.
+1. Öffnen Sie **Drucker** und wählen Sie Ihre Druckerkonfiguration aus oder geben Sie das Modellaufbau-Volume ein.
 2. Klicken Sie auf **↓ Herunterladen** in der oberen Leiste. Unter **Prüfen und herunterladen** wählen Sie **Organizer und Zubehör**. Wenn Sie eine Shell hinzugefügt haben und diese auch möchten, wählen Sie das gesamte Kit aus.
 3. Wählen Sie **STL** für einen einfarbigen Körper oder **3MF**, um separate Teile, Farben und Filamentzuordnungen zu behalten. Warten Sie auf die Geometrie- und Größenprüfungen. Wenn ein Teil nicht passt, korrigieren Sie die Abmessungen oder das Aufbauvolumen und öffnen Sie den Dialog erneut.
 4. Klicken Sie auf **↓ Herunterladen STL** oder **↓ Herunterladen 3MF** am Ende des Dialogs. Wenn mehrere STL-Dateien in einem ZIP ankommen, extrahieren Sie sie zuerst.
@@ -91,14 +102,14 @@ Die Bibliothek wird in Ihrem Browser gespeichert und an die Site-Adresse gebunde
 <a id="filaments-and-export-options"></a>
 ## Filamente und Exportformate
 
-Für ein mehrfarbiges 3MF konfigurieren Sie die verfügbaren Steckplätze in **Drucken** mit den gleichen Nummern und Farben wie Ihr Slicer. Auf einem Snapmaker U1 entsprechen die ersten vier T0–T3. Weisen Sie jedem Teil im Download-Dialog einen Steckplatz zu, und überprüfen Sie dann die Zuordnungen in Snapmaker Orca. Nicht zugewiesene Teile können das erste Filament verwenden. Ihre Drucker- und Materialprofile stammen von Ihrem Slicer.
+Für ein mehrfarbiges 3MF konfigurieren Sie die verfügbaren Steckplätze in **Drucker** mit den gleichen Nummern und Farben wie Ihr Slicer. Auf einem Snapmaker U1 entsprechen die ersten vier T0–T3. Weisen Sie jedem Teil im Download-Dialog einen Steckplatz zu, und überprüfen Sie dann die Zuordnungen in Snapmaker Orca. Nicht zugewiesene Teile können das erste Filament verwenden. Ihre Drucker- und Materialprofile stammen von Ihrem Slicer.
 
 Bei einem farbigen OBJ die OBJ und ihre MTL-Datei im selben Ordner aufbewahren. Die Exportprüfung erlaubt einen 2 mm Rand an den Druckbetträndern für jedes Teil. Das gesamte Kit anordnen und Überhänge und feine Details im Slicer überprüfen.
 
 <a id="print-a-large-organizer-in-sections"></a>
 ## Große Organizer in Teilen drucken
 
-Stellen Sie unter **Drucken** den Bauraum ein und wählen Sie zwei oder drei Teile oder die vorgeschlagenen Trennstellen. Die Wandstärke erhöht sich auf mindestens 5 mm, die Bodenstärke auf mindestens 3 mm; dadurch ändern sich die Fachmaße. Hüllen und Einsätze müssen zuvor entfernt werden. Einige Formen und Einstellungen erlauben keine Aufteilung.
+Drucker, Bauraum und Filamentplätze stellen Sie oben unter **Drucker** ein. Unter **Drucken** wählen Sie die Trennstellen. Die Wandstärke erhöht sich auf mindestens 5 mm, die Bodenstärke auf mindestens 3 mm; dadurch ändern sich die Fachmaße. Hüllen und Einsätze müssen zuvor entfernt werden. Einige Formen und Einstellungen erlauben keine Aufteilung.
 
 Laden Sie die Fugenprobe herunter, legen Sie ihre Hälften getrennt und drucken Sie sie im Maßstab von 100 %. Nach dem Abkühlen überprüfen Sie die Passform der Stifte. Laden Sie das Kit herunter, inspizieren Sie alle Teile im Slicer, drucken Sie sie aus und montieren Sie sie nach dem Abkühlen mit Stiften und Kleber. Die Nennstiftabmessungen sind Ø 3,2 × 8 mm; jedes Loch ist Ø 3,3 mm und 4,5 mm tief. Passform und Festigkeit hängen von Druckeinstellungen, Material und Kleberqualität ab.
 
@@ -154,6 +165,15 @@ Wählen Sie im Menü neben **Organizer** über dem Modell die gewünschte Ebene.
 <a id="manage-filament-slots"></a>
 ### Filamentplätze verwalten
 
-Richten Sie unter **Drucken** → **Slicer-Filamente** dieselben Slotnummern und Farben wie im Slicer ein. Beim Snapmaker U1 entsprechen die Slots 1–4 den Köpfen T0–T3. Es gibt bis zu 16 Slots; Farbe und Materialname sind einstellbar. Die Farbe dient nur zur Orientierung, nicht zur Simulation gedruckter oder gemischter Farbtöne. Exakte Farbmischungen legen Sie im Slicer fest. Wählen Sie eine Karte und **Delete filament from slot N**, um das Filament zu entfernen. Andere Nummern bleiben unverändert: Nach dem Löschen von Slot 6 bleibt Slot 7 die Nummer 7. **+ Slot N** belegt wieder die niedrigste freie Nummer; die Grenze bleibt 16. Das Löschen ändert keine Modellfarbe. Entfernte Slots werden beim Export weder angeboten noch automatisch zugeordnet; wählen Sie einen anderen Slot oder weisen Sie ihn im Slicer zu. Unterschiedliche Farben erlauben eine automatische Zuordnung. Haben zwei Slots dieselbe Farbe, wählen Sie im Downloadfenster den gewünschten Slot für jedes Teil.
+Richten Sie unter **Drucker** → **Slicer-Filamente** dieselben Slotnummern und Farben wie im Slicer ein. Beim Snapmaker U1 entsprechen die Slots 1–4 den Köpfen T0–T3. Es gibt bis zu 16 Slots; Farbe und Materialname sind einstellbar. Die Farbe dient nur zur Orientierung, nicht zur Simulation gedruckter oder gemischter Farbtöne. Exakte Farbmischungen legen Sie im Slicer fest. Wählen Sie eine Karte und **Delete filament from slot N**, um das Filament zu entfernen. Andere Nummern bleiben unverändert: Nach dem Löschen von Slot 6 bleibt Slot 7 die Nummer 7. **+ Slot N** belegt wieder die niedrigste freie Nummer; die Grenze bleibt 16. Das Löschen ändert keine Modellfarbe. Entfernte Slots werden beim Export weder angeboten noch automatisch zugeordnet; wählen Sie einen anderen Slot oder weisen Sie ihn im Slicer zu. Unterschiedliche Farben erlauben eine automatische Zuordnung. Haben zwei Slots dieselbe Farbe, wählen Sie im Downloadfenster den gewünschten Slot für jedes Teil.
 
 Für dieselbe digitale Farbe wie im Slicer geben Sie neben der Farbauswahl den sechsstelligen **HEX code** ein, etwa `#E63522`. Das führende `#` ist optional. Ein gültiger Code aktualisiert die Vorschau sofort. Unvollständige oder ungültige Eingaben werden nicht übernommen; beim Verlassen des Felds erscheint wieder die gespeicherte Farbe. Der Code simuliert weder den tatsächlichen Filamentfarbton noch Beleuchtung oder Materialmischungen.
+
+## Gridfinity
+
+Wählen Sie das 42-mm-Raster für Standardbehälter oder geben Sie die Innenmaße Ihrer Schublade ein. Die Platten werden passend zum Druckbett geteilt. Behälter können über eine Plattenfuge reichen. Drucker und Filamente stellen Sie oben unter **Drucker** ein. [Anleitung Gridfinity](../../GRIDFINITY.md)
+
+<a id="preview-contrast"></a>
+### Kontrast in der Vorschau
+
+Konturen zeigen die Fächer auch bei gleicher Farbe. Beim Verschieben markiert Grün eine gültige Position. Mit Escape kehrt der Behälter an seine Ausgangsposition zurück.

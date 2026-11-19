@@ -1,10 +1,38 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useMemo} from 'react';
+import {create} from 'zustand';
 import {useEditor} from '../store.js';
 import {loadSaved} from '../storage.js';
-import type {Project} from '../model.js';
-/** Reuse the existing printer configuration, including a direct workspace reload. */
-export function useConfiguredPrinter(){
- const current=useEditor(s=>s.project),[saved,setSaved]=useState<Project|null>(null);
- useEffect(()=>{if(current.printing||current.printArea)return;let active=true;void loadSaved().then(p=>{if(active)setSaved(p);}).catch(()=>{});return()=>{active=false;};},[current.printing,current.printArea]);
- return current.printing||current.printArea?current:saved??current;
+import {validatePrintArea,type Project,type PrintSettings} from '../model.js';
+
+type Area=Omit<PrintSettings,'parts'>;
+const key='replixgrid.printer';
+function readArea():Area|undefined{
+ try{
+  const area=JSON.parse(localStorage.getItem(key)??'null');
+  validatePrintArea(area);
+  return area;
+ }catch{return undefined;}
+}
+const usePrinterArea=create<{area?:Area}>(()=>({area:readArea()}));
+export function savePrinterArea({bedWidth,bedDepth,bedHeight,printerId}:Area){
+ const area={bedWidth,bedDepth,bedHeight,printerId};
+ validatePrintArea(area);
+ usePrinterArea.setState({area});
+ try{localStorage.setItem(key,JSON.stringify(area));}catch{/* Session-only settings. */}
+}
+if(typeof window!=='undefined')window.addEventListener('storage',event=>{
+ if(event.key===key||event.key===null)usePrinterArea.setState({area:readArea()});
+});
+
+let restore:Promise<void>|undefined;
+export function useConfiguredPrinter(source?:Project){
+ const current=useEditor(s=>s.project),project=source??current,area=usePrinterArea(s=>s.area);
+ useEffect(()=>{
+  if(area)return;
+  restore??=loadSaved().then(saved=>{
+   const legacy=saved?.printing??saved?.printArea;
+   if(legacy&&!usePrinterArea.getState().area)savePrinterArea(legacy);
+  }).catch(()=>{});
+ },[area]);
+ return useMemo(()=>area?{...project,printArea:area,printing:project.printing?{...project.printing,...area,printerId:area.printerId}:undefined}:project,[project,area]);
 }

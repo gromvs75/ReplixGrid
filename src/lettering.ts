@@ -59,7 +59,7 @@ export function labelSurface(p:Project,side:Side){
  }};
 }
 type Polygon=[number,number][];
-export function labelLayout(p:Project,measureOnly=false){
+export function labelLayout(p:Project,measureOnly=false,minHeight=3.85){
  const l=p.label!;const font=l.font??'pixel';
  const text=font==='pixel'?labelText(p):`${l.icon}${l.icon&&l.text?' ':''}${l.text}`;
  let cursor=0;const contours:Polygon[]=[];
@@ -80,7 +80,7 @@ export function labelLayout(p:Project,measureOnly=false){
  const availableHeight=measureHeight(requested*aspect);
  const scale=requested/(maxY-minY);
  const width=(maxX-minX)*scale,height=(maxY-minY)*scale;
- if(!measureOnly&&(height<3.85||width>available+.001||height>availableHeight+.001))throw new Error('Подпись не помещается. Уменьшите высоту букв или сократите текст.');
+ if(!measureOnly&&(height<minHeight||width>available+.001||height>availableHeight+.001))throw new Error('Подпись не помещается. Уменьшите высоту букв или сократите текст.');
  const bottom=p.floorThickness+3+Math.max(0,availableHeight-height)*(l.position??0)/100;
  return {width,height,bottom,maxSize,contours:contours.map(r=>r.map(([x,y])=>[(x-minX)*scale,(y-minY)*scale] as [number,number]))};
 }

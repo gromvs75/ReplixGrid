@@ -44,7 +44,7 @@ Wybór **Kształt → Baza → Utwórz z szablonu** podczas edycji nadal zastęp
 <a id="workspace-and-views"></a>
 ## Obszar roboczy i widoki
 
-Otwórz narzędzie w lewym górnym rogu. **Kształt** zmienia korpus i jego akcesoria. **Przegródki** zmienia układ. **Osłona** projektuje oddzielną zewnętrzną osłonę. **Druk** ustawia obszar roboczy, szczeliny żarowe i opcjonalne cięcia sekcji. Kliknij numer przedziału, ścianę lub rozdzielacz na modelu, aby otworzyć ustawienia po prawej stronie. Jeśli część jest trudna do kliknięcia, rozszerzyć **Wszystkie ściany i przedziały** i wybrać go po imieniu.
+Otwórz narzędzie w lewym górnym rogu. **Kształt** zmienia korpus i jego akcesoria. **Przegródki** zmienia układ. **Osłona** projektuje oddzielną zewnętrzną osłonę. Drukarkę, obszar roboczy i filamenty ustawisz w górnym menu **Drukarka**. W sekcji **Druk** wybierz miejsca podziału. Kliknij numer przedziału, ścianę lub rozdzielacz na modelu, aby otworzyć ustawienia po prawej stronie. Jeśli część jest trudna do kliknięcia, rozszerzyć **Wszystkie ściany i przedziały** i wybrać go po imieniu.
 
 Wybierz sekcję w menu po lewej. Jej ustawienia otworzą się w panelu u dołu podglądu; model i siatka pozostają widoczne za nim. Panel uzupełnia lewe menu. Strzałka go zwija, a **×** zamyka. Aby zmienić grupę ustawień, wybierz inną sekcję. Panel po prawej nadal pokazuje ustawienia wybranej ścianki lub komory.
 
@@ -152,7 +152,7 @@ Przy osłonie obwodowej wypust po wewnętrznej stronie dolnej ścianki wchodzi w
 
 Wybierz uchwyt cylindryczny lub listwę, aby wyświetlić **Kolor uchwytu pokrywy**. Domyślnie włączona jest opcja **Jak podstawa pokrywy**: uchwyt przyjmuje kolor podstawy pokrywy. Wybierz inny kolor, aby ustawić uchwyt niezależnie; ponownie włącz opcję, aby przywrócić powiązanie. Uchwyt nadal jest osobnym elementem do druku.
 
-Kliknij próbkę obok **Kolor podstawy pokrywy**, **Kolor wzoru pokrywy** lub **Kolor uchwytu pokrywy**. Okno zawiera **Filamenty slicera** bieżącej drukarki, paletę, własny kolor i pole na sześciocyfrowy kod HEX. Dostępne kolory ustaw w **Druk → Filamenty slicera**. Usunięte sloty nie są wyświetlane; pozostałe zachowują numery.
+Kliknij próbkę obok **Kolor podstawy pokrywy**, **Kolor wzoru pokrywy** lub **Kolor uchwytu pokrywy**. Okno zawiera **Filamenty slicera** bieżącej drukarki, paletę, własny kolor i pole na sześciocyfrowy kod HEX. Dostępne kolory ustaw w **Drukarka → Filamenty slicera**. Usunięte sloty nie są wyświetlane; pozostałe zachowują numery.
 
 Kolory są zapisywane w projekcie i eksportowane do 3MF oraz OBJ; STL nie zawiera kolorów. Przy eksporcie 3MF jednoznaczne dopasowanie koloru automatycznie wybiera zapisany slot filamentu. Jeśli kilka slotów ma ten sam kolor, wybierz slot ręcznie w oknie eksportu. Sprawdź przypisania w slicerze. Kolory na ekranie są orientacyjne i nie symulują fizycznego mieszania filamentów.
 
@@ -190,7 +190,7 @@ Zachowaj pobraną kopię zapasową przed wyczyszczeniem danych przeglądarki. Ka
 <a id="print-setup-and-sectioning"></a>
 ## Ustawienia druku i podział na części
 
-Pod **Druk**, wybrać konfigurację drukarki i głowy lub wybrać **Własny rozmiar**. Sprawdzić długość, szerokość i wysokość budowy. Zaprogramowany system dostarcza obszar roboczy. Wybrać profile drukarki, dyszy, materiału i krojenia w slicerze.
+Pod **Drukarka**, wybrać konfigurację drukarki i głowy lub wybrać **Własny rozmiar**. Sprawdzić długość, szerokość i wysokość budowy. Zaprogramowany system dostarcza obszar roboczy. Wybrać profile drukarki, dyszy, materiału i krojenia w slicerze.
 
 Jeśli model nie mieści się na stole drukarki, użyj proponowanych podziałów lub wybierz dwie albo trzy części, gdy są dostępne. Sprawdź połączenia przyciskiem **Rozsuń części**. Podział zwiększa grubość ścianek do co najmniej 5 mm, a dna do 3 mm; ponownie sprawdź wymiary wewnętrzne. Najpierw usuń osłony i wkłady. Modele piętrowe, pochylone, okrągłe, owalne i o strukturze plastra miodu wymagają druku w jednym kawałku. **Zwróć model bryłowy** wyłącza podział. Jeśli chcesz przywrócić poprzednie wymiary, ponownie sprawdź grubości.
 
@@ -199,7 +199,7 @@ Jeśli model nie mieści się na stole drukarki, użyj proponowanych podziałów
 <a id="download-and-slice"></a>
 ## Pobieranie i przygotowanie w slicerze
 
-1. W **Druk** → **Slicer filaments** ustaw te same numery i kolory co w slicerze. W Snapmaker U1 sloty 1–4 odpowiadają głowicom T0–T3. Dostępnych jest do 16 slotów z kolorem i nazwą materiału. Kolor jest przybliżonym punktem odniesienia, nie symulacją wydruku lub mieszanki; dokładne mieszanie ustaw w slicerze. Wybierz kartę i kliknij **Delete filament from slot N**, aby usunąć filament. Pozostałe numery się nie zmieniają: po usunięciu slotu 6 slot 7 nadal ma numer 7. **+ Slot N** ponownie zajmuje najniższy wolny numer; limit pozostaje 16. Usunięcie filamentu nie zmienia koloru modelu. Usunięte sloty nie są proponowane ani dopasowywane automatycznie przy eksporcie; wybierz inny lub przypisz go w slicerze. Różne kolory pozwalają na automatyczne dopasowanie. Jeśli dwa sloty mają taki sam kolor, wybierz właściwy dla każdej części w oknie pobierania.
+1. W **Drukarka** → **Slicer filaments** ustaw te same numery i kolory co w slicerze. W Snapmaker U1 sloty 1–4 odpowiadają głowicom T0–T3. Dostępnych jest do 16 slotów z kolorem i nazwą materiału. Kolor jest przybliżonym punktem odniesienia, nie symulacją wydruku lub mieszanki; dokładne mieszanie ustaw w slicerze. Wybierz kartę i kliknij **Delete filament from slot N**, aby usunąć filament. Pozostałe numery się nie zmieniają: po usunięciu slotu 6 slot 7 nadal ma numer 7. **+ Slot N** ponownie zajmuje najniższy wolny numer; limit pozostaje 16. Usunięcie filamentu nie zmienia koloru modelu. Usunięte sloty nie są proponowane ani dopasowywane automatycznie przy eksporcie; wybierz inny lub przypisz go w slicerze. Różne kolory pozwalają na automatyczne dopasowanie. Jeśli dwa sloty mają taki sam kolor, wybierz właściwy dla każdej części w oknie pobierania.
 2. Kliknij **↓ Pobierz**. Wybierz **Organizator i akcesoria**, **Tylko powłoka** lub **Cały zestaw**, według jakich części potrzebujesz. Dla oddzielnego modelu, eksportować zestaw.
 3. Wybierz format poniżej. Dla 3MF, przypisz szczelinę filamentu do każdej części lub zostaw ją do przypisania w slicerze. Orca może użyć pierwszego filamentu dla nieprzypisanych części.
 4. Odczytaj wymiary każdej części i każdą instrukcję, aby obrócić ją o 90 ° na stole drukarki. Czek rezerwuje 2 mm na krawędziach stołu drukarki. Pobierz za pomocą przycisku formatu na dole okna dialogowego.
@@ -226,7 +226,7 @@ Aby uzyskać ten sam kolor cyfrowy co w slicerze, wpisz sześciocyfrowy **HEX co
 | Część przekracza stół drukarki, chociaż ślad wydaje się dość mały. | Przeczytaj ukończone wymiary w oknie pobierania. Przechylenie, relief, wykończenie i powłoki mogą wykraczać poza podstawę. Sprawdź wybraną konfigurację drukarki i rotację. |
 | Ukryte złącza paneli są niedostępne | Używać ścian o grubości co najmniej 3,2 mm bez reliefu, lub pozostawić złącza i przykleić panele. Zmiana na panele nie zagęszcza ścian. |
 | Panele nakładają się na dolną krawędź lub obręcz poziomą w starej konstrukcji | Ustaw offset krawędzi co najmniej 3 mm dla poziomów. Dolne offset jest mierzony od góry dolnego wykończenia. Regeneruj i pobierz części po zmianie ustawień. |
-| Ściągnięty odcisk ma złe kolory. | Stosowanie 3MF, dopasować numery gniazd w **Druk** Potem sprawdź przydziały w slicerze. STL posiada tylko geometrię. |
+| Ściągnięty odcisk ma złe kolory. | Stosowanie 3MF, dopasować numery gniazd w **Drukarka** Potem sprawdź przydziały w slicerze. STL posiada tylko geometrię. |
 | Brakuje projektu zapisanego na innym urządzeniu. | Przenieść swój projekt JSON i stosowanie **Otwarte**. Biblioteki przeglądarek są lokalne dla każdego urządzenia i adresu strony. |
 
 <a id="project-variants"></a>
@@ -369,6 +369,11 @@ Zmiany w ustawieniach układu lub eksportu unieważniają poprzednią kalkulacj�
 Wybierz **Raised relief (decoration)** dla reliefu albo **Through stencil (cut)** dla otworów przelotowych. Osłony obsługują tylko otwory. Wysokość jest widoczna tylko dla reliefu, odstęp tylko przy powtarzaniu. **Material thickness** zmienia podgląd i eksport: 1,2–6 mm dla pokrywy SVG, 1–4 mm dla osłony. Domyślna grubość wynosi 3,2 mm dla reliefu i 2 mm dla szablonu; wybrana grubość pozostaje po zmianie trybu. Wysokość reliefu wlicza się w grubość. Wpuszczana pokrywa SVG wymaga głębokości wewnętrznej co najmniej równej grubości płyty plus 2 mm. **Dodatkowe** zawiera kolor pokrywy lub wybór ścianek osłony. **Which SVG files work?** wyjaśnia wymagania i przygotowanie plików.
 
 Otwórz **Kształt** → **Pokrywka** → **My SVGs** albo **Osłona** → **Pattern** → **My SVGs**. Karty **Pokrywka** i **Osłona** mają wspólną bibliotekę, ale osobne ustawienia. Zmiana karty pokazuje odpowiednią część; jeśli jeszcze jej nie dodano, pozostaje widoczny cały model. Widok całości można wybrać nad modelem. Szerokość, obrót, odstęp i X/Y określają położenie wzoru; przycisk centrowania resetuje położenie i obrót. Pokrywa obsługuje relief i otwory, osłona tylko otwory. Ramki i miejsca mocowania pozostają zachowane. **×** lub **Escape** zamyka aktywne studio, zachowując zmiany. Strzałki klawiatury zmieniają wybraną kartę.
+
+## Gridfinity
+
+Wybierz standardową siatkę 42 mm lub podaj wewnętrzne wymiary szuflady. Płyty są dzielone według wymiarów stołu drukarki. Pojemnik może stać na styku dwóch płyt. Drukarkę i filamenty ustawisz w górnym menu drukarki. [Instrukcja Gridfinity](../../GRIDFINITY.md)
+
 
 ## Gridfinity i przesuwanie
 

@@ -93,7 +93,7 @@ See the [user guide](docs/REFERENCE.md) for editing, saving, exporting and print
 
 ## Gridfinity compatibility mode
 
-Use the separate **Gridfinity** workspace for trays and baseplates on a 42 mm grid, with compartment controls and STL/3MF export. Ordinary organizers and the existing 20 mm mounting system remain independent. This first version implements the lower mating interface; it does not include a stacking lip, magnets or screw holes. Physical fit with third-party parts still requires a test print.
+Choose **Gridfinity** to build a set on the standard 42 mm grid or fit a set to the inside dimensions of a drawer. In drawer-fit mode, the app sizes the cells, divides the baseplates to fit the printer bed and lets trays span plate seams. Choose solid or open-grid plates. Trays support stacking lips, flat or stacking lids, flush grips, engraving and removable labels. For cutlery, add matching cutouts to either pair of opposite walls and set their depth down to the tray floor. Export individual parts or the set in STL or 3MF.
 
 [Gridfinity guide (English / Русский)](docs/GRIDFINITY.md) · [Third-party notices](THIRD-PARTY-NOTICES.md)
 

@@ -15,6 +15,10 @@
 .gf-preview .editing-drawer:has(.gf-dimensions){width:min(560px,calc(100% - 32px));max-height:min(420px,65%);bottom:45px}
 .gf-preview .editing-body{max-height:330px;overflow:auto}
 .gf-dimensions .field{margin:14px 0}
+.gf-tray-access > label:has(input[type=checkbox]){display:flex;align-items:center;gap:8px;margin:12px 0}
+.gf-tray-access > label > input[type=checkbox]{margin:0;flex:none}
+.gf-tray-access > .count-label{flex-wrap:wrap;gap:6px 12px}
+.gf-tray-access > .count-label select{max-width:100%}
 .gf-preview-caption{position:absolute;bottom:12px;left:20px;right:20px;text-align:center;font-size:11px;pointer-events:none;color:var(--muted)}
 .gf-error{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);max-width:90vw;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:16px;z-index:100;display:flex;gap:16px}
 @media(max-width:760px){.gf-layout{display:flex;flex-direction:column;min-height:auto}.gf-preview{height:620px;flex:none}.gf-controls{overflow:visible;border-right:0}.gf-header{padding:12px}.gf-status{width:100%;order:3;margin:0}}
@@ -47,7 +51,7 @@
 .gf-assembly-panel{border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}
 .gf-assembly-panel h2{font-size:14px;margin:0 0 12px}.gf-add-actions{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.gf-add-actions button{flex:1;min-width:75px;font-size:11px;padding:8px}
 .gf-parts-tree{display:grid;gap:8px;max-height:230px;overflow:auto;margin:12px 0}.gf-parts-tree button{display:flex;align-items:center;gap:6px;width:100%;text-align:left;border-color:transparent;font-size:12px;padding:8px;overflow-wrap:anywhere}.gf-parts-tree button[aria-pressed=true]{background:var(--surface-soft);border-color:var(--line)}.gf-parts-tree button small{margin:0 0 0 auto;white-space:nowrap}.gf-parts-tree .gf-tree-tray{padding-left:20px}.gf-color-dot{width:10px;height:10px;border:1px solid var(--line);border-radius:50%;flex-shrink:0}
-.gf-assembly-panel .count-label{display:grid;gap:6px;font-size:12px;margin:12px 0}.gf-assembly-panel input,.gf-assembly-panel select{max-width:100%;min-width:0}.gf-assembly-panel summary{font-size:12px}.gf-assembly-panel .field{font-size:12px}
+.gf-assembly-panel .count-label{display:grid;gap:6px;font-size:12px;margin:12px 0}.gf-assembly-panel input,.gf-assembly-panel select{max-width:100%;min-width:0}.gf-assembly-panel .field{font-size:12px}
 .gf-assembly-panel .count-label input,.gf-assembly-panel .count-label select{box-sizing:border-box;width:100%;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface);color:var(--ink);font:inherit}
 
 /* Match the organizer's detached, scrollable cards. */
@@ -64,3 +68,17 @@
 .gf-add-actions:has(.danger){display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .gf-add-actions:has(.danger)>button{min-width:0;overflow-wrap:anywhere}
 .gf-add-actions:has(.danger)>button:nth-child(2):not(.danger){order:3;grid-column:1/-1}
+
+.gf-dimensions .gf-inscription-text,
+.gf-project-dialog :is(input,select){
+  appearance:none;box-sizing:border-box;min-width:0;
+  border:1px solid var(--line);border-radius:8px;padding:8px 10px;
+  background-color:var(--surface);color:var(--ink);font:inherit;box-shadow:none;
+}
+.gf-dimensions .gf-inscription-text{width:min(65%,22rem)}
+.gf-inscription-text:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.gf-project-dialog form,.gf-project-dialog label{display:grid;gap:8px}
+.gf-project-dialog form{gap:16px}
+.gf-project-dialog :is(input,select){width:100%}
+.gf-drawer-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:end;gap:12px}
+.gf-project-dialog p{margin:0}
