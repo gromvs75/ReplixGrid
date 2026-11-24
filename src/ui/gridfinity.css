@@ -9,8 +9,7 @@
 .gf-controls small{display:block;margin-top:20px;line-height:1.6;color:var(--muted)}
 .gf-controls a{color:var(--accent)}
 .gf-preview{min-height:420px;margin:0;padding:0;border:0}
-.gf-preview>.canvas-wrap{inset:60px 0 45px;transition:bottom .15s}
-.gf-preview:has(.editing-drawer:not([hidden]))>.canvas-wrap{bottom:calc(var(--editor-height,280px) + 60px)}
+.gf-preview>.canvas-wrap{inset:60px 0 0}
 .gf-preview .canvas-wrap>p{position:absolute;inset:40%;text-align:center;color:var(--muted)}
 .gf-preview .editing-drawer:has(.gf-dimensions){width:min(560px,calc(100% - 32px));max-height:min(420px,65%);bottom:45px}
 .gf-preview .editing-body{max-height:330px;overflow:auto}
