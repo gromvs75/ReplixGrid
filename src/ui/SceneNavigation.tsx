@@ -1,7 +1,7 @@
 import {useEffect,useMemo} from 'react';
 import {useThree} from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
-import {BufferGeometry,Float32BufferAttribute} from 'three';
+import {BufferGeometry,Float32BufferAttribute,OrthographicCamera} from 'three';
 export function WorkspaceGrid({width,depth,dark}:{width:number;depth:number;dark:boolean}){
  const lines=useMemo(()=>{
   const extent=Math.ceil((Math.max(width,depth)+100)/50)*50,minor:number[]=[],major:number[]=[];
@@ -11,7 +11,37 @@ export function WorkspaceGrid({width,depth,dark}:{width:number;depth:number;dark
  useEffect(()=>()=>lines.forEach(g=>g.dispose()),[lines]);
  return <group>{lines.map((g,i)=><lineSegments key={i} geometry={g} raycast={()=>{}}><lineBasicMaterial color={dark?(i?'#91a9c4':'#71869b'):(i?'#586c80':'#708394')} transparent opacity={dark?(i?.48:.22):(i?.68:.43)} toneMapped={false} depthWrite={false}/></lineSegments>)}</group>;
 }
-export function SceneCamera({view,reset}:{view:string;reset:number}){const {camera,size}=useThree();useEffect(()=>{camera.up.set(...(view==='top'?[1,0,0]:[0,1,0]) as [number,number,number]);camera.position.set(...(view==='top'?[0,8,0]:view==='bottom'?[-6.8,-5.2,4.8]:[-6.8,5.2,4.8]) as [number,number,number]);camera.lookAt(0,.45,0);if('zoom'in camera)camera.zoom=Math.min(size.width,size.height)/5.5;camera.updateProjectionMatrix();},[view,reset,size.width,size.height,camera]);return null;}
+export function SceneCamera({view,reset}:{view:string;reset:number}){
+ const {camera,size,gl,invalidate}=useThree();
+ useEffect(()=>{
+  camera.up.set(view==='top'?1:0,view==='top'?0:1,0);
+  if(view==='top')camera.position.set(0,8,0);
+  else camera.position.set(-6.8,view==='bottom'?-5.2:5.2,4.8);
+  camera.lookAt(0,.45,0);
+  invalidate();
+ },[view,reset,camera,invalidate]);
+ useEffect(()=>{
+  if(!(camera instanceof OrthographicCamera)||!size.width||!size.height)return;
+  const canvas=gl.domElement;
+  const stage=canvas.closest('.stage');
+  const update=()=>{
+   const bounds=canvas.getBoundingClientRect();
+   const center=stage?.getBoundingClientRect()??bounds;
+   // Frame the model between the panels, while drawing behind them as well.
+   const offsetX=(bounds.left+bounds.width/2)-(center.left+center.width/2);
+   camera.zoom=Math.min(center.width,size.height)/5.5;
+   if(offsetX)camera.setViewOffset(size.width,size.height,offsetX,0,size.width,size.height);
+   else camera.clearViewOffset();
+   invalidate();
+  };
+  update();
+  if(!stage)return;
+  const observer=new ResizeObserver(update);
+  observer.observe(stage);
+  return()=>observer.disconnect();
+ },[view,reset,camera,size.width,size.height,gl,invalidate]);
+ return null;
+}
 export function SceneOrbitControls({view,reset,dragging}:{view:string;reset:number;dragging:boolean}){
  return <OrbitControls key={`${view}-${reset}`} makeDefault enabled={!dragging} enableRotate={view!=='top'} enablePan target={[0,.45,0]} minZoom={20} maxZoom={1600} maxPolarAngle={view==='bottom'?Math.PI-.05:Math.PI/2-.05}/>;
 }

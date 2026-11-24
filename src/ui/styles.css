@@ -178,8 +178,8 @@ header,footer,.right-panel{background:var(--surface);border-color:var(--line)}
 button{background:var(--control);border-color:var(--line);color:var(--ink)}button:hover{background:var(--surface-soft)}
 button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline-color:#4f8eea}
 .primary,.template-apply{background:var(--accent);border-color:var(--accent);color:#fff}.primary:hover,.template-apply:hover{background:var(--accent-hover)}
-.stage{background:radial-gradient(ellipse at 50% 42%,#f8fafc,#eaf0f5)}.stage:before{background-image:radial-gradient(#a8b7c633 .7px,transparent .7px)}
-:root[data-theme=dark] .stage{background:radial-gradient(ellipse at 50% 42%,#46515d,#252d36)}
+.stage{--stage-background:radial-gradient(ellipse at 50% 42%,#f8fafc,#eaf0f5);background:var(--stage-background)}.stage:before{background-image:radial-gradient(#a8b7c633 .7px,transparent .7px)}
+:root[data-theme=dark] .stage{--stage-background:radial-gradient(ellipse at 50% 42%,#46515d,#252d36)}
 :root[data-theme=dark] .stage:before{background-image:radial-gradient(#a3b4c122 .7px,transparent .7px)}
 .stage-top .tool-tabs,.floating-tool-panel,.tools,.stage-assembly,.language-menu{background:var(--surface);border-color:var(--line);color:var(--ink)}
 .floating-tool-panel{box-shadow:0 12px 36px #0f172a24}
@@ -346,8 +346,8 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 
 /* Match the organizer inspector to the rounded drawer and left tool cards. */
 .app>.workspace>.right-panel{align-self:start;margin:20px 20px 20px 0;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);max-height:calc(100vh - 160px);min-width:0;overscroll-behavior:contain;scrollbar-width:thin}
-@media(min-width:821px){.app>.workspace{grid-template-columns:minmax(0,1fr) 290px;background:var(--scene)}}
-@media(min-width:1600px){.app>.workspace{grid-template-columns:minmax(0,1fr) 300px}}
+@media(min-width:821px){.app>.workspace{--scene-right:290px;grid-template-columns:minmax(0,1fr) var(--scene-right);background:var(--scene)}}
+@media(min-width:1600px){.app>.workspace{--scene-right:300px}}
 @media(max-width:820px){.app>.workspace>.right-panel{margin:16px;max-height:none}}
 .drawer-board{user-select:none}.drawer-front{fill:var(--muted);font-size:5px;letter-spacing:.6px}.drawer-canvas-tools{flex-wrap:wrap}.drawer-canvas-tools .drawer-view-turn{font-size:12px}
 
@@ -699,6 +699,27 @@ input:not([type=range]):not([type=checkbox]):not([type=color]),select,.printer-p
 
 /* Editors float above an uninterrupted scene, including the bottom status area. */
 .stage>.canvas-wrap{bottom:0}
+
+/* Extend the scene beneath the side panels while keeping tools in the center column. */
+@media(min-width:761px){
+ .scene-workspace>.stage:not(.has-start-guide){
+  --scene-overhang-left:calc(-1 * var(--scene-left,0px));
+  --scene-overhang-right:calc(-1 * var(--scene-right,0px));
+  overflow:visible;
+  clip-path:inset(0 var(--scene-overhang-right) 0 var(--scene-overhang-left));
+  background:none;
+ }
+ .scene-workspace>.stage:not(.has-start-guide)::after{
+  content:'';position:absolute;inset:0 var(--scene-overhang-right) 0 var(--scene-overhang-left);
+  background:var(--stage-background);z-index:-1;pointer-events:none;
+ }
+ .scene-workspace>.stage:not(.has-start-guide)::before,
+ .scene-workspace>.stage:not(.has-start-guide)>.canvas-wrap{
+  left:var(--scene-overhang-left);right:var(--scene-overhang-right);
+ }
+ .scene-workspace>aside{position:relative;z-index:1}
+}
+
 
 .stage>.stage-assembly{flex-wrap:wrap;justify-content:center}
 .assembly-choice{display:inline-flex;align-items:center;gap:2px}.stage-tier-select{width:auto;min-width:82px;max-width:170px;margin:0;border:0;border-radius:8px;background-color:var(--control);color:var(--ink);font:inherit;font-size:12px;padding:7px 26px 7px 8px;cursor:pointer}
