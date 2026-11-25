@@ -8,6 +8,24 @@ import {buildGridfinity} from '../src/gridfinityKernel.js';
 import {decodeSTL} from '../src/stl.js';
 
 const bed={length:270,width:270,height:270,gap:5};
+test('mounting keeps fitted plates level across seams and replanning',()=>{
+ const grid=suggestDrawerGrid(280,480,0),original=fitDrawerGrid(grid,bed);
+ const plate=original.plates[1],selection={kind:'plate' as const,id:plate.id};
+ const mounted=updateGridfinityPart(original,selection,{...plate.project,plateScrewMount:true});
+ assert.ok(mounted.plates.every(item=>item.project.plateScrewMount));
+ assert.ok(original.plates.every(item=>!item.project.plateScrewMount));
+ assert.equal(gridfinityAssemblyItems(mounted).find(item=>item.kind==='tray')?.position[2],2.8);
+ const restored=parseGridfinityAssembly(JSON.stringify(mounted));
+ const replanned=fitDrawerGrid(grid,{...bed,length:190,width:190},restored);
+ assert.ok(replanned.plates.length>mounted.plates.length);
+ assert.ok(replanned.plates.every(item=>item.project.plateScrewMount));
+ const mixed=structuredClone(restored);
+ mixed.plates[0].project.plateScrewMount=false;
+ assert.throws(()=>parseGridfinityAssembly(JSON.stringify(mixed)));
+ const unmounted=updateGridfinityPart(mounted,selection,{...plate.project,plateScrewMount:false});
+ assert.ok(unmounted.plates.every(item=>!item.project.plateScrewMount));
+ assert.equal(gridfinityAssemblyItems(unmounted).find(item=>item.kind==='tray')?.position[2],1.2);
+});
 test('drawer dimensions and per-side gap determine the physical pitch and balanced printable tiles',()=>{
  for(const [width,depth,cols,rows,tiles] of [[280,480,7,12,4],[255,572,6,14,3]]){
   const grid=suggestDrawerGrid(width,depth,0),a=fitDrawerGrid(grid,bed);
@@ -30,6 +48,10 @@ test('standard trays also cross supported seams, never holes, overlaps or unsupp
  const a=addGridfinityPlate(defaultGridfinityAssembly()).assembly,s={kind:'tray' as const,id:a.trays[0].id};
  const span=gridfinityDrop(a,s,3,0)!;
  assert.deepEqual(trayOrigin(span,span.trays[0]),{x:3,y:0});
+ const second={kind:'plate' as const,id:a.plates[1].id};
+ const mountable={...a.plates[1].project,plateScrewMount:true};
+ assert.throws(()=>updateGridfinityPart(span,second,mountable),/одной высоты/);
+ assert.equal(gridfinityDrop(updateGridfinityPart(a,second,mountable),s,3,0),null);
  assert.throws(()=>removeGridfinityPart(span,{kind:'plate',id:a.plates[1].id}));
  const other=addGridfinityTray(span,a.plates[1].id);
  assert.equal(other.assembly.trays[1].x,1);

@@ -2,7 +2,7 @@ import {gridfinityInscription,tagWidth,tagHeight,tagThickness,shelfPoint,shelfAn
 import {gridfinityCavities} from './gridfinityPreview.js';
 import {stackingLipPositions} from './gridfinityLip.js';
 import Module,{type Manifold,type Vec3} from 'manifold-3d';
-import {GRIDFINITY as G,gridPitch,hasGridfinityLid,lidLocatorDepth,lidDeckBase,lidDeckTop,gridfinityLidDeck,validateGridfinity,gridfinityFloorRadius,gridfinityNotch,gridfinityPairedNotches,gridfinityRadii,gridfinityInnerRadiusLimit,gridfinityRegions,type GridfinityProject} from './gridfinity.js';
+import {GRIDFINITY as G,gridPitch,hasGridfinityLid,lidLocatorDepth,lidDeckBase,lidDeckTop,gridfinityLidDeck,validateGridfinity,gridfinityFloorRadius,gridfinityNotch,gridfinityPairedNotches,gridfinityRadii,gridfinityInnerRadiusLimit,gridfinityRegions,gridfinityPlateFloor,gridfinityPlateScrew,type GridfinityProject} from './gridfinity.js';
 import {cutoutDepthFraction} from './shell.js';
 import {roundedContour} from './rounding.js';
 import {encodeSTL,decodeSTL,inspectSurface,weldNearVertices,removeCollapsedFaces,type Triangle,type Point} from './stl.js';
@@ -231,13 +231,30 @@ export async function buildGridfinity(input:GridfinityProject,part:'tray'|'plate
         body=keep(body.subtract(keep(cutter.translate([0,0,bottom]))));
       }
     }else{
-      body=rounded(p.columns*px,p.rows*py,4,G.plateFloor+G.footHeight);
+      const floor=gridfinityPlateFloor(p),screw=gridfinityPlateScrew;
+      body=rounded(p.columns*px,p.rows*py,4,floor+G.footHeight);
       const cuts:Manifold[]=[];
       for(let x=0;x<p.columns;x++)for(let y=0;y<p.rows;y++){
-        cuts.push(foot((x+.5)*px,(y+.5)*py,p.clearance,G.plateFloor));
+        const cx=(x+.5)*px,cy=(y+.5)*py;
+        const mount=p.plateScrewMount&&(x===0||x===p.columns-1)&&(y===0||y===p.rows-1);
+        cuts.push(foot(cx,cy,p.clearance,floor));
         // Retain a 2 mm bearing ledge beneath the 35.6 mm foot. The opening
         // overlaps the socket without changing its profile or seating height.
-        if(p.plateStyle==='lattice')cuts.push(rounded(px-10.4,py-10.4,.8,G.plateFloor+.2,x*px+5.2,y*py+5.2,-.1));
+        if(p.plateStyle==='lattice'){
+          const opening=rounded(px-10.4,py-10.4,.8,floor+.2,x*px+5.2,y*py+5.2,-.1);
+          // A bridge at floor height supports the screw without closing the cell.
+          cuts.push(mount?keep(opening.subtract(box(x*px,cy-6,-.2,px,12,floor+.4))):opening);
+        }
+        if(mount){
+          const shaft=screw.shaftDiameter/2,head=screw.headDiameter/2;
+          const taperTop=floor-screw.headClearance,taperHeight=head-shaft;
+          const profile:[[number,number][]]=[[
+            [0,-.1],[shaft,-.1],[shaft,taperTop-taperHeight],
+            [head,taperTop],[head,floor+.1],[0,floor+.1],
+          ]];
+          const hole=keep(wasm.Manifold.revolve(profile,48));
+          cuts.push(keep(hole.translate([cx,cy,0])));
+        }
       }
       body=keep(body.subtract(keep(wasm.Manifold.union(cuts))));
     }

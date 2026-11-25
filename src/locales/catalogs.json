@@ -1038,7 +1038,12 @@
     "Передняя и задняя": "Front and back",
     "Ширина парных вырезов": "Paired cutout width",
     "Глубина парных вырезов": "Paired cutout depth",
-    "До внутреннего дна": "Down to the tray floor"
+    "До внутреннего дна": "Down to the tray floor",
+    "Крепление плиты": "Baseplate mounting",
+    "Крепление потайными винтами и саморезами": "Mounting with countersunk screws",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "The holes are in the corner cells. Keep the screw heads below the socket floor.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "In drawer-fit mode, this setting applies to all plates in the set.",
+    "Плиты под одним лотком должны быть одной высоты.": "Plates supporting the same tray must have the same height."
   },
   "de": {
     "+ Крышка": "+ Deckel",
@@ -2077,7 +2082,12 @@
     "Передняя и задняя": "Vorne und hinten",
     "Ширина парных вырезов": "Breite der Ausschnitte",
     "Глубина парных вырезов": "Tiefe der Ausschnitte",
-    "До внутреннего дна": "Bis zum Innenboden"
+    "До внутреннего дна": "Bis zum Innenboden",
+    "Крепление плиты": "Grundplattenbefestigung",
+    "Крепление потайными винтами и саморезами": "Befestigung mit Senkschrauben",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Die Bohrungen liegen in den Eckzellen. Die Schraubenköpfe müssen unter dem Boden der Aufnahme bleiben.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Im Modus für die Schubladenanpassung gilt diese Einstellung für alle Platten des Satzes.",
+    "Плиты под одним лотком должны быть одной высоты.": "Platten unter demselben Behälter müssen gleich hoch sein."
   },
   "fr": {
     "+ Крышка": "+ Couvercle",
@@ -3115,7 +3125,12 @@
     "Передняя и задняя": "Avant et arrière",
     "Ширина парных вырезов": "Largeur des deux découpes",
     "Глубина парных вырезов": "Profondeur des deux découpes",
-    "До внутреннего дна": "Jusqu’au fond intérieur"
+    "До внутреннего дна": "Jusqu’au fond intérieur",
+    "Крепление плиты": "Fixation de la plaque",
+    "Крепление потайными винтами и саморезами": "Fixation par vis à tête fraisée",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Les trous se trouvent dans les cellules d’angle. Les têtes de vis doivent rester sous le fond des logements.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En mode ajustement au tiroir, ce réglage s’applique à toutes les plaques de l’ensemble.",
+    "Плиты под одним лотком должны быть одной высоты.": "Les plaques sous un même bac doivent avoir la même hauteur."
   },
   "es": {
     "+ Крышка": "+ Tapa",
@@ -4153,7 +4168,12 @@
     "Передняя и задняя": "Delantera y trasera",
     "Ширина парных вырезов": "Ancho de ambos recortes",
     "Глубина парных вырезов": "Profundidad de ambos recortes",
-    "До внутреннего дна": "Hasta el fondo interior"
+    "До внутреннего дна": "Hasta el fondo interior",
+    "Крепление плиты": "Fijación de la placa base",
+    "Крепление потайными винтами и саморезами": "Fijación con tornillos avellanados",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Los orificios están en las celdas de las esquinas. Las cabezas deben quedar por debajo del fondo del alojamiento.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En el modo de ajuste al cajón, este ajuste se aplica a todas las placas del conjunto.",
+    "Плиты под одним лотком должны быть одной высоты.": "Las placas bajo una misma bandeja deben tener la misma altura."
   },
   "el": {
     "+ Крышка": "+ Καπάκι",
@@ -5191,7 +5211,12 @@
     "Передняя и задняя": "Μπροστινό και πίσω",
     "Ширина парных вырезов": "Πλάτος των δύο εγκοπών",
     "Глубина парных вырезов": "Βάθος των δύο εγκοπών",
-    "До внутреннего дна": "Μέχρι τον εσωτερικό πυθμένα"
+    "До внутреннего дна": "Μέχρι τον εσωτερικό πυθμένα",
+    "Крепление плиты": "Στερέωση πλάκας βάσης",
+    "Крепление потайными винтами и саморезами": "Στερέωση με φρεζάτες βίδες",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Οι οπές βρίσκονται στα γωνιακά κελιά. Οι κεφαλές των βιδών πρέπει να μένουν κάτω από τον πυθμένα της υποδοχής.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Στη λειτουργία προσαρμογής στο συρτάρι, η ρύθμιση ισχύει για όλες τις πλάκες του συνόλου.",
+    "Плиты под одним лотком должны быть одной высоты.": "Οι πλάκες κάτω από τον ίδιο δίσκο πρέπει να έχουν το ίδιο ύψος."
   },
   "it": {
     "+ Крышка": "+ Coperchio",
@@ -6229,7 +6254,12 @@
     "Передняя и задняя": "Anteriore e posteriore",
     "Ширина парных вырезов": "Larghezza dei due intagli",
     "Глубина парных вырезов": "Profondità dei due intagli",
-    "До внутреннего дна": "Fino al fondo interno"
+    "До внутреннего дна": "Fino al fondo interno",
+    "Крепление плиты": "Fissaggio della piastra base",
+    "Крепление потайными винтами и саморезами": "Fissaggio con viti a testa svasata",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "I fori si trovano nelle celle agli angoli. Le teste delle viti devono rimanere sotto il fondo della sede.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Nella modalità su misura per il cassetto, l’impostazione vale per tutte le piastre del set.",
+    "Плиты под одним лотком должны быть одной высоты.": "Le piastre sotto lo stesso vassoio devono avere la stessa altezza."
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -7267,7 +7297,12 @@
     "Передняя и задняя": "Передня і задня",
     "Ширина парных вырезов": "Ширина парних вирізів",
     "Глубина парных вырезов": "Глибина парних вирізів",
-    "До внутреннего дна": "До внутрішнього дна"
+    "До внутреннего дна": "До внутрішнього дна",
+    "Крепление плиты": "Кріплення плити",
+    "Крепление потайными винтами и саморезами": "Кріплення потайними гвинтами й саморізами",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Отвори розташовані в кутових комірках. Головки гвинтів мають залишатися нижче дна гнізда.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "У режимі під розмір шухляди це налаштування застосовується до всіх плит комплекту.",
+    "Плиты под одним лотком должны быть одной высоты.": "Плити під одним лотком мають бути однакової висоти."
   },
   "cs": {
     "+ Крышка": "+ Víko",
@@ -8305,7 +8340,12 @@
     "Передняя и задняя": "Přední a zadní",
     "Ширина парных вырезов": "Šířka obou výřezů",
     "Глубина парных вырезов": "Hloubka obou výřezů",
-    "До внутреннего дна": "Až k vnitřnímu dnu"
+    "До внутреннего дна": "Až k vnitřnímu dnu",
+    "Крепление плиты": "Upevnění základní desky",
+    "Крепление потайными винтами и саморезами": "Upevnění zápustnými šrouby",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otvory jsou v rohových buňkách. Hlavy šroubů musí zůstat pod dnem lůžka.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "V režimu přizpůsobení zásuvce platí nastavení pro všechny desky sady.",
+    "Плиты под одним лотком должны быть одной высоты.": "Desky pod stejnou vaničkou musí mít stejnou výšku."
   },
   "pl": {
     "+ Крышка": "+ Pokrywa",
@@ -9343,7 +9383,12 @@
     "Передняя и задняя": "Przednia i tylna",
     "Ширина парных вырезов": "Szerokość obu wycięć",
     "Глубина парных вырезов": "Głębokość obu wycięć",
-    "До внутреннего дна": "Do wewnętrznego dna"
+    "До внутреннего дна": "Do wewnętrznego dna",
+    "Крепление плиты": "Mocowanie płyty bazowej",
+    "Крепление потайными винтами и саморезами": "Mocowanie śrubami i wkrętami z łbem stożkowym",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otwory są w narożnych komórkach. Łby śrub muszą pozostać poniżej dna gniazda.",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "W trybie dopasowania do szuflady ustawienie dotyczy wszystkich płyt zestawu.",
+    "Плиты под одним лотком должны быть одной высоты.": "Płyty pod tym samym pojemnikiem muszą mieć tę samą wysokość."
   },
   "zh-CN": {
     "+ Крышка": "+ 盖子",
@@ -10383,6 +10428,11 @@
     "Передняя и задняя": "前侧和后侧",
     "Ширина парных вырезов": "两侧开口宽度",
     "Глубина парных вырезов": "两侧开口深度",
-    "До внутреннего дна": "直至托盘内底面"
+    "До внутреннего дна": "直至托盘内底面",
+    "Крепление плиты": "底板固定",
+    "Крепление потайными винтами и саморезами": "沉头螺钉固定",
+    "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "螺钉孔位于角部单元格。螺钉头必须低于卡槽底面。",
+    "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "在按抽屉尺寸适配模式下，此设置适用于整套底板。",
+    "Плиты под одним лотком должны быть одной высоты.": "支撑同一托盘的底板必须高度一致。"
   }
 }

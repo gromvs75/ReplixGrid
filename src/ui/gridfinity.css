@@ -14,10 +14,10 @@
 .gf-preview .editing-drawer:has(.gf-dimensions){width:min(560px,calc(100% - 32px));max-height:min(420px,65%);bottom:45px}
 .gf-preview .editing-body{max-height:330px;overflow:auto}
 .gf-dimensions .field{margin:14px 0}
-.gf-tray-access > label:has(input[type=checkbox]){display:flex;align-items:center;gap:8px;margin:12px 0}
-.gf-tray-access > label > input[type=checkbox]{margin:0;flex:none}
-.gf-tray-access > .count-label{flex-wrap:wrap;gap:6px 12px}
-.gf-tray-access > .count-label select{max-width:100%}
+.gf-option-stack > label:has(input[type=checkbox]){display:flex;align-items:center;gap:8px;margin:12px 0}
+.gf-option-stack > label > input[type=checkbox]{margin:0;flex:none}
+.gf-option-stack > .count-label{flex-wrap:wrap;gap:6px 12px}
+.gf-option-stack > .count-label select{max-width:100%}
 .gf-preview-caption{position:absolute;bottom:12px;left:20px;right:20px;text-align:center;font-size:11px;pointer-events:none;color:var(--muted)}
 .gf-error{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);max-width:90vw;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:16px;z-index:100;display:flex;gap:16px}
 @media(max-width:760px){.gf-layout{display:flex;flex-direction:column;min-height:auto}.gf-preview{height:620px;flex:none}.gf-controls{overflow:visible;border-right:0}.gf-header{padding:12px}.gf-status{width:100%;order:3;margin:0}}

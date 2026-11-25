@@ -88,7 +88,7 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
   useEffect(()=>{
     setBuilding(true);
     if(editing||overview)return;
-    const worker=new Worker('/kernel/worker-gridfinity-release-20261119.js',{type:'module'});
+    const worker=new Worker('/kernel/worker-gridfinity-plate-mount-v1.js',{type:'module'});
     const timeout=setTimeout(()=>{worker.terminate();setBuilding(false);setError('Не удалось построить Gridfinity. Уменьшите размер и повторите.');},60000);
     worker.onmessage=({data})=>{clearTimeout(timeout);setBuilding(false);if(data.error){setError(data.error);return;}setResult({key,stl:data.stl,lid:data.lid,tag:data.tag});};
     worker.onerror=()=>{clearTimeout(timeout);setBuilding(false);setError('Не удалось построить Gridfinity. Уменьшите размер и повторите.');};
@@ -127,6 +127,11 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
         {part==='plate'&&<SettingsPage title="Посадка"><div className="gf-dimensions">
           <Field label="Зазор плиты на сторону" value={p.clearance} min={.1} max={.2} step={.01} onChange={change('clearance')} manageHistory={false}/>
           <p className="hint">{t('Больше зазор — свободнее посадка. Меняются только гнёзда плиты; размеры опор лотка остаются прежними.')}</p>
+        </div></SettingsPage>}
+        {part==='plate'&&<SettingsPage title="Крепление плиты"><div className="gf-dimensions gf-option-stack">
+          <label><input type="checkbox" checked={!!p.plateScrewMount} onChange={e=>commit({...p,plateScrewMount:e.target.checked||undefined})}/> {t('Крепление потайными винтами и саморезами')}</label>
+          {p.plateScrewMount&&<p className="hint">{t('Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.')}</p>}
+          {a.drawer&&<p className="hint">{t('В режиме «Под размер ящика» крепление включается для всех плит комплекта.')}</p>}
         </div></SettingsPage>}
         {part==='tray'&&<SettingsPage title="Подпись лотка"><div className="gf-dimensions">
           <label className="count-label">{t('Подпись лотка')}<select value={p.label?.mode??'none'} onChange={e=>{
@@ -174,7 +179,7 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
           <label><input type="checkbox" checked={!!p.stackingLip} onChange={e=>commit({...p,stackingLip:e.target.checked})}/> {t('Бортик для штабелирования')}</label>
           <p className="hint">{t('Бортик добавляет 3,8 мм к высоте и удерживает сверху лоток того же размера.')}</p>
         </div></SettingsPage>}
-        {part==='tray'&&<SettingsPage title="Извлечение деталей"><div className="gf-dimensions gf-tray-access">
+        {part==='tray'&&<SettingsPage title="Извлечение деталей"><div className="gf-dimensions gf-option-stack">
           <Field label="Радиус скругления дна" value={p.floorRadius??0} min={0} max={12} step={.5} onChange={change('floorRadius')} commitOnRelease manageHistory={false}/>
           <label><input type="checkbox" checked={!!p.frontNotch} onChange={e=>commit({...p,frontNotch:e.target.checked})}/> {t('Выемка в передней стенке')}</label>
           {p.frontNotch&&<>
@@ -213,6 +218,6 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
   {projectsOpen&&<GridfinityProjectsDialog projects={projects} activeId={activeId} onOpen={item=>{openProject(item);setProjectsOpen(false);}} onRename={(id,name)=>setProjects(old=>old.map(v=>v.id===id?{...v,name}:v))} onDelete={deleteProject} onClose={()=>setProjectsOpen(false)}/>}
   {naming&&<GridfinityProjectNameDialog bed={configuredBedSettings(printer)} fitted={naming==='drawer'} initialDrawer={naming==='resize'?a.drawer:undefined} variant={naming==='variant'} onCreate={createProject} onClose={()=>setNaming(null)}/>}
 
-  {exportOpen&&<ExportDialog initial={overview?'all':part} project={printer} fileName="Gridfinity" source={{description:gridSummary,workerUrl:'/kernel/worker-gridfinity-release-20261119.js',request:{assembly:a,selection},targets:[{value:'all',label:'Весь комплект'},{value:'kit',label:'Плита и её лотки'},{value:'plate',label:'Базовая плита'},...(part==='tray'?[{value:'tray' as const,label:'Выбранный лоток'},...(p.label?.mode==='tag'?[{value:'tag' as const,label:'Сменная табличка'}]:[]),...(hasGridfinityLid(p)?[{value:'lid' as const,label:'Крышка'}]:[])]:[])],archive:true}} onClose={()=>setExportOpen(false)} onDone={message=>{setExportOpen(false);setStatus(message);}}/>}
+  {exportOpen&&<ExportDialog initial={overview?'all':part} project={printer} fileName="Gridfinity" source={{description:gridSummary,workerUrl:'/kernel/worker-gridfinity-plate-mount-v1.js',request:{assembly:a,selection},targets:[{value:'all',label:'Весь комплект'},{value:'kit',label:'Плита и её лотки'},{value:'plate',label:'Базовая плита'},...(part==='tray'?[{value:'tray' as const,label:'Выбранный лоток'},...(p.label?.mode==='tag'?[{value:'tag' as const,label:'Сменная табличка'}]:[]),...(hasGridfinityLid(p)?[{value:'lid' as const,label:'Крышка'}]:[])]:[])],archive:true}} onClose={()=>setExportOpen(false)} onDone={message=>{setExportOpen(false);setStatus(message);}}/>}
   </div></SettingsWorkspace></FieldHistoryContext.Provider>;
 }

@@ -6,6 +6,7 @@ import {regions} from './editor.js';
 /** Gridfinity interface dimensions adapted from gridfinity-rebuilt-openscad.
  * See public/licenses/GRIDFINITY-MIT.txt for both upstream MIT notices. */
 export const GRIDFINITY = {pitch:42, gap:0.5, radius:3.75, footHeight:4.75, floorHeight:7, plateFloor:1.2, plateOpening:31.6} as const;
+export const gridfinityPlateScrew = {floor:2.8, shaftDiameter:3.5, headDiameter:6.5, headClearance:.35} as const;
 export interface GridfinityProject {
   kind:'replixgrid-gridfinity'; schemaVersion:1;
   pitch?:[number,number];
@@ -21,6 +22,7 @@ export interface GridfinityProject {
   lid?:'none'|'plain'|'stackable';
   stackingLip?:boolean;
   plateStyle?:'solid'|'lattice';
+  plateScrewMount?:boolean;
   root?:Cell; colors?:{tray?:string;plate?:string};
 }
 export const gridPitch=(p:GridfinityProject):[number,number]=>p.pitch??[GRIDFINITY.pitch,GRIDFINITY.pitch];
@@ -45,6 +47,7 @@ export function validateGridfinity(p:GridfinityProject){
   if(p.lid!==undefined&&!['none','plain','stackable'].includes(p.lid))throw Error('Некорректный проект Gridfinity.');
   if(p.stackingLip!==undefined&&typeof p.stackingLip!=='boolean')throw Error('Некорректный проект Gridfinity.');
   if(p.plateStyle!==undefined&&p.plateStyle!=='solid'&&p.plateStyle!=='lattice')throw Error('Некорректный проект Gridfinity.');
+  if(p.plateScrewMount!==undefined&&typeof p.plateScrewMount!=='boolean')throw Error('Некорректный проект Gridfinity.');
   const integer=(n:number,min:number,max:number)=>Number.isInteger(n)&&n>=min&&n<=max;
   if(!integer(p.columns,1,8)||!integer(p.rows,1,8)||!Number.isFinite(p.heightUnits)||p.heightUnits<2||p.heightUnits>20||!integer(p.compartmentsX,1,8)||!integer(p.compartmentsY,1,8)||!Number.isFinite(p.wall)||p.wall<1.2||p.wall>3||!Number.isFinite(p.clearance)||p.clearance<0.1||p.clearance>0.2)throw Error('Некорректные размеры Gridfinity.');
   if(!p.root&&((p.columns*gridPitch(p)[0]-.5-(p.compartmentsX+1)*p.wall)/p.compartmentsX<4||(p.rows*gridPitch(p)[1]-.5-(p.compartmentsY+1)*p.wall)/p.compartmentsY<4))throw Error('Отсек получается слишком узким. Уменьшите число отсеков.');
@@ -78,8 +81,11 @@ export function lidDeckTop(p:GridfinityProject){return lidDeckBase(p)+gridfinity
 export function hasGridfinityLid(p:GridfinityProject){return p.lid==='plain'||p.lid==='stackable';}
 export function gridfinityLidBaseZ(p:GridfinityProject){return p.heightUnits*7-(p.stackingLip?0:lidLocatorDepth);}
 
+export function gridfinityPlateFloor(p:GridfinityProject){
+  return p.plateScrewMount?gridfinityPlateScrew.floor:GRIDFINITY.plateFloor;
+}
 export function gridfinitySize(p:GridfinityProject,part:'tray'|'plate'){
-  return part==='tray'?[p.columns*gridPitch(p)[0]-.5,p.rows*gridPitch(p)[1]-.5,p.heightUnits*7+(p.stackingLip?stackingLipHeight:0)]:[p.columns*gridPitch(p)[0],p.rows*gridPitch(p)[1],GRIDFINITY.plateFloor+GRIDFINITY.footHeight];
+  return part==='tray'?[p.columns*gridPitch(p)[0]-.5,p.rows*gridPitch(p)[1]-.5,p.heightUnits*7+(p.stackingLip?stackingLipHeight:0)]:[p.columns*gridPitch(p)[0],p.rows*gridPitch(p)[1],gridfinityPlateFloor(p)+GRIDFINITY.footHeight];
 }
 
 // Leave a flat floor and room for the lid locator, even in narrow or shallow cells.

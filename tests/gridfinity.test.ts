@@ -199,6 +199,44 @@ test('lattice plates retain seating geometry with real through openings and lowe
  assert.throws(()=>parseGridfinity(JSON.stringify({...p,plateStyle:'unknown'})));
 });
 
+test('mountable plates keep countersunk screws and bridges below the tray feet',async()=>{
+ const wasm=await Module();wasm.setup();
+ const trayProject={...defaultGridfinity(),columns:3,rows:1,pitch:[40,45] as [number,number]};
+ const tray=await buildGridfinity(trayProject,'tray');
+ const toSolid=(stl:ArrayBuffer)=>{
+  const triangles=decodeSTL(stl);
+  const mesh=new wasm.Mesh({numProp:3,vertProperties:new Float32Array(triangles.flat(2)),triVerts:Uint32Array.from({length:triangles.length*3},(_,i)=>i)});
+  mesh.merge();return new wasm.Manifold(mesh);
+ };
+ const foot=toSolid(tray.stl);
+ const placed=foot.translate([.25,.25,2.8]);
+ try{
+  for(const plateStyle of ['solid','lattice'] as const){
+   const project={...trayProject,plateStyle,plateScrewMount:true};
+   assert.deepEqual(parseGridfinity(JSON.stringify(project)),project);
+   const plate=await buildGridfinity(project,'plate');
+   const body=toSolid(plate.stl);
+   const collision=placed.intersect(body);
+   const surface=(x:number,y:number)=>body.rayCast([x,y,10],[x,y,-1])[0]?.position[2];
+   try{
+    assert.ok(Math.abs(plate.inspection.bounds.max[2]-7.55)<1e-4);
+    assert.ok(collision.volume()<.001);
+    for(const x of [20,100]){
+     assert.equal(surface(x,22.5),undefined);
+     assert.ok(Math.abs(surface(x+2.5,22.5)!-1.7)<.01);
+     assert.ok(Math.abs(surface(x+4,22.5)!-2.8)<1e-4);
+    }
+    if(plateStyle==='lattice'){
+     assert.equal(surface(20,32.5),undefined);
+     assert.equal(surface(60,22.5),undefined);
+    }else assert.ok(Math.abs(surface(60,22.5)!-2.8)<1e-4);
+   }finally{collision.delete();body.delete();}
+   assert.deepEqual((await buildGridfinity(project,'tray')).stl,tray.stl);
+  }
+ }finally{placed.delete();foot.delete();}
+ assert.throws(()=>parseGridfinity(JSON.stringify({...trayProject,plateScrewMount:'yes'})));
+});
+
 test('exported stacking lip seats matching feet at the nominal height and retains the upper tray', async () => {
   const wasm = await Module();
   wasm.setup();

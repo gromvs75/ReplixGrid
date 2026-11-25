@@ -73,21 +73,24 @@ storage is local to that browser.
 Select a plate, then open **Plate type** and choose **Solid bottom** or **Open grid**.
 Each plate has its own setting. New and older projects use a solid bottom unless
 you change it. Open grid removes material through the centre of each cell while
-retaining a support ledge beneath the tray feet. Both types keep the same 5.95 mm
-height, socket profile and clearance. On a 42 mm grid the openings are 31.6 mm wide; the bearing
+retaining a support ledge beneath the tray feet. Both types use the same socket profile and clearance. The plate is 5.95 mm tall with mounting off and 7.55 mm tall with screw mounting on. On a 42 mm grid the openings are 31.6 mm wide; the bearing
 ledge beneath each foot is 2 mm wide along the straight sides. The choice is saved
 with the project and used by the preview and all export formats.
 
 Compare material and print time in your slicer with identical settings; the saving
 depends on the print settings. Test a small open-grid plate before printing a full
-set. This version has not yet been physically test-printed.
+set.
+
+## Baseplate mounting
+
+Select a plate and open **Baseplate mounting**. Enable **Mounting with countersunk screws** to add through holes in the corner cells of the plate. The through hole is Ø3.5 mm and the 90° countersink is Ø6.5 mm. For a wooden drawer, use Ø3 mm wood screws with countersunk heads around Ø6 mm. Choose a length that won’t go through the drawer bottom. Seat each head below the socket floor before fitting a tray. The open-grid plate adds a bridge across each mounting cell. In **Fit to drawer**, the setting applies to all plates so trays can span seams at the same height.
 
 ## Geometry, color and fit
 
 Standard tray footprint: grid cells × 42 − 0.5 mm. Plate footprint: grid cells × 42 mm.
 Tray height includes the feet and can be set directly in millimeters (14–140 mm).
 The inside floor is at Z = 7 mm, so usable depth below the stacking plane is the nominal tray height minus 7 mm.
-Plate height is 5.95 mm, including a 1.2 mm bottom. Tray wall thickness is
+Without mounting, the plate is 5.95 mm tall, including a 1.2 mm bottom. Tray wall thickness is
 1.2–3 mm. Outer corner radius is 0–3.75 mm; inner vertical corner radius is
 0–20 mm, limited by the available compartment size and preserved wall thickness.
 These radii do not round the wall-to-floor joint. Standard feet and sockets
@@ -194,13 +197,11 @@ independent and is not endorsed or certified by Gridfinity's creator.
 Настройка независима для каждой плиты. Новые и старые проекты сохраняют сплошное
 дно, пока вы сами не переключите вариант. В решётчатой плите сквозные отверстия
 по центру ячеек уменьшают количество материала. Под опорами лотков остаётся
-бортик: 2 мм вдоль прямых сторон, ширина отверстия — 31,6 мм. Высота 5,95 мм,
-профиль гнёзд и посадочный зазор одинаковы для обоих вариантов. Выбор сохраняется
+бортик: 2 мм вдоль прямых сторон, ширина отверстия — 31,6 мм. Профиль гнёзд и посадочный зазор одинаковы у обоих вариантов. Высота плиты без крепления — 5,95 мм, с креплением — 7,55 мм. Выбор сохраняется
 в проекте и применяется в предпросмотре и во всех форматах экспорта.
 
 Расход пластика и время сравнивайте в слайсере с одинаковыми настройками.
-Решётчатый вариант ещё не проверен физической печатью: сначала напечатайте
-небольшой образец.
+Перед печатью полного комплекта напечатайте небольшой образец для проверки посадки.
 
 ## Подписи лотков
 
@@ -209,6 +210,10 @@ independent and is not endorsed or certified by Gridfinity's creator.
 ## Крышки лотков
 
 Выберите лоток и откройте раздел «Крышка». «Обычная» даёт плоский верх. Вариант «С бортиком» удерживает сверху лоток такой же длины и ширины. В меню «Ручка заподлицо» можно выбрать сквозную ручку или ручку с закрытым дном. В обоих случаях перемычка находится вровень с крышкой. Версия с закрытым дном имеет углубления 5 мм и добавляет 4,2 мм к высоте крышки. Печатайте крышку посадочной стороной на столе. Ручка, держатель таблички и бортик смотрят вверх. Сменная табличка печатается рядом. На лотке с бортиком крышка опирается на ту же площадку, что и верхний лоток. У лотка с обычным краем выступы крышки входят в отсеки и расширяются выше края. Эта ориентация уже задана в файле. Отключите «Показать крышки», чтобы редактировать отсеки. При скачивании комплекта крышки раскладываются по печатным столам как отдельные детали. Чтобы напечатать одну крышку, выберите лоток и укажите «Крышка» в окне скачивания.
+
+## Крепление плиты
+
+Выберите плиту и откройте **Крепление плиты**. Включите **Крепление потайными винтами и саморезами**. Сквозные отверстия появятся в угловых ячейках плиты. Диаметр сквозного отверстия — 3,5 мм, потая 90° — 6,5 мм. Для деревянного дна подойдёт саморез Ø3 мм с потайной головкой около Ø6 мм. Подберите длину по толщине дна и утопите головку ниже дна гнезда, чтобы лоток сел до конца. В решётчатой плите в ячейках с винтами появятся перемычки. В режиме **Под размер ящика** настройка действует на все плиты комплекта, чтобы лотки ровно садились поперёк стыков.
 
 ## Посадка и цветная печать
 
@@ -233,7 +238,7 @@ Gridfinity использует ту же раскладку по печатны
 Шаг основания — 42 мм. Высота лотка задаётся в миллиметрах от 14 до 140. Номинальная высота включает опоры. Глубина до плоскости укладки
 на 7 мм меньше номинальной высоты. Толщина стенки 1,2–3 мм, внешний радиус 0–3,75 мм,
 внутренний — до 20 мм с ограничением по размеру отсека. Радиусы вертикальных
-углов не скругляют стык стенки с дном. Плита имеет высоту 5,95 мм.
+углов не скругляют стык стенки с дном. Плита без крепления имеет высоту 5,95 мм, включая дно толщиной 1,2 мм.
 В разделе «Извлечение деталей» задайте радиус скругления дна от 0 до 12 мм. Скругление помогает подхватывать мелкие детали у стенки каждого отсека. В низких и узких отсеках радиус уменьшается автоматически. Для передней выемки выберите плавный, полукруглый или прямоугольный профиль и задайте ширину и глубину в миллиметрах. Глубина отсчитывается от верхнего края. Выемка понижает середину передней стенки вместе с бортиком для штабелирования, если он включён. Парные вырезы располагаются по центру двух выбранных противоположных стенок. Задайте ширину и глубину или включите До внутреннего дна. Вырезы поворачиваются вместе с лотком. Два внутренних боковых захвата позволяют поднять лоток сверху. Каждая настройка включается отдельно.
 
 Выберите нижний лоток и включите **Штабелирование → Бортик для штабелирования**. Сверху установите лоток с такими же длиной и шириной. Бортик нужен каждому лотку, на который ставят следующий. Он добавляет 3,8 мм к высоте при печати. Два лотка по 4 единицы с бортиком только на нижнем занимают в стопке 56 мм. По умолчанию бортик выключен.

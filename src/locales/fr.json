@@ -1034,5 +1034,10 @@
   "Передняя и задняя": "Avant et arrière",
   "Ширина парных вырезов": "Largeur des deux découpes",
   "Глубина парных вырезов": "Profondeur des deux découpes",
-  "До внутреннего дна": "Jusqu’au fond intérieur"
+  "До внутреннего дна": "Jusqu’au fond intérieur",
+  "Крепление плиты": "Fixation de la plaque",
+  "Крепление потайными винтами и саморезами": "Fixation par vis à tête fraisée",
+  "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Les trous se trouvent dans les cellules d’angle. Les têtes de vis doivent rester sous le fond des logements.",
+  "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En mode ajustement au tiroir, ce réglage s’applique à toutes les plaques de l’ensemble.",
+  "Плиты под одним лотком должны быть одной высоты.": "Les plaques sous un même bac doivent avoir la même hauteur."
 }

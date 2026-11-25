@@ -1034,5 +1034,10 @@
   "Передняя и задняя": "Přední a zadní",
   "Ширина парных вырезов": "Šířka obou výřezů",
   "Глубина парных вырезов": "Hloubka obou výřezů",
-  "До внутреннего дна": "Až k vnitřnímu dnu"
+  "До внутреннего дна": "Až k vnitřnímu dnu",
+  "Крепление плиты": "Upevnění základní desky",
+  "Крепление потайными винтами и саморезами": "Upevnění zápustnými šrouby",
+  "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otvory jsou v rohových buňkách. Hlavy šroubů musí zůstat pod dnem lůžka.",
+  "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "V režimu přizpůsobení zásuvce platí nastavení pro všechny desky sady.",
+  "Плиты под одним лотком должны быть одной высоты.": "Desky pod stejnou vaničkou musí mít stejnou výšku."
 }

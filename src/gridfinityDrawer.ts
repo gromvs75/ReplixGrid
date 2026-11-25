@@ -41,7 +41,7 @@ function balancedSegments(cells:number,parts:number){
   const base=Math.floor(cells/parts), remainder=cells%parts;
   return Array.from({length:parts},(_,i)=>base+(i<remainder?1:0));
 }
-export function planDrawerPlates(grid:DrawerGrid,bed:BedSettings){
+export function planDrawerPlates(grid:DrawerGrid,bed:BedSettings,plateFloor:number=GRIDFINITY.plateFloor){
   const [px,py]=drawerPitch(grid);
   let best:{cols:number;rows:number}|undefined;
   for(const [width,depth] of [[bed.length,bed.width],[bed.width,bed.length]]){
@@ -52,7 +52,7 @@ export function planDrawerPlates(grid:DrawerGrid,bed:BedSettings){
     const cols=Math.ceil(grid.columns/maxCols), rows=Math.ceil(grid.rows/maxRows);
     if(!best||cols*rows<best.cols*best.rows)best={cols,rows};
   }
-  if(!best||!(bed.height>=GRIDFINITY.footHeight+GRIDFINITY.plateFloor))throw Error('Ячейка не помещается на печатный стол.');
+  if(!best||!(bed.height>=GRIDFINITY.footHeight+plateFloor))throw Error('Ячейка не помещается на печатный стол.');
   if(best.cols*best.rows>32)throw Error('Для этого ящика требуется больше 32 плит.');
   const result=[], columnWidths=balancedSegments(grid.columns,best.cols);
   let y=0;

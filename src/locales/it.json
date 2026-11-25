@@ -1034,5 +1034,10 @@
   "Передняя и задняя": "Anteriore e posteriore",
   "Ширина парных вырезов": "Larghezza dei due intagli",
   "Глубина парных вырезов": "Profondità dei due intagli",
-  "До внутреннего дна": "Fino al fondo interno"
+  "До внутреннего дна": "Fino al fondo interno",
+  "Крепление плиты": "Fissaggio della piastra base",
+  "Крепление потайными винтами и саморезами": "Fissaggio con viti a testa svasata",
+  "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "I fori si trovano nelle celle agli angoli. Le teste delle viti devono rimanere sotto il fondo della sede.",
+  "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Nella modalità su misura per il cassetto, l’impostazione vale per tutte le piastre del set.",
+  "Плиты под одним лотком должны быть одной высоты.": "Le piastre sotto lo stesso vassoio devono avere la stessa altezza."
 }

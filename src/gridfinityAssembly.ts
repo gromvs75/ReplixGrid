@@ -1,6 +1,6 @@
 import type {BedSettings} from './bedPacking.js';
 import {drawerPitch,planDrawerPlates,type DrawerGrid} from './gridfinityDrawer.js';
-import {gridPitch,hasGridfinityLid,defaultGridfinity,validateGridfinity,gridfinityColor,type GridfinityProject} from './gridfinity.js';
+import {GRIDFINITY,gridPitch,hasGridfinityLid,defaultGridfinity,validateGridfinity,gridfinityColor,gridfinityPlateFloor,type GridfinityProject} from './gridfinity.js';
 export interface GridfinityPlate {id:string;name:string;x:number;y:number;project:GridfinityProject}
 export interface GridfinityTray {id:string;name:string;plateId:string;x:number;y:number;rotated:boolean;project:GridfinityProject}
 export interface GridfinityAssembly {kind:'replixgrid-gridfinity-assembly';schemaVersion:1;drawer?:DrawerGrid;plates:GridfinityPlate[];trays:GridfinityTray[]}
@@ -11,9 +11,10 @@ export function migrateGridfinity(project:GridfinityProject):GridfinityAssembly{
 }
 export function fitDrawerGrid(grid:DrawerGrid,bed:BedSettings,previous?:GridfinityAssembly):GridfinityAssembly{
   const pitch=drawerPitch(grid);
-  const plates:GridfinityPlate[]=planDrawerPlates(grid,bed).map(({x,y,columns,rows},i)=>{
+  const base=previous?.plates[0]?.project??defaultGridfinity();
+  const plates:GridfinityPlate[]=planDrawerPlates(grid,bed,gridfinityPlateFloor(base)).map(({x,y,columns,rows},i)=>{
     const old=previous?.plates[i];
-    return {id:old?.id??crypto.randomUUID(),name:old?.name??'',x,y,project:{...(old?.project??defaultGridfinity()),pitch,columns,rows}};
+    return {id:old?.id??crypto.randomUUID(),name:old?.name??'',x,y,project:{...(old?.project??defaultGridfinity()),...(base.plateScrewMount?{plateScrewMount:true}:{}),pitch,columns,rows}};
   });
   const a:GridfinityAssembly={kind:'replixgrid-gridfinity-assembly',schemaVersion:1,drawer:{...grid},plates,trays:[]};
   if(previous){
@@ -45,8 +46,14 @@ export function gridBounds(a:GridfinityAssembly){
 function trayPlacementError(a:GridfinityAssembly,t:GridfinityTray){
  const origin=trayOrigin(a,t),[w,h]=trayFootprint(t);
  const outside=a.drawer?'Лоток выходит за границы ящика.':'Лоток выходит за границы плиты. Увеличьте плиту или перенесите лоток.';
- if(plateAt(a,origin.x,origin.y)?.id!==t.plateId)return outside;
- for(let y=origin.y;y<origin.y+h;y++)for(let x=origin.x;x<origin.x+w;x++)if(!plateAt(a,x,y))return outside;
+ const anchor=plateAt(a,origin.x,origin.y);
+ if(!anchor||anchor.id!==t.plateId)return outside;
+ const floor=gridfinityPlateFloor(anchor.project);
+ for(let y=origin.y;y<origin.y+h;y++)for(let x=origin.x;x<origin.x+w;x++){
+  const plate=plateAt(a,x,y);
+  if(!plate)return outside;
+  if(gridfinityPlateFloor(plate.project)!==floor)return 'Плиты под одним лотком должны быть одной высоты.';
+ }
  for(const q of a.trays)if(q.id!==t.id){
    const [qw,qh]=trayFootprint(q);
    if(overlap(origin,w,h,trayOrigin(a,q),qw,qh))return 'Лотки пересекаются. Выберите свободные ячейки.';
@@ -63,7 +70,8 @@ export function validateGridfinityAssembly(a:GridfinityAssembly){
  if(a.plates.some(p=>!matches(p.project)))throw Error('Некорректный комплект Gridfinity.');
  if(a.drawer){
    const {columns,rows}=a.drawer;
-   if(a.plates.some(p=>p.x+p.project.columns>columns||p.y+p.project.rows>rows)||a.plates.reduce((sum,p)=>sum+p.project.columns*p.project.rows,0)!==columns*rows)throw Error('Некорректный комплект Gridfinity.');
+   const floor=gridfinityPlateFloor(a.plates[0].project);
+   if(a.plates.some(p=>p.x+p.project.columns>columns||p.y+p.project.rows>rows||gridfinityPlateFloor(p.project)!==floor)||a.plates.reduce((sum,p)=>sum+p.project.columns*p.project.rows,0)!==columns*rows)throw Error('Некорректный комплект Gridfinity.');
  }
  for(const t of a.trays){
   if(typeof t.rotated!=='boolean'||!matches(t.project,t.rotated))throw Error('Некорректный комплект Gridfinity.');
@@ -73,7 +81,14 @@ export function validateGridfinityAssembly(a:GridfinityAssembly){
 }
 export function parseGridfinityAssembly(text:string){const p=JSON.parse(text);return p?.kind==='replixgrid-gridfinity'?migrateGridfinity(p):validateGridfinityAssembly(p);}
 export function selectedGridfinity(a:GridfinityAssembly,s:GridfinitySelection){return (s.kind==='plate'?a.plates:a.trays).find(v=>v.id===s.id);}
-export function updateGridfinityPart(a:GridfinityAssembly,s:GridfinitySelection,project:GridfinityProject){if(s.kind==='plate')project={...project,root:undefined,compartmentsX:1,compartmentsY:1};return validateGridfinityAssembly({...a,[s.kind==='plate'?'plates':'trays']:(s.kind==='plate'?a.plates:a.trays).map(v=>v.id===s.id?{...v,project}:v)});}
+export function updateGridfinityPart(a:GridfinityAssembly,s:GridfinitySelection,project:GridfinityProject){
+ if(s.kind==='tray')return validateGridfinityAssembly({...a,trays:a.trays.map(tray=>tray.id===s.id?{...tray,project}:tray)});
+ const plate={...project,root:undefined,compartmentsX:1,compartmentsY:1};
+ const synchronizeMount=a.drawer&&a.plates.some(item=>item.id===s.id&&!!item.project.plateScrewMount!==!!plate.plateScrewMount);
+ const plates=a.plates.map(item=>item.id===s.id?{...item,project:plate}:
+  synchronizeMount?{...item,project:{...item.project,plateScrewMount:plate.plateScrewMount}}:item);
+ return validateGridfinityAssembly({...a,plates});
+}
 export function addGridfinityPlate(a:GridfinityAssembly,source?:GridfinityPlate){
  if(a.drawer)throw Error('Размеры плит определяются размерами ящика.');
  const project=source?structuredClone(source.project):{...defaultGridfinity(),columns:4,rows:4};
@@ -122,7 +137,7 @@ export function gridfinityAssemblyItems(a:GridfinityAssembly){
  const [px,py]=gridPitch(a.plates[0].project);
  return a.plates.flatMap((p,i)=>[
   {id:p.id,kind:'plate' as const,name:`plate-${i+1}`,project:p.project,color:gridfinityColor(p.project,'plate'),position:[p.x*px,p.y*py,0] as [number,number,number],rotated:false},
-  ...a.trays.filter(t=>t.plateId===p.id).map(t=>({id:t.id,kind:'tray' as const,name:`plate-${i+1}-tray-${a.trays.indexOf(t)+1}`,project:t.project,color:gridfinityColor(t.project,'tray'),position:[(p.x+t.x)*px+.25,(p.y+t.y)*py+.25,1.2] as [number,number,number],rotated:t.rotated}))
+  ...a.trays.filter(t=>t.plateId===p.id).map(t=>({id:t.id,kind:'tray' as const,name:`plate-${i+1}-tray-${a.trays.indexOf(t)+1}`,project:t.project,color:gridfinityColor(t.project,'tray'),position:[(p.x+t.x)*px+GRIDFINITY.gap/2,(p.y+t.y)*py+GRIDFINITY.gap/2,gridfinityPlateFloor(p.project)] as [number,number,number],rotated:t.rotated}))
  ]);
 }
 

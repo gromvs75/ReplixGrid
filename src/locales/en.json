@@ -1037,5 +1037,10 @@
   "Передняя и задняя": "Front and back",
   "Ширина парных вырезов": "Paired cutout width",
   "Глубина парных вырезов": "Paired cutout depth",
-  "До внутреннего дна": "Down to the tray floor"
+  "До внутреннего дна": "Down to the tray floor",
+  "Крепление плиты": "Baseplate mounting",
+  "Крепление потайными винтами и саморезами": "Mounting with countersunk screws",
+  "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "The holes are in the corner cells. Keep the screw heads below the socket floor.",
+  "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "In drawer-fit mode, this setting applies to all plates in the set.",
+  "Плиты под одним лотком должны быть одной высоты.": "Plates supporting the same tray must have the same height."
 }
