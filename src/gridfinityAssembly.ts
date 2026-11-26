@@ -14,7 +14,10 @@ export function fitDrawerGrid(grid:DrawerGrid,bed:BedSettings,previous?:Gridfini
   const base=previous?.plates[0]?.project??defaultGridfinity();
   const plates:GridfinityPlate[]=planDrawerPlates(grid,bed,gridfinityPlateFloor(base)).map(({x,y,columns,rows},i)=>{
     const old=previous?.plates[i];
-    return {id:old?.id??crypto.randomUUID(),name:old?.name??'',x,y,project:{...(old?.project??defaultGridfinity()),...(base.plateScrewMount?{plateScrewMount:true}:{}),pitch,columns,rows}};
+    return {id:old?.id??crypto.randomUUID(),name:old?.name??'',x,y,project:{
+      ...(old?.project??defaultGridfinity()),...(base.plateScrewMount?{plateScrewMount:true}:{}),
+      ...(base.magnetClearance!==undefined?{magnetClearance:old?.project.magnetClearance??base.magnetClearance}:{}),pitch,columns,rows,
+    }};
   });
   const a:GridfinityAssembly={kind:'replixgrid-gridfinity-assembly',schemaVersion:1,drawer:{...grid},plates,trays:[]};
   if(previous){
@@ -84,9 +87,15 @@ export function selectedGridfinity(a:GridfinityAssembly,s:GridfinitySelection){r
 export function updateGridfinityPart(a:GridfinityAssembly,s:GridfinitySelection,project:GridfinityProject){
  if(s.kind==='tray')return validateGridfinityAssembly({...a,trays:a.trays.map(tray=>tray.id===s.id?{...tray,project}:tray)});
  const plate={...project,root:undefined,compartmentsX:1,compartmentsY:1};
- const synchronizeMount=a.drawer&&a.plates.some(item=>item.id===s.id&&!!item.project.plateScrewMount!==!!plate.plateScrewMount);
+ const previous=a.plates.find(item=>item.id===s.id)?.project;
+ const shared:Partial<GridfinityProject>={};
+ if(a.drawer&&previous){
+  if(!!previous.plateScrewMount!==!!plate.plateScrewMount)shared.plateScrewMount=plate.plateScrewMount;
+  if(previous.magnetClearance!==plate.magnetClearance)shared.magnetClearance=plate.magnetClearance;
+ }
+ const synchronize=Object.keys(shared).length>0;
  const plates=a.plates.map(item=>item.id===s.id?{...item,project:plate}:
-  synchronizeMount?{...item,project:{...item.project,plateScrewMount:plate.plateScrewMount}}:item);
+  synchronize?{...item,project:{...item.project,...shared}}:item);
  return validateGridfinityAssembly({...a,plates});
 }
 export function addGridfinityPlate(a:GridfinityAssembly,source?:GridfinityPlate){

@@ -1039,5 +1039,10 @@
   "Крепление потайными винтами и саморезами": "Fijación con tornillos avellanados",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Los orificios están en las celdas de las esquinas. Las cabezas deben quedar por debajo del fondo del alojamiento.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En el modo de ajuste al cajón, este ajuste se aplica a todas las placas del conjunto.",
-  "Плиты под одним лотком должны быть одной высоты.": "Las placas bajo una misma bandeja deben tener la misma altura."
+  "Плиты под одним лотком должны быть одной высоты.": "Las placas bajo una misma bandeja deben tener la misma altura.",
+  "Магниты": "Imanes",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Alojamientos para imanes Ø6 × 2 mm",
+  "Прибавка к диаметру гнезда": "Aumento del diámetro del alojamiento",
+  "Размер гнезда — Ø{0} × {1} мм.": "Tamaño del alojamiento — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "Ver la bandeja desde abajo"
 }

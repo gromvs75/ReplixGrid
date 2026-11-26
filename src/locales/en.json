@@ -1042,5 +1042,10 @@
   "Крепление потайными винтами и саморезами": "Mounting with countersunk screws",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "The holes are in the corner cells. Keep the screw heads below the socket floor.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "In drawer-fit mode, this setting applies to all plates in the set.",
-  "Плиты под одним лотком должны быть одной высоты.": "Plates supporting the same tray must have the same height."
+  "Плиты под одним лотком должны быть одной высоты.": "Plates supporting the same tray must have the same height.",
+  "Магниты": "Magnets",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Pockets for Ø6 × 2 mm magnets",
+  "Прибавка к диаметру гнезда": "Extra pocket diameter",
+  "Размер гнезда — Ø{0} × {1} мм.": "Pocket size — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "View tray from below"
 }

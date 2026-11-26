@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import Module from 'manifold-3d';
-import {defaultGridfinity,parseGridfinity,validateGridfinity,gridfinitySize,lidDeckBase,lidDeckTop,gridfinityLidBaseZ} from '../src/gridfinity.js';
+import {defaultGridfinity,parseGridfinity,validateGridfinity,gridfinitySize,gridfinityPlateFloor,lidDeckBase,lidDeckTop,gridfinityLidBaseZ} from '../src/gridfinity.js';
 import {buildGridfinity} from '../src/gridfinityKernel.js';
 import {decodeSTL} from '../src/stl.js';
 import {defaultProject} from '../src/model.js';
@@ -235,6 +235,45 @@ test('mountable plates keep countersunk screws and bridges below the tray feet',
   }
  }finally{placed.delete();foot.delete();}
  assert.throws(()=>parseGridfinity(JSON.stringify({...trayProject,plateScrewMount:'yes'})));
+});
+
+test('magnet pockets match on trays and both plate styles, with separate screw holes',async()=>{
+ const wasm=await Module();wasm.setup();
+ const toSolid=(stl:ArrayBuffer)=>{
+  const triangles=decodeSTL(stl);
+  const mesh=new wasm.Mesh({numProp:3,vertProperties:new Float32Array(triangles.flat(2)),triVerts:Uint32Array.from({length:triangles.length*3},(_,i)=>i)});
+  mesh.merge();return new wasm.Manifold(mesh);
+ };
+ const base={...defaultGridfinity(),columns:2,rows:1};
+ for(const magnetClearance of [0,.009,.201,NaN])assert.throws(()=>validateGridfinity({...base,magnetClearance}));
+ for(const [pitch,magnetClearance] of [[[42,42],.01],[[36,48],.20]] as const){
+  const [px,py]=pitch;
+  const p={...base,pitch:[px,py] as [number,number],magnetClearance};
+  assert.deepEqual(parseGridfinity(JSON.stringify(p)),p);
+  const floor=gridfinityPlateFloor(p),radius=(6+magnetClearance)/2;
+  const tray=toSolid((await buildGridfinity(p,'tray')).stl);
+  const placed=tray.translate([.25,.25,floor]);
+  try{
+   for(const plateStyle of ['solid','lattice'] as const){
+    const plate=toSolid((await buildGridfinity({...p,plateStyle,plateScrewMount:true},'plate')).stl);
+    const collision=placed.intersect(plate);
+    try{
+     assert.ok(collision.volume()<.001);
+     for(const x of [8,px-8,px+8,2*px-8])for(const y of [8,py-8]){
+      const surface=(s:typeof plate,offset:number,from:number,to:number)=>s.rayCast([x+offset,y,from],[x+offset,y,to])[0]?.position[2];
+      for(const offset of [0,radius-.02]){
+       assert.ok(Math.abs(surface(plate,offset,10,-1)!-(floor-2.4))<1e-4);
+       assert.ok(Math.abs(surface(placed,offset,floor-.1,floor+4)!-(floor+2.4))<1e-4);
+      }
+      assert.ok(Math.abs(surface(placed,radius+.02,floor-.1,floor+4)!-floor)<1e-4);
+      assert.equal(surface(plate,0,-1,10),0);
+     }
+     assert.equal(plate.rayCast([px/2,py/2,10],[px/2,py/2,-1]).length,0);
+     if(plateStyle==='lattice')assert.equal(plate.rayCast([px/2,py/2+9,10],[px/2,py/2+9,-1]).length,0);
+    }finally{collision.delete();plate.delete();}
+   }
+  }finally{placed.delete();tray.delete();}
+ }
 });
 
 test('exported stacking lip seats matching feet at the nominal height and retains the upper tray', async () => {

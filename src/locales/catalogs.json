@@ -1043,7 +1043,12 @@
     "Крепление потайными винтами и саморезами": "Mounting with countersunk screws",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "The holes are in the corner cells. Keep the screw heads below the socket floor.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "In drawer-fit mode, this setting applies to all plates in the set.",
-    "Плиты под одним лотком должны быть одной высоты.": "Plates supporting the same tray must have the same height."
+    "Плиты под одним лотком должны быть одной высоты.": "Plates supporting the same tray must have the same height.",
+    "Магниты": "Magnets",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Pockets for Ø6 × 2 mm magnets",
+    "Прибавка к диаметру гнезда": "Extra pocket diameter",
+    "Размер гнезда — Ø{0} × {1} мм.": "Pocket size — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "View tray from below"
   },
   "de": {
     "+ Крышка": "+ Deckel",
@@ -2087,7 +2092,12 @@
     "Крепление потайными винтами и саморезами": "Befestigung mit Senkschrauben",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Die Bohrungen liegen in den Eckzellen. Die Schraubenköpfe müssen unter dem Boden der Aufnahme bleiben.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Im Modus für die Schubladenanpassung gilt diese Einstellung für alle Platten des Satzes.",
-    "Плиты под одним лотком должны быть одной высоты.": "Platten unter demselben Behälter müssen gleich hoch sein."
+    "Плиты под одним лотком должны быть одной высоты.": "Platten unter demselben Behälter müssen gleich hoch sein.",
+    "Магниты": "Magnete",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Taschen für Magnete Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Zugabe zum Taschendurchmesser",
+    "Размер гнезда — Ø{0} × {1} мм.": "Taschengröße — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Einsatz von unten ansehen"
   },
   "fr": {
     "+ Крышка": "+ Couvercle",
@@ -3130,7 +3140,12 @@
     "Крепление потайными винтами и саморезами": "Fixation par vis à tête fraisée",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Les trous se trouvent dans les cellules d’angle. Les têtes de vis doivent rester sous le fond des logements.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En mode ajustement au tiroir, ce réglage s’applique à toutes les plaques de l’ensemble.",
-    "Плиты под одним лотком должны быть одной высоты.": "Les plaques sous un même bac doivent avoir la même hauteur."
+    "Плиты под одним лотком должны быть одной высоты.": "Les plaques sous un même bac doivent avoir la même hauteur.",
+    "Магниты": "Aimants",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Logements pour aimants Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Surcote du diamètre du logement",
+    "Размер гнезда — Ø{0} × {1} мм.": "Dimensions du logement — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Voir le bac de dessous"
   },
   "es": {
     "+ Крышка": "+ Tapa",
@@ -4173,7 +4188,12 @@
     "Крепление потайными винтами и саморезами": "Fijación con tornillos avellanados",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Los orificios están en las celdas de las esquinas. Las cabezas deben quedar por debajo del fondo del alojamiento.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En el modo de ajuste al cajón, este ajuste se aplica a todas las placas del conjunto.",
-    "Плиты под одним лотком должны быть одной высоты.": "Las placas bajo una misma bandeja deben tener la misma altura."
+    "Плиты под одним лотком должны быть одной высоты.": "Las placas bajo una misma bandeja deben tener la misma altura.",
+    "Магниты": "Imanes",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Alojamientos para imanes Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Aumento del diámetro del alojamiento",
+    "Размер гнезда — Ø{0} × {1} мм.": "Tamaño del alojamiento — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Ver la bandeja desde abajo"
   },
   "el": {
     "+ Крышка": "+ Καπάκι",
@@ -5216,7 +5236,12 @@
     "Крепление потайными винтами и саморезами": "Στερέωση με φρεζάτες βίδες",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Οι οπές βρίσκονται στα γωνιακά κελιά. Οι κεφαλές των βιδών πρέπει να μένουν κάτω από τον πυθμένα της υποδοχής.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Στη λειτουργία προσαρμογής στο συρτάρι, η ρύθμιση ισχύει για όλες τις πλάκες του συνόλου.",
-    "Плиты под одним лотком должны быть одной высоты.": "Οι πλάκες κάτω από τον ίδιο δίσκο πρέπει να έχουν το ίδιο ύψος."
+    "Плиты под одним лотком должны быть одной высоты.": "Οι πλάκες κάτω από τον ίδιο δίσκο πρέπει να έχουν το ίδιο ύψος.",
+    "Магниты": "Μαγνήτες",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Υποδοχές για μαγνήτες Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Προσαύξηση διαμέτρου υποδοχής",
+    "Размер гнезда — Ø{0} × {1} мм.": "Μέγεθος υποδοχής — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Προβολή δίσκου από κάτω"
   },
   "it": {
     "+ Крышка": "+ Coperchio",
@@ -6259,7 +6284,12 @@
     "Крепление потайными винтами и саморезами": "Fissaggio con viti a testa svasata",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "I fori si trovano nelle celle agli angoli. Le teste delle viti devono rimanere sotto il fondo della sede.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Nella modalità su misura per il cassetto, l’impostazione vale per tutte le piastre del set.",
-    "Плиты под одним лотком должны быть одной высоты.": "Le piastre sotto lo stesso vassoio devono avere la stessa altezza."
+    "Плиты под одним лотком должны быть одной высоты.": "Le piastre sotto lo stesso vassoio devono avere la stessa altezza.",
+    "Магниты": "Magneti",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Sedi per magneti Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Maggiorazione del diametro della sede",
+    "Размер гнезда — Ø{0} × {1} мм.": "Dimensioni della sede — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Vedi il vassoio dal basso"
   },
   "uk": {
     "+ Крышка": "+ Кришка",
@@ -7302,7 +7332,12 @@
     "Крепление потайными винтами и саморезами": "Кріплення потайними гвинтами й саморізами",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Отвори розташовані в кутових комірках. Головки гвинтів мають залишатися нижче дна гнізда.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "У режимі під розмір шухляди це налаштування застосовується до всіх плит комплекту.",
-    "Плиты под одним лотком должны быть одной высоты.": "Плити під одним лотком мають бути однакової висоти."
+    "Плиты под одним лотком должны быть одной высоты.": "Плити під одним лотком мають бути однакової висоти.",
+    "Магниты": "Магніти",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Гнізда для магнітів Ø6 × 2 мм",
+    "Прибавка к диаметру гнезда": "Прибавка до діаметра гнізда",
+    "Размер гнезда — Ø{0} × {1} мм.": "Розмір гнізда — Ø{0} × {1} мм.",
+    "Осмотреть лоток снизу": "Оглянути лоток знизу"
   },
   "cs": {
     "+ Крышка": "+ Víko",
@@ -8345,7 +8380,12 @@
     "Крепление потайными винтами и саморезами": "Upevnění zápustnými šrouby",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otvory jsou v rohových buňkách. Hlavy šroubů musí zůstat pod dnem lůžka.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "V režimu přizpůsobení zásuvce platí nastavení pro všechny desky sady.",
-    "Плиты под одним лотком должны быть одной высоты.": "Desky pod stejnou vaničkou musí mít stejnou výšku."
+    "Плиты под одним лотком должны быть одной высоты.": "Desky pod stejnou vaničkou musí mít stejnou výšku.",
+    "Магниты": "Magnety",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Kapsy pro magnety Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Přídavek k průměru kapsy",
+    "Размер гнезда — Ø{0} × {1} мм.": "Rozměr kapsy — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Zobrazit přihrádku zespodu"
   },
   "pl": {
     "+ Крышка": "+ Pokrywa",
@@ -9388,7 +9428,12 @@
     "Крепление потайными винтами и саморезами": "Mocowanie śrubami i wkrętami z łbem stożkowym",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otwory są w narożnych komórkach. Łby śrub muszą pozostać poniżej dna gniazda.",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "W trybie dopasowania do szuflady ustawienie dotyczy wszystkich płyt zestawu.",
-    "Плиты под одним лотком должны быть одной высоты.": "Płyty pod tym samym pojemnikiem muszą mieć tę samą wysokość."
+    "Плиты под одним лотком должны быть одной высоты.": "Płyty pod tym samym pojemnikiem muszą mieć tę samą wysokość.",
+    "Магниты": "Magnesy",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Gniazda na magnesy Ø6 × 2 mm",
+    "Прибавка к диаметру гнезда": "Naddatek średnicy gniazda",
+    "Размер гнезда — Ø{0} × {1} мм.": "Wymiary gniazda — Ø{0} × {1} mm.",
+    "Осмотреть лоток снизу": "Zobacz tackę od spodu"
   },
   "zh-CN": {
     "+ Крышка": "+ 盖子",
@@ -10433,6 +10478,11 @@
     "Крепление потайными винтами и саморезами": "沉头螺钉固定",
     "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "螺钉孔位于角部单元格。螺钉头必须低于卡槽底面。",
     "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "在按抽屉尺寸适配模式下，此设置适用于整套底板。",
-    "Плиты под одним лотком должны быть одной высоты.": "支撑同一托盘的底板必须高度一致。"
+    "Плиты под одним лотком должны быть одной высоты.": "支撑同一托盘的底板必须高度一致。",
+    "Магниты": "磁铁",
+    "Гнёзда для магнитов Ø6 × 2 мм": "Ø6 × 2 毫米磁铁安装孔",
+    "Прибавка к диаметру гнезда": "安装孔直径增量",
+    "Размер гнезда — Ø{0} × {1} мм.": "安装孔尺寸 — Ø{0} × {1} 毫米。",
+    "Осмотреть лоток снизу": "从底部查看托盘"
   }
 }

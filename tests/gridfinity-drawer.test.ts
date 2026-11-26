@@ -26,6 +26,19 @@ test('mounting keeps fitted plates level across seams and replanning',()=>{
  assert.ok(unmounted.plates.every(item=>!item.project.plateScrewMount));
  assert.equal(gridfinityAssemblyItems(unmounted).find(item=>item.kind==='tray')?.position[2],1.2);
 });
+test('fitted plates share their magnet clearance through changes and replanning',()=>{
+ const grid=suggestDrawerGrid(280,480,0),original=fitDrawerGrid(grid,bed);
+ const plate=original.plates[1],selection={kind:'plate' as const,id:plate.id};
+ const magnetic=updateGridfinityPart(original,selection,{...plate.project,magnetClearance:.1});
+ const adjusted=updateGridfinityPart(magnetic,selection,{...plate.project,magnetClearance:.01});
+ const restored=parseGridfinityAssembly(JSON.stringify(adjusted));
+ const replanned=fitDrawerGrid(grid,{...bed,length:190,width:190},restored);
+ assert.ok(replanned.plates.length>magnetic.plates.length);
+ assert.ok(replanned.plates.every(item=>item.project.magnetClearance===.01));
+ assert.ok(replanned.trays.every(item=>item.project.magnetClearance===undefined));
+ const unmounted=updateGridfinityPart(magnetic,selection,plate.project);
+ assert.ok(unmounted.plates.every(item=>item.project.magnetClearance===undefined));
+});
 test('drawer dimensions and per-side gap determine the physical pitch and balanced printable tiles',()=>{
  for(const [width,depth,cols,rows,tiles] of [[280,480,7,12,4],[255,572,6,14,3]]){
   const grid=suggestDrawerGrid(width,depth,0),a=fitDrawerGrid(grid,bed);

@@ -8,6 +8,7 @@ import {configuredBedSettings} from '../printerBed.js';
 import type {DrawerGrid} from '../gridfinityDrawer.js';
 import {useConfiguredPrinter} from './useConfiguredPrinter.js';
 import {GridfinityScene} from './GridfinityScene.js';
+import {SceneViewButtons,type SceneView} from './SceneNavigation.js';
 import {filamentPrinterKey} from '../filaments.js';
 import {ColorPicker} from './ColorPalette.js';
 import {GridfinityCompartmentPanel} from './GridfinityCompartments.js';
@@ -15,7 +16,7 @@ import {SlidingSegments} from './SlidingSegments.js';
 import './gridfinity.css';
 import {useEffect,useRef,useState} from 'react';
 import {gridfinityInscription} from '../gridfinityLabel.js';
-import {gridPitch,validateGridfinity,hasGridfinityLid,gridfinitySize,gridfinityNotch,gridfinityPairedNotches,gridfinityRadii,gridfinityInnerRadiusLimit,gridfinityColor,gridfinityRegions,type GridfinityProject} from '../gridfinity.js';
+import {gridPitch,validateGridfinity,hasGridfinityLid,gridfinitySize,gridfinityNotch,gridfinityPairedNotches,gridfinityRadii,gridfinityInnerRadiusLimit,gridfinityColor,gridfinityRegions,gridfinityMagnet,gridfinityWorkerUrl,type GridfinityProject} from '../gridfinity.js';
 import {download} from '../storage.js';
 import {t,getLocale} from '../i18n.js';
 import {CutoutShapePicker} from './CutoutShapePicker.js';
@@ -41,7 +42,7 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
   useEffect(()=>{try{localStorage.setItem('replixgrid.gridfinity.assembly.projects',JSON.stringify(projects));localStorage.setItem('replixgrid.gridfinity.assembly.active',activeId);}catch{}},[projects,activeId]);
   useEffect(()=>{if(!initial.error)try{localStorage.setItem(storageKey,JSON.stringify(initial.project));}catch{}},[]);
   const [reset,setReset]=useState(0),[showGrid,setShowGrid]=useState(false);
-  const [view,setView]=useState<'3d'|'top'>('3d'),[selected,setSelected]=useState(()=>gridfinityRegions(p).find(r=>!r.cell.split)?.cell.id??'');
+  const [view,setView]=useState<SceneView>('volume'),[selected,setSelected]=useState(()=>gridfinityRegions(p).find(r=>!r.cell.split)?.cell.id??'');
   const [history,setHistory]=useState<{past:GridfinityAssembly[];future:GridfinityAssembly[]}>({past:[],future:[]});
   const [error,setError]=useState(initial.error),[status,setStatus]=useState(''),[result,setResult]=useState<{key:string;stl:ArrayBuffer;lid?:ArrayBuffer;tag?:ArrayBuffer}|null>(null),[building,setBuilding]=useState(true);
   const current=useRef(a),gesture=useRef<GridfinityAssembly|null>(null);
@@ -88,7 +89,7 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
   useEffect(()=>{
     setBuilding(true);
     if(editing||overview)return;
-    const worker=new Worker('/kernel/worker-gridfinity-plate-mount-v1.js',{type:'module'});
+    const worker=new Worker(gridfinityWorkerUrl,{type:'module'});
     const timeout=setTimeout(()=>{worker.terminate();setBuilding(false);setError('Не удалось построить Gridfinity. Уменьшите размер и повторите.');},60000);
     worker.onmessage=({data})=>{clearTimeout(timeout);setBuilding(false);if(data.error){setError(data.error);return;}setResult({key,stl:data.stl,lid:data.lid,tag:data.tag});};
     worker.onerror=()=>{clearTimeout(timeout);setBuilding(false);setError('Не удалось построить Gridfinity. Уменьшите размер и повторите.');};
@@ -105,6 +106,21 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
   const setPaired=(patch:Partial<PairedNotches>)=>commit({...p,pairedNotches:{walls:paired.walls,...p.pairedNotches,...patch}});
   const size=gridfinitySize(p,part),valid=result?.key===key&&!building;
   const change=(field:keyof GridfinityProject)=>(value:number)=>commit({...p,[field]:value});
+  const magnetClearance=p.magnetClearance;
+  const magnetFormat=new Intl.NumberFormat(getLocale(),{maximumFractionDigits:2});
+  const magnetControls=<>
+    <label><input type="checkbox" checked={magnetClearance!==undefined}
+      onChange={e=>commit({...p,magnetClearance:e.target.checked?gridfinityMagnet.defaultClearance:undefined})}/>
+      {t('Гнёзда для магнитов Ø6 × 2 мм')}</label>
+    {magnetClearance===undefined?null:<>
+      <Field label="Прибавка к диаметру гнезда" value={magnetClearance} min={gridfinityMagnet.minClearance}
+        max={gridfinityMagnet.maxClearance} step={.01} onChange={value=>commit({...p,magnetClearance:Math.round(value*100)/100})}
+        commitOnRelease manageHistory={false}/>
+      <p className="hint">{t('Размер гнезда — Ø{0} × {1} мм.',[
+        magnetFormat.format(gridfinityMagnet.diameter+magnetClearance),magnetFormat.format(gridfinityMagnet.pocketDepth),
+      ])}</p>
+    </>}
+  </>;
   return <FieldHistoryContext.Provider value={{begin,end}}><SettingsWorkspace scope={selection.id} suspended={false} onSelect={()=>{}}><div className="gf-app"><WorkspaceHeader navigation={<><WorkspaceModes mode="gridfinity" onChange={mode=>{if(mode==='organizer')onBack();if(mode==='drawer')onDrawer();}}/><div className="variant-switcher"><select aria-label={t('Вариант проекта')} value={activeId} onChange={e=>{const item=projects.find(v=>v.id===e.target.value);if(item){setActiveId(item.id);save(item.project);setHistory({past:[],future:[]});}}}>{!activeId&&<option value="">{t('Новый проект')}</option>}{family.map(item=><option key={item.id} value={item.id}>{item.name}</option>)}</select><button onClick={()=>setNaming('variant')}>{t('+ Вариант')}</button></div></>} status={status} actions={<WorkspaceActions onNew={()=>setNaming('new')} onProjects={()=>setProjectsOpen(true)} onOpen={()=>file.current?.click()} onSave={()=>download(JSON.stringify(a,null,2),'Gridfinity.replixgrid-gridfinity.json','application/json')} onDownload={openExport} disabled={!overview&&!valid}/>}><input ref={file} hidden type="file" accept=".json" onChange={async e=>{const input=e.currentTarget,f=input.files?.[0];if(!f)return;try{if(f.size>5000000)throw Error('Файл слишком большой');const imported=parseGridfinityAssembly(await f.text());setActiveId(crypto.randomUUID());save(imported);setHistory({past:[],future:[]});}catch{setError('Некорректный проект Gridfinity.');}input.value='';}}/></WorkspaceHeader>
     <main className={`gf-layout scene-workspace${part==='tray'?' gf-with-selection':''}`}><aside className="gf-controls"><h1>{t(a.drawer?'Под размер ящика':'Совместимость с Gridfinity')}</h1><p>{gridSummary??t('Отдельный режим · сетка 42 мм')}</p><button onClick={()=>setNaming(a.drawer?'resize':'drawer')}>{t(a.drawer?'Размеры ящика':'Под размер ящика')}</button><GridfinityAssemblyPanel assembly={a} selection={selection} onSelect={choose} onChange={commitAssembly} onError={setError}/><SlidingSegments equal className="mode-switch" label={t('Режим просмотра')}><button aria-pressed={overview} onClick={()=>setOverview(true)}>{t('Весь комплект')}</button><button aria-pressed={!overview} onClick={()=>setOverview(false)}>{t('Редактировать деталь')}</button></SlidingSegments>
       <SettingsPages>
@@ -131,7 +147,11 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
         {part==='plate'&&<SettingsPage title="Крепление плиты"><div className="gf-dimensions gf-option-stack">
           <label><input type="checkbox" checked={!!p.plateScrewMount} onChange={e=>commit({...p,plateScrewMount:e.target.checked||undefined})}/> {t('Крепление потайными винтами и саморезами')}</label>
           {p.plateScrewMount&&<p className="hint">{t('Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.')}</p>}
+          {magnetControls}
           {a.drawer&&<p className="hint">{t('В режиме «Под размер ящика» крепление включается для всех плит комплекта.')}</p>}
+        </div></SettingsPage>}
+        {part==='tray'&&<SettingsPage title="Магниты"><div className="gf-dimensions gf-option-stack">
+          {magnetControls}
         </div></SettingsPage>}
         {part==='tray'&&<SettingsPage title="Подпись лотка"><div className="gf-dimensions">
           <label className="count-label">{t('Подпись лотка')}<select value={p.label?.mode??'none'} onChange={e=>{
@@ -214,10 +234,10 @@ export function GridfinityWorkspace({onBack,onDrawer}:{onBack:()=>void;onDrawer:
       <p className="gf-size">{size.map(n=>new Intl.NumberFormat(getLocale(),{maximumFractionDigits:2}).format(n)).join(' × ')} {t('мм')}</p>{(!a.drawer||part==='tray')&&<p className="hint">{t('Габариты детали. Проверьте размер стола в слайсере; автоматического разделения нет.')}</p>}
       {!a.drawer&&<p className="hint">{t('Начните с лотка и плиты 1 × 1. Проверьте посадку с вашими деталями Gridfinity при масштабе 100%.')}</p>}
       <a href="/guides/gridfinity.html" target="_blank" rel="noreferrer">{t('Инструкция и лицензии')}</a><small>Gridfinity — Zack Freedman / Voidstar Lab LLC · <a href="/licenses/GRIDFINITY-MIT.txt" target="_blank" rel="noreferrer">MIT</a></small>
-    </aside><section className="stage gf-preview" aria-label={t('Предпросмотр Gridfinity')} aria-busy={building}><div className="stage-top"><div className="viewport-actions">{<div className="view-tabs" role="group" aria-label={t('Вид')}><button className={view==='3d'?'active':''} aria-pressed={view==='3d'} onClick={()=>setView('3d')}>{t('◈ Объем')}</button><button className={view==='top'?'active':''} aria-pressed={view==='top'} onClick={()=>setView('top')}>{t('▦ Сверху')}</button><button aria-pressed={showGrid} onClick={()=>setShowGrid(v=>!v)}>{t('▦ Сетка')}</button></div>}<div className="tools"><button aria-label={t('Отменить')} disabled={!history.past.length} onClick={undo}>↶</button><button aria-label={t('Повторить')} disabled={!history.future.length} onClick={redo}>↷</button><button aria-label={t('Вернуть камеру')} onClick={()=>setReset(v=>v+1)}>⌖</button></div></div></div><div className="canvas-wrap">{overview?<GridfinityAssemblyScene showLids={showLids} selectedCell={selectedId} onSelectCell={setSelected} onEditTray={commit} assembly={a} selection={selection} onSelect={choose} onChange={commitAssembly} view={view} reset={reset} showGrid={showGrid}/>:result?<GridfinityScene tag={p.label?.mode==='tag'&&(showLids||!hasGridfinityLid(p))?result.tag:undefined} lid={showLids&&hasGridfinityLid(p)?result.lid:undefined} project={p} part={part} stl={result.stl} selected={selectedId} view={view} reset={reset} showGrid={showGrid} busy={!valid} onSelect={setSelected} onChange={commit}/>:<p role="status">{building?t('Подготовка…'):t('Нет предпросмотра')}</p>}</div><p className="gf-preview-caption">{t(overview&&a.drawer?'Лоток можно поставить поперёк стыка плит.':overview?'Выберите лоток: отсеки настраиваются справа. Для перемещения потяните внешнюю стенку лотка. Плита перемещается вместе с лотками.':part==='tray'?'Выбранную перегородку также можно потянуть на модели.':'Вращайте модель, чтобы проверить нижние опоры и посадочные гнёзда.')}</p></section>{part==='tray'&&<aside className="right-panel gf-selection"><GridfinityCompartmentPanel key={selection.id} project={p} selected={selectedId} onSelect={setSelected} onChange={commit} onError={setError} onTop={()=>setView('top')}/></aside>}</main>{error&&<div className="gf-error" role="alert">{t(error)}<button aria-label={t('Закрыть')} onClick={()=>setError('')}>×</button></div>}
+    </aside><section className="stage gf-preview" aria-label={t('Предпросмотр Gridfinity')} aria-busy={building}><div className="stage-top"><div className="viewport-actions"><SceneViewButtons view={view} onView={setView} showGrid={showGrid} onToggleGrid={()=>setShowGrid(v=>!v)}/><div className="tools"><button aria-label={t('Отменить')} disabled={!history.past.length} onClick={undo}>↶</button><button aria-label={t('Повторить')} disabled={!history.future.length} onClick={redo}>↷</button><button aria-label={t('Вернуть камеру')} onClick={()=>setReset(v=>v+1)}>⌖</button></div></div></div><div className="canvas-wrap">{overview?<GridfinityAssemblyScene showLids={showLids} selectedCell={selectedId} onSelectCell={setSelected} onEditTray={commit} assembly={a} selection={selection} onSelect={choose} onChange={commitAssembly} view={view} reset={reset} showGrid={showGrid}/>:result?<GridfinityScene tag={p.label?.mode==='tag'&&(showLids||!hasGridfinityLid(p))?result.tag:undefined} lid={showLids&&hasGridfinityLid(p)?result.lid:undefined} project={p} part={part} stl={result.stl} selected={selectedId} view={view} reset={reset} showGrid={showGrid} busy={!valid} onSelect={setSelected} onChange={commit}/>:<p role="status">{building?t('Подготовка…'):t('Нет предпросмотра')}</p>}</div><p className="gf-preview-caption">{t(overview&&a.drawer?'Лоток можно поставить поперёк стыка плит.':overview?'Выберите лоток: отсеки настраиваются справа. Для перемещения потяните внешнюю стенку лотка. Плита перемещается вместе с лотками.':part==='tray'?'Выбранную перегородку также можно потянуть на модели.':'Вращайте модель, чтобы проверить нижние опоры и посадочные гнёзда.')}</p></section>{part==='tray'&&<aside className="right-panel gf-selection"><GridfinityCompartmentPanel key={selection.id} project={p} selected={selectedId} onSelect={setSelected} onChange={commit} onError={setError} onTop={()=>setView('top')}/></aside>}</main>{error&&<div className="gf-error" role="alert">{t(error)}<button aria-label={t('Закрыть')} onClick={()=>setError('')}>×</button></div>}
   {projectsOpen&&<GridfinityProjectsDialog projects={projects} activeId={activeId} onOpen={item=>{openProject(item);setProjectsOpen(false);}} onRename={(id,name)=>setProjects(old=>old.map(v=>v.id===id?{...v,name}:v))} onDelete={deleteProject} onClose={()=>setProjectsOpen(false)}/>}
   {naming&&<GridfinityProjectNameDialog bed={configuredBedSettings(printer)} fitted={naming==='drawer'} initialDrawer={naming==='resize'?a.drawer:undefined} variant={naming==='variant'} onCreate={createProject} onClose={()=>setNaming(null)}/>}
 
-  {exportOpen&&<ExportDialog initial={overview?'all':part} project={printer} fileName="Gridfinity" source={{description:gridSummary,workerUrl:'/kernel/worker-gridfinity-plate-mount-v1.js',request:{assembly:a,selection},targets:[{value:'all',label:'Весь комплект'},{value:'kit',label:'Плита и её лотки'},{value:'plate',label:'Базовая плита'},...(part==='tray'?[{value:'tray' as const,label:'Выбранный лоток'},...(p.label?.mode==='tag'?[{value:'tag' as const,label:'Сменная табличка'}]:[]),...(hasGridfinityLid(p)?[{value:'lid' as const,label:'Крышка'}]:[])]:[])],archive:true}} onClose={()=>setExportOpen(false)} onDone={message=>{setExportOpen(false);setStatus(message);}}/>}
+  {exportOpen&&<ExportDialog initial={overview?'all':part} project={printer} fileName="Gridfinity" source={{description:gridSummary,workerUrl:gridfinityWorkerUrl,request:{assembly:a,selection},targets:[{value:'all',label:'Весь комплект'},{value:'kit',label:'Плита и её лотки'},{value:'plate',label:'Базовая плита'},...(part==='tray'?[{value:'tray' as const,label:'Выбранный лоток'},...(p.label?.mode==='tag'?[{value:'tag' as const,label:'Сменная табличка'}]:[]),...(hasGridfinityLid(p)?[{value:'lid' as const,label:'Крышка'}]:[])]:[])],archive:true}} onClose={()=>setExportOpen(false)} onDone={message=>{setExportOpen(false);setStatus(message);}}/>}
   </div></SettingsWorkspace></FieldHistoryContext.Provider>;
 }

@@ -73,7 +73,7 @@ storage is local to that browser.
 Select a plate, then open **Plate type** and choose **Solid bottom** or **Open grid**.
 Each plate has its own setting. New and older projects use a solid bottom unless
 you change it. Open grid removes material through the centre of each cell while
-retaining a support ledge beneath the tray feet. Both types use the same socket profile and clearance. The plate is 5.95 mm tall with mounting off and 7.55 mm tall with screw mounting on. On a 42 mm grid the openings are 31.6 mm wide; the bearing
+retaining a support ledge beneath the tray feet. Both types use the same socket profile and clearance. The plate is 5.95 mm tall without mounting features and 7.55 mm tall with screws only. On a 42 mm grid the openings are 31.6 mm wide; the bearing
 ledge beneath each foot is 2 mm wide along the straight sides. The choice is saved
 with the project and used by the preview and all export formats.
 
@@ -84,6 +84,20 @@ set.
 ## Baseplate mounting
 
 Select a plate and open **Baseplate mounting**. Enable **Mounting with countersunk screws** to add through holes in the corner cells of the plate. The through hole is Ø3.5 mm and the 90° countersink is Ø6.5 mm. For a wooden drawer, use Ø3 mm wood screws with countersunk heads around Ø6 mm. Choose a length that won’t go through the drawer bottom. Seat each head below the socket floor before fitting a tray. The open-grid plate adds a bridge across each mounting cell. In **Fit to drawer**, the setting applies to all plates so trays can span seams at the same height.
+
+## Magnet pockets
+
+For a plate, open **Baseplate mounting**. For a tray, open **Magnets**. Enable
+**Pockets for Ø6 × 2 mm magnets** on each part that needs them. Each cell has four
+matching pockets, spaced 26 mm apart on a standard 42 mm grid. The plate pockets
+open from above and the tray pockets open underneath. The open-grid plate keeps
+its centre openings, and the screw mounting option can be used at the same time.
+In **Fit to drawer**, magnet settings apply to all plates in the set.
+To see the underside of a tray, select it and choose **Edit part → Bottom**.
+
+**Extra pocket diameter** adds 0.01–0.20 mm to the entire diameter. The default is
+Ø6.10 mm, and the depth is 2.4 mm. With magnet pockets, the plate is 8.35 mm tall.
+Check the fit and magnet polarity on a 1 × 1 pair before printing the whole set.
 
 ## Geometry, color and fit
 
@@ -197,7 +211,7 @@ independent and is not endorsed or certified by Gridfinity's creator.
 Настройка независима для каждой плиты. Новые и старые проекты сохраняют сплошное
 дно, пока вы сами не переключите вариант. В решётчатой плите сквозные отверстия
 по центру ячеек уменьшают количество материала. Под опорами лотков остаётся
-бортик: 2 мм вдоль прямых сторон, ширина отверстия — 31,6 мм. Профиль гнёзд и посадочный зазор одинаковы у обоих вариантов. Высота плиты без крепления — 5,95 мм, с креплением — 7,55 мм. Выбор сохраняется
+бортик: 2 мм вдоль прямых сторон, ширина отверстия — 31,6 мм. Профиль гнёзд и посадочный зазор одинаковы у обоих вариантов. Высота плиты без креплений — 5,95 мм, только с креплением под винты — 7,55 мм. Выбор сохраняется
 в проекте и применяется в предпросмотре и во всех форматах экспорта.
 
 Расход пластика и время сравнивайте в слайсере с одинаковыми настройками.
@@ -214,6 +228,21 @@ independent and is not endorsed or certified by Gridfinity's creator.
 ## Крепление плиты
 
 Выберите плиту и откройте **Крепление плиты**. Включите **Крепление потайными винтами и саморезами**. Сквозные отверстия появятся в угловых ячейках плиты. Диаметр сквозного отверстия — 3,5 мм, потая 90° — 6,5 мм. Для деревянного дна подойдёт саморез Ø3 мм с потайной головкой около Ø6 мм. Подберите длину по толщине дна и утопите головку ниже дна гнезда, чтобы лоток сел до конца. В решётчатой плите в ячейках с винтами появятся перемычки. В режиме **Под размер ящика** настройка действует на все плиты комплекта, чтобы лотки ровно садились поперёк стыков.
+
+## Гнёзда для магнитов
+
+У плиты откройте **Крепление плиты**, у лотка — **Магниты**. Включите **Гнёзда
+для магнитов Ø6 × 2 мм** на нужных деталях. В каждой ячейке четыре гнезда.
+При шаге сетки 42 мм расстояние между их центрами — 26 мм. В плиту магниты
+устанавливаются сверху, в лоток — снизу. Решётчатая плита сохраняет сквозные
+проёмы. Крепление саморезами можно включить одновременно. В режиме **Под размер
+ящика** настройка действует на все плиты комплекта.
+Чтобы увидеть гнёзда снизу, выберите лоток и нажмите **Редактировать деталь → Снизу**.
+
+**Прибавка к диаметру гнезда** увеличивает весь диаметр на 0,01–0,20 мм.
+Размер по умолчанию — Ø6,10 мм, глубина — 2,4 мм. Высота плиты с гнёздами —
+8,35 мм. Перед печатью всего комплекта проверьте посадку и полярность магнитов
+на паре 1 × 1.
 
 ## Посадка и цветная печать
 

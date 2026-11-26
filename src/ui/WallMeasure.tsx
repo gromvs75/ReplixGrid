@@ -6,6 +6,7 @@ import {setWallHeight,wallHeightControls,type WallHeightKey} from '../wallDimens
 import {tiltSlope} from '../tilt.js';
 import {InlineDimension} from './InlineDimension.js';
 import {t} from '../i18n.js';
+import {useUndersideView} from './SceneNavigation.js';
 
 function WallHeightLabel({p,id,kind,c}:{p:Project;id:string;kind:WallHeightKey;c:NonNullable<ReturnType<typeof wallHeightControls>>}){
  const [editing,setEditing]=useState(false),[draft,setDraft]=useState<string|null>(null);
@@ -28,8 +29,9 @@ function WallHeightLabel({p,id,kind,c}:{p:Project;id:string;kind:WallHeightKey;c
  </group>;
 }
 export function WallMeasure(){
+ const underneath=useUndersideView();
  const p=useEditor(s=>s.project),selection=useEditor(s=>s.selection);
  const c=useMemo(()=>selection.type==='wall'?wallHeightControls(p,selection.id):null,[p,selection]);
- if(!c)return null;
+ if(!c||underneath)return null;
  return <>{c.keys.map(kind=><WallHeightLabel key={selection.id+kind} p={p} id={selection.id} kind={kind} c={c}/>)}</>;
 }

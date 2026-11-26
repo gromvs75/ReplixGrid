@@ -1039,5 +1039,10 @@
   "Крепление потайными винтами и саморезами": "Fissaggio con viti a testa svasata",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "I fori si trovano nelle celle agli angoli. Le teste delle viti devono rimanere sotto il fondo della sede.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Nella modalità su misura per il cassetto, l’impostazione vale per tutte le piastre del set.",
-  "Плиты под одним лотком должны быть одной высоты.": "Le piastre sotto lo stesso vassoio devono avere la stessa altezza."
+  "Плиты под одним лотком должны быть одной высоты.": "Le piastre sotto lo stesso vassoio devono avere la stessa altezza.",
+  "Магниты": "Magneti",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Sedi per magneti Ø6 × 2 mm",
+  "Прибавка к диаметру гнезда": "Maggiorazione del diametro della sede",
+  "Размер гнезда — Ø{0} × {1} мм.": "Dimensioni della sede — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "Vedi il vassoio dal basso"
 }

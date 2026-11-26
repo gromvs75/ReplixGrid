@@ -2,20 +2,20 @@ import {shelfAngle,tagOrigin,lidTagOrigin,tagThickness} from '../gridfinityLabel
 import {previewEdgeColor} from '../previewAppearance.js';
 import {stackingLipPositions} from '../gridfinityLip.js';
 import {GridfinityCavityEdges,gridfinityWallColor} from './GridfinityVisualGuide.js';
-import {SceneCamera,SceneOrbitControls,WorkspaceGrid} from './SceneNavigation.js';
+import {SceneCamera,SceneInspection,SceneOrbitControls,SceneUndersideLight,WorkspaceGrid,useUndersideView,type SceneView} from './SceneNavigation.js';
 import {CellBadge,CellFloor,EndMarker,DividerSurface} from './SceneSelection.js';
 import {gridfinityCavities,gridfinityLowerPositions} from '../gridfinityPreview.js';
 import {roundedContour} from '../rounding.js';
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {Canvas,useThree,type ThreeEvent} from '@react-three/fiber';
-import {OrbitControls} from '@react-three/drei';
 import {BufferGeometry,Color,Float32BufferAttribute,Group,Plane,Vector3,Shape,Path,ExtrudeGeometry} from 'three';
 import {decodeSTL} from '../stl.js';
 import {hasGridfinityLid,gridfinityLidBaseZ,lidDeckTop,gridfinityColor,gridfinityRegions,gridfinitySize,gridfinityRadii,type GridfinityProject} from '../gridfinity.js';
 import {gridfinityPick,gridfinityDrag} from '../gridfinityInteraction.js';
 import {t} from '../i18n.js';
-type Props={tag?:ArrayBuffer;lid?:ArrayBuffer;project:GridfinityProject;part:'tray'|'plate';stl:ArrayBuffer;selected:string;view:'3d'|'top';reset:number;showGrid:boolean;busy:boolean;onSelect:(id:string)=>void;onChange:(p:GridfinityProject)=>void};
+type Props={tag?:ArrayBuffer;lid?:ArrayBuffer;project:GridfinityProject;part:'tray'|'plate';stl:ArrayBuffer;selected:string;view:SceneView;reset:number;showGrid:boolean;busy:boolean;onSelect:(id:string)=>void;onChange:(p:GridfinityProject)=>void};
 export function GridfinityEditableSolid({project:p,part,stl,selected,busy,onSelect,onChange,onDragging,covered=false}:{covered?:boolean;project:GridfinityProject;part:'tray'|'plate';stl:ArrayBuffer;selected:string;busy:boolean;onSelect:(id:string)=>void;onChange:(p:GridfinityProject)=>void;onDragging:(value:boolean)=>void}){
+ const underneath=useUndersideView();
  const model=useRef<Group>(null);
  const [hovered,setHovered]=useState<string|null>(null);
  const [draft,setDraft]=useState<GridfinityProject|null>(null);
@@ -39,7 +39,7 @@ export function GridfinityEditableSolid({project:p,part,stl,selected,busy,onSele
  const upper=useMemo(()=>{if(part!=='tray')return null;const shape=new Shape();outer.forEach(([x,y],i)=>i?shape.lineTo(x,y):shape.moveTo(x,y));shape.closePath();for(const r of cavities){const hole=new Path();r.points.forEach(([x,y],i)=>i?hole.lineTo(x,y):hole.moveTo(x,y));hole.closePath();shape.holes.push(hole);}return new ExtrudeGeometry(shape,{depth:h-7,bevelEnabled:false,steps:1});},[part,outer,cavities,h]);
  useEffect(()=>()=>upper?.dispose(),[upper]);
  const start=(e:ThreeEvent<PointerEvent>)=>{
-  if(covered||part!=='tray'||busy||e.button!==0)return;
+  if(underneath||covered||part!=='tray'||busy||e.button!==0)return;
   if(!model.current)return;const local=model.current.worldToLocal(e.point.clone());const pick=gridfinityPick(p,local.x,local.y);if(!pick)return;e.stopPropagation();onSelect(pick.id);
   if(!pick.wall||pick.id!==selected)return;
   const split=all.find(r=>r.cell.id===pick.id)!.cell.split!,plane=new Plane().setFromNormalAndCoplanarPoint(new Vector3(0,0,1).transformDirection(model.current.matrixWorld),model.current.localToWorld(new Vector3(0,0,7))),at=e.ray.intersectPlane(plane,new Vector3());if(!at)return;
@@ -99,6 +99,6 @@ export function GridfinityAccessoryMesh({stl,project,tag=false}:{stl:ArrayBuffer
 }
 function Solid(props:Props){
  const [dragging,setDragging]=useState(false),[w,d,h]=gridfinitySize(props.project,props.part),scale=4/Math.max(w,d,h);
- return <><SceneCamera view={props.view} reset={props.reset}/><ambientLight intensity={1.5}/><directionalLight position={[-1,5,3]} intensity={1.3}/><directionalLight position={[4,3,-4]} intensity={.8}/><group rotation={[-Math.PI/2,0,0]} scale={scale}>{props.showGrid&&<WorkspaceGrid width={w} depth={d} dark={document.documentElement.dataset.theme==='dark'}/>}<group position={[-w/2,-d/2,0]}>{props.tag&&<GridfinityAccessoryMesh tag stl={props.tag} project={props.project}/>} {props.lid&&<GridfinityAccessoryMesh stl={props.lid} project={props.project}/>}<GridfinityEditableSolid {...props} covered={!!props.lid} onDragging={setDragging}/></group></group><SceneOrbitControls view={props.view} reset={props.reset} dragging={dragging}/></>;
+ return <><SceneCamera view={props.view} reset={props.reset}/><SceneUndersideLight view={props.view}/><ambientLight intensity={1.5}/><directionalLight position={[-1,5,3]} intensity={1.3}/><directionalLight position={[4,3,-4]} intensity={.8}/><group rotation={[-Math.PI/2,0,0]} scale={scale}>{props.showGrid&&<WorkspaceGrid width={w} depth={d} dark={document.documentElement.dataset.theme==='dark'}/>}<group position={[-w/2,-d/2,0]}>{props.tag&&<GridfinityAccessoryMesh tag stl={props.tag} project={props.project}/>} {props.lid&&<GridfinityAccessoryMesh stl={props.lid} project={props.project}/>}<GridfinityEditableSolid {...props} covered={!!props.lid} onDragging={setDragging}/></group></group><SceneOrbitControls view={props.view} reset={props.reset} dragging={dragging}/></>;
 }
-export function GridfinityScene(props:Props){return <Canvas frameloop="demand" dpr={[1,2]} gl={{antialias:true}} orthographic camera={{position:[-6.8,5.2,4.8],zoom:70,near:.01,far:100}} onPointerMissed={e=>{if(e.type==='click'&&e.button===0)props.onSelect('');}}><Solid {...props}/></Canvas>;}
+export function GridfinityScene(props:Props){return <Canvas frameloop="demand" dpr={[1,2]} gl={{antialias:true}} orthographic camera={{position:[-6.8,5.2,4.8],zoom:70,near:.01,far:100}} onPointerMissed={e=>{if(e.type==='click'&&e.button===0)props.onSelect('');}}><SceneInspection><Solid {...props}/></SceneInspection></Canvas>;}

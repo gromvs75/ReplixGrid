@@ -1040,5 +1040,10 @@
   "Крепление потайными винтами и саморезами": "Befestigung mit Senkschrauben",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Die Bohrungen liegen in den Eckzellen. Die Schraubenköpfe müssen unter dem Boden der Aufnahme bleiben.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "Im Modus für die Schubladenanpassung gilt diese Einstellung für alle Platten des Satzes.",
-  "Плиты под одним лотком должны быть одной высоты.": "Platten unter demselben Behälter müssen gleich hoch sein."
+  "Плиты под одним лотком должны быть одной высоты.": "Platten unter demselben Behälter müssen gleich hoch sein.",
+  "Магниты": "Magnete",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Taschen für Magnete Ø6 × 2 mm",
+  "Прибавка к диаметру гнезда": "Zugabe zum Taschendurchmesser",
+  "Размер гнезда — Ø{0} × {1} мм.": "Taschengröße — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "Einsatz von unten ansehen"
 }

@@ -104,7 +104,8 @@ footer a.brand-credit{text-decoration:none}footer a.brand-credit:hover{text-deco
 .stage-top .tool-tabs button{min-height:34px;font-size:11px;padding:7px 10px;gap:6px;white-space:nowrap}
 .stage-top .tool-tabs svg{width:17px;height:17px;flex-basis:17px}
 .stage-top .tool-tabs .tool-chevron{font-size:12px;width:auto;line-height:1}
-.viewport-actions{display:flex;gap:8px;align-items:center}
+.viewport-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:100%}
+.viewport-actions .view-tabs{flex-wrap:wrap;max-width:100%}
 .viewport-actions .view-tabs button{padding:8px 10px}
 .floating-tool-panel{position:absolute;z-index:11;top:76px;left:20px;width:350px;max-width:calc(100% - 40px);max-height:calc(100% - 156px);padding:16px 18px;background:#fbfaf6f7;border:1px solid #dfe3d8;border-radius:14px;box-shadow:0 12px 36px #263e381a;overscroll-behavior:contain;scrollbar-width:thin}
 .floating-tool-panel[hidden]{display:none}

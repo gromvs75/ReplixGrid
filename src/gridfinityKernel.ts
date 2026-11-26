@@ -2,7 +2,7 @@ import {gridfinityInscription,tagWidth,tagHeight,tagThickness,shelfPoint,shelfAn
 import {gridfinityCavities} from './gridfinityPreview.js';
 import {stackingLipPositions} from './gridfinityLip.js';
 import Module,{type Manifold,type Vec3} from 'manifold-3d';
-import {GRIDFINITY as G,gridPitch,hasGridfinityLid,lidLocatorDepth,lidDeckBase,lidDeckTop,gridfinityLidDeck,validateGridfinity,gridfinityFloorRadius,gridfinityNotch,gridfinityPairedNotches,gridfinityRadii,gridfinityInnerRadiusLimit,gridfinityRegions,gridfinityPlateFloor,gridfinityPlateScrew,type GridfinityProject} from './gridfinity.js';
+import {GRIDFINITY as G,gridPitch,hasGridfinityLid,lidLocatorDepth,lidDeckBase,lidDeckTop,gridfinityLidDeck,validateGridfinity,gridfinityFloorRadius,gridfinityNotch,gridfinityPairedNotches,gridfinityRadii,gridfinityInnerRadiusLimit,gridfinityRegions,gridfinityPlateFloor,gridfinityPlateScrew,gridfinityMagnet,type GridfinityProject} from './gridfinity.js';
 import {cutoutDepthFraction} from './shell.js';
 import {roundedContour} from './rounding.js';
 import {encodeSTL,decodeSTL,inspectSurface,weldNearVertices,removeCollapsedFaces,type Triangle,type Point} from './stl.js';
@@ -40,6 +40,15 @@ export async function buildGridfinity(input:GridfinityProject,part:'tray'|'plate
   };
   const box=(x:number,y:number,z:number,w:number,d:number,h:number)=>
     keep(keep(wasm.Manifold.cube([w,d,h])).translate([x,y,z]));
+  const cylinder=(x:number,y:number,z:number,radius:number,height:number)=>
+    keep(keep(wasm.Manifold.cylinder(height,radius,radius,64)).translate([x,y,z]));
+  const magnetRadius=p.magnetClearance===undefined?undefined:(gridfinityMagnet.diameter+p.magnetClearance)/2;
+  const magnetCenters=(column:number,row:number,inset=0)=>{
+    const edge=gridfinityMagnet.edgeOffset;
+    return [edge,px-edge].flatMap(x=>[edge,py-edge].map((y):[number,number]=>[
+      column*px+x-inset,row*py+y-inset,
+    ]));
+  };
   const onShelf=(solid:Manifold)=>keep(keep(solid.rotate([shelfAngle(p),0,0])).translate(shelfPoint(p,0,0,0)));
   function engrave(body:Manifold,surface:'tag'|'shelf'|'lid'){
     const layout=gridfinityInscription(p);
@@ -139,6 +148,15 @@ export async function buildGridfinity(input:GridfinityProject,part:'tray'|'plate
         additions.push(lip(w,d,h));
       }
       body=keep(wasm.Manifold.union(additions));
+      if(magnetRadius!==undefined){
+        const pockets:Manifold[]=[];
+        for(let x=0;x<p.columns;x++)for(let y=0;y<p.rows;y++){
+          for(const [mx,my] of magnetCenters(x,y,G.gap/2)){
+            pockets.push(cylinder(mx,my,-.1,magnetRadius,gridfinityMagnet.pocketDepth+.1));
+          }
+        }
+        body=keep(body.subtract(keep(wasm.Manifold.union(pockets))));
+      }
       if(p.sideGrips)body=keep(wasm.Manifold.union([body,sideGrip(w,d,h,false),sideGrip(w,d,h,true)]));
       if(!hasGridfinityLid(p)&&p.label){
         const removable=p.label.mode==='tag';
@@ -237,13 +255,26 @@ export async function buildGridfinity(input:GridfinityProject,part:'tray'|'plate
       for(let x=0;x<p.columns;x++)for(let y=0;y<p.rows;y++){
         const cx=(x+.5)*px,cy=(y+.5)*py;
         const mount=p.plateScrewMount&&(x===0||x===p.columns-1)&&(y===0||y===p.rows-1);
+        const centers=magnetRadius===undefined?[]:magnetCenters(x,y);
         cuts.push(foot(cx,cy,p.clearance,floor));
         // Retain a 2 mm bearing ledge beneath the 35.6 mm foot. The opening
         // overlaps the socket without changing its profile or seating height.
         if(p.plateStyle==='lattice'){
           const opening=rounded(px-10.4,py-10.4,.8,floor+.2,x*px+5.2,y*py+5.2,-.1);
-          // A bridge at floor height supports the screw without closing the cell.
-          cuts.push(mount?keep(opening.subtract(box(x*px,cy-6,-.2,px,12,floor+.4))):opening);
+          const supports:Manifold[]=[];
+          if(mount)supports.push(box(x*px,cy-6,-.2,px,12,floor+.4));
+          if(magnetRadius!==undefined){
+            for(const [mx,my] of centers){
+              supports.push(cylinder(mx,my,-.2,magnetRadius+gridfinityMagnet.backing,floor+.4));
+            }
+          }
+          // Leave material around the pockets and screw while keeping the rest of the cell open.
+          cuts.push(supports.length?keep(opening.subtract(keep(wasm.Manifold.union(supports)))):opening);
+        }
+        if(magnetRadius!==undefined){
+          for(const [mx,my] of centers){
+            cuts.push(cylinder(mx,my,floor-gridfinityMagnet.pocketDepth,magnetRadius,gridfinityMagnet.pocketDepth+.1));
+          }
         }
         if(mount){
           const shaft=screw.shaftDiameter/2,head=screw.headDiameter/2;

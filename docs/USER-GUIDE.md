@@ -30,6 +30,8 @@ Start with a three-compartment organizer for your desk. The example below is 180
 - **Above the model, in the center:** **Assembly**, **Organizer**, **Inserts**, **Shell** and **Lid** control which parts you see. For stacked designs, use the tier dropdown beside **Organizer** to select the active tier without closing the bottom settings editor. Choose **View stack** in the same dropdown to see all tiers and accessories together. Available buttons depend on your design. On narrower windows, they move onto a separate row below the toolbars.
 - **On the right:** click a compartment number, wall or divider to edit that element.
 
+Drag the background in **3D** to orbit around and under the model, or use **Bottom** to jump to the underside. In **Drawer**, select a tray and choose **View tray from below** to open its 3D editor at that angle.
+
 In **Shape**, start with **Base**, then use **Dimensions**. In **Shell**, choose the pattern, shell type, color, thickness/rim and fit in their separate sections. Use **Printer** in the top bar to choose the shared printer and configure filament slots. Open **Print** to split the organizer.
 
 While you move a slider, the model updates as each calculation finishes. Complex models may take longer; the final value is always calculated at full precision. Wait for the finished preview before checking or exporting the result. Editor notifications disappear after 10 seconds, or you can close them with **×**.

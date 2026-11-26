@@ -1039,5 +1039,10 @@
   "Крепление потайными винтами и саморезами": "Fixation par vis à tête fraisée",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Les trous se trouvent dans les cellules d’angle. Les têtes de vis doivent rester sous le fond des logements.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "En mode ajustement au tiroir, ce réglage s’applique à toutes les plaques de l’ensemble.",
-  "Плиты под одним лотком должны быть одной высоты.": "Les plaques sous un même bac doivent avoir la même hauteur."
+  "Плиты под одним лотком должны быть одной высоты.": "Les plaques sous un même bac doivent avoir la même hauteur.",
+  "Магниты": "Aimants",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Logements pour aimants Ø6 × 2 mm",
+  "Прибавка к диаметру гнезда": "Surcote du diamètre du logement",
+  "Размер гнезда — Ø{0} × {1} мм.": "Dimensions du logement — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "Voir le bac de dessous"
 }

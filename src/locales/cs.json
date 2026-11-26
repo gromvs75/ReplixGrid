@@ -1039,5 +1039,10 @@
   "Крепление потайными винтами и саморезами": "Upevnění zápustnými šrouby",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otvory jsou v rohových buňkách. Hlavy šroubů musí zůstat pod dnem lůžka.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "V režimu přizpůsobení zásuvce platí nastavení pro všechny desky sady.",
-  "Плиты под одним лотком должны быть одной высоты.": "Desky pod stejnou vaničkou musí mít stejnou výšku."
+  "Плиты под одним лотком должны быть одной высоты.": "Desky pod stejnou vaničkou musí mít stejnou výšku.",
+  "Магниты": "Magnety",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Kapsy pro magnety Ø6 × 2 mm",
+  "Прибавка к диаметру гнезда": "Přídavek k průměru kapsy",
+  "Размер гнезда — Ø{0} × {1} мм.": "Rozměr kapsy — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "Zobrazit přihrádku zespodu"
 }

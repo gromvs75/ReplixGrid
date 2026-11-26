@@ -1039,5 +1039,10 @@
   "Крепление потайными винтами и саморезами": "Mocowanie śrubami i wkrętami z łbem stożkowym",
   "Отверстия в угловых ячейках. Головки винтов должны оставаться ниже дна гнезда.": "Otwory są w narożnych komórkach. Łby śrub muszą pozostać poniżej dna gniazda.",
   "В режиме «Под размер ящика» крепление включается для всех плит комплекта.": "W trybie dopasowania do szuflady ustawienie dotyczy wszystkich płyt zestawu.",
-  "Плиты под одним лотком должны быть одной высоты.": "Płyty pod tym samym pojemnikiem muszą mieć tę samą wysokość."
+  "Плиты под одним лотком должны быть одной высоты.": "Płyty pod tym samym pojemnikiem muszą mieć tę samą wysokość.",
+  "Магниты": "Magnesy",
+  "Гнёзда для магнитов Ø6 × 2 мм": "Gniazda na magnesy Ø6 × 2 mm",
+  "Прибавка к диаметру гнезда": "Naddatek średnicy gniazda",
+  "Размер гнезда — Ø{0} × {1} мм.": "Wymiary gniazda — Ø{0} × {1} mm.",
+  "Осмотреть лоток снизу": "Zobacz tackę od spodu"
 }
