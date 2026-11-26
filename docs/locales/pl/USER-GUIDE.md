@@ -1,6 +1,6 @@
 <a id="your-first-replixgrid-organizer"></a>
 
-W trybach organizera i szuflady wymiary są podawane jako **Długość × szerokość × wysokość**. Długość zawsze odpowiada osi X, a szerokość osi Y. Nazwy nie zmieniają się po zmianie proporcji ani obróceniu widoku. Zapisane projekty zachowują wymiary i orientację. Głębokość wycięcia i grawerowania nadal oznacza głębokość obróbki materiału.
+W organizerze obowiązuje kolejność **Długość × szerokość × wysokość**. W szufladzie obowiązuje kolejność **Szerokość × długość × wysokość**. Szerokość mierzy się od lewej do prawej, a długość od przodu do tyłu. Głębokość wycięcia i grawerowania nadal oznacza głębokość obróbki materiału.
 # Twój pierwszy organizer ReplixGrid
 
 <a id="first-visit-and-a-clean-start"></a>

@@ -42,7 +42,7 @@ test('socket base preserves compartment volume and matches pegs after tray rotat
 });
 
 test('shells and upper tiers stay unchanged; only the bottom organizer receives sockets',async()=>{
- const d=drawer(180,280),tray=newTray('Stack',80,60,25);tray.x=tray.y=10;
+ const d=drawer(180,280),tray=newTray('Stack',80,60,25);tray.x=tray.y=2;
  tray.project.shell={pattern:'diamonds',size:12,gap:.5,thickness:1.6};tray.project.baseBand={height:4,style:'rings'};tray.project=setLevelCount(tray.project,2);d.trays=[tray];
  const original=await buildKit(tray.project),mounted=await mountedKit({layout:d,trayId:tray.id});
  assert.equal(mounted.length,original.length);

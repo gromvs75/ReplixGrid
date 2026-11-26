@@ -1,6 +1,6 @@
 # ReplixGrid User Guide
 
-Dimensions use **Length × Width × Height** in both Organizer and Drawer. Length is the fixed X axis and width is the fixed Y axis; the names do not swap when one side becomes longer or you rotate the view. Existing projects keep their dimensions and orientation. Cutout depth and engraving depth still describe how far a cut goes into the material.
+Organizer uses **Length × Width × Height**. Drawer uses **Width × Length × Height**, with width measured left to right and length measured from the front to the back. Saved projects keep their dimensions and orientation. Cutout depth and engraving depth describe how far a cut goes into the material.
 
 Design an organizer in millimeters, check its fit, and download the parts for your slicer. For a first build, follow the illustrated capsule example. Use this reference when you want to change a particular part of your design.
 
@@ -244,11 +244,11 @@ Saved styles belong to this browser and site address. A project JSON preserves t
 
 Choose **Drawer** next to **Organizer**, then **Create drawer**. Enter the measured inside length, width, usable height and clearance. Clearance applies both at the drawer walls and between trays.
 
-New drawers start at 180 × 280 mm, with the front edge marked at the bottom. **Rotate view by 90°** changes only the viewing orientation; drawer dimensions, tray coordinates and exported models stay unchanged. Existing drawer arrangements retain their dimensions. Saved drawers open with length horizontal and width vertical; dimension labels follow manual view rotation. The tray rotation button turns only the selected tray.
+New drawers start at 180 mm wide and 280 mm long. **Assembly** shows the fitted trays and the plate in 3D. **Mounting plate** shows the sections and pegs; **Empty drawer** shows the interior without parts. Use **Plan** for the 2D diagram, with the front edge marked at the bottom. **Rotate view by 90°** turns the diagram while retaining the original dimensions and tray coordinates.
 
 Use **New organizer** to create a tray directly in the drawer. Set its dimensions, then edit compartments and accessories in the usual organizer editor. **← Back to drawer** returns to its placement. **Add saved organizer** adds an independent copy of a saved project or variant; editing it never changes its source.
 
-Drag trays in top view or enter X/Y coordinates measured from the top-left corner to the tray’s outer bounds. Rotate by 90 degrees, duplicate or remove trays. Arrow keys move a focused tray by 1 mm (Shift: 10 mm). Arrangement undo/redo restores placements and completed tray edits.
+Drag trays in 3D or in the plan, or enter X/Y coordinates measured from the top-left corner to the tray’s outer bounds. Rotate by 90 degrees, duplicate or remove trays. On the plan, arrow keys move a focused tray by 1 mm (Shift: 10 mm) in free placement. With a mounting plate, dragging and arrow keys both move trays in 20 mm steps. Arrangement undo/redo restores placements and completed tray edits.
 
 The diagram shows assembled outer bounding rectangles, including shells, trim, lids and tiers. Curved shapes are checked conservatively rather than tightly nested. Boundary, clearance and height conflicts are highlighted. Wait for the geometry check before relying on the fit status. Choose free placement or enable a mounting plate as described below.
 
@@ -260,7 +260,7 @@ In **Drawer → Drawer base**, choose **Mounting plate**. Drawer length/width an
 
 **Download sections (ZIP)** creates one numbered 3MF per print job, an SVG assembly map and a coordinate list. The map uses the original drawer orientation, independent of view rotation. R indicates rows from top to bottom, C columns from left to right. Lower adjoining dovetails into place from above. First print **Download joint sample**, containing two small adjoining sections; check assembly with your printer before printing the full set. The joints use a 0.05 mm seam and a 0.03 mm profile allowance. A faint seam and slight play can remain between bare sections.
 
-With plate mode enabled, tray downloads include underside sockets for that tray's position and rotation. Internal compartment dimensions are preserved. The tray becomes 2.1 mm taller; including the 2 mm plate, the drawer fit check adds 4.1 mm. After moving or rotating a tray, download it again: its sockets must match the peg positions. Changing drawer clearance also changes the peg origin.
+The selected tray status confirms when its sockets seat on the plate. Tray downloads include underside sockets for the current position and rotation. Internal compartment dimensions are preserved. The tray becomes 2.1 mm taller; including the 2 mm plate, the drawer fit check adds 4.1 mm. After moving or rotating a tray, download it again: its sockets must match the peg positions. Changing drawer clearance also changes the peg origin.
 
 Socket radial clearance is 0.12 mm. Print a small organizer spanning two sections to check fit with your material and layer settings. The sockets retain the organizer laterally; lift it upwards to remove it. Export uses geometry only: choose your printer and material profiles in the slicer and inspect the socket roofs before printing.
 

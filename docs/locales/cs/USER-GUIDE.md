@@ -1,6 +1,6 @@
 <a id="your-first-replixgrid-organizer"></a>
 
-V režimech organizéru a zásuvky se rozměry uvádějí jako **Délka × šířka × výška**. Délka vždy odpovídá ose X a šířka ose Y. Názvy se nemění při změně proporcí ani při otočení pohledu. Uložené projekty si zachovají rozměry a orientaci. Hloubka výřezu a gravírování nadále označuje hloubku zásahu do materiálu.
+Organizér používá pořadí **Délka × šířka × výška**. Zásuvka používá pořadí **Šířka × délka × výška**. Šířka se měří zleva doprava, délka od přední stěny k zadní. Hloubka výřezu a gravírování nadále označuje hloubku zásahu do materiálu.
 # Váš první organizér ReplixGrid
 
 <a id="first-visit-and-a-clean-start"></a>

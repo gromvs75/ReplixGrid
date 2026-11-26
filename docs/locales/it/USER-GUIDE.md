@@ -1,6 +1,6 @@
 <a id="your-first-replixgrid-organizer"></a>
 
-Nelle modalità Organizer e Cassetto, le dimensioni seguono l’ordine **Lunghezza × larghezza × altezza**. La lunghezza corrisponde sempre all’asse X e la larghezza all’asse Y. I nomi non cambiano modificando le proporzioni o ruotando la vista. I progetti salvati mantengono dimensioni e orientamento. La profondità del ritaglio o dell’incisione continua a indicare quanto il taglio penetra nel materiale.
+L’organizer usa l’ordine **Lunghezza × larghezza × altezza**. Il cassetto usa l’ordine **Larghezza × lunghezza × altezza**. La larghezza si misura da sinistra a destra e la lunghezza dal fronte al retro. La profondità del ritaglio o dell’incisione continua a indicare quanto il taglio penetra nel materiale.
 # Il tuo primo organizer ReplixGrid
 
 <a id="first-visit-and-a-clean-start"></a>

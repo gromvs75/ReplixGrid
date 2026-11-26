@@ -1,6 +1,6 @@
 <a id="replixgrid-user-guide"></a>
 
-W trybach organizera i szuflady wymiary są podawane jako **Długość × szerokość × wysokość**. Długość zawsze odpowiada osi X, a szerokość osi Y. Nazwy nie zmieniają się po zmianie proporcji ani obróceniu widoku. Zapisane projekty zachowują wymiary i orientację. Głębokość wycięcia i grawerowania nadal oznacza głębokość obróbki materiału.
+W organizerze obowiązuje kolejność **Długość × szerokość × wysokość**. W szufladzie obowiązuje kolejność **Szerokość × długość × wysokość**. Szerokość mierzy się od lewej do prawej, a długość od przodu do tyłu. Głębokość wycięcia i grawerowania nadal oznacza głębokość obróbki materiału.
 # Podręcznik użytkownika ReplixGrid
 
 Zaprojektuj organizer z wymiarami w milimetrach, sprawdź dopasowanie części i pobierz je do slicera. Na początek skorzystaj z ilustrowanego przykładu kapsuły w szybkim starcie. Ten podręcznik opisuje poszczególne ustawienia.
@@ -261,7 +261,7 @@ Zapisane style należą do tej przeglądarki i adresu strony. Projekt JSON zacho
 
 Wybierz **Drawer** obok **Organizer** Więc... **Create drawer**. Wprowadzić zmierzoną długość, szerokość, użyteczną wysokość i prześwit. Prześwit stosuje się zarówno na ścianach szuflady, jak i między tacami.
 
-Nowe szuflady zaczynają się od 180 × 280 mm, a przednia krawędź jest zaznaczona na dole. **Obróć widok o 90 °** zmienia tylko orientację przeglądania; wymiary szuflady, współrzędne tacki i eksportowane modele pozostają bez zmian. Istniejące urządzenia szuflady zachowują swoje wymiary. Oszczędzane szuflady otwarte z długością poziomą i szerokością pionową; etykiety wymiarów podążają za ręczną rotacją widoku. Przycisk rotacji tacki obraca tylko wybraną tacę.
+Nowa szuflada ma 180 mm szerokości i 280 mm długości. Na rzucie przednia krawędź jest zaznaczona na dole. Obrót rzutu o 90° zachowuje wymiary i współrzędne tacek.
 
 Stosowanie **New organizer** aby stworzyć tacę bezpośrednio w szufladzie. Ustaw jego wymiary, a następnie edytuj przedziały i akcesoria w zwykłym edytorze organizera. **← Back to drawer** powraca do swojego położenia. **Add saved organizer** dodaje niezależną kopię zapisanego projektu lub wariantu; jego edycja nigdy nie zmienia jego źródła.
 

@@ -1,6 +1,6 @@
 <a id="your-first-replixgrid-organizer"></a>
 
-Dans les modes Organiseur et Tiroir, les dimensions suivent l’ordre **Longueur × largeur × hauteur**. La longueur correspond toujours à l’axe X et la largeur à l’axe Y. Ces noms ne changent pas si les proportions changent ou si vous faites pivoter la vue. Les projets enregistrés conservent leurs dimensions et leur orientation. La profondeur de découpe ou de gravure désigne toujours la profondeur de l’opération dans le matériau.
+L’organiseur utilise l’ordre **Longueur × largeur × hauteur**. Le tiroir utilise l’ordre **Largeur × longueur × hauteur**. La largeur se mesure de gauche à droite, la longueur de l’avant vers l’arrière. La profondeur de découpe ou de gravure désigne toujours la profondeur de l’opération dans le matériau.
 # Votre premier organiseur ReplixGrid
 
 <a id="first-visit-and-a-clean-start"></a>

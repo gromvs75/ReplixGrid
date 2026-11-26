@@ -1,6 +1,6 @@
 <a id="replixgrid-user-guide"></a>
 
-In den Modi Organizer und Schublade werden Maße als **Länge × Breite × Höhe** angegeben. Die Länge gehört fest zur X-Achse, die Breite zur Y-Achse. Die Bezeichnungen wechseln weder bei anderen Proportionen noch beim Drehen der Ansicht. Gespeicherte Projekte behalten ihre Maße und Ausrichtung. Aussparungs- und Gravurtiefe bezeichnen weiterhin die Tiefe des Eingriffs in das Material.
+Beim Organizer gilt **Länge × Breite × Höhe**. Bei der Schublade gilt **Breite × Länge × Höhe**. Die Breite wird von links nach rechts gemessen, die Länge von vorne nach hinten. Aussparungs- und Gravurtiefe bezeichnen weiterhin die Tiefe des Eingriffs in das Material.
 # ReplixGrid-Benutzerhandbuch
 
 Entwerfen Sie einen Organizer mit Maßen in Millimetern, prüfen Sie die Passform und laden Sie die Teile für Ihren Slicer herunter. Für den Einstieg eignet sich das bebilderte Kapselbeispiel im Schnellstart. Dieses Handbuch erklärt die einzelnen Einstellungen.
@@ -261,7 +261,7 @@ Gespeicherte Stile gehören zu diesem Browser und dieser Website-Adresse. Ein Pr
 
 Wählen Sie **Drawer** neben **Organizer**, dann **Create drawer**. Geben Sie die gemessene Innenlänge, Breite, nutzbare Höhe und Freiraum ein. Freiraum gilt sowohl an den Schubladenwänden als auch zwischen den Trays.
 
-Neue Schubladen beginnen bei 180 × 280 mm, wobei die Vorderkante unten markiert ist. **Drehen um 90°** ändert nur die Sichtausrichtung; Schubladenabmessungen, Traykoordinaten und exportierte Modelle bleiben unverändert. Bestehende Schubladenanordnungen behalten ihre Abmessungen bei. Gespeicherte Schubladen mit horizontaler Länge und vertikaler Breite; Maßaufschriften folgen manueller Sichtdrehung. Der Traydrehknopf dreht nur das ausgewählte Tray.
+Eine neue Schublade ist 180 mm breit und 280 mm lang. Im Grundriss ist die Vorderkante unten markiert. Durch Drehen des Grundrisses um 90° ändern sich die Ansicht und die Beschriftung der Achsen.
 
 Verwenden Sie **New organizer**, um ein Tablett direkt in der Schublade zu erstellen. Legen Sie die Abmessungen fest, bearbeiten Sie dann Fächer und Zubehör im üblichen Organizer-Editor. **← Back to drawer** kehrt zu seiner Platzierung zurück. **Add saved organizer** fügt eine unabhängige Kopie eines gespeicherten Projekts oder einer gespeicherten Variante hinzu; die Bearbeitung ändert nie die Quelle.
 

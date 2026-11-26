@@ -1,6 +1,6 @@
 <a id="replixgrid-user-guide"></a>
 
-V režimech organizéru a zásuvky se rozměry uvádějí jako **Délka × šířka × výška**. Délka vždy odpovídá ose X a šířka ose Y. Názvy se nemění při změně proporcí ani při otočení pohledu. Uložené projekty si zachovají rozměry a orientaci. Hloubka výřezu a gravírování nadále označuje hloubku zásahu do materiálu.
+Organizér používá pořadí **Délka × šířka × výška**. Zásuvka používá pořadí **Šířka × délka × výška**. Šířka se měří zleva doprava, délka od přední stěny k zadní. Hloubka výřezu a gravírování nadále označuje hloubku zásahu do materiálu.
 # Uživatelská příručka ReplixGrid
 
 Navrhněte organizér s rozměry v milimetrech, ověřte, zda díly pasují, a stáhněte je pro slicer. Pro začátek použijte ilustrovaný příklad kapsle v rychlém startu. Tato příručka popisuje jednotlivá nastavení.
@@ -261,7 +261,7 @@ Uložené styly patří k tomuto prohlížeči a adrese stránky. Projekt JSON z
 
 Vyberte **Drawer** vedle **Organizér**, pak **Create drawer**. Zadejte naměřenou vnitřní délku, šířku, použitelnou výšku a výšku. Clearance platí jak na stěnách zásuvky, tak mezi tácy.
 
-Nové zásuvky začínají na 180 × 280 mm, přičemž přední okraj je vyznačen dole. **Otočit pohled o 90 °** mění pouze orientaci zobrazení; rozměry zásuvky, souřadnice podstavce a exportované modely zůstávají nezměněny. Stávající uspořádání zásuvek si zachovává jejich rozměry. Uložené zásuvky otevřené s délkou horizontální a šířkou svislé; štítky dimenzí se řídí ručním zobrazením rotace. Tlačítko pro střídání zásobníků se otáčí pouze zvoleným zásobníkem.
+Nová zásuvka má šířku 180 mm a délku 280 mm. Půdorys označuje přední hranu dole. Otočením půdorysu o 90° se mění pohled a souřadnice a rozměry se zachovají.
 
 Použití **New organizer** vytvořit podnos přímo v šuplíku. Nastavte rozměry, pak upravte přihrádky a příslušenství v obvyklém editoru pořadatelů. **← Back to drawer** se vrací na své místo. **Add saved organizer** přidává nezávislou kopii uloženého projektu nebo varianty; editace nikdy nemění svůj zdroj.
 

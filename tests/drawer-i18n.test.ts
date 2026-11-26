@@ -6,7 +6,7 @@ import catalogs from '../src/locales/catalogs.json' with {type:'json'};
 import {languages,setLocale,t} from '../src/i18n.js';
 import {drawerMessage} from '../src/ui/drawerMessages.js';
 
-const files=['ui/DrawerWorkspace.tsx','ui/DrawerExportDialog.tsx','ui/PlateControls.tsx','ui/useDrawerBounds.ts','drawer.ts','mountingPlate.ts','mountingKernel.ts','drawerExport.ts','drawerExportWorker.ts','bedPacking.ts'];
+const files=['ui/DrawerWorkspace.tsx','ui/DrawerExportDialog.tsx','ui/PlateControls.tsx','ui/useDrawerPreview.ts','drawer.ts','mountingPlate.ts','mountingKernel.ts','drawerExport.ts','drawerExportWorker.ts','bedPacking.ts'];
 const messages=new Set<string>();
 for(const file of files){
  const ast=ts.createSourceFile(file,readFileSync(new URL('../src/'+file,import.meta.url),'utf8'),ts.ScriptTarget.Latest,true);

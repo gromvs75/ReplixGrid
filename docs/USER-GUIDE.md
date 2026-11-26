@@ -1,6 +1,6 @@
 # Your first ReplixGrid organizer
 
-Dimensions use **Length × Width × Height** in both Organizer and Drawer. Length is the fixed X axis and width is the fixed Y axis; the names do not swap when one side becomes longer or you rotate the view. Existing projects keep their dimensions and orientation. Cutout depth and engraving depth still describe how far a cut goes into the material.
+Organizer uses **Length × Width × Height**. Drawer uses **Width × Length × Height**, with width measured left to right and length measured from the front to the back. Saved projects keep their dimensions and orientation. Cutout depth and engraving depth describe how far a cut goes into the material.
 
 ## First visit and a clean start
 
@@ -163,4 +163,4 @@ Choose a standard 42 mm grid or enter the inside dimensions of a drawer. Drawer-
 
 Organizer and shell previews use subtle contrasting edges and darker side walls. Drawer layouts show the tray shape and compartment outlines inside each clearance envelope; the diagram rotates with the tray and the drawer view. T1, T2 identify trays. These display aids do not change exported geometry, colors, filament assignments or collision clearances.
 
-Drawer dragging follows the pointer continuously. A green outline indicates a valid drop and a red dashed outline indicates insufficient clearance or an invalid position. Drop coordinates are rounded to 0.1 mm. Invalid drops, Escape, pointer cancellation and loss of focus preserve the starting layout. Only a valid completed move is saved and added as one undo step. Wait for all assembled tray bounds to finish checking before dropping.
+In the drawer plan, a green outline marks a valid drop and a red outline marks an invalid position. Free placement rounds the drop to 0.1 mm. A mounting plate moves trays in 20 mm steps. Invalid drops, Escape, pointer cancellation and loss of focus preserve the starting layout. Only a valid completed move is saved and added as one undo step. Wait for all assembled tray bounds to finish checking before dropping.

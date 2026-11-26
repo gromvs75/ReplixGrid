@@ -24,7 +24,7 @@ export function parseDrawer(raw:string):DrawerLayout{
   return {...t,project:parseProject(JSON.stringify(t.project))};
  })};
 }
-export function trayRect(t:DrawerTray,b:TrayBounds){return {x:t.x,y:t.y,width:t.rotation===90?b.depth:b.width,depth:t.rotation===90?b.width:b.depth};}
+export function trayRect(t:Pick<DrawerTray,'x'|'y'|'rotation'>,b:TrayBounds){return {x:t.x,y:t.y,width:t.rotation===90?b.depth:b.width,depth:t.rotation===90?b.width:b.depth};}
 /** Clearance uses assembled outer bounding rectangles, including all accessories. */
 export function drawerIssues(d:DrawerLayout,bounds:Record<string,TrayBounds>){
  const issues:Record<string,string[]>={};for(const t of d.trays){const b=bounds[t.id];issues[t.id]=[];if(!b)continue;const r=trayRect(t,b),e=1e-3;

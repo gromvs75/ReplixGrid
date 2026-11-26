@@ -1,6 +1,6 @@
 <a id="replixgrid-user-guide"></a>
 
-Nelle modalità Organizer e Cassetto, le dimensioni seguono l’ordine **Lunghezza × larghezza × altezza**. La lunghezza corrisponde sempre all’asse X e la larghezza all’asse Y. I nomi non cambiano modificando le proporzioni o ruotando la vista. I progetti salvati mantengono dimensioni e orientamento. La profondità del ritaglio o dell’incisione continua a indicare quanto il taglio penetra nel materiale.
+L’organizer usa l’ordine **Lunghezza × larghezza × altezza**. Il cassetto usa l’ordine **Larghezza × lunghezza × altezza**. La larghezza si misura da sinistra a destra e la lunghezza dal fronte al retro. La profondità del ritaglio o dell’incisione continua a indicare quanto il taglio penetra nel materiale.
 # Manuale utente di ReplixGrid
 
 Progetta un organizer con misure in millimetri, verifica l’accoppiamento dei pezzi e scaricali per lo slicer. Per iniziare, segui l’esempio illustrato della capsula nella guida rapida. Questo manuale descrive le singole impostazioni.
@@ -261,7 +261,7 @@ Un progetto JSON conserva l'aspetto applicato, ma non include la libreria in sti
 
 Scegli **Drawer** accanto a **Organizer**, poi **Create drawer**. Inserisci la lunghezza, la larghezza, l'altezza e lo sdoganamento misurati. La pulizia si applica sia alle pareti dei cassetti che tra i vassoi.
 
-I nuovi cassetti iniziano a 180 × 280 mm, con il bordo anteriore segnato in basso. **Vista rotativa di 90°** cambia solo l'orientamento di visualizzazione; le dimensioni del cassetto, le coordinate del vassoio e i modelli esportati rimangono invariati. Le disposizioni del cassetto esistenti conservano le loro dimensioni. I cassetti salvati si aprono con lunghezza orizzontale e larghezza verticale; le etichette delle dimensioni seguono la rotazione manuale della vista.
+Un nuovo cassetto è largo 180 mm e lungo 280 mm. Il bordo anteriore è indicato in basso nella pianta. Ruotare la pianta di 90° conserva le dimensioni e le coordinate dei vassoi.
 
 Utilizzare **New organizer** per creare un vassoio direttamente nel cassetto. Impostare le sue dimensioni, quindi modificare scomparti e accessori nel solito editor organizer. **← Back to drawer** torna al suo posizionamento. **Add saved organizer** aggiunge una copia indipendente di un progetto o variante salvata; modificarlo non cambia mai la sua fonte.
 

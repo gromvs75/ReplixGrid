@@ -23,11 +23,25 @@ const cameraViews = [
  ['volume','◈ Объем'],['top','▦ Сверху'],['bottom','▦ Снизу'],
 ] as const;
 
-export function SceneViewButtons({view,onView,showGrid,onToggleGrid}:{view:SceneView;onView:(view:SceneView)=>void;showGrid:boolean;onToggleGrid:()=>void}){
+interface ViewButtonsProps {view?:SceneView;onView:(view:SceneView)=>void;showGrid:boolean;onToggleGrid:()=>void}
+
+export function SceneViewButtons({view,onView,showGrid,onToggleGrid}:ViewButtonsProps){
  return <div className="view-tabs" role="group" aria-label={t('Вид')}>
   {cameraViews.map(([value,label])=><button key={value} className={view===value?'active':''} aria-pressed={view===value} onClick={()=>onView(value)}>{t(label)}</button>)}
   <button className={showGrid?'active':''} aria-pressed={showGrid} title={t('Сетка 10 мм · основные линии 50 мм')} onClick={onToggleGrid}>{t('▦ Сетка')}</button>
  </div>;
+}
+export function SceneViewportActions({canUndo,canRedo,onUndo,onRedo,onReset,...views}:ViewButtonsProps&{
+ canUndo:boolean;canRedo:boolean;onUndo:()=>void;onRedo:()=>void;onReset:()=>void;
+}){
+ return <div className="stage-top"><div className="viewport-actions">
+  <SceneViewButtons {...views}/>
+  <div className="tools">
+   <button aria-label={t('Отменить')} disabled={!canUndo} onClick={onUndo}>↶</button>
+   <button aria-label={t('Повторить')} disabled={!canRedo} onClick={onRedo}>↷</button>
+   <button aria-label={t('Вернуть камеру')} onClick={onReset}>⌖</button>
+  </div>
+ </div></div>;
 }
 export function WorkspaceGrid({width,depth,dark}:{width:number;depth:number;dark:boolean}){
  const lines=useMemo(()=>{

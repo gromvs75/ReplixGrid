@@ -1,6 +1,6 @@
 import {defaultModelColor} from './appearance.js';
 import Module,{type Manifold,type Vec2} from 'manifold-3d';
-import {MOUNT,platePlan} from './mountingPlate.js';
+import {MOUNT,MOUNT_EDGE_ERROR,platePlan} from './mountingPlate.js';
 import {parseDrawer,trayRect,type DrawerLayout} from './drawer.js';
 import {buildKit,type KitPart} from './accessoryKernel.js';
 import {encodeSTL,decodeSTL,inspectSurface,removeCollapsedFaces,type Point,type Triangle} from './stl.js';
@@ -66,11 +66,11 @@ export async function plateArchive(d:DrawerLayout){
  return zipFiles([...files,{name:'assembly.svg',data:map},{name:'assembly.json',data:JSON.stringify({units:'mm',drawer:[d.width,d.depth],gap:d.gap,tiles:tiles.map(({name,position,inspection})=>({name,position,bounds:inspection.bounds}))},null,2)},{name:'README.txt',data:'ReplixGrid mounting plate — millimetres, scale 100%.\nEach numbered 3MF contains one section for a separate print job. R = row (top to bottom), C = column (left to right) in original drawer coordinates. Assemble dovetails by lowering neighbouring sections from above. The 20 mm peg grid continues across seams.\nPeg/socket radial clearance 0.12 mm was tested in PLA, layers 0.2 mm / first layer 0.25 mm. Section dovetails use a 0.05 mm seam and 0.03 mm profile allowance. A small PLA assembly with a tray bridging the seam was print-tested. Test two adjoining sections with your printer before printing the entire drawer. No slicer profiles are included.\nMounted trays gain an external socket base; export them from this drawer with plate mode enabled. Existing flat-bottom trays will not engage the pegs.\n'}]);
 }
 export interface MountingRequest {layout:DrawerLayout;trayId:string}
-export async function mountedKit(request:MountingRequest):Promise<KitPart[]>{
+export async function mountedKit(request:MountingRequest,assembled?:KitPart[]):Promise<KitPart[]>{
  const d=parseDrawer(JSON.stringify(request.layout)),tray=d.trays.find(t=>t.id===request.trayId);
  if(!tray||!d.plate?.enabled)throw new Error('Выберите лоток на пластине.');
  if(tray.project.tilt||tray.project.printing)throw new Error('Крепление пока доступно для цельного лотка без наклона.');
- const parts=await buildKit(tray.project),base=parts.find(p=>p.kind==='organizer'&&p.level===0);
+ const parts=assembled??await buildKit(tray.project),base=parts.find(p=>p.kind==='organizer'&&p.level===0);
  if(!base)throw new Error('Не найдено дно лотка.');
  const min=[0,1,2].map(i=>Math.min(...parts.map(p=>p.position[i]+p.inspection.bounds.min[i]))),max=[0,1,2].map(i=>Math.max(...parts.map(p=>p.position[i]+p.inspection.bounds.max[i])));
  const r=trayRect(tray,{width:max[0]-min[0],depth:max[1]-min[1],height:max[2]-min[2]});
@@ -86,10 +86,19 @@ export async function mountedKit(request:MountingRequest):Promise<KitPart[]>{
    const x=(tray.rotation===0?dx:dy)+min[0]-base.position[0];
    const y=(tray.rotation===0?dy:max[1]-min[1]-dx)+min[1]-base.position[1];
    const b=base.inspection.bounds;if(x<b.min[0]-3.6||x>b.max[0]+3.6||y<b.min[1]-3.6||y>b.max[1]+3.6)continue;
-   const hole=keep(wasm.Manifold.cylinder(2.11,3.12,3.12,64).translate([x,y,-2.11]));
-   // Count fully supported sockets, including lead-in, for stable lateral retention.
+   // Each socket needs an intact rim. Pegs away from the floor need no cut.
    const probe=keep(wasm.Manifold.cylinder(.1,3.55,3.55,64).translate([x,y,-1]));
-   if(keep(body.intersect(probe)).volume()>=probe.volume()-.001)sockets++;
+   const support=keep(body.intersect(probe)).volume();
+   if(support<probe.volume()-.001){
+    if(support>.001){
+     const pegRadius=MOUNT.pegRadius+MOUNT.clearance;
+     const peg=keep(wasm.Manifold.cylinder(.1,pegRadius,pegRadius,64).translate([x,y,-1]));
+     if(keep(body.intersect(peg)).volume()>.001)throw new Error(MOUNT_EDGE_ERROR);
+    }
+    continue;
+   }
+   sockets++;
+   const hole=keep(wasm.Manifold.cylinder(2.11,3.12,3.12,64).translate([x,y,-2.11]));
    const mouth=keep(wasm.Manifold.cylinder(.41,3.52,3.12,64).translate([x,y,-2.11]));
    body=keep(body.subtract(hole));body=keep(body.subtract(mouth));
   }

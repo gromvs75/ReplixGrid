@@ -1,6 +1,6 @@
 <a id="replixgrid-user-guide"></a>
 
-Dans les modes Organiseur et Tiroir, les dimensions suivent l’ordre **Longueur × largeur × hauteur**. La longueur correspond toujours à l’axe X et la largeur à l’axe Y. Ces noms ne changent pas si les proportions changent ou si vous faites pivoter la vue. Les projets enregistrés conservent leurs dimensions et leur orientation. La profondeur de découpe ou de gravure désigne toujours la profondeur de l’opération dans le matériau.
+L’organiseur utilise l’ordre **Longueur × largeur × hauteur**. Le tiroir utilise l’ordre **Largeur × longueur × hauteur**. La largeur se mesure de gauche à droite, la longueur de l’avant vers l’arrière. La profondeur de découpe ou de gravure désigne toujours la profondeur de l’opération dans le matériau.
 # Guide utilisateur ReplixGrid
 
 Créez un organiseur aux dimensions en millimètres, vérifiez l’ajustement des pièces et téléchargez-les pour votre logiciel de découpe (slicer). Pour débuter, suivez l’exemple illustré de la capsule dans le guide de démarrage. Ce manuel détaille chaque réglage.
@@ -261,7 +261,7 @@ Les styles sauvegardés appartiennent à ce navigateur et à l'adresse du site. 
 
 Choisissez **Drawer** à côté de **Organiseur**, puis **Create drawer**. Entrez la longueur intérieure mesurée, la largeur, la hauteur utilisable et la jeu. La jeu s'applique à la fois aux murs du tiroir et entre les plateaux.
 
-Les nouveaux tiroirs commencent à 180 × 280 mm, le bord avant étant marqué en bas. **Vue pivotante de 90°** ne change que l'orientation de la vue; les dimensions des tiroirs, les coordonnées des plateaux et les modèles exportés restent inchangées. Les tiroirs existants conservent leurs dimensions.
+Un nouveau tiroir mesure 180 mm de large et 280 mm de long. Le bord avant est indiqué en bas du plan. Faire pivoter le plan de 90° conserve les dimensions et les coordonnées des bacs.
 
 Utilisez **New organizer** pour créer un plateau directement dans le tiroir. Définissez ses dimensions, puis modifiez les compartiments et accessoires dans l'éditeur habituel de l'organiseur. **← Back to drawer** revient à son emplacement. **Add saved organizer** ajoute une copie indépendante d'un projet ou d'une variante sauvegardée; l'éditer ne change jamais sa source.
 

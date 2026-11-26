@@ -1,6 +1,6 @@
 <a id="your-first-replixgrid-organizer"></a>
 
-En los modos Organizador y Cajón, las dimensiones se indican como **Largo × ancho × alto**. El largo siempre corresponde al eje X y el ancho al eje Y. Los nombres no cambian al modificar las proporciones ni al girar la vista. Los proyectos guardados conservan sus dimensiones y orientación. La profundidad de recorte o de grabado sigue indicando cuánto penetra el corte en el material.
+En Organizador se utiliza **Largo × ancho × alto**. En Cajón se utiliza **Ancho × largo × alto**. El ancho se mide de izquierda a derecha y el largo del frente al fondo. La profundidad de recorte o de grabado sigue indicando cuánto penetra el corte en el material.
 # Tu primer organizador ReplixGrid
 
 <a id="first-visit-and-a-clean-start"></a>

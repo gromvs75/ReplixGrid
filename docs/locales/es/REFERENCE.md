@@ -1,6 +1,6 @@
 <a id="replixgrid-user-guide"></a>
 
-En los modos Organizador y Cajón, las dimensiones se indican como **Largo × ancho × alto**. El largo siempre corresponde al eje X y el ancho al eje Y. Los nombres no cambian al modificar las proporciones ni al girar la vista. Los proyectos guardados conservan sus dimensiones y orientación. La profundidad de recorte o de grabado sigue indicando cuánto penetra el corte en el material.
+En Organizador se utiliza **Largo × ancho × alto**. En Cajón se utiliza **Ancho × largo × alto**. El ancho se mide de izquierda a derecha y el largo del frente al fondo. La profundidad de recorte o de grabado sigue indicando cuánto penetra el corte en el material.
 # Guía del usuario de ReplixGrid
 
 Diseñe un organizador con medidas en milímetros, compruebe el encaje de las piezas y descárguelas para su laminador (slicer). Para empezar, siga el ejemplo ilustrado de la cápsula en la guía rápida. Este manual explica cada ajuste.
@@ -261,7 +261,7 @@ Los estilos guardados pertenecen a este navegador y dirección del sitio. Un pro
 
 Elija **Drawer** junto a **Organizador**, luego **Create drawer**. Introduzca el largo, el ancho, la altura útil y la limpieza. La limpieza se aplica tanto en las paredes del cajón como entre las bandejas.
 
-Los nuevos cajones comienzan en 180 × 280 mm, con el borde delantero marcado en la parte inferior. **Vista giratoria de 90°** cambia solamente la orientación de visualización; las dimensiones del cajón, las coordenadas de bandeja y los modelos exportados permanecen inalterables. Los arreglos de cajones existentes conservan sus dimensiones. Los cajones guardados se abren con longitud horizontal y ancho vertical; las etiquetas de dimensión siguen la rotación de la vista manual.
+Un cajón nuevo mide 180 mm de ancho y 280 mm de largo. El borde delantero se marca abajo en el plano. Girar el plano 90° conserva las dimensiones y las coordenadas de las bandejas.
 
 Utilizar **New organizer** para crear una bandeja directamente en el cajón. Establecer sus dimensiones, luego editar compartimentos y accesorios en el editor organizador habitual. **← Back to drawer** vuelve a su colocación. **Add saved organizer** añade una copia independiente de un proyecto o variante guardado; editar nunca cambia su fuente.
 

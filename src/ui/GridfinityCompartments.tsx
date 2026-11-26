@@ -1,4 +1,5 @@
 import {CompartmentDimensions} from './CompartmentDimensions.js';
+import {CompartmentFit} from './CompartmentFit.js';
 import {useMemo,useState} from 'react';
 import {cellById,editProject,moveDivider,regions,splitCell} from '../editor.js';
 import {dimensionControl,resizeCompartment} from '../compartmentDimensions.js';
@@ -23,6 +24,7 @@ export function GridfinityCompartmentPanel({project:p,selected,onSelect,onChange
       <p className="hint">{t('Выбранную перегородку также можно потянуть на модели.')}</p>
       <button className="danger" onClick={()=>{const total=(function count(c:typeof current.cell):number{return c.split?1+count(c.split.first)+count(c.split.second):0;})(current.cell);if(total>1&&!window.confirm(t('Убрать {0} перегородки и объединить отсеки?',[total])))return;act(()=>editProject(editor,d=>{delete cellById(d.root,current.cell.id)!.split;}));onSelect(current.cell.id);}}>{t('Убрать перегородку')}{current.cell.split.first.split||current.cell.split.second.split?t(' и вложенные'):''}</button>
     </>:<>
+      <CompartmentFit gridfinity={p} cellId={current.cell.id}/>
       <CompartmentDimensions project={editor} cellId={current.cell.id} onTop={onTop} onApply={next=>act(()=>next)}/>
       <p className="body-copy">{t('Большие вещи или маленькие?')}<br/>{t('Разделите пространство под них.')}</p>
       <label className="count-label">{t('Количество частей')}<select aria-label={t('Количество частей')} value={count} onChange={e=>setCount(Number(e.target.value))}>{[2,3,4,5,6].map(n=><option key={n}>{n}</option>)}</select></label>

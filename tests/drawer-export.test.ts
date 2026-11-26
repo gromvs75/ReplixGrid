@@ -31,7 +31,7 @@ test('multicolour lids stay grouped on the same bed with independent trays',asyn
  const bi=p.report.beds.findIndex(b=>b.some(v=>p.units[v.item]===lid));const model=files(bed3mf(p.units,p.report.beds[bi]))['3D/3dmodel.model'];assert.match(model,/<components><component objectid="\d+"\/><component objectid="\d+"\/><\/components>/);
 });
 test('rounded mounted tray at an offset exports without collapsed seam triangles',async()=>{
- const d=newDrawer();d.width=500;d.depth=300;d.height=80;d.plate={enabled:true,bedWidth:270,bedDepth:270};const t=newTray('Tools',180,90,30);t.x=110;t.y=2;d.trays=[t];
+ const d=newDrawer();d.width=500;d.depth=300;d.height=80;d.plate={enabled:true,bedWidth:270,bedDepth:270};const t=newTray('Tools',180,90,30);t.x=106;t.y=6;d.trays=[t];
  const p=await prepareDrawer(d,{length:270,width:270,height:270,gap:5});assert.ok(p.report.items.find(v=>v.name.endsWith('mounted')));assert.equal(p.report.beds.flat().length,p.units.length);
 });
 test('drawer 3MF keeps per-part slots when packing reorders units and groups lids',async()=>{

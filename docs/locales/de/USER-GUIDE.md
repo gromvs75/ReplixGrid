@@ -1,6 +1,6 @@
 <a id="your-first-replixgrid-organizer"></a>
 
-In den Modi Organizer und Schublade werden Maße als **Länge × Breite × Höhe** angegeben. Die Länge gehört fest zur X-Achse, die Breite zur Y-Achse. Die Bezeichnungen wechseln weder bei anderen Proportionen noch beim Drehen der Ansicht. Gespeicherte Projekte behalten ihre Maße und Ausrichtung. Aussparungs- und Gravurtiefe bezeichnen weiterhin die Tiefe des Eingriffs in das Material.
+Beim Organizer gilt **Länge × Breite × Höhe**. Bei der Schublade gilt **Breite × Länge × Höhe**. Die Breite wird von links nach rechts gemessen, die Länge von vorne nach hinten. Aussparungs- und Gravurtiefe bezeichnen weiterhin die Tiefe des Eingriffs in das Material.
 # Ihr erster ReplixGrid-Organizer
 
 <a id="first-visit-and-a-clean-start"></a>
