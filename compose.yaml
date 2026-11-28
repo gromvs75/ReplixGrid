@@ -1,0 +1,20 @@
+# Based on the Docker Compose setup contributed by @roo-tech.
+services:
+  replixgrid:
+    build:
+      context: "https://github.com/gromvs75/ReplixGrid.git#main"
+      dockerfile_inline: |
+        FROM node:24-bookworm-slim AS builder
+        WORKDIR /app
+        COPY package.json package-lock.json ./
+        RUN npm ci
+        COPY . .
+        RUN npm run build && test -f dist/index.html
+
+        FROM nginx:stable-alpine
+        COPY --from=builder /app/dist/ /usr/share/nginx/html/
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8096:80"
+    security_opt:
+      - no-new-privileges:true

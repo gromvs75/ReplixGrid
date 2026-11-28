@@ -18,9 +18,23 @@ The interface is available in 11 languages. Printer presets set the build volume
 
 ### Option 2: run it locally on your computer
 
-Prefer a local copy? Follow the Windows and macOS setup instructions below. Both options let you design organizers and export files for your slicer.
+Prefer a local copy? Use [Docker Compose](#run-with-docker-compose) or follow the [Node.js setup](#local-installation) for Windows and macOS.
 
 Projects are saved in the browser at the address you use. To move between the local and online versions, download your project JSON and open it in the other version. Configure filament slots again at the new address.
+
+## Run with Docker Compose
+
+Open [compose.yaml](compose.yaml) and use **Download raw file** to save it in its own folder. Start Docker with [Docker Compose](https://docs.docker.com/compose/install/) installed. Open a terminal in that folder and run:
+
+```sh
+docker compose up -d --build
+```
+
+Open [http://127.0.0.1:8096/](http://127.0.0.1:8096/) on the same computer. The build fetches ReplixGrid from the GitHub `main` branch and serves the compiled app with Nginx. The build needs an internet connection.
+
+To update ReplixGrid, run `docker compose up -d --build` again. To stop it, run `docker compose down`. Keep using the same browser and address to access your saved projects.
+
+Thanks to [@roo-tech](https://github.com/roo-tech) for contributing the original Docker Compose setup.
 
 ## Local installation
 
