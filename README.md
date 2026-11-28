@@ -24,7 +24,7 @@ Projects are saved in the browser at the address you use. To move between the lo
 
 ## Run with Docker Compose
 
-Open [compose.yaml](compose.yaml) and use **Download raw file** to save it in its own folder. Start Docker with [Docker Compose](https://docs.docker.com/compose/install/) installed. Open a terminal in that folder and run:
+Open [compose.yaml](compose.yaml) and use **Download raw file** to save it in its own folder. Start Docker with [Docker Compose](https://docs.docker.com/compose/install/) installed. For the first launch, open a terminal in that folder and run this command.
 
 ```sh
 docker compose up -d --build
@@ -32,7 +32,15 @@ docker compose up -d --build
 
 Open [http://127.0.0.1:8096/](http://127.0.0.1:8096/) on the same computer. The build fetches ReplixGrid from the GitHub `main` branch and serves the compiled app with Nginx. The build needs an internet connection.
 
-To update ReplixGrid, run `docker compose up -d --build` again. To stop it, run `docker compose down`. Keep using the same browser and address to access your saved projects.
+### Start an existing build
+
+To start the version you already built, run `docker compose up -d --no-build` from the same folder.
+
+### Update ReplixGrid
+
+Run `docker compose up -d --build` again from the folder containing `compose.yaml`. Docker fetches the current code from GitHub's `main` branch and builds an updated image, reusing cached layers where possible. A regular restart keeps serving the version already built.
+
+To stop ReplixGrid, run `docker compose down`. Keep using the same browser and address to access your saved projects.
 
 Thanks to [@roo-tech](https://github.com/roo-tech) for contributing the original Docker Compose setup.
 
